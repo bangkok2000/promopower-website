@@ -1,26 +1,72 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: #FF8C00;
+  --color-primary-variant: #E67E00;
+  --color-on-primary: #111111;
+  --color-background-custom: #121212;
+  --color-surface: #1E1E1E;
+  --color-surface-container: #2A2A2A;
+  --color-on-surface: #FDF9F3;
+  --color-on-surface-variant: #D1C9BC;
+  --color-accent-amber: #FFBF00;
+  --color-charcoal-dark: #0A0A0A;
+  
+  --color-surface-light: #F8F5F2;
+  --color-surface-light-container: #FFFFFF;
+  --color-on-surface-light: #1A1A1A;
+  --color-on-surface-light-variant: #4A4A4A;
+  --radius-lg: 2.5rem;
+  --radius-xl: 4rem;
+  --radius-full: 9999px;
+  
+  --font-headline: 'Manrope', sans-serif;
+  --font-body: 'Lora', serif;
+  --font-label: 'Manrope', sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  body {
+    background-color: var(--color-background-custom);
+    color: var(--color-on-surface);
+    font-family: var(--font-body);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined', sans-serif;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-smoothing: antialiased;
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.midnight-gradient {
+  background: linear-gradient(135deg, rgba(18, 18, 18, 0.9) 0%, rgba(255, 140, 0, 0.2) 100%);
+}
+
+.glow-button {
+  background: linear-gradient(135deg, #FF8C00 0%, #FFBF00 100%);
+  box-shadow: 0 0 20px rgba(255, 140, 0, 0.4);
+}
+
+.glow-button:hover {
+  box-shadow: 0 0 35px rgba(255, 140, 0, 0.6);
+}
+
+.neon-text-glow {
+  text-shadow: 0 0 8px rgba(255, 140, 0, 0.35);
+}
+
+.bokeh-overlay {
+  background-image: radial-gradient(circle at 20% 30%, rgba(255, 140, 0, 0.15) 0%, transparent 40%),
+                    radial-gradient(circle at 80% 70%, rgba(255, 191, 0, 0.1) 0%, transparent 30%);
 }
