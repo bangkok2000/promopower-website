@@ -28,8 +28,8 @@ export default function ContactUs() {
           {/* Left Side: Contact Info */}
           <div className="lg:w-5/12 flex flex-col justify-center space-y-10">
             <div>
-               <span className="text-primary font-headline font-bold tracking-widest text-sm uppercase block mb-4">Start A Conversation</span>
-               <h1 className="text-5xl md:text-7xl font-headline font-black text-on-surface mb-6 leading-tight">
+               <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase block mb-4">Start A Conversation</span>
+               <h1 className="text-5xl md:text-7xl font-headline font-normal text-on-surface mb-6 leading-tight">
                  Let&apos;s Plan Something <span className="text-primary italic">Unforgettable.</span>
                </h1>
                <p className="text-xl text-on-surface-variant leading-relaxed mb-6">
@@ -84,7 +84,7 @@ export default function ContactUs() {
                
                {step < 4 && (
                  <div className="mb-10 text-center">
-                    <h2 className="text-3xl font-headline font-black text-on-surface mb-2">Build Your Campaign</h2>
+                    <h2 className="text-3xl font-headline font-normal text-on-surface mb-2">Build Your Campaign</h2>
                     <p className="text-on-surface-variant text-sm mb-6">Quick estimate within 4 hours.</p>
                     <div className="flex justify-center gap-3 items-center">
                        <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-primary shadow-[0_0_10px_rgba(255,140,0,0.5)]' : 'bg-white/20'} transition-all`}></div>
@@ -104,8 +104,8 @@ export default function ContactUs() {
                         <div className="space-y-3">
                             <label className="block text-xs font-bold text-on-surface-variant px-1 uppercase tracking-widest text-[#FF8C00]">What type of talent?</label>
                             <div className="relative">
-                              <select className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
-                                  <option value="" disabled selected>Select Talent Type...</option>
+                              <select defaultValue="" className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
+                                  <option value="" disabled>Select Talent Type...</option>
                                   <option value="ambassadors">Brand Ambassadors</option>
                                   <option value="roving">Roving Talent</option>
                                   <option value="eventcrew">Event Crew</option>
@@ -117,8 +117,8 @@ export default function ContactUs() {
                         <div className="space-y-3">
                             <label className="block text-xs font-bold text-on-surface-variant px-1 uppercase tracking-widest text-[#FF8C00]">Roughly how many staff?</label>
                             <div className="relative">
-                              <select className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
-                                  <option value="" disabled selected>Select Headcount...</option>
+                              <select defaultValue="" className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
+                                  <option value="" disabled>Select Headcount...</option>
                                   <option value="1-5">1 - 5 Staff</option>
                                   <option value="5-20">5 - 20 Staff</option>
                                   <option value="20+">20+ Staff</option>
@@ -128,7 +128,7 @@ export default function ContactUs() {
                         </div>
                      </div>
                      <div className="pt-6 flex justify-end">
-                       <button type="button" onClick={nextStep} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-bold px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
+                       <button type="button" onClick={nextStep} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
                          Next: Timeline <span className="material-symbols-outlined">arrow_forward</span>
                        </button>
                      </div>
@@ -146,7 +146,7 @@ export default function ContactUs() {
                        <button type="button" onClick={prevStep} className="text-on-surface-variant hover:text-white font-bold transition-colors inline-flex items-center gap-2">
                           <span className="material-symbols-outlined">arrow_back</span> Back
                        </button>
-                       <button type="button" onClick={nextStep} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-bold px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
+                       <button type="button" onClick={nextStep} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all">
                          Next: Your Details <span className="material-symbols-outlined">arrow_forward</span>
                        </button>
                      </div>
@@ -168,7 +168,7 @@ export default function ContactUs() {
                        <button type="button" onClick={prevStep} className="text-on-surface-variant hover:text-white font-bold transition-colors inline-flex items-center gap-2">
                           <span className="material-symbols-outlined">arrow_back</span> Back
                        </button>
-                       <button type="button" onClick={submitForm} disabled={isSubmitting} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-extrabold px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100">
+                       <button type="button" onClick={submitForm} disabled={isSubmitting} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100">
                          {isSubmitting ? 'Sending Request...' : 'Get Custom Proposal'} <span className="material-symbols-outlined">send</span>
                        </button>
                      </div>
@@ -182,7 +182,7 @@ export default function ContactUs() {
                         <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping"></div>
                         <span className="material-symbols-outlined text-4xl text-primary font-bold">rocket_launch</span>
                      </div>
-                     <h3 className="text-3xl font-headline font-black text-on-surface mb-3">Request Received.</h3>
+                     <h3 className="text-3xl font-headline font-normal text-on-surface mb-3">Request Received.</h3>
                      <p className="text-lg text-on-surface-variant max-w-sm mx-auto">Our management team is already reviewing your brief. Expect a tailored proposal in your inbox shortly.</p>
                    </div>
                  )}

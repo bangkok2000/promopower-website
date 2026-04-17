@@ -20,9 +20,17 @@
   --radius-xl: 4rem;
   --radius-full: 9999px;
   
-  --font-headline: 'Manrope', sans-serif;
+  --font-headline: 'Playfair Display', serif;
   --font-body: 'Lora', serif;
   --font-label: 'Manrope', sans-serif;
+  
+  --animate-marquee: marquee 120s linear infinite;
+  
+  @keyframes marquee {
+    to {
+      transform: translateX(-50%);
+    }
+  }
 }
 
 @layer base {
@@ -47,6 +55,24 @@
   direction: ltr;
   -webkit-font-smoothing: antialiased;
   font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* Custom CSS Scrollbars for Carousels */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-primary) rgba(255, 255, 255, 0.05);
+}
+.custom-scrollbar::-webkit-scrollbar {
+  height: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05); 
+  border-radius: 8px;
+  margin-inline: 16px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-primary); 
+  border-radius: 8px;
 }
 
 .midnight-gradient {

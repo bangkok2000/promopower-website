@@ -27,14 +27,14 @@ export default function Jobseekers() {
           <div className="absolute top-0 right-0 w-full max-w-3xl h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none"></div>
         </div>
         <div className="relative z-10 max-w-4xl mt-16">
-          <h1 className="text-5xl md:text-7xl font-headline font-black text-on-surface tracking-tight mb-6">
+          <h1 className="text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-6">
             Be the Face of <span className="text-primary italic">Top Brands.</span>
           </h1>
           <p className="text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-10">
             Looking for flexible, exciting work? Join PromoPower&apos;s elite roster and get paid to bring amazing campaigns to life.
           </p>
           <a href="#apply">
-            <button className="glow-button px-10 py-5 rounded-full text-on-primary font-headline font-extrabold text-xl hover:scale-105 transition-transform flex items-center gap-3 mx-auto">
+            <button className="glow-button px-10 py-5 rounded-full text-on-primary font-headline font-normal text-xl hover:scale-105 transition-transform flex items-center gap-3 mx-auto">
               Start Your Application <span className="material-symbols-outlined">arrow_downward</span>
             </button>
           </a>
@@ -44,8 +44,8 @@ export default function Jobseekers() {
       {/* The Timeline (3 Steps) */}
       <section className="py-24 px-8 md:px-16 max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <span className="text-primary font-headline font-bold tracking-widest text-sm uppercase block mb-4">The Process</span>
-          <h2 className="text-4xl md:text-5xl font-headline font-black text-on-surface">3 Steps to Your First Gig</h2>
+          <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase block mb-4">The Process</span>
+          <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface">3 Steps to Your First Gig</h2>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
@@ -55,27 +55,27 @@ export default function Jobseekers() {
           {/* Step 1 */}
           <div className="relative z-10 flex flex-col items-center text-center group">
             <div className="w-20 h-20 bg-surface border-2 border-primary/30 rounded-full flex items-center justify-center mb-8 shadow-[0_0_20px_rgba(255,140,0,0.2)] group-hover:bg-primary group-hover:text-on-primary transition-colors duration-500">
-               <span className="font-headline font-black text-2xl drop-shadow-md">1</span>
+               <span className="font-headline font-normal text-2xl drop-shadow-md">1</span>
             </div>
-            <h3 className="text-2xl font-headline font-bold text-on-surface mb-4">Submit Your Profile</h3>
+            <h3 className="text-2xl font-headline font-normal text-on-surface mb-4">Submit Your Profile</h3>
             <p className="text-on-surface-variant">Drop your comp card, stats, and contact details below.</p>
           </div>
 
           {/* Step 2 */}
           <div className="relative z-10 flex flex-col items-center text-center group mt-8 md:mt-0">
             <div className="w-20 h-20 bg-surface border-2 border-accent-amber/30 rounded-full flex items-center justify-center mb-8 shadow-[0_0_20px_rgba(255,191,0,0.2)] group-hover:bg-accent-amber group-hover:text-charcoal-dark transition-colors duration-500">
-               <span className="font-headline font-black text-2xl drop-shadow-md">2</span>
+               <span className="font-headline font-normal text-2xl drop-shadow-md">2</span>
             </div>
-            <h3 className="text-2xl font-headline font-bold text-on-surface mb-4">The Chemistry Session</h3>
+            <h3 className="text-2xl font-headline font-normal text-on-surface mb-4">The Chemistry Session</h3>
             <p className="text-on-surface-variant">A quick chat to understand your vibe, strengths, and goals.</p>
           </div>
 
           {/* Step 3 */}
           <div className="relative z-10 flex flex-col items-center text-center group mt-8 md:mt-0">
             <div className="w-20 h-20 bg-surface border-2 border-primary/30 rounded-full flex items-center justify-center mb-8 shadow-[0_0_20px_rgba(255,140,0,0.2)] group-hover:bg-primary group-hover:text-on-primary transition-colors duration-500">
-               <span className="font-headline font-black text-2xl drop-shadow-md">3</span>
+               <span className="font-headline font-normal text-2xl drop-shadow-md">3</span>
             </div>
-            <h3 className="text-2xl font-headline font-bold text-on-surface mb-4">Get Booked</h3>
+            <h3 className="text-2xl font-headline font-normal text-on-surface mb-4">Get Booked</h3>
             <p className="text-on-surface-variant">Gain immediate access to our roster of premium brand activations.</p>
           </div>
         </div>
@@ -86,17 +86,17 @@ export default function Jobseekers() {
          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-surface-container rounded-2xl p-10 text-center border border-white/5 hover:border-primary/20 transition-colors">
               <span className="material-symbols-outlined text-5xl text-primary mb-6 block">diamond</span>
-              <h3 className="text-xl font-headline font-bold text-on-surface mb-4">Top Brands</h3>
+              <h3 className="text-xl font-headline font-normal text-on-surface mb-4">Top Brands</h3>
               <p className="text-on-surface-variant text-sm">Represent household names in tech, lifestyle, and retail.</p>
             </div>
             <div className="bg-surface-container rounded-2xl p-10 text-center border border-white/5 hover:border-accent-amber/20 transition-colors">
               <span className="material-symbols-outlined text-5xl text-accent-amber mb-6 block">schedule</span>
-              <h3 className="text-xl font-headline font-bold text-on-surface mb-4">Flexible Work</h3>
+              <h3 className="text-xl font-headline font-normal text-on-surface mb-4">Flexible Work</h3>
               <p className="text-on-surface-variant text-sm">Take on activations that fit your personal schedule.</p>
             </div>
             <div className="bg-surface-container rounded-2xl p-10 text-center border border-white/5 hover:border-primary/20 transition-colors">
               <span className="material-symbols-outlined text-5xl text-primary mb-6 block">payments</span>
-              <h3 className="text-xl font-headline font-bold text-on-surface mb-4">Prompt Payouts</h3>
+              <h3 className="text-xl font-headline font-normal text-on-surface mb-4">Prompt Payouts</h3>
               <p className="text-on-surface-variant text-sm">A reliable, fully MOM-licensed agency that values your time.</p>
             </div>
          </div>
@@ -111,7 +111,7 @@ export default function Jobseekers() {
           
           {step < 4 && (
             <div className="mb-10 text-center">
-              <h2 className="text-4xl md:text-5xl font-headline font-black text-on-surface mb-6">Drop Your Details.</h2>
+              <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6">Drop Your Details.</h2>
               <div className="flex justify-center gap-4 items-center">
                  <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-primary' : 'bg-white/20'} transition-all shadow-[0_0_10px_rgba(255,140,0,0.5)]`}></div>
                  <div className={`w-12 h-[2px] ${step >= 2 ? 'bg-primary' : 'bg-white/20'} transition-all`}></div>
@@ -147,7 +147,7 @@ export default function Jobseekers() {
                   </div>
                 </div>
                 <div className="pt-10 flex justify-end">
-                  <button type="button" onClick={nextStep} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-bold px-10 py-4 rounded-full hover:scale-105 transition-all">
+                  <button type="button" onClick={nextStep} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-10 py-4 rounded-full hover:scale-105 transition-all">
                     Next Step <span className="material-symbols-outlined">arrow_forward</span>
                   </button>
                 </div>
@@ -169,7 +169,7 @@ export default function Jobseekers() {
                   <button type="button" onClick={prevStep} className="text-on-surface-variant hover:text-white font-bold transition-colors inline-flex items-center gap-2">
                      <span className="material-symbols-outlined">arrow_back</span> Back
                   </button>
-                  <button type="button" onClick={nextStep} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-bold px-10 py-4 rounded-full hover:scale-105 transition-all">
+                  <button type="button" onClick={nextStep} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-10 py-4 rounded-full hover:scale-105 transition-all">
                     Final Step <span className="material-symbols-outlined">arrow_forward</span>
                   </button>
                 </div>
@@ -191,7 +191,7 @@ export default function Jobseekers() {
                   <button type="button" onClick={prevStep} className="text-on-surface-variant hover:text-white font-bold transition-colors inline-flex items-center gap-2">
                      <span className="material-symbols-outlined">arrow_back</span> Back
                   </button>
-                  <button type="button" onClick={submitForm} disabled={isSubmitting} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-bold px-12 py-5 rounded-full hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100">
+                  <button type="button" onClick={submitForm} disabled={isSubmitting} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-12 py-5 rounded-full hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100">
                     {isSubmitting ? 'Submitting...' : 'Complete Profile'}
                   </button>
                 </div>
@@ -205,7 +205,7 @@ export default function Jobseekers() {
                    <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping"></div>
                    <span className="material-symbols-outlined text-5xl text-primary font-bold">check</span>
                 </div>
-                <h3 className="text-4xl font-headline font-black text-on-surface mb-4">You&apos;re On The Team.</h3>
+                <h3 className="text-4xl font-headline font-normal text-on-surface mb-4">You&apos;re On The Team.</h3>
                 <p className="text-xl text-on-surface-variant max-w-md mx-auto">Your profile has been deeply captured. We&apos;ll be in touch shortly to schedule your Chemistry Session.</p>
               </div>
             )}

@@ -1,10 +1,18 @@
 import Link from "next/link";
 import Image from "next/image";
 
+const eliteClients = [
+  "APB Singapore", "Bacardi", "Pernod Ricard", "Piper-Heidsieck", "Rémy Cointreau",
+  "Somersby", "Strongbow Ciders", "VCT Wineries Asia", "Bvlgari", "Chanel",
+  "Chopard", "Dior", "Elizabeth Arden", "Giorgio Armani", "Guerlain",
+  "Jo Malone", "Kiehl's", "Kenzo", "La Prairie", "Lancôme Paris",
+  "Maison Margiela", "Puig", "Shiseido", "Yves Saint Laurent", "Edrington"
+];
+
 export default function Home() {
   return (
     <>
-      <section className="relative min-h-[90vh] flex items-center px-8 md:px-16 overflow-hidden">
+      <section className="relative min-h-[65vh] lg:min-h-[70vh] py-20 flex items-center px-8 md:px-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -19,7 +27,7 @@ export default function Home() {
           <span className="inline-block py-2 px-4 rounded-full bg-primary/20 text-primary font-bold text-sm mb-6 border border-primary/30 backdrop-blur-md uppercase">
             Singapore&apos;s Premier Staffing
           </span>
-          <h1 className="text-6xl md:text-8xl font-headline font-extrabold text-on-surface leading-[1.05] tracking-tight mb-8">
+          <h1 className="text-6xl md:text-8xl font-headline font-normal text-on-surface leading-[1.05] tracking-tight mb-8">
             POWERING FLAWLESS <span className="text-primary italic">BRAND</span> ACTIVATIONS
           </h1>
           <p className="text-xl md:text-2xl text-on-surface-variant mb-12 max-w-2xl leading-relaxed">
@@ -27,12 +35,12 @@ export default function Home() {
           </p>
           <div className="flex flex-wrap gap-6">
             <Link href="/contact-us">
-              <button className="glow-button text-on-primary px-12 py-5 rounded-full font-headline font-extrabold text-lg hover:scale-105 active:scale-95 transition-all">
+              <button className="glow-button text-on-primary px-12 py-5 rounded-full font-headline font-normal text-lg hover:scale-105 active:scale-95 transition-all">
                 Hire Event Talent
               </button>
             </Link>
             <Link href="/jobseekers">
-              <button className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-12 py-5 rounded-full font-headline font-bold text-lg hover:bg-white/20 transition-all">
+              <button className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-12 py-5 rounded-full font-headline font-normal text-lg hover:bg-white/20 transition-all">
                 Join Our Roster
               </button>
             </Link>
@@ -81,23 +89,27 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Social Proof */}
-      <section className="bg-on-surface py-16 px-8 border-y border-white/5 relative overflow-hidden">
-        <p className="text-center font-headline font-bold text-charcoal-dark uppercase tracking-widest text-sm mb-10">
+      {/* Social Proof (Ticker Tape) */}
+      <section className="bg-on-surface pt-6 pb-6 md:pb-8 relative overflow-hidden flex flex-col justify-center border-y border-charcoal-dark/5">
+        <p className="text-center font-label font-bold text-charcoal-dark/70 uppercase tracking-[0.2em] text-xs md:text-sm mb-4 px-8">
           Trusted By Leading Brands To Deliver Seamless Experiences
         </p>
-        <div className="flex flex-wrap justify-center items-center gap-12 md:gap-24 opacity-60 hover:opacity-100 transition-all duration-500">
-          <div className="h-8 md:h-12 w-32 bg-charcoal-dark/10 rounded-full flex items-center justify-center font-black italic text-xl text-charcoal-dark">
-            TECHGIANT
-          </div>
-          <div className="h-8 md:h-12 w-32 bg-charcoal-dark/10 rounded-full flex items-center justify-center font-black italic text-xl text-charcoal-dark">
-            LUXURY CO.
-          </div>
-          <div className="h-8 md:h-12 w-32 bg-charcoal-dark/10 rounded-full flex items-center justify-center font-black italic text-xl text-charcoal-dark">
-            LIFESTYLE
-          </div>
-          <div className="h-8 md:h-12 w-32 bg-charcoal-dark/10 rounded-full flex items-center justify-center font-black italic text-xl text-charcoal-dark">
-            F&amp;B GROUP
+        
+        {/* Ticker Tape Ribbon */}
+        <div className="w-full flex overflow-hidden border-y border-charcoal-dark py-3 md:py-4 bg-charcoal-dark shadow-inner">
+          <div className="flex animate-marquee w-max items-center transition-all duration-500 hover:[animation-play-state:paused] will-change-transform">
+            {[...Array(2)].map((_, i) => (
+              <div key={i} className="flex items-center">
+                {eliteClients.map((client, index) => (
+                  <div key={index} className="flex items-center">
+                    <span className="whitespace-nowrap px-6 md:px-8 font-headline font-normal uppercase text-base md:text-xl text-primary shrink-0 hover:text-white transition-colors cursor-default drop-shadow-sm">
+                      {client}
+                    </span>
+                    <span className="text-white/30 text-sm md:text-base shrink-0">✦</span>
+                  </div>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -105,10 +117,10 @@ export default function Home() {
       {/* Core Services Overview */}
       <section className="py-32 px-8 md:px-16 max-w-7xl mx-auto bokeh-overlay">
         <div className="mb-24 text-center">
-          <span className="text-primary font-headline font-extrabold tracking-widest uppercase text-sm">
+          <span className="text-primary font-headline font-normal tracking-widest uppercase text-sm">
             End-to-End Campaign Execution
           </span>
-          <h2 className="text-5xl md:text-7xl font-headline font-black text-on-surface mt-4">
+          <h2 className="text-5xl md:text-7xl font-headline font-normal text-on-surface mt-4">
             Flawless Execution. Radiant Talent.
           </h2>
         </div>
@@ -117,7 +129,7 @@ export default function Home() {
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
               <span className="material-symbols-outlined text-3xl">star</span>
             </div>
-            <h3 className="text-2xl font-headline font-bold mb-4 text-on-surface">Dynamic Promoters</h3>
+            <h3 className="text-2xl font-headline font-normal mb-4 text-on-surface">Dynamic Promoters</h3>
             <p className="text-on-surface-variant leading-relaxed">
               Vetted, high-energy ambassadors built to represent your brand with absolute professionalism and measurable impact.
             </p>
@@ -126,7 +138,7 @@ export default function Home() {
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
               <span className="material-symbols-outlined text-3xl">directions_walk</span>
             </div>
-            <h3 className="text-2xl font-headline font-bold mb-4 text-on-surface">Roving Talent</h3>
+            <h3 className="text-2xl font-headline font-normal mb-4 text-on-surface">Roving Talent</h3>
             <p className="text-on-surface-variant leading-relaxed">
               Specialized engagement staff and performers ready to captivate moving crowds in transit hubs, expos, and festivals.
             </p>
@@ -135,7 +147,7 @@ export default function Home() {
              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
               <span className="material-symbols-outlined text-3xl">admin_panel_settings</span>
             </div>
-            <h3 className="text-2xl font-headline font-bold mb-4 text-on-surface">On-Site Management</h3>
+            <h3 className="text-2xl font-headline font-normal mb-4 text-on-surface">On-Site Management</h3>
             <p className="text-on-surface-variant leading-relaxed">
               Complete back-end and logistical oversight, including full MOM compliance, so you can focus on the big picture.
             </p>
@@ -148,27 +160,55 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Dual-Conversion Footer Section (Before actual Footer) */}
-      <section className="flex flex-col md:flex-row h-auto md:h-[60vh]">
-        <div className="w-full md:w-1/2 bg-charcoal-dark p-16 md:p-32 flex flex-col justify-center items-start border-t border-white/5 relative overflow-hidden group">
-          <div className="absolute inset-0 bg-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <h2 className="text-4xl md:text-6xl font-headline font-black text-on-surface mb-6 relative z-10">Clients</h2>
-          <p className="text-xl text-on-surface-variant mb-12 relative z-10 max-w-sm">Ready to make an impact? Let&apos;s map out your next activation.</p>
-          <Link href="/contact-us" className="relative z-10">
-            <button className="bg-white/10 text-on-surface border border-white/20 px-10 py-4 rounded-full font-headline font-bold hover:bg-white/20 transition-all flex items-center gap-3">
-              Contact Us <span className="material-symbols-outlined">arrow_outward</span>
-            </button>
-          </Link>
+      {/* Dual-Conversion Footer Section (Vertical Flex Accordion) */}
+      <section className="relative overflow-hidden group/background bg-black border-t border-white/10">
+        {/* Unified Background Image */}
+        <div className="absolute inset-0 z-0 bg-charcoal-dark">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            alt="Bvlgari Brand Activation"
+            className="w-full h-full object-cover object-bottom scale-105 group-hover/background:scale-100 transition-transform duration-[2000ms] opacity-90"
+            src="/bvlgari-bg.png"
+          />
         </div>
-        <div className="w-full md:w-1/2 bg-primary p-16 md:p-32 flex flex-col justify-center items-start relative overflow-hidden group">
-          <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-          <h2 className="text-4xl md:text-6xl font-headline font-black text-on-primary mb-6 relative z-10">Talent</h2>
-          <p className="text-xl text-on-primary/80 mb-12 relative z-10 max-w-sm">Got the energy? Step into the spotlight with top global brands.</p>
-          <Link href="/jobseekers" className="relative z-10">
-            <button className="bg-charcoal-dark text-primary px-10 py-4 rounded-full font-headline font-bold hover:scale-105 active:scale-95 transition-all shadow-[0_0_20px_rgba(0,0,0,0.3)] flex items-center gap-3">
-              Apply Now <span className="material-symbols-outlined">arrow_outward</span>
-            </button>
-          </Link>
+
+        {/* Flex Accordion Container */}
+        <div className="relative z-10 w-full flex flex-col md:flex-row min-h-[40vh]">
+
+          {/* Left Side: Clients (Dark Tint) */}
+          <div className="flex-1 md:hover:flex-[1.4] transition-all duration-700 ease-out bg-black/40 hover:bg-transparent border-r border-white/20 flex flex-col justify-center items-center md:items-start text-center md:text-left py-16 px-10 md:p-24 relative overflow-hidden group/card z-20">
+            {/* Smooth hardware-accelerated blur fade */}
+            <div className="absolute inset-0 backdrop-blur-md opacity-100 md:group-hover/card:opacity-0 transition-opacity duration-700 pointer-events-none z-0"></div>
+            {/* Subtle gradient block behind text for legibility when hover removes tint */}
+            <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none z-0"></div>
+            <div className="duration-700 transition-all md:group-hover/card:translate-x-4 relative z-10">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-headline font-normal text-white mb-6 drop-shadow-xl">Clients</h2>
+              <p className="text-lg md:text-xl text-white/90 mb-8 max-w-sm drop-shadow-lg font-medium">Ready to make an impact? Let&apos;s map out your next activation.</p>
+              <Link href="/contact-us">
+                <button className="bg-white/10 text-white border border-white/40 px-8 py-4 rounded-full font-headline font-medium hover:bg-white/30 hover:scale-105 transition-all flex items-center gap-3 backdrop-blur-md text-sm md:text-base shadow-2xl">
+                  Contact Us <span className="material-symbols-outlined">arrow_outward</span>
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Side: Talent (Orange Tint) */}
+          <div className="flex-1 md:hover:flex-[1.4] transition-all duration-700 ease-out bg-primary/40 hover:bg-primary/20 flex flex-col justify-center items-center md:items-end text-center md:text-right py-16 px-10 md:p-24 relative overflow-hidden group/card z-10 border-t md:border-t-0 md:border-l border-white/10">
+            {/* Smooth hardware-accelerated blur fade */}
+            <div className="absolute inset-0 backdrop-blur-md opacity-100 md:group-hover/card:opacity-0 transition-opacity duration-700 pointer-events-none z-0"></div>
+            {/* Subtle gradient block behind text for legibility */}
+            <div className="absolute inset-0 bg-gradient-to-l from-black/40 to-transparent opacity-0 md:group-hover/card:opacity-100 transition-opacity duration-700 pointer-events-none z-0"></div>
+            <div className="duration-700 transition-all md:group-hover/card:-translate-x-4 flex flex-col items-center md:items-end relative z-10">
+              <h2 className="text-4xl md:text-5xl lg:text-6xl font-headline font-normal text-white mb-6 drop-shadow-xl">Talent</h2>
+              <p className="text-lg md:text-xl text-white/90 mb-8 max-w-sm tracking-wide drop-shadow-lg font-medium">Got the energy? Step into the spotlight with top global brands.</p>
+              <Link href="/jobseekers">
+                <button className="bg-primary hover:bg-accent-amber text-charcoal-dark font-bold px-8 py-4 rounded-full font-headline hover:scale-105 active:scale-95 transition-all shadow-2xl flex items-center gap-3 text-sm md:text-base">
+                  Apply Now <span className="material-symbols-outlined">arrow_outward</span>
+                </button>
+              </Link>
+            </div>
+          </div>
+
         </div>
       </section>
     </>

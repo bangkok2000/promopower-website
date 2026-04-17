@@ -7,10 +7,10 @@ export default function Services() {
       {/* Hero Section */}
       <section className="py-24 px-8 md:px-16 text-center max-w-5xl mx-auto mt-12 relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
-        <span className="text-primary font-headline font-bold tracking-widest text-sm uppercase mb-6 block drop-shadow-[0_0_10px_rgba(255,140,0,0.5)]">
+        <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase mb-6 block drop-shadow-[0_0_10px_rgba(255,140,0,0.5)]">
           Our Expertise
         </span>
-        <h1 className="text-5xl md:text-7xl font-headline font-black text-on-surface tracking-tight mb-8 leading-tight">
+        <h1 className="text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-8 leading-tight">
           Precision Management. <br />
           <span className="text-primary italic">Radiant Execution.</span>
         </h1>
@@ -37,9 +37,9 @@ export default function Services() {
                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
                  <span className="material-symbols-outlined text-primary">star</span>
                </div>
-               <span className="font-headline font-bold text-on-surface-variant tracking-widest uppercase text-sm">Module 01</span>
+               <span className="font-headline font-normal text-on-surface-variant tracking-widest uppercase text-sm">Module 01</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-headline font-black text-on-surface">Premium Brand Ambassadors</h2>
+            <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface">Premium Brand Ambassadors</h2>
             <h3 className="text-2xl text-primary font-body font-medium italic">The Face of Your Brand.</h3>
             <ul className="space-y-4 mt-8 text-lg text-on-surface-variant">
               <li className="flex items-start gap-3">
@@ -74,9 +74,9 @@ export default function Services() {
                <div className="w-12 h-12 rounded-full bg-accent-amber/20 flex items-center justify-center border border-accent-amber/30">
                  <span className="material-symbols-outlined text-accent-amber">directions_walk</span>
                </div>
-               <span className="font-headline font-bold text-on-surface-variant tracking-widest uppercase text-sm">Module 02</span>
+               <span className="font-headline font-normal text-on-surface-variant tracking-widest uppercase text-sm">Module 02</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-headline font-black text-on-surface">Roving Talents</h2>
+            <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface">Roving Talents</h2>
             <h3 className="text-2xl text-accent-amber font-body font-medium italic">Dynamic Crowd Engagement.</h3>
             <ul className="space-y-4 mt-8 text-lg text-on-surface-variant">
               <li className="flex items-start gap-3">
@@ -111,9 +111,9 @@ export default function Services() {
                <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center border border-primary/30">
                  <span className="material-symbols-outlined text-primary">admin_panel_settings</span>
                </div>
-               <span className="font-headline font-bold text-on-surface-variant tracking-widest uppercase text-sm">Module 03</span>
+               <span className="font-headline font-normal text-on-surface-variant tracking-widest uppercase text-sm">Module 03</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-headline font-black text-on-surface">Campaign Management</h2>
+            <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface">Campaign Management</h2>
             <h3 className="text-2xl text-primary font-body font-medium italic">Invisible Execution. Visible Results.</h3>
             <ul className="space-y-4 mt-8 text-lg text-on-surface-variant">
               <li className="flex items-start gap-3">
@@ -137,30 +137,42 @@ export default function Services() {
       <section className="py-32 px-8 md:px-16 bg-[var(--color-surface-light)] border-y border-black/5 relative overflow-hidden">
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
-             <span className="text-primary font-headline font-bold tracking-widest text-sm uppercase mb-4 block">Our Values</span>
-             <h2 className="text-4xl md:text-5xl font-headline font-black text-[var(--color-on-surface-light)]">Our Success Principles</h2>
+             <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase mb-4 block">Our Values</span>
+             <h2 className="text-4xl md:text-5xl font-headline font-normal text-[var(--color-on-surface-light)]">Our Success Principles</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
-             <div className="bg-white border border-black/5 shadow-lg p-8 rounded-2xl hover:border-primary/50 hover:shadow-xl transition-all group">
-                <span className="material-symbols-outlined text-primary text-4xl mb-4 group-hover:scale-110 transition-transform">lightbulb</span>
-                <p className="text-lg text-[var(--color-on-surface-light-variant)] font-medium">Providing innovative solutions to our clients&apos; marketing challenges.</p>
-             </div>
-             <div className="bg-white border border-black/5 shadow-lg p-8 rounded-2xl hover:border-accent-amber/50 hover:shadow-xl transition-all group">
-                <span className="material-symbols-outlined text-accent-amber text-4xl mb-4 group-hover:scale-110 transition-transform">health_and_safety</span>
-                <p className="text-lg text-[var(--color-on-surface-light-variant)] font-medium">Committed to ensuring the professional well-being of our clients.</p>
-             </div>
-             <div className="bg-white border border-black/5 shadow-lg p-8 rounded-2xl hover:border-primary/50 hover:shadow-xl transition-all group">
-                <span className="material-symbols-outlined text-primary text-4xl mb-4 group-hover:scale-110 transition-transform">handshake</span>
-                <p className="text-lg text-[var(--color-on-surface-light-variant)] font-medium">Believing in the building of positive working relationships with all related groups.</p>
-             </div>
-             <div className="bg-white border border-black/5 shadow-lg p-8 rounded-2xl hover:border-accent-amber/50 hover:shadow-xl transition-all lg:col-span-2 flex flex-col justify-center group">
-                <span className="material-symbols-outlined text-accent-amber text-4xl mb-4 group-hover:scale-110 transition-transform">school</span>
-                <p className="text-lg text-[var(--color-on-surface-light-variant)] font-medium">Investing in continuous quality training programs to ensure the highest standard in our services.</p>
-             </div>
-             <div className="bg-white border border-black/5 shadow-lg p-8 rounded-2xl hover:border-primary/50 hover:shadow-xl transition-all group">
-                <span className="material-symbols-outlined text-primary text-4xl mb-4 group-hover:scale-110 transition-transform">trending_up</span>
-                <p className="text-lg text-[var(--color-on-surface-light-variant)] font-medium">Enhancing clients&apos; businesses through effective strategy development.</p>
-             </div>
+            {[
+              { title: "Innovation", icon: "lightbulb", text: "Providing innovative solutions to our clients' marketing challenges.", span: false },
+              { title: "Integrity", icon: "health_and_safety", text: "Committed to ensuring the professional well-being of our clients.", span: false },
+              { title: "Partnership", icon: "handshake", text: "Believing in the building of positive working relationships with all related groups.", span: false },
+              { title: "Excellence", icon: "school", text: "Investing in continuous quality training programs to ensure the highest standard in our services.", span: true },
+              { title: "Strategy", icon: "trending_up", text: "Enhancing clients' businesses through effective strategy development.", span: false }
+            ].map((principle, i) => (
+              <div key={i} className={`group relative bg-white border border-black/5 shadow-lg p-10 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer ${principle.span ? 'lg:col-span-2' : ''}`}>
+                {/* Background Hover Bloom */}
+                <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0"></div>
+                
+                {/* Massive Watermark Icon */}
+                <span className="material-symbols-outlined absolute -bottom-10 -right-6 text-[180px] text-white opacity-0 group-hover:opacity-20 transform group-hover:scale-110 group-hover:-rotate-12 transition-all duration-700 z-0 pointer-events-none">
+                  {principle.icon}
+                </span>
+
+                {/* Content */}
+                <div className="relative z-10 flex flex-col h-full justify-between">
+                  <div>
+                    <span className="material-symbols-outlined text-primary text-4xl mb-6 group-hover:text-white transition-colors duration-500 block">
+                      {principle.icon}
+                    </span>
+                    <h3 className="text-3xl font-headline text-[var(--color-on-surface-light)] group-hover:text-white transition-colors duration-500 mb-4">
+                      {principle.title}
+                    </h3>
+                  </div>
+                  <p className="text-lg text-[var(--color-on-surface-light-variant)] font-medium group-hover:text-white/90 transition-colors duration-500 leading-relaxed max-w-sm mt-8">
+                    {principle.text}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -169,9 +181,9 @@ export default function Services() {
       <section className="py-24 px-8 text-center bg-surface-container border-t border-white/5 relative overflow-hidden mt-24">
         <div className="absolute inset-0 bokeh-overlay opacity-50"></div>
         <div className="relative z-10">
-          <h2 className="text-4xl font-headline font-black text-on-surface mb-8">Ready for deployment?</h2>
+          <h2 className="text-4xl font-headline font-normal text-on-surface mb-8">Ready for deployment?</h2>
           <Link href="/contact-us">
-            <button className="glow-button px-10 py-5 rounded-full text-on-primary font-headline font-extrabold text-xl hover:scale-105 transition-transform flex items-center gap-3 mx-auto">
+            <button className="glow-button px-10 py-5 rounded-full text-on-primary font-headline font-normal text-xl hover:scale-105 transition-transform flex items-center gap-3 mx-auto">
               Plan Your Campaign <span className="material-symbols-outlined">arrow_forward</span>
             </button>
           </Link>

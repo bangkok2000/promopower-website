@@ -16,10 +16,10 @@ export default function OurStory() {
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-background to-transparent"></div>
         </div>
         <div className="relative z-10 max-w-4xl pt-16">
-          <span className="text-primary font-headline font-bold tracking-widest text-sm uppercase mb-4 block">
+          <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase mb-4 block">
             Our Story
           </span>
-          <h1 className="text-5xl md:text-7xl font-headline font-black text-on-surface tracking-tight mb-6">
+          <h1 className="text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-6">
             We Build <span className="text-primary italic">Connections</span> That Count.
           </h1>
           <p className="text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto">
@@ -36,10 +36,10 @@ export default function OurStory() {
              <h3 className="text-xl md:text-2xl font-body italic text-[var(--color-on-surface-light)] leading-loose mb-6 relative z-10">
                &quot;No company has a permanent consumer franchise. No one has the only game in town. The never-ending cycle of destruction and change inherent in a capitalist economy always provides new opportunities for those with determination, goals and concentration.&quot;
              </h3>
-             <p className="text-primary font-headline font-bold uppercase tracking-[0.2em] relative z-10">— Harvey Mackay</p>
+             <p className="text-primary font-headline font-normal uppercase tracking-[0.2em] relative z-10">— Harvey Mackay</p>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-headline font-black text-[var(--color-on-surface-light)] mb-12 relative z-10">
+          <h2 className="text-4xl md:text-5xl font-headline font-normal text-[var(--color-on-surface-light)] mb-12 relative z-10">
             The PromoPower Difference
           </h2>
           <p className="text-xl leading-relaxed text-[var(--color-on-surface-light-variant)] text-left md:text-center relative z-10 space-y-6">
@@ -61,7 +61,7 @@ export default function OurStory() {
               verified_user
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-headline font-black text-on-surface mb-6">
+          <h2 className="text-3xl md:text-4xl font-headline font-normal text-on-surface mb-6">
             100% MOM Compliant &amp; Licensed
           </h2>
           <p className="text-xl text-on-surface-variant leading-relaxed max-w-2xl mx-auto mb-10">
@@ -85,7 +85,7 @@ export default function OurStory() {
              </div>
           </div>
           <Link href="/services">
-            <button className="bg-white/5 border border-white/10 text-on-surface px-8 py-4 rounded-full font-headline font-bold hover:bg-white/10 transition-all inline-flex items-center gap-2">
+            <button className="bg-white/5 border border-white/10 text-on-surface px-8 py-4 rounded-full font-headline font-normal hover:bg-white/10 transition-all inline-flex items-center gap-2">
               View Our Services <span className="material-symbols-outlined">arrow_forward</span>
             </button>
           </Link>

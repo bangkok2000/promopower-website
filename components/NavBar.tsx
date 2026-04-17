@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { useState, useEffect } from "react";
 
@@ -28,10 +29,14 @@ export default function NavBar() {
   return (
     <>
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl flex justify-between items-center px-6 md:px-8 py-5 border-b border-white/5">
-        <Link href="/">
-          <div className="text-2xl font-black text-primary tracking-tighter font-headline neon-text-glow">
-            PromoPower
-          </div>
+        <Link href="/" className="relative h-14 w-60 md:h-16 md:w-72">
+          <Image 
+            src="/logo-transparent.png" 
+            alt="PromoPower Logo" 
+            fill
+            className="object-contain object-left opacity-100 hover:opacity-80 transition-opacity drop-shadow-md"
+            priority
+          />
         </Link>
         <div className="hidden lg:flex gap-10 items-center">
           <Link className={getLinkClass("/our-story")} href="/our-story">
