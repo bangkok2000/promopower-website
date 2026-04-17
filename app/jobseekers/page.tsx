@@ -2,20 +2,24 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { submitJobseekerApplication } from "../actions";
 
 export default function Jobseekers() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAgreed, setIsAgreed] = useState(false);
 
   const nextStep = () => setStep((s) => Math.min(s + 1, 4));
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
   
-  const submitForm = () => {
+  const submitForm = async () => {
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setStep(4);
-    }, 1500);
+    const mockData = new FormData();
+    mockData.append("source", "Jobseeker Wizard Payload");
+    // Simulated Backend Trip
+    await submitJobseekerApplication(null, mockData);
+    setIsSubmitting(false);
+    setStep(4);
   };
 
   return (
@@ -132,11 +136,22 @@ export default function Jobseekers() {
                       <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="Jane Doe" type="text" />
                   </div>
                   <div className="space-y-3">
+                      <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Date of Birth</label>
+                      <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none" type="date" />
+                  </div>
+                  <div className="space-y-3">
                       <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Age</label>
                       <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="21" type="number" />
                   </div>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div className="space-y-3 relative">
+                      <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Gender</label>
+                      <select defaultValue="" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
+                         <option value="" disabled>Select Gender</option>
+                         <option value="male">Male</option>
+                         <option value="female">Female</option>
+                      </select>
+                      <span className="material-symbols-outlined absolute right-6 bottom-4 text-white/50 pointer-events-none">expand_more</span>
+                  </div>
                   <div className="space-y-3">
                       <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Email Address</label>
                       <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="jane@example.com" type="email" />
@@ -146,7 +161,18 @@ export default function Jobseekers() {
                       <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="+65 9123 4567" type="tel" />
                   </div>
                 </div>
-                <div className="pt-10 flex justify-end">
+                <div className="mb-8 space-y-3 relative">
+                   <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Highest Qualification Achieved</label>
+                   <select defaultValue="" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
+                      <option value="" disabled>Select Qualification</option>
+                      <option value="o_level">O/N Level</option>
+                      <option value="a_level">A Level</option>
+                      <option value="diploma">Diploma</option>
+                      <option value="undergrad">Undergrad</option>
+                   </select>
+                   <span className="material-symbols-outlined absolute right-6 bottom-4 text-white/50 pointer-events-none">expand_more</span>
+                </div>
+                <div className="pt-2 flex justify-end">
                   <button type="button" onClick={nextStep} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-10 py-4 rounded-full hover:scale-105 transition-all">
                     Next Step <span className="material-symbols-outlined">arrow_forward</span>
                   </button>
@@ -187,11 +213,29 @@ export default function Jobseekers() {
                       <p className="text-on-surface-variant text-sm mt-3">Max file size: 5MB (PDF, JPG, PNG)</p>
                    </div>
                 </div>
-                <div className="pt-10 flex justify-between items-center">
+                
+                {/* Legal Compliance & PDPA */}
+                <div className="pt-8 pb-4">
+                   <label className="flex items-start gap-4 cursor-pointer group">
+                      <div className="relative flex items-center justify-center mt-1">
+                         <input type="checkbox" className="appearance-none w-6 h-6 border-2 border-white/20 rounded-md bg-transparent checked:bg-primary checked:border-primary peer transition-all cursor-pointer flex-shrink-0" checked={isAgreed} onChange={(e) => setIsAgreed(e.target.checked)} />
+                         <span className="material-symbols-outlined absolute text-charcoal-dark font-bold opacity-0 peer-checked:opacity-100 transition-opacity text-sm pointer-events-none">check</span>
+                      </div>
+                      <p className="text-sm text-on-surface-variant leading-relaxed text-left">
+                         I acknowledge and accept the{" "}
+                         <a href="https://promopower.com.sg/wp-content/uploads/2020/05/PROMOPOWER-PTE-LTD-DATA-PROTECTION-POLICY-the-%E2%80%9Cpolicy%E2%80%9D-FOR-EMPLOYEES-AND-JOB-APPLICANTS_25-OCT-2019-.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors underline underline-offset-4 decoration-primary/30">
+                            PromoPower Data Protection Policy
+                         </a>{" "}
+                         for Employees and Job Applicants.
+                      </p>
+                   </label>
+                </div>
+
+                <div className="pt-6 flex justify-between items-center border-t border-white/5 mt-4">
                   <button type="button" onClick={prevStep} className="text-on-surface-variant hover:text-white font-bold transition-colors inline-flex items-center gap-2">
                      <span className="material-symbols-outlined">arrow_back</span> Back
                   </button>
-                  <button type="button" onClick={submitForm} disabled={isSubmitting} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-12 py-5 rounded-full hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100">
+                  <button type="button" onClick={submitForm} disabled={isSubmitting || !isAgreed} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-12 py-5 rounded-full hover:scale-105 transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
                     {isSubmitting ? 'Submitting...' : 'Complete Profile'}
                   </button>
                 </div>

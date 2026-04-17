@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { submitContactInquiry } from "../actions";
 
 export default function ContactUs() {
   const [step, setStep] = useState(1);
@@ -9,12 +10,14 @@ export default function ContactUs() {
   const nextStep = () => setStep((s) => Math.min(s + 1, 4));
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
   
-  const submitForm = () => {
+  const submitForm = async () => {
     setIsSubmitting(true);
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setStep(4);
-    }, 1500);
+    const mockData = new FormData();
+    mockData.append("source", "Contact Us Wizard Payload");
+    // Simulated Backend Trip
+    await submitContactInquiry(null, mockData);
+    setIsSubmitting(false);
+    setStep(4);
   };
 
   return (

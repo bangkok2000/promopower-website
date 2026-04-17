@@ -2,11 +2,13 @@ import Link from "next/link";
 import Image from "next/image";
 
 const eliteClients = [
-  "APB Singapore", "Bacardi", "Pernod Ricard", "Piper-Heidsieck", "Rémy Cointreau",
-  "Somersby", "Strongbow Ciders", "VCT Wineries Asia", "Bvlgari", "Chanel",
-  "Chopard", "Dior", "Elizabeth Arden", "Giorgio Armani", "Guerlain",
-  "Jo Malone", "Kiehl's", "Kenzo", "La Prairie", "Lancôme Paris",
-  "Maison Margiela", "Puig", "Shiseido", "Yves Saint Laurent", "Edrington"
+  "Pernod Ricard", "Japan Tobacco International", "Bacardi", "Chabot Armagnac", "Distell", 
+  "Remy Cointreau", "The Edrington Group", "Asia Pacific Breweries", "Carlsberg", "KT&G", 
+  "AF Trade Limited", "VCT Group of Wineries Asia", "DFS", "Galleria", "Toscow", 
+  "Piper Heidsieck", "Guerlain", "Givenchy", "PUIG", "Sisley", "Dior", "COTY", 
+  "SHISEIDO", "Carver Korea", "Clé de Peau Beauté", "Kenzo", "Lancôme", "L'Oréal Luxe", 
+  "NARS", "La Prairie", "EuroItalia", "Make Up For Ever", "Biotherm", "Giorgio Armani", 
+  "Fresh", "Amorepacific"
 ];
 
 export default function Home() {
@@ -14,11 +16,14 @@ export default function Home() {
     <>
       <section className="relative min-h-[65vh] lg:min-h-[70vh] py-20 flex items-center px-8 md:px-16 overflow-hidden">
         <div className="absolute inset-0 z-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt="high-energy event staff laughing at a vibrant event in Singapore with light trails and warm bokeh"
-            className="w-full h-full object-cover"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuCngfDSiPUSTPlVZOWwrFiPBp6R3YgjYd8OA0plw1NMFkRvlY_K50b2c5KSwGBD54TQ-pAl0z9WQ1JXbbohFk1HTQy2CaZ3Q2aOeg6OCwBrWR_i_swTYK7in5W6ivD8lIfY7hQ-bBe2_MgU4DhMltFjmtlkEqKYupDM1qfnQpxE5MlZn7d-pVogaC4pKdZpTVKTdR1aBPfQ8exfqJdev_ANmpP6CnVMpWfo-IjY37rvX9rQ8IQ37LaLTHpH4iDrnYwuklFs4cps96Y"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="w-full h-full object-cover scale-105"
+            poster="https://lh3.googleusercontent.com/aida-public/AB6AXuCngfDSiPUSTPlVZOWwrFiPBp6R3YgjYd8OA0plw1NMFkRvlY_K50b2c5KSwGBD54TQ-pAl0z9WQ1JXbbohFk1HTQy2CaZ3Q2aOeg6OCwBrWR_i_swTYK7in5W6ivD8lIfY7hQ-bBe2_MgU4DhMltFjmtlkEqKYupDM1qfnQpxE5MlZn7d-pVogaC4pKdZpTVKTdR1aBPfQ8exfqJdev_ANmpP6CnVMpWfo-IjY37rvX9rQ8IQ37LaLTHpH4iDrnYwuklFs4cps96Y"
+            src="https://assets.mixkit.co/videos/preview/mixkit-crowd-of-people-dancing-at-a-music-festival-4286-large.mp4"
           />
           <div className="absolute inset-0 bg-charcoal-dark/70"></div>
           <div className="absolute inset-0 midnight-gradient mix-blend-color-dodge"></div>

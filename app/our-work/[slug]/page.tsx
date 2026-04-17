@@ -1,6 +1,41 @@
 import { notFound } from "next/navigation";
 import { getCampaignBySlug } from "@/lib/data";
 import Link from "next/link";
+import { Metadata } from "next";
+
+export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const params = await props.params;
+  const campaign = getCampaignBySlug(params.slug);
+
+  if (!campaign) {
+    return {
+      title: "Campaign Not Found | PromoPower",
+    };
+  }
+
+  return {
+    title: `${campaign.title} | PromoPower Portfolio`,
+    description: campaign.challenge.substring(0, 160) + "...",
+    openGraph: {
+      title: `${campaign.title} | PromoPower`,
+      description: campaign.challenge.substring(0, 160) + "...",
+      images: [
+        {
+          url: campaign.imageUrl,
+          width: 1200,
+          height: 630,
+          alt: `${campaign.title} Campaign Execution`,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${campaign.title} | PromoPower`,
+      description: campaign.challenge.substring(0, 160) + "...",
+      images: [campaign.imageUrl],
+    },
+  };
+}
 
 export default async function CampaignDetail(props: { params: Promise<{ slug: string }> }) {
   const params = await props.params;
