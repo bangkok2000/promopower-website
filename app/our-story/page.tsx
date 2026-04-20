@@ -36,20 +36,19 @@ export default function OurStory() {
       </section>
 
       {/* The Narrative Section */}
-      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 bg-[var(--color-surface-light)] border-y border-black/5 relative overflow-hidden">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 bg-surface-light border-y border-black/5 relative overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="mb-12 sm:mb-20 p-6 sm:p-10 bg-white border border-black/5 rounded-2xl relative shadow-xl overflow-visible">
-             <span className="material-symbols-outlined text-primary text-4xl sm:text-6xl absolute -top-5 sm:-top-8 left-2 sm:-left-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
-             <h3 className="text-xl md:text-2xl font-body italic text-[var(--color-on-surface-light)] leading-loose mb-6 relative z-10">
+          <div className="mb-12 sm:mb-20 p-6 sm:p-10 bg-white border border-black/5 rounded-2xl relative shadow-xl">
+             <h3 className="text-xl md:text-2xl font-body italic text-on-surface-light leading-loose mb-6 relative z-10">
                &quot;No company has a permanent consumer franchise. No one has the only game in town. The never-ending cycle of destruction and change inherent in a capitalist economy always provides new opportunities for those with determination, goals and concentration.&quot;
              </h3>
              <p className="text-primary font-headline font-normal uppercase tracking-[0.2em] relative z-10">— Harvey Mackay</p>
           </div>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-[var(--color-on-surface-light)] mb-8 sm:mb-12 relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface-light mb-8 sm:mb-12 relative z-10">
             The PromoPower Difference
           </h2>
-          <p className="text-xl leading-relaxed text-[var(--color-on-surface-light-variant)] text-left md:text-center relative z-10 space-y-6">
+          <p className="text-xl leading-relaxed text-on-surface-light-variant text-left md:text-center relative z-10 space-y-6">
             <span className="block mb-6">
               What started as a vision between two great minds has evolved into Singapore&apos;s premier destination for promotional execution. We know that behind every great product is a need for genuine human connection. 
             </span>

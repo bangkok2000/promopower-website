@@ -140,11 +140,11 @@ export default function Services() {
       </section>
 
       {/* Success Principles */}
-      <section className="py-16 sm:py-32 px-6 sm:px-8 md:px-16 bg-[var(--color-surface-light)] border-y border-black/5 relative overflow-hidden">
+      <section className="py-16 sm:py-32 px-6 sm:px-8 md:px-16 bg-surface-light border-y border-black/5 relative overflow-hidden">
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
              <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase mb-4 block">Our Values</span>
-             <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-[var(--color-on-surface-light)]">Our Success Principles</h2>
+             <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface-light">Our Success Principles</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
             {[
@@ -169,11 +169,11 @@ export default function Services() {
                     <span className="material-symbols-outlined text-primary text-4xl mb-6 group-hover:text-white transition-colors duration-500 block">
                       {principle.icon}
                     </span>
-                    <h3 className="text-3xl font-headline text-[var(--color-on-surface-light)] group-hover:text-white transition-colors duration-500 mb-4">
+                    <h3 className="text-3xl font-headline text-on-surface-light group-hover:text-white transition-colors duration-500 mb-4">
                       {principle.title}
                     </h3>
                   </div>
-                  <p className="text-lg text-[var(--color-on-surface-light-variant)] font-medium group-hover:text-white/90 transition-colors duration-500 leading-relaxed max-w-sm mt-8">
+                  <p className="text-lg text-on-surface-light-variant font-medium group-hover:text-white/90 transition-colors duration-500 leading-relaxed max-w-sm mt-8">
                     {principle.text}
                   </p>
                 </div>

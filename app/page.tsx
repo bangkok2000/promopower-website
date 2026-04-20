@@ -50,7 +50,7 @@ export default function Home() {
 
       {/* Trust & Accreditations */}
       <section className="bg-charcoal-dark border-y border-white/5 py-8 md:py-12 relative z-20">
-        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-center items-center gap-8 md:gap-16 text-center">
+        <div className="max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-center items-start md:items-center gap-8 md:gap-16">
           
           <div className="flex items-center gap-4">
              <div className="w-14 h-14 rounded-full bg-surface border border-white/10 flex items-center justify-center shadow-lg">
@@ -173,7 +173,7 @@ export default function Home() {
         </div>
 
         {/* Flex Accordion Container */}
-        <div className="relative z-10 w-full flex flex-col md:flex-row min-h-[40vh]">
+        <div className="relative z-10 w-full flex flex-col md:flex-row md:min-h-[40vh]">
 
           {/* Left Side: Clients (Dark Tint) */}
           <div className="flex-1 md:hover:flex-[1.4] transition-all duration-700 ease-out bg-black/40 hover:bg-transparent border-r border-white/20 flex flex-col justify-center items-center text-center md:items-start md:text-left py-12 px-6 sm:px-10 md:p-24 relative overflow-hidden group/card z-20">

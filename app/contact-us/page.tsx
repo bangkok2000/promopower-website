@@ -36,7 +36,7 @@ export default function ContactUs() {
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-10 sm:gap-16 relative z-10 w-full">
           
           {/* Left Side: Contact Info */}
-          <div className="lg:w-5/12 flex flex-col justify-center space-y-8 sm:space-y-10 text-center lg:text-left">
+          <div className="lg:w-5/12 flex flex-col justify-center space-y-8 sm:space-y-10">
             <div>
                <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase block mb-4">Start A Conversation</span>
                <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-normal text-on-surface mb-6 leading-tight">
@@ -45,11 +45,11 @@ export default function ContactUs() {
                <p className="text-lg sm:text-xl text-on-surface-variant leading-relaxed mb-6">
                  Need a turnkey talent solution for your next activation? Reach out to our management team to discuss your campaign objectives.
                </p>
-               <div className="w-16 h-1 bg-primary/50 mb-10 mx-auto lg:mx-0"></div>
+               <div className="w-16 h-1 bg-primary/50 mb-10"></div>
             </div>
 
             <div className="space-y-6">
-               <div className="flex items-center gap-4 text-on-surface justify-center lg:justify-start">
+               <div className="flex items-center gap-4 text-on-surface">
                   <div className="w-12 h-12 rounded-full bg-surface border border-white/10 flex items-center justify-center">
                     <span className="material-symbols-outlined text-primary">mail</span>
                   </div>
@@ -58,7 +58,7 @@ export default function ContactUs() {
                     <p className="font-bold">admin@promopower.com.sg</p>
                   </div>
                </div>
-               <div className="flex items-center gap-4 text-on-surface justify-center lg:justify-start">
+               <div className="flex items-center gap-4 text-on-surface">
                   <div className="w-12 h-12 rounded-full bg-surface border border-white/10 flex items-center justify-center">
                     <span className="material-symbols-outlined text-primary">phone</span>
                   </div>
@@ -67,7 +67,7 @@ export default function ContactUs() {
                     <p className="font-bold">+65 6123 4567</p>
                   </div>
                </div>
-               <div className="flex items-center gap-4 text-on-surface justify-center lg:justify-start">
+               <div className="flex items-center gap-4 text-on-surface">
                   <div className="w-12 h-12 rounded-full bg-surface border border-white/10 flex items-center justify-center">
                     <span className="material-symbols-outlined text-primary">location_on</span>
                   </div>
@@ -79,7 +79,7 @@ export default function ContactUs() {
             </div>
 
             {/* MOM Trust Badge Line */}
-            <div className="mt-8 sm:mt-12 p-6 bg-surface-container rounded-2xl border border-white/5 flex items-center gap-4 w-full max-w-sm mx-auto lg:mx-0">
+            <div className="mt-8 sm:mt-12 p-6 bg-surface-container rounded-2xl border border-white/5 flex items-center gap-4 w-full max-w-sm">
                 <span className="material-symbols-outlined text-3xl text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>verified_user</span>
                 <div>
                    <p className="font-bold text-on-surface text-sm uppercase tracking-wider">MOM Licensed Agency</p>

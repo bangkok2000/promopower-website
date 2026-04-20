@@ -46,7 +46,7 @@ export default function OurWork() {
                 />
               </div>
               <div className="md:w-2/5">
-                <span className="text-primary font-black text-8xl opacity-10 block mb-2 leading-none">01</span>
+                <span className="text-primary font-black text-8xl opacity-20 block mb-2 leading-none">01</span>
                 <h3 className="text-3xl sm:text-4xl font-headline font-normal mb-4 sm:mb-8 text-on-surface">Major Global Tech Brand</h3>
                 <div className="space-y-6 text-lg text-on-surface-variant">
                   <div><strong className="text-on-surface">The Challenge:</strong> Deploy and manage 50 highly technical promoters across 3 days at a massive convention.</div>
@@ -68,7 +68,7 @@ export default function OurWork() {
                 />
               </div>
               <div className="md:w-2/5">
-                <span className="text-primary font-black text-8xl opacity-10 block mb-2 leading-none">02</span>
+                <span className="text-primary font-black text-8xl opacity-20 block mb-2 leading-none">02</span>
                 <h3 className="text-3xl sm:text-4xl font-headline font-normal mb-4 sm:mb-8 text-on-surface">Luxury Cosmetics Label</h3>
                 <div className="space-y-6 text-lg text-on-surface-variant">
                   <div><strong className="text-on-surface">The Challenge:</strong> Create high-volume brand awareness for a flagship product launch.</div>
@@ -122,7 +122,7 @@ export default function OurWork() {
           <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-4 scroll-smooth custom-scrollbar">
             
             {/* Spotlight Card 1 */}
-            <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-center shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-2 group shadow-xl">
+            <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-start shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-2 group shadow-xl">
               <div className="h-64 bg-surface-container relative overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAkDfZjSIzWuipfD0wziDUkpjtBK3uz5EFgCdvUSFISkiWKsRdsv5x6CDrSz-4i2kfWKMowoswUjKPifDvFyE3433mp_zmkVCqylnZVOOXr8bcYwVvhM8bN0u3Mn-eEBSie5W0RMzECovUSz_evE4vU12L_dckjBqntVoMmBs3okPZr7YhVMZjGTwO7ukk9BVz-IqzsOkY22nELZaSOEL6ZUB8C0Y2IBOPQDWAz9qICesKBCsT9LwksY7HnLoxLxakBt9j_0ECyf4" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Sarah" />
@@ -135,7 +135,7 @@ export default function OurWork() {
             </div>
 
             {/* Spotlight Card 2 */}
-            <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-center shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-accent-amber/50 transition-all hover:-translate-y-2 group shadow-xl">
+            <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-start shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-accent-amber/50 transition-all hover:-translate-y-2 group shadow-xl">
               <div className="h-64 bg-surface-container relative overflow-hidden flex items-center justify-center">
                 <span className="material-symbols-outlined text-6xl text-white/10 group-hover:text-accent-amber transition-colors">person</span>
               </div>
@@ -147,7 +147,7 @@ export default function OurWork() {
             </div>
 
             {/* Spotlight Card 3 */}
-            <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-center shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-2 group shadow-xl">
+            <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-start shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-2 group shadow-xl">
                <div className="h-64 bg-surface-container relative overflow-hidden flex items-center justify-center">
                 <span className="material-symbols-outlined text-6xl text-white/10 group-hover:text-primary transition-colors">person</span>
               </div>
@@ -159,7 +159,7 @@ export default function OurWork() {
             </div>
 
             {/* Spotlight Card 4 */}
-            <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-center shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-accent-amber/50 transition-all hover:-translate-y-2 group shadow-xl">
+            <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-start shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-accent-amber/50 transition-all hover:-translate-y-2 group shadow-xl">
                <div className="h-64 bg-surface-container relative overflow-hidden flex items-center justify-center">
                 <span className="material-symbols-outlined text-6xl text-white/10 group-hover:text-accent-amber transition-colors">person</span>
               </div>
