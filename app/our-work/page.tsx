@@ -119,7 +119,7 @@ export default function OurWork() {
       <section className="py-16 sm:py-24 px-6 sm:px-8 bg-charcoal-dark/80 border-t border-white/5">
         <div className="max-w-7xl mx-auto text-center">
           <h2 className="text-3xl sm:text-5xl font-headline font-normal text-on-surface mb-8 sm:mb-16">Meet Our Top-Tier Talent</h2>
-          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-4 -mx-4 scroll-smooth custom-scrollbar">
+          <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-4 scroll-smooth custom-scrollbar">
             
             {/* Spotlight Card 1 */}
             <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-center shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-2 group shadow-xl">

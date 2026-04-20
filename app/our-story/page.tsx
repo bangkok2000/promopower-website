@@ -38,8 +38,8 @@ export default function OurStory() {
       {/* The Narrative Section */}
       <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 bg-[var(--color-surface-light)] border-y border-black/5 relative overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="mb-12 sm:mb-20 p-6 sm:p-10 bg-white border border-black/5 rounded-2xl relative shadow-xl">
-             <span className="material-symbols-outlined text-primary text-6xl absolute -top-8 -left-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
+          <div className="mb-12 sm:mb-20 p-6 sm:p-10 bg-white border border-black/5 rounded-2xl relative shadow-xl overflow-visible">
+             <span className="material-symbols-outlined text-primary text-4xl sm:text-6xl absolute -top-5 sm:-top-8 left-2 sm:-left-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
              <h3 className="text-xl md:text-2xl font-body italic text-[var(--color-on-surface-light)] leading-loose mb-6 relative z-10">
                &quot;No company has a permanent consumer franchise. No one has the only game in town. The never-ending cycle of destruction and change inherent in a capitalist economy always provides new opportunities for those with determination, goals and concentration.&quot;
              </h3>

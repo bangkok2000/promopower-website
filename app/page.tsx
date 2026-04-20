@@ -37,11 +37,11 @@ export default function Home() {
           <p className="text-lg sm:text-xl md:text-2xl text-on-surface-variant mb-12 max-w-2xl leading-relaxed">
             We combine operational precision with kinetic human energy to execute flawless on-site activations, from luxury retail launches to massive tech expos.
           </p>
-          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
-            <Link href="/contact-us" className="glow-button text-on-primary px-10 sm:px-12 py-4 sm:py-5 rounded-full font-headline font-normal text-base sm:text-lg hover:scale-105 active:scale-95 transition-all text-center">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6 items-start">
+            <Link href="/contact-us" className="glow-button text-on-primary px-10 sm:px-12 py-4 sm:py-5 rounded-full font-headline font-normal text-base sm:text-lg hover:scale-105 active:scale-95 transition-all text-center w-fit">
                 Hire Event Talent
             </Link>
-            <Link href="/jobseekers" className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-10 sm:px-12 py-4 sm:py-5 rounded-full font-headline font-normal text-base sm:text-lg hover:bg-white/20 transition-all text-center">
+            <Link href="/jobseekers" className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-10 sm:px-12 py-4 sm:py-5 rounded-full font-headline font-normal text-base sm:text-lg hover:bg-white/20 transition-all text-center w-fit">
                 Join Our Roster
             </Link>
           </div>
