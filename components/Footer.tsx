@@ -3,8 +3,8 @@ import Image from "next/image";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-charcoal-dark border-t border-white/5 xl:px-24 px-12 py-24">
-      <div className="flex flex-col md:flex-row justify-between items-start gap-12 max-w-7xl mx-auto">
+    <footer className="w-full bg-charcoal-dark border-t border-white/5 px-6 sm:px-12 xl:px-24 py-12 sm:py-24">
+      <div className="flex flex-col md:flex-row justify-between items-start gap-10 sm:gap-12 max-w-7xl mx-auto">
         <div className="max-w-sm">
           <Link href="/" className="relative block h-20 w-72 md:h-24 md:w-80 mb-6 -ml-2">
             <Image 
@@ -22,12 +22,12 @@ export default function Footer() {
             EA LICENSE NO: 20C0109.
           </p>
         </div>
-        <div className="grid grid-cols-2 sm:grid-cols-3 gap-12 flex-1 md:justify-items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 flex-1 md:justify-items-end">
           <div className="space-y-4">
             <h5 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
               Quick Links
             </h5>
-            <ul className="space-y-3 text-sm text-on-surface-variant/50">
+            <ul className="space-y-3 text-sm text-on-surface-variant/70">
               <li>
                 <Link className="hover:text-primary transition-colors" href="/">
                   Home
@@ -59,7 +59,7 @@ export default function Footer() {
             <h5 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
               Contact
             </h5>
-            <ul className="space-y-3 text-sm text-on-surface-variant/50">
+            <ul className="space-y-3 text-sm text-on-surface-variant/70">
               <li>admin@promopower.com.sg</li>
               <li>+65 6123 4567</li>
               <li>65 Airport Boulevard, #03-37 Changi T3, Singapore 819663</li>
@@ -71,7 +71,9 @@ export default function Footer() {
             </h5>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.linkedin.com/company/promopowersg/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center hover:bg-primary transition-all cursor-pointer text-white hover:text-charcoal-dark"
                 aria-label="LinkedIn"
               >

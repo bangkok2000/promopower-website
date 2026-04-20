@@ -1,7 +1,13 @@
 import { notFound } from "next/navigation";
-import { getCampaignBySlug } from "@/lib/data";
+import { getCampaignBySlug, PORTFOLIO_CAMPAIGNS } from "@/lib/data";
 import Link from "next/link";
 import { Metadata } from "next";
+
+export function generateStaticParams() {
+  return PORTFOLIO_CAMPAIGNS.map((campaign) => ({
+    slug: campaign.slug,
+  }));
+}
 
 export async function generateMetadata(props: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const params = await props.params;
@@ -48,27 +54,27 @@ export default async function CampaignDetail(props: { params: Promise<{ slug: st
   return (
     <div className="bg-background min-h-screen text-on-surface pb-16">
       {/* Hero Header */}
-      <section className="relative h-[60vh] flex flex-col items-center justify-center text-center px-8 overflow-hidden bg-charcoal-dark border-b border-white/5">
+      <section className="relative h-[50vh] sm:h-[60vh] flex flex-col items-center justify-center text-center px-6 sm:px-8 overflow-hidden bg-charcoal-dark border-b border-white/5">
         <div className="absolute inset-0 z-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={campaign.imageUrl} alt={campaign.title} className="w-full h-full object-cover opacity-20 grayscale" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-charcoal-dark/80 to-transparent"></div>
         </div>
         
-        <div className="relative z-20 max-w-4xl mt-32">
-          <Link href="/our-work" className="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-widest hover:text-white transition-colors mb-8">
+        <div className="relative z-20 max-w-4xl mt-20 sm:mt-32">
+          <Link href="/our-work#portfolio" className="inline-flex items-center gap-2 text-primary font-bold text-sm uppercase tracking-widest hover:text-white transition-colors mb-8">
             <span className="material-symbols-outlined text-sm">arrow_back</span> Back to Portfolio
           </Link>
           <span className="text-accent-amber font-headline font-normal tracking-widest text-sm uppercase mb-4 block">{campaign.subtitle}</span>
-          <h1 className="text-5xl md:text-8xl font-headline font-normal text-on-surface tracking-tight mb-6 drop-shadow-lg">
+          <h1 className="text-4xl sm:text-5xl md:text-8xl font-headline font-normal text-on-surface tracking-tight mb-6 drop-shadow-lg">
             {campaign.title}
           </h1>
         </div>
       </section>
 
       {/* Case Study Details */}
-      <section className="py-24 px-8 md:px-16 max-w-6xl mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 lg:gap-16">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 max-w-6xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-12 lg:gap-16">
           <div className="space-y-6 bg-surface p-8 rounded-2xl border border-white/5 shadow-lg relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[50px] group-hover:bg-primary/20 transition-all duration-700"></div>
             <h3 className="text-xl font-headline text-on-surface-variant uppercase tracking-widest border-b border-white/10 pb-4 relative z-10">The Challenge</h3>
@@ -89,7 +95,7 @@ export default async function CampaignDetail(props: { params: Promise<{ slug: st
         </div>
 
         {/* Feature Image */}
-        <div className="mt-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[21/9] relative group">
+        <div className="mt-12 sm:mt-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[16/9] sm:aspect-[21/9] relative group">
            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-color-dodge"></div>
            {/* eslint-disable-next-line @next/next/no-img-element */}
            <img src={campaign.imageUrl} alt={`${campaign.title} Execution`} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" />
@@ -100,12 +106,10 @@ export default async function CampaignDetail(props: { params: Promise<{ slug: st
       </section>
 
       {/* CTA Footer */}
-      <section className="mt-16 text-center">
-        <h2 className="text-3xl md:text-4xl font-headline font-normal mb-10 text-on-surface drop-shadow-md">Translate this success to your brand.</h2>
-        <Link href="/contact-us">
-          <button className="bg-primary hover:bg-accent-amber text-charcoal-dark font-bold px-10 py-5 rounded-full font-headline hover:scale-105 active:scale-95 transition-all shadow-xl inline-flex items-center gap-3">
+      <section className="mt-8 sm:mt-16 text-center px-6">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-headline font-normal mb-6 sm:mb-10 text-on-surface drop-shadow-md">Translate this success to your brand.</h2>
+        <Link href="/contact-us" className="bg-primary hover:bg-accent-amber text-charcoal-dark font-bold px-8 sm:px-10 py-4 sm:py-5 rounded-full font-headline hover:scale-105 active:scale-95 transition-all shadow-xl inline-flex items-center gap-3">
              Start Your Activation <span className="material-symbols-outlined">bolt</span>
-          </button>
         </Link>
       </section>
     </div>

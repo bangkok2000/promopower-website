@@ -3,16 +3,20 @@
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 export default function NavBar() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [prevPathname, setPrevPathname] = useState(pathname);
 
   // Close menu on route change
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
+  if (prevPathname !== pathname) {
+    setPrevPathname(pathname);
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  }
 
   const getLinkClass = (path: string) => {
     return pathname === path
@@ -28,8 +32,8 @@ export default function NavBar() {
 
   return (
     <>
-      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl flex justify-between items-center px-6 md:px-8 py-5 border-b border-white/5">
-        <Link href="/" className="relative h-14 w-60 md:h-16 md:w-72">
+      <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl flex justify-between items-center px-4 sm:px-6 md:px-8 py-4 sm:py-5 border-b border-white/5">
+        <Link href="/" className="relative h-12 w-48 sm:h-14 sm:w-60 md:h-16 md:w-72">
           <Image 
             src="/logo-transparent.png" 
             alt="PromoPower Logo" 
@@ -53,10 +57,8 @@ export default function NavBar() {
           </Link>
         </div>
         <div className="hidden lg:block">
-          <Link href="/contact-us">
-            <button className="glow-button text-on-primary px-8 py-3 rounded-full font-headline font-extrabold text-sm hover:scale-105 active:scale-95 transition-all">
+          <Link href="/contact-us" className="glow-button text-on-primary px-8 py-3 rounded-full font-headline font-extrabold text-sm hover:scale-105 active:scale-95 transition-all">
               Plan a Campaign
-            </button>
           </Link>
         </div>
         
@@ -74,6 +76,9 @@ export default function NavBar() {
 
       {/* Mobile Menu Overlay */}
       <div 
+        role="dialog"
+        aria-modal="true"
+        aria-label="Navigation menu"
         className={`fixed inset-0 bg-charcoal-dark/95 backdrop-blur-2xl z-40 lg:hidden flex flex-col items-center justify-center gap-10 transition-all duration-500 origin-top
         ${isMenuOpen ? 'opacity-100 visible scale-y-100' : 'opacity-0 invisible scale-y-0'}`}
       >
@@ -89,10 +94,8 @@ export default function NavBar() {
         <Link className={getMobileLinkClass("/jobseekers")} href="/jobseekers">
           Jobseekers
         </Link>
-        <Link href="/contact-us" className="mt-8">
-          <button className="glow-button text-on-primary px-10 py-5 rounded-full font-headline font-extrabold text-xl hover:scale-105 active:scale-95 transition-all">
+        <Link href="/contact-us" className="mt-8 glow-button text-on-primary px-10 py-5 rounded-full font-headline font-extrabold text-xl hover:scale-105 active:scale-95 transition-all inline-block">
             Plan a Campaign
-          </button>
         </Link>
       </div>
     </>

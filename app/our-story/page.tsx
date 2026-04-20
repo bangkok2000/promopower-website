@@ -1,10 +1,17 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Our Story | PromoPower",
+  description: "Learn about PromoPower's journey as Singapore's premier event staffing and brand talent agency. MOM-licensed and award-winning.",
+  alternates: { canonical: "/our-story" },
+};
 
 export default function OurStory() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex items-center justify-center px-8 text-center overflow-hidden">
+      <section className="relative h-[60vh] flex items-center justify-center px-6 sm:px-8 text-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
@@ -19,19 +26,19 @@ export default function OurStory() {
           <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase mb-4 block">
             Our Story
           </span>
-          <h1 className="text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-6">
             We Build <span className="text-primary italic">Connections</span> That Count.
           </h1>
-          <p className="text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto">
+          <p className="text-lg sm:text-xl md:text-2xl text-on-surface-variant max-w-2xl mx-auto">
             Founded on a vision of seamless planning and flawless execution.
           </p>
         </div>
       </section>
 
       {/* The Narrative Section */}
-      <section className="py-24 px-8 md:px-16 bg-[var(--color-surface-light)] border-y border-black/5 relative overflow-hidden">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 bg-[var(--color-surface-light)] border-y border-black/5 relative overflow-hidden">
         <div className="max-w-5xl mx-auto text-center relative z-10">
-          <div className="mb-20 p-10 bg-white border border-black/5 rounded-2xl relative shadow-xl">
+          <div className="mb-12 sm:mb-20 p-6 sm:p-10 bg-white border border-black/5 rounded-2xl relative shadow-xl">
              <span className="material-symbols-outlined text-primary text-6xl absolute -top-8 -left-6" style={{ fontVariationSettings: "'FILL' 1" }}>format_quote</span>
              <h3 className="text-xl md:text-2xl font-body italic text-[var(--color-on-surface-light)] leading-loose mb-6 relative z-10">
                &quot;No company has a permanent consumer franchise. No one has the only game in town. The never-ending cycle of destruction and change inherent in a capitalist economy always provides new opportunities for those with determination, goals and concentration.&quot;
@@ -39,7 +46,7 @@ export default function OurStory() {
              <p className="text-primary font-headline font-normal uppercase tracking-[0.2em] relative z-10">— Harvey Mackay</p>
           </div>
 
-          <h2 className="text-4xl md:text-5xl font-headline font-normal text-[var(--color-on-surface-light)] mb-12 relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-[var(--color-on-surface-light)] mb-8 sm:mb-12 relative z-10">
             The PromoPower Difference
           </h2>
           <p className="text-xl leading-relaxed text-[var(--color-on-surface-light-variant)] text-left md:text-center relative z-10 space-y-6">
@@ -54,17 +61,17 @@ export default function OurStory() {
       </section>
 
       {/* Compliance & Trust Badge */}
-      <section className="py-24 px-8 md:px-16 bg-charcoal-dark/50 border-t border-white/5 bokeh-overlay">
-        <div className="max-w-4xl mx-auto bg-surface/50 backdrop-blur-xl border border-white/10 rounded-3xl p-12 md:p-16 text-center transform hover:-translate-y-2 transition-transform duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 bg-charcoal-dark/50 border-t border-white/5 bokeh-overlay">
+        <div className="max-w-4xl mx-auto bg-surface/50 backdrop-blur-xl border border-white/10 rounded-3xl p-8 sm:p-12 md:p-16 text-center transform hover:-translate-y-2 transition-transform duration-500 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
           <div className="w-24 h-24 mx-auto bg-primary/20 rounded-full flex items-center justify-center mb-10 border border-primary/30 shadow-[0_0_30px_rgba(255,140,0,0.3)]">
             <span className="material-symbols-outlined text-5xl text-primary" style={{ fontVariationSettings: "'FILL' 1" }}>
               verified_user
             </span>
           </div>
-          <h2 className="text-3xl md:text-4xl font-headline font-normal text-on-surface mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-headline font-normal text-on-surface mb-6">
             100% MOM Compliant &amp; Licensed
           </h2>
-          <p className="text-xl text-on-surface-variant leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-lg sm:text-xl text-on-surface-variant leading-relaxed max-w-2xl mx-auto mb-10">
             As a fully licensed employment agency (EA NO: 20C0109), we handle all backend talent management, payroll, and compliance, offering you absolute peace of mind. Let us handle the red tape while you enjoy the spotlight.
           </p>
           
@@ -84,10 +91,8 @@ export default function OurStory() {
                 </div>
              </div>
           </div>
-          <Link href="/services">
-            <button className="bg-white/5 border border-white/10 text-on-surface px-8 py-4 rounded-full font-headline font-normal hover:bg-white/10 transition-all inline-flex items-center gap-2">
+          <Link href="/services" className="bg-white/5 border border-white/10 text-on-surface px-8 py-4 rounded-full font-headline font-normal hover:bg-white/10 transition-all inline-flex items-center gap-2">
               View Our Services <span className="material-symbols-outlined">arrow_forward</span>
-            </button>
           </Link>
         </div>
       </section>

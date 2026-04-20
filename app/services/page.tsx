@@ -1,28 +1,34 @@
 import Link from "next/link";
-import Image from "next/image";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Services | PromoPower",
+  description: "Explore PromoPower's end-to-end event staffing services: premium brand ambassadors, roving talents, and full campaign management in Singapore.",
+  alternates: { canonical: "/services" },
+};
 
 export default function Services() {
   return (
     <>
       {/* Hero Section */}
-      <section className="py-24 px-8 md:px-16 text-center max-w-5xl mx-auto mt-12 relative">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 text-center max-w-5xl mx-auto mt-12 relative">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-64 bg-primary/20 rounded-full blur-[120px] pointer-events-none"></div>
         <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase mb-6 block drop-shadow-[0_0_10px_rgba(255,140,0,0.5)]">
           Our Expertise
         </span>
-        <h1 className="text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-8 leading-tight">
+        <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-8 leading-tight">
           Precision Management. <br />
           <span className="text-primary italic">Radiant Execution.</span>
         </h1>
-        <p className="text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
+        <p className="text-lg sm:text-xl md:text-2xl text-on-surface-variant max-w-3xl mx-auto leading-relaxed">
           From sourcing the perfect brand ambassador to managing the crowds, we handle the heavy lifting.
         </p>
       </section>
 
       {/* Services Z-Pattern */}
-      <section className="py-24 px-8 md:px-16 max-w-7xl mx-auto space-y-32">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 max-w-7xl mx-auto space-y-16 sm:space-y-32">
         {/* Module 1: Premium Brand Ambassadors */}
-        <div className="flex flex-col md:flex-row items-center gap-16 group">
+        <div className="flex flex-col md:flex-row items-center gap-8 sm:gap-16 group">
           <div className="w-full md:w-1/2 relative">
             <div className="absolute -inset-4 bg-primary/10 rounded-2xl transform -rotate-3 scale-105 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -39,7 +45,7 @@ export default function Services() {
                </div>
                <span className="font-headline font-normal text-on-surface-variant tracking-widest uppercase text-sm">Module 01</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface">Premium Brand Ambassadors</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface">Premium Brand Ambassadors</h2>
             <h3 className="text-2xl text-primary font-body font-medium italic">The Face of Your Brand.</h3>
             <ul className="space-y-4 mt-8 text-lg text-on-surface-variant">
               <li className="flex items-start gap-3">
@@ -59,7 +65,7 @@ export default function Services() {
         </div>
 
         {/* Module 2: Roving Talents */}
-        <div className="flex flex-col md:flex-row-reverse items-center gap-16 group">
+        <div className="flex flex-col md:flex-row-reverse items-center gap-8 sm:gap-16 group">
           <div className="w-full md:w-1/2 relative">
             <div className="absolute -inset-4 bg-accent-amber/10 rounded-2xl transform rotate-3 scale-105 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -76,7 +82,7 @@ export default function Services() {
                </div>
                <span className="font-headline font-normal text-on-surface-variant tracking-widest uppercase text-sm">Module 02</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface">Roving Talents</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface">Roving Talents</h2>
             <h3 className="text-2xl text-accent-amber font-body font-medium italic">Dynamic Crowd Engagement.</h3>
             <ul className="space-y-4 mt-8 text-lg text-on-surface-variant">
               <li className="flex items-start gap-3">
@@ -96,7 +102,7 @@ export default function Services() {
         </div>
 
         {/* Module 3: Campaign Management & Logistics */}
-        <div className="flex flex-col md:flex-row items-center gap-16 group">
+        <div className="flex flex-col md:flex-row items-center gap-8 sm:gap-16 group">
           <div className="w-full md:w-1/2 relative">
             <div className="absolute -inset-4 bg-primary/10 rounded-2xl transform -rotate-3 scale-105 opacity-0 group-hover:opacity-100 transition-all duration-500 blur-xl"></div>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -113,7 +119,7 @@ export default function Services() {
                </div>
                <span className="font-headline font-normal text-on-surface-variant tracking-widest uppercase text-sm">Module 03</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface">Campaign Management</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface">Campaign Management</h2>
             <h3 className="text-2xl text-primary font-body font-medium italic">Invisible Execution. Visible Results.</h3>
             <ul className="space-y-4 mt-8 text-lg text-on-surface-variant">
               <li className="flex items-start gap-3">
@@ -134,13 +140,13 @@ export default function Services() {
       </section>
 
       {/* Success Principles */}
-      <section className="py-32 px-8 md:px-16 bg-[var(--color-surface-light)] border-y border-black/5 relative overflow-hidden">
+      <section className="py-16 sm:py-32 px-6 sm:px-8 md:px-16 bg-[var(--color-surface-light)] border-y border-black/5 relative overflow-hidden">
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="text-center mb-16">
              <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase mb-4 block">Our Values</span>
-             <h2 className="text-4xl md:text-5xl font-headline font-normal text-[var(--color-on-surface-light)]">Our Success Principles</h2>
+             <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-[var(--color-on-surface-light)]">Our Success Principles</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 relative z-10">
             {[
               { title: "Innovation", icon: "lightbulb", text: "Providing innovative solutions to our clients' marketing challenges.", span: false },
               { title: "Integrity", icon: "health_and_safety", text: "Committed to ensuring the professional well-being of our clients.", span: false },
@@ -148,7 +154,7 @@ export default function Services() {
               { title: "Excellence", icon: "school", text: "Investing in continuous quality training programs to ensure the highest standard in our services.", span: true },
               { title: "Strategy", icon: "trending_up", text: "Enhancing clients' businesses through effective strategy development.", span: false }
             ].map((principle, i) => (
-              <div key={i} className={`group relative bg-white border border-black/5 shadow-lg p-10 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer ${principle.span ? 'lg:col-span-2' : ''}`}>
+              <div key={i} className={`group relative bg-white border border-black/5 shadow-lg p-6 sm:p-10 rounded-2xl overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2 cursor-pointer ${principle.span ? 'lg:col-span-2' : ''}`}>
                 {/* Background Hover Bloom */}
                 <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary to-accent-amber opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-0"></div>
                 
@@ -178,14 +184,12 @@ export default function Services() {
       </section>
 
       {/* CTA Footer Wrapper */}
-      <section className="py-24 px-8 text-center bg-surface-container border-t border-white/5 relative overflow-hidden mt-24">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 text-center bg-surface-container border-t border-white/5 relative overflow-hidden mt-16 sm:mt-24">
         <div className="absolute inset-0 bokeh-overlay opacity-50"></div>
         <div className="relative z-10">
-          <h2 className="text-4xl font-headline font-normal text-on-surface mb-8">Ready for deployment?</h2>
-          <Link href="/contact-us">
-            <button className="glow-button px-10 py-5 rounded-full text-on-primary font-headline font-normal text-xl hover:scale-105 transition-transform flex items-center gap-3 mx-auto">
+          <h2 className="text-3xl sm:text-4xl font-headline font-normal text-on-surface mb-8">Ready for deployment?</h2>
+          <Link href="/contact-us" className="glow-button px-8 sm:px-10 py-4 sm:py-5 rounded-full text-on-primary font-headline font-normal text-lg sm:text-xl hover:scale-105 transition-transform inline-flex items-center gap-3">
               Plan Your Campaign <span className="material-symbols-outlined">arrow_forward</span>
-            </button>
           </Link>
         </div>
       </section>

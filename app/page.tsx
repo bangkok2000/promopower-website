@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 
 const eliteClients = [
   "Pernod Ricard", "Japan Tobacco International", "Bacardi", "Chabot Armagnac", "Distell", 
@@ -32,22 +31,18 @@ export default function Home() {
           <span className="inline-block py-2 px-4 rounded-full bg-primary/20 text-primary font-bold text-sm mb-6 border border-primary/30 backdrop-blur-md uppercase">
             Singapore&apos;s Premier Staffing
           </span>
-          <h1 className="text-6xl md:text-8xl font-headline font-normal text-on-surface leading-[1.05] tracking-tight mb-8">
+          <h1 className="text-4xl sm:text-6xl md:text-8xl font-headline font-normal text-on-surface leading-[1.05] tracking-tight mb-8">
             POWERING FLAWLESS <span className="text-primary italic">BRAND</span> ACTIVATIONS
           </h1>
-          <p className="text-xl md:text-2xl text-on-surface-variant mb-12 max-w-2xl leading-relaxed">
+          <p className="text-lg sm:text-xl md:text-2xl text-on-surface-variant mb-12 max-w-2xl leading-relaxed">
             We combine operational precision with kinetic human energy to execute flawless on-site activations, from luxury retail launches to massive tech expos.
           </p>
-          <div className="flex flex-wrap gap-6">
-            <Link href="/contact-us">
-              <button className="glow-button text-on-primary px-12 py-5 rounded-full font-headline font-normal text-lg hover:scale-105 active:scale-95 transition-all">
+          <div className="flex flex-col sm:flex-row flex-wrap gap-4 sm:gap-6">
+            <Link href="/contact-us" className="glow-button text-on-primary px-10 sm:px-12 py-4 sm:py-5 rounded-full font-headline font-normal text-base sm:text-lg hover:scale-105 active:scale-95 transition-all text-center">
                 Hire Event Talent
-              </button>
             </Link>
-            <Link href="/jobseekers">
-              <button className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-12 py-5 rounded-full font-headline font-normal text-lg hover:bg-white/20 transition-all">
+            <Link href="/jobseekers" className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-10 sm:px-12 py-4 sm:py-5 rounded-full font-headline font-normal text-base sm:text-lg hover:bg-white/20 transition-all text-center">
                 Join Our Roster
-              </button>
             </Link>
           </div>
         </div>
@@ -120,17 +115,17 @@ export default function Home() {
       </section>
 
       {/* Core Services Overview */}
-      <section className="py-32 px-8 md:px-16 max-w-7xl mx-auto bokeh-overlay">
-        <div className="mb-24 text-center">
+      <section className="py-16 sm:py-32 px-6 sm:px-8 md:px-16 max-w-7xl mx-auto bokeh-overlay">
+        <div className="mb-12 sm:mb-24 text-center">
           <span className="text-primary font-headline font-normal tracking-widest uppercase text-sm">
             End-to-End Campaign Execution
           </span>
-          <h2 className="text-5xl md:text-7xl font-headline font-normal text-on-surface mt-4">
+          <h2 className="text-3xl sm:text-5xl md:text-7xl font-headline font-normal text-on-surface mt-4">
             Flawless Execution. Radiant Talent.
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-          <div className="bg-surface rounded-lg p-10 border border-white/5 hover:border-primary/30 transition-all group group relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 mb-16">
+          <div className="bg-surface rounded-lg p-6 sm:p-10 border border-white/5 hover:border-primary/30 transition-all group relative">
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
               <span className="material-symbols-outlined text-3xl">star</span>
             </div>
@@ -139,7 +134,7 @@ export default function Home() {
               Vetted, high-energy ambassadors built to represent your brand with absolute professionalism and measurable impact.
             </p>
           </div>
-          <div className="bg-surface rounded-lg p-10 border border-white/5 hover:border-primary/30 transition-all group group relative">
+          <div className="bg-surface rounded-lg p-6 sm:p-10 border border-white/5 hover:border-primary/30 transition-all group relative">
             <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
               <span className="material-symbols-outlined text-3xl">directions_walk</span>
             </div>
@@ -148,7 +143,7 @@ export default function Home() {
               Specialized engagement staff and performers ready to captivate moving crowds in transit hubs, expos, and festivals.
             </p>
           </div>
-          <div className="bg-surface rounded-lg p-10 border border-white/5 hover:border-primary/30 transition-all group group relative">
+          <div className="bg-surface rounded-lg p-6 sm:p-10 border border-white/5 hover:border-primary/30 transition-all group relative">
              <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-8 border border-primary/20 group-hover:bg-primary group-hover:text-on-primary transition-all duration-300">
               <span className="material-symbols-outlined text-3xl">admin_panel_settings</span>
             </div>
@@ -181,7 +176,7 @@ export default function Home() {
         <div className="relative z-10 w-full flex flex-col md:flex-row min-h-[40vh]">
 
           {/* Left Side: Clients (Dark Tint) */}
-          <div className="flex-1 md:hover:flex-[1.4] transition-all duration-700 ease-out bg-black/40 hover:bg-transparent border-r border-white/20 flex flex-col justify-center items-center md:items-start text-center md:text-left py-16 px-10 md:p-24 relative overflow-hidden group/card z-20">
+          <div className="flex-1 md:hover:flex-[1.4] transition-all duration-700 ease-out bg-black/40 hover:bg-transparent border-r border-white/20 flex flex-col justify-center items-center text-center md:items-start md:text-left py-12 px-6 sm:px-10 md:p-24 relative overflow-hidden group/card z-20">
             {/* Smooth hardware-accelerated blur fade */}
             <div className="absolute inset-0 backdrop-blur-md opacity-100 md:group-hover/card:opacity-0 transition-opacity duration-700 pointer-events-none z-0"></div>
             {/* Subtle gradient block behind text for legibility when hover removes tint */}
@@ -189,16 +184,14 @@ export default function Home() {
             <div className="duration-700 transition-all md:group-hover/card:translate-x-4 relative z-10">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-headline font-normal text-white mb-6 drop-shadow-xl">Clients</h2>
               <p className="text-lg md:text-xl text-white/90 mb-8 max-w-sm drop-shadow-lg font-medium">Ready to make an impact? Let&apos;s map out your next activation.</p>
-              <Link href="/contact-us">
-                <button className="bg-white/10 text-white border border-white/40 px-8 py-4 rounded-full font-headline font-medium hover:bg-white/30 hover:scale-105 transition-all flex items-center gap-3 backdrop-blur-md text-sm md:text-base shadow-2xl">
+              <Link href="/contact-us" className="bg-white/10 text-white border border-white/40 px-8 py-4 rounded-full font-headline font-medium hover:bg-white/30 hover:scale-105 transition-all flex items-center gap-3 backdrop-blur-md text-sm md:text-base shadow-2xl">
                   Contact Us <span className="material-symbols-outlined">arrow_outward</span>
-                </button>
               </Link>
             </div>
           </div>
 
           {/* Right Side: Talent (Orange Tint) */}
-          <div className="flex-1 md:hover:flex-[1.4] transition-all duration-700 ease-out bg-primary/40 hover:bg-primary/20 flex flex-col justify-center items-center md:items-end text-center md:text-right py-16 px-10 md:p-24 relative overflow-hidden group/card z-10 border-t md:border-t-0 md:border-l border-white/10">
+          <div className="flex-1 md:hover:flex-[1.4] transition-all duration-700 ease-out bg-primary/40 hover:bg-primary/20 flex flex-col justify-center items-center text-center md:items-end md:text-right py-12 px-6 sm:px-10 md:p-24 relative overflow-hidden group/card z-10 border-t md:border-t-0 md:border-l border-white/10">
             {/* Smooth hardware-accelerated blur fade */}
             <div className="absolute inset-0 backdrop-blur-md opacity-100 md:group-hover/card:opacity-0 transition-opacity duration-700 pointer-events-none z-0"></div>
             {/* Subtle gradient block behind text for legibility */}
@@ -206,10 +199,8 @@ export default function Home() {
             <div className="duration-700 transition-all md:group-hover/card:-translate-x-4 flex flex-col items-center md:items-end relative z-10">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-headline font-normal text-white mb-6 drop-shadow-xl">Talent</h2>
               <p className="text-lg md:text-xl text-white/90 mb-8 max-w-sm tracking-wide drop-shadow-lg font-medium">Got the energy? Step into the spotlight with top global brands.</p>
-              <Link href="/jobseekers">
-                <button className="bg-primary hover:bg-accent-amber text-charcoal-dark font-bold px-8 py-4 rounded-full font-headline hover:scale-105 active:scale-95 transition-all shadow-2xl flex items-center gap-3 text-sm md:text-base">
+              <Link href="/jobseekers" className="bg-primary hover:bg-accent-amber text-charcoal-dark font-bold px-8 py-4 rounded-full font-headline hover:scale-105 active:scale-95 transition-all shadow-2xl flex items-center gap-3 text-sm md:text-base">
                   Apply Now <span className="material-symbols-outlined">arrow_outward</span>
-                </button>
               </Link>
             </div>
           </div>

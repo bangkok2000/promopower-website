@@ -1,18 +1,24 @@
 import Link from "next/link";
-import Image from "next/image";
+import type { Metadata } from "next";
 import { PORTFOLIO_CAMPAIGNS } from "@/lib/data";
+
+export const metadata: Metadata = {
+  title: "Our Work & Portfolio | PromoPower",
+  description: "Browse PromoPower's portfolio of high-impact brand activations for leading global brands across Singapore.",
+  alternates: { canonical: "/our-work" },
+};
 
 export default function OurWork() {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[50vh] flex flex-col items-center justify-center text-center px-8 overflow-hidden bg-charcoal-dark border-b border-white/5">
+      <section className="relative h-[50vh] flex flex-col items-center justify-center text-center px-6 sm:px-8 overflow-hidden bg-charcoal-dark border-b border-white/5">
         <div className="absolute inset-0 z-0 opacity-40">
            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[100px]"></div>
            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-amber/10 rounded-full blur-[100px]"></div>
         </div>
         <div className="relative z-10 max-w-4xl mt-16">
-          <h1 className="text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-6 flex flex-col items-center gap-4">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-6 flex flex-col items-center gap-4">
             See the <span className="text-primary italic neon-text-glow">Spark in Action.</span>
           </h1>
           <p className="text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed">
@@ -22,14 +28,14 @@ export default function OurWork() {
       </section>
 
       {/* Featured Case Studies */}
-      <section className="py-32 bg-background relative overflow-hidden">
+      <section className="py-16 sm:py-32 bg-background relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-full bokeh-overlay opacity-30 pointer-events-none"></div>
-        <div className="px-8 md:px-16 max-w-7xl mx-auto relative z-10">
-          <h2 className="text-4xl md:text-5xl font-headline font-normal text-center mb-24 opacity-80 uppercase tracking-widest text-on-surface-variant">Featured Case Studies</h2>
-          <div className="space-y-48">
+        <div className="px-6 sm:px-8 md:px-16 max-w-7xl mx-auto relative z-10">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-center mb-12 sm:mb-24 opacity-80 uppercase tracking-widest text-on-surface-variant">Featured Case Studies</h2>
+          <div className="space-y-16 sm:space-y-48">
             
             {/* Case Study 1 */}
-            <div className="flex flex-col md:flex-row items-center gap-16 md:gap-32 group">
+            <div className="flex flex-col md:flex-row items-center gap-8 sm:gap-16 md:gap-32 group">
               <div className="md:w-3/5 relative">
                 <div className="bg-primary/20 absolute -inset-6 rounded-lg transform -rotate-3 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -41,7 +47,7 @@ export default function OurWork() {
               </div>
               <div className="md:w-2/5">
                 <span className="text-primary font-black text-8xl opacity-10 block mb-2 leading-none">01</span>
-                <h3 className="text-4xl font-headline font-normal mb-8 text-on-surface">Major Global Tech Brand</h3>
+                <h3 className="text-3xl sm:text-4xl font-headline font-normal mb-4 sm:mb-8 text-on-surface">Major Global Tech Brand</h3>
                 <div className="space-y-6 text-lg text-on-surface-variant">
                   <div><strong className="text-on-surface">The Challenge:</strong> Deploy and manage 50 highly technical promoters across 3 days at a massive convention.</div>
                   <div><strong className="text-on-surface">The Solution:</strong> End-to-end management, comprehensive pre-event tech briefing, and 2 dedicated on-site supervisors.</div>
@@ -51,7 +57,7 @@ export default function OurWork() {
             </div>
 
             {/* Case Study 2 */}
-            <div className="flex flex-col md:flex-row-reverse items-center gap-16 md:gap-32 group">
+            <div className="flex flex-col md:flex-row-reverse items-center gap-8 sm:gap-16 md:gap-32 group">
               <div className="md:w-3/5 relative">
                 <div className="bg-accent-amber/20 absolute -inset-6 rounded-lg transform rotate-3 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -63,7 +69,7 @@ export default function OurWork() {
               </div>
               <div className="md:w-2/5">
                 <span className="text-primary font-black text-8xl opacity-10 block mb-2 leading-none">02</span>
-                <h3 className="text-4xl font-headline font-normal mb-8 text-on-surface">Luxury Cosmetics Label</h3>
+                <h3 className="text-3xl sm:text-4xl font-headline font-normal mb-4 sm:mb-8 text-on-surface">Luxury Cosmetics Label</h3>
                 <div className="space-y-6 text-lg text-on-surface-variant">
                   <div><strong className="text-on-surface">The Challenge:</strong> Create high-volume brand awareness for a flagship product launch.</div>
                   <div><strong className="text-on-surface">The Solution:</strong> Deployment of 15 premium roving talents equipped with bespoke brand knowledge.</div>
@@ -77,11 +83,11 @@ export default function OurWork() {
       </section>
 
       {/* Expanded Portfolio Grid */}
-      <section className="py-24 px-8 md:px-16 max-w-7xl mx-auto border-t border-white/5 relative">
+      <section id="portfolio" className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 max-w-7xl mx-auto border-t border-white/5 relative">
          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[150px] pointer-events-none"></div>
          <div className="text-center mb-16 relative z-10">
             <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase mb-4 block">Visual Archive</span>
-            <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6">Our Full Portfolio</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6">Our Full Portfolio</h2>
             <p className="text-lg text-on-surface-variant max-w-2xl mx-auto">A visual journey through hundreds of flawless activations, bespoke campaigns, and dedicated staffing achievements across Singapore.</p>
          </div>
 
@@ -110,9 +116,9 @@ export default function OurWork() {
       </section>
 
       {/* The Luminaries Spotlight */}
-      <section className="py-24 px-8 bg-charcoal-dark/80 border-t border-white/5">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 bg-charcoal-dark/80 border-t border-white/5">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-5xl font-headline font-normal text-on-surface mb-16">Meet Our Top-Tier Talent</h2>
+          <h2 className="text-3xl sm:text-5xl font-headline font-normal text-on-surface mb-8 sm:mb-16">Meet Our Top-Tier Talent</h2>
           <div className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-4 -mx-4 scroll-smooth custom-scrollbar">
             
             {/* Spotlight Card 1 */}

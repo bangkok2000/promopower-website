@@ -4,13 +4,13 @@
   --color-primary: #FF8C00;
   --color-primary-variant: #E67E00;
   --color-on-primary: #111111;
-  --color-background-custom: #121212;
   --color-surface: #1E1E1E;
   --color-surface-container: #2A2A2A;
   --color-on-surface: #FDF9F3;
   --color-on-surface-variant: #D1C9BC;
   --color-accent-amber: #FFBF00;
   --color-charcoal-dark: #0A0A0A;
+  --color-background: #121212;
   
   --color-surface-light: #F8F5F2;
   --color-surface-light-container: #FFFFFF;
@@ -20,9 +20,9 @@
   --radius-xl: 4rem;
   --radius-full: 9999px;
   
-  --font-headline: 'Playfair Display', serif;
-  --font-body: 'Lora', serif;
-  --font-label: 'Manrope', sans-serif;
+  --font-headline: var(--font-playfair), serif;
+  --font-body: var(--font-lora), serif;
+  --font-label: var(--font-manrope), sans-serif;
   
   --animate-marquee: marquee 120s linear infinite;
   
@@ -35,7 +35,7 @@
 
 @layer base {
   body {
-    background-color: var(--color-background-custom);
+    background-color: var(--color-background);
     color: var(--color-on-surface);
     font-family: var(--font-body);
   }

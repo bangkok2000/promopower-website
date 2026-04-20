@@ -1,58 +1,62 @@
 "use client";
 
-import Link from "next/link";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { submitJobseekerApplication } from "../actions";
+import type { ActionResult } from "../actions";
 
 export default function Jobseekers() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
 
   const nextStep = () => setStep((s) => Math.min(s + 1, 4));
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
   
   const submitForm = async () => {
+    if (!formRef.current) return;
     setIsSubmitting(true);
-    const mockData = new FormData();
-    mockData.append("source", "Jobseeker Wizard Payload");
-    // Simulated Backend Trip
-    await submitJobseekerApplication(null, mockData);
+    setError(null);
+    const formData = new FormData(formRef.current);
+    const result: ActionResult = await submitJobseekerApplication(null, formData);
     setIsSubmitting(false);
-    setStep(4);
+    if (result.success) {
+      setStep(4);
+    } else {
+      setError(result.error ?? "An error occurred. Please try again.");
+    }
   };
 
   return (
     <>
       {/* Hero Section */}
-      <section className="relative h-[60vh] flex flex-col items-center justify-center text-center px-8 overflow-hidden bg-charcoal-dark border-b border-white/5">
+      <section className="relative h-[60vh] flex flex-col items-center justify-center text-center px-6 sm:px-8 overflow-hidden bg-charcoal-dark border-b border-white/5">
         <div className="absolute inset-0 z-0">
           <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
           <div className="absolute top-0 right-0 w-full max-w-3xl h-full bg-gradient-to-l from-primary/10 to-transparent pointer-events-none"></div>
         </div>
         <div className="relative z-10 max-w-4xl mt-16">
-          <h1 className="text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-6">
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-normal text-on-surface tracking-tight mb-6">
             Be the Face of <span className="text-primary italic">Top Brands.</span>
           </h1>
-          <p className="text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-10">
+          <p className="text-lg sm:text-xl text-on-surface-variant max-w-2xl mx-auto leading-relaxed mb-10">
             Looking for flexible, exciting work? Join PromoPower&apos;s elite roster and get paid to bring amazing campaigns to life.
           </p>
-          <a href="#apply">
-            <button className="glow-button px-10 py-5 rounded-full text-on-primary font-headline font-normal text-xl hover:scale-105 transition-transform flex items-center gap-3 mx-auto">
+          <a href="#apply" className="glow-button px-8 sm:px-10 py-4 sm:py-5 rounded-full text-on-primary font-headline font-normal text-lg sm:text-xl hover:scale-105 transition-transform inline-flex items-center gap-3">
               Start Your Application <span className="material-symbols-outlined">arrow_downward</span>
-            </button>
           </a>
         </div>
       </section>
 
       {/* The Timeline (3 Steps) */}
-      <section className="py-24 px-8 md:px-16 max-w-7xl mx-auto">
-        <div className="text-center mb-16">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 max-w-7xl mx-auto">
+        <div className="text-center mb-12 sm:mb-16">
           <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase block mb-4">The Process</span>
-          <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface">3 Steps to Your First Gig</h2>
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface">3 Steps to Your First Gig</h2>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 sm:gap-12 relative">
           {/* Connector Line (Desktop) */}
           <div className="hidden md:block absolute top-[40px] left-[16%] right-[16%] h-[2px] bg-gradient-to-r from-primary/10 via-primary/50 to-primary/10 z-0"></div>
           
@@ -86,8 +90,8 @@ export default function Jobseekers() {
       </section>
 
       {/* The Perks */}
-      <section className="py-24 px-8 md:px-16 bg-surface border-y border-white/5">
-         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 bg-surface border-y border-white/5">
+         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8">
             <div className="bg-surface-container rounded-2xl p-10 text-center border border-white/5 hover:border-primary/20 transition-colors">
               <span className="material-symbols-outlined text-5xl text-primary mb-6 block">diamond</span>
               <h3 className="text-xl font-headline font-normal text-on-surface mb-4">Top Brands</h3>
@@ -107,15 +111,15 @@ export default function Jobseekers() {
       </section>
 
       {/* Frictionless Application Form */}
-      <section id="apply" className="py-32 px-8 bg-charcoal-dark relative overflow-hidden">
+      <section id="apply" className="py-16 sm:py-32 px-6 sm:px-8 bg-charcoal-dark relative overflow-hidden">
         <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-[100px] pointer-events-none"></div>
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent-amber/10 rounded-full blur-[100px] pointer-events-none"></div>
         
-        <div className="max-w-3xl mx-auto bg-surface rounded-2xl p-10 md:p-16 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative z-10 min-h-[500px] flex flex-col justify-center">
+        <div className="max-w-3xl mx-auto bg-surface rounded-2xl p-6 sm:p-10 md:p-16 shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10 relative z-10 min-h-[500px] flex flex-col justify-center">
           
           {step < 4 && (
             <div className="mb-10 text-center">
-              <h2 className="text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6">Drop Your Details.</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6">Drop Your Details.</h2>
               <div className="flex justify-center gap-4 items-center">
                  <div className={`w-3 h-3 rounded-full ${step >= 1 ? 'bg-primary' : 'bg-white/20'} transition-all shadow-[0_0_10px_rgba(255,140,0,0.5)]`}></div>
                  <div className={`w-12 h-[2px] ${step >= 2 ? 'bg-primary' : 'bg-white/20'} transition-all`}></div>
@@ -126,26 +130,32 @@ export default function Jobseekers() {
             </div>
           )}
 
-          <form className="space-y-8">
+          {error && (
+            <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm text-center">
+              {error}
+            </div>
+          )}
+
+          <form ref={formRef} className="space-y-8">
             {/* STEP 1: Basic Info */}
             {step === 1 && (
               <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div className="space-y-3">
-                      <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Full Name</label>
-                      <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="Jane Doe" type="text" />
+                      <label htmlFor="js-fullname" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Full Name</label>
+                      <input id="js-fullname" name="fullName" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="Jane Doe" type="text" required />
                   </div>
                   <div className="space-y-3">
-                      <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Date of Birth</label>
-                      <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none" type="date" />
+                      <label htmlFor="js-dob" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Date of Birth</label>
+                      <input id="js-dob" name="dateOfBirth" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none" type="date" />
                   </div>
                   <div className="space-y-3">
-                      <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Age</label>
-                      <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="21" type="number" />
+                      <label htmlFor="js-age" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Age</label>
+                      <input id="js-age" name="age" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="21" type="number" min="16" max="99" />
                   </div>
                   <div className="space-y-3 relative">
-                      <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Gender</label>
-                      <select defaultValue="" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
+                      <label htmlFor="js-gender" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Gender</label>
+                      <select id="js-gender" name="gender" defaultValue="" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
                          <option value="" disabled>Select Gender</option>
                          <option value="male">Male</option>
                          <option value="female">Female</option>
@@ -153,17 +163,17 @@ export default function Jobseekers() {
                       <span className="material-symbols-outlined absolute right-6 bottom-4 text-white/50 pointer-events-none">expand_more</span>
                   </div>
                   <div className="space-y-3">
-                      <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Email Address</label>
-                      <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="jane@example.com" type="email" />
+                      <label htmlFor="js-email" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Email Address</label>
+                      <input id="js-email" name="email" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="jane@example.com" type="email" required />
                   </div>
                   <div className="space-y-3">
-                      <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Contact Number</label>
-                      <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="+65 9123 4567" type="tel" />
+                      <label htmlFor="js-phone" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Contact Number</label>
+                      <input id="js-phone" name="phone" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="+65 9123 4567" type="tel" required />
                   </div>
                 </div>
                 <div className="mb-8 space-y-3 relative">
-                   <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Highest Qualification Achieved</label>
-                   <select defaultValue="" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
+                   <label htmlFor="js-qualification" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Highest Qualification Achieved</label>
+                   <select id="js-qualification" name="qualification" defaultValue="" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
                       <option value="" disabled>Select Qualification</option>
                       <option value="o_level">O/N Level</option>
                       <option value="a_level">A Level</option>
@@ -184,12 +194,12 @@ export default function Jobseekers() {
             {step === 2 && (
               <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                 <div className="space-y-3 mb-8">
-                    <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Portfolio / Instagram Link</label>
-                    <input className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="https://instagram.com/janedoe" type="url" />
+                    <label htmlFor="js-portfolio" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Portfolio / Instagram Link</label>
+                    <input id="js-portfolio" name="portfolio" className="w-full bg-background border border-white/10 rounded-full px-8 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="https://instagram.com/janedoe" type="url" />
                 </div>
                 <div className="space-y-3">
-                    <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Tell us your strongest traits</label>
-                    <textarea className="w-full bg-background border border-white/10 rounded-2xl px-8 py-6 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="e.g. Bilingual, highly energetic, experience with luxury brands..." rows={4}></textarea>
+                    <label htmlFor="js-traits" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest">Tell us your strongest traits</label>
+                    <textarea id="js-traits" name="traits" className="w-full bg-background border border-white/10 rounded-2xl px-8 py-6 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/20" placeholder="e.g. Bilingual, highly energetic, experience with luxury brands..." rows={4}></textarea>
                 </div>
                 <div className="pt-10 flex justify-between items-center">
                   <button type="button" onClick={prevStep} className="text-on-surface-variant hover:text-white font-bold transition-colors inline-flex items-center gap-2">
@@ -206,12 +216,13 @@ export default function Jobseekers() {
             {step === 3 && (
               <div className="animate-in fade-in slide-in-from-right-4 duration-500">
                 <div className="space-y-3 pt-4">
-                   <label className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest text-center mb-6">Upload Comp Card / CV</label>
-                   <div className="w-full bg-background border-2 border-dashed border-white/10 hover:border-primary/50 rounded-2xl px-8 py-14 flex flex-col items-center justify-center transition-all cursor-pointer group">
+                   <label htmlFor="js-compcard" className="block text-sm font-bold text-on-surface-variant px-1 uppercase tracking-widest text-center mb-6">Upload Comp Card / CV</label>
+                   <label htmlFor="js-compcard" className="w-full bg-background border-2 border-dashed border-white/10 hover:border-primary/50 rounded-2xl px-8 py-14 flex flex-col items-center justify-center transition-all cursor-pointer group">
+                      <input id="js-compcard" name="compCard" type="file" accept=".pdf,.jpg,.jpeg,.png" className="sr-only" />
                       <span className="material-symbols-outlined text-5xl text-on-surface-variant mb-6 group-hover:text-primary transition-colors">cloud_upload</span>
                       <p className="text-on-surface font-bold text-lg text-center">Click to browse or drag and drop</p>
                       <p className="text-on-surface-variant text-sm mt-3">Max file size: 5MB (PDF, JPG, PNG)</p>
-                   </div>
+                   </label>
                 </div>
                 
                 {/* Legal Compliance & PDPA */}
