@@ -1,0 +1,7 @@
+# PromoPower Marketing Website — Cloudflare Worker
+# WARNING: This deploys to Mohmadnoorariffin@protonmail.com account ONLY
+# It cannot and must NOT touch the samthecatstudio account (PowerCoach app)
+name = "promopower-website"
+main = "src/index.ts"
+compatibility_date = "2025-01-01"
+account_id = "b8913fb4c5f8fe17d60ce0f824cdd1aa"
