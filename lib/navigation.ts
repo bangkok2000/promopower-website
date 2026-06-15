@@ -15,6 +15,27 @@ export const HOMEPAGE_SECTIONS = [
   { id: "contact", label: "Contact" },
 ] as const;
 
+export const HOMEPAGE_QUICK_PATHS = [
+  {
+    title: "Workforce Solutions",
+    description: "Brand ambassadors, promoters, event teams and campaign coordination.",
+    href: "#services",
+    icon: "groups",
+  },
+  {
+    title: "Why PromoPower",
+    description: "Experience, process and accountability built since 2002.",
+    href: "#why-us",
+    icon: "verified",
+  },
+  {
+    title: "Speak With Us",
+    description: "Discuss objectives, timelines and staffing requirements.",
+    href: "#contact",
+    icon: "forum",
+  },
+] as const;
+
 /** Shared hero / ambient imagery (copyright-safe stock-style operational photo). */
 export const HERO_IMAGE_URL =
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCngfDSiPUSTPlVZOWwrFiPBp6R3YgjYd8OA0plw1NMFkRvlY_K50b2c5KSwGBD54TQ-pAl0z9WQ1JXbbohFk1HTQy2CaZ3Q2aOeg6OCwBrWR_i_swTYK7in5W6ivD8lIfY7hQ-bBe2_MgU4DhMltFjmtlkEqKYupDM1qfnQpxE5MlZn7d-pVogaC4pKdZpTVKTdR1aBPfQ8exfqJdev_ANmpP6CnVMpWfo-IjY37rvX9rQ8IQ37LaLTHpH4iDrnYwuklFs4cps96Y";

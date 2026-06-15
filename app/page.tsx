@@ -6,9 +6,8 @@ import DualAudiencePanel from "@/components/DualAudiencePanel";
 import ExpandableProse from "@/components/ExpandableProse";
 import HomeHero from "@/components/HomeHero";
 import HomepageAnchorScroll from "@/components/HomepageAnchorScroll";
-import HomepageSectionNav from "@/components/HomepageSectionNav";
+import HomepageWayfinding from "@/components/HomepageWayfinding";
 import PromoPowerFramework from "@/components/PromoPowerFramework";
-import QuickPaths from "@/components/QuickPaths";
 import TrustCard from "@/components/TrustCard";
 
 export const metadata: Metadata = {
@@ -191,8 +190,7 @@ export default function Home() {
       <HomepageAnchorScroll />
       <HomeHero />
       <AwardsStrip />
-      <QuickPaths />
-      <HomepageSectionNav />
+      <HomepageWayfinding />
 
       <section id="trust" className="page-section scroll-mt-section">
         <div className="page-container grid lg:grid-cols-2 gap-12 items-start">
