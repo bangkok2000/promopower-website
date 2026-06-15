@@ -123,93 +123,94 @@ export default function NavBar() {
   return (
     <>
       <nav id="site-header" className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/5">
-        <div className="site-shell flex justify-between items-center gap-4 py-4 sm:py-5">
-        <Link href="/" onClick={handleLogoClick} className="relative h-12 w-48 sm:h-14 sm:w-60 md:h-16 md:w-72 shrink-0">
-          <Image
-            src="/logo-transparent.png"
-            alt="PromoPower Logo"
-            fill
-            sizes="(max-width: 640px) 12rem, (max-width: 768px) 15rem, 18rem"
-            className="object-contain object-left opacity-100 hover:opacity-80 transition-opacity drop-shadow-md"
-            priority
-          />
-        </Link>
-
-        <div className="hidden lg:flex gap-5 xl:gap-6 items-center">
-          {NAV_ITEMS.map((item) =>
-            item.label === "Services" ? (
-              <div key={item.label} className="relative inline-flex items-center gap-0.5" ref={servicesRef}>
-                <Link href={item.href} className={getLinkClass(item.href)}>
-                  Services
-                </Link>
-                <button
-                  type="button"
-                  className="inline-flex items-center text-on-surface-variant hover:text-primary transition-colors p-1 -ml-1"
-                  aria-expanded={servicesOpen}
-                  aria-haspopup="true"
-                  aria-label="Show services menu"
-                  onClick={() => setServicesOpen((open) => !open)}
-                >
-                  <span className="material-symbols-outlined text-base">{servicesOpen ? "expand_less" : "expand_more"}</span>
-                </button>
-                {servicesOpen ? (
-                  <div className="absolute left-0 top-full mt-3 w-72 rounded-2xl border border-white/10 bg-surface shadow-2xl py-2 z-50">
-                    {SERVICE_LINKS.map((service) => (
-                      <Link
-                        key={service.href}
-                        href={service.href}
-                        className="block px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-white/5 transition-colors"
-                        onClick={() => setServicesOpen(false)}
-                      >
-                        {service.label}
-                      </Link>
-                    ))}
-                    <div className="border-t border-white/10 mt-2 pt-2 px-2">
-                      <Link
-                        href="/services"
-                        className="block rounded-xl px-3 py-2.5 text-sm font-bold text-primary hover:bg-primary/10 transition-colors"
-                        onClick={() => setServicesOpen(false)}
-                      >
-                        View all services
-                      </Link>
-                    </div>
-                  </div>
-                ) : null}
-              </div>
-            ) : (
-              <Link key={item.label} className={getLinkClass(item.href)} href={item.href}>
-                {item.label}
+        <div className="page-container px-[var(--site-gutter)] py-4 sm:py-5">
+          <div className="grid items-center gap-4 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
+            <div className="flex items-center justify-between lg:contents">
+              <Link href="/" onClick={handleLogoClick} className="relative h-12 w-48 sm:h-14 sm:w-60 md:h-16 md:w-72 shrink-0 lg:col-span-4 xl:col-span-3">
+                <Image
+                  src="/logo-transparent.png"
+                  alt="PromoPower Logo"
+                  fill
+                  sizes="(max-width: 640px) 12rem, (max-width: 768px) 15rem, 18rem"
+                  className="object-contain object-left opacity-100 hover:opacity-80 transition-opacity drop-shadow-md"
+                  priority
+                />
               </Link>
-            )
-          )}
-          <Link
-            className={getLinkClass("/jobseekers")}
-            href="/jobseekers"
-          >
-            Jobseekers
-          </Link>
-        </div>
 
-        <div className="hidden lg:block shrink-0">
-          <Link
-            href="/contact-us"
-            className="glow-button text-on-primary px-8 py-3 rounded-full font-headline font-extrabold text-sm hover:scale-105 active:scale-95 transition-all"
-          >
-            Contact Us
-          </Link>
-        </div>
+              <button
+                ref={menuButtonRef}
+                type="button"
+                className="lg:hidden text-white hover:text-primary transition-colors"
+                onClick={toggleMenu}
+                aria-expanded={isMenuOpen}
+                aria-controls="mobile-navigation"
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+              >
+                <span className="material-symbols-outlined text-3xl">{isMenuOpen ? "close" : "menu"}</span>
+              </button>
+            </div>
 
-        <button
-          ref={menuButtonRef}
-          type="button"
-          className="lg:hidden text-white hover:text-primary transition-colors"
-          onClick={toggleMenu}
-          aria-expanded={isMenuOpen}
-          aria-controls="mobile-navigation"
-          aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-        >
-          <span className="material-symbols-outlined text-3xl">{isMenuOpen ? "close" : "menu"}</span>
-        </button>
+            <div className="hidden lg:flex lg:col-span-8 xl:col-span-9 items-center justify-between gap-4 min-w-0">
+              <div className="flex gap-5 xl:gap-6 items-center min-w-0">
+                {NAV_ITEMS.map((item) =>
+                  item.label === "Services" ? (
+                    <div key={item.label} className="relative inline-flex items-center gap-0.5" ref={servicesRef}>
+                      <Link href={item.href} className={getLinkClass(item.href)}>
+                        Services
+                      </Link>
+                      <button
+                        type="button"
+                        className="inline-flex items-center text-on-surface-variant hover:text-primary transition-colors p-1 -ml-1"
+                        aria-expanded={servicesOpen}
+                        aria-haspopup="true"
+                        aria-label="Show services menu"
+                        onClick={() => setServicesOpen((open) => !open)}
+                      >
+                        <span className="material-symbols-outlined text-base">{servicesOpen ? "expand_less" : "expand_more"}</span>
+                      </button>
+                      {servicesOpen ? (
+                        <div className="absolute left-0 top-full mt-3 w-72 rounded-2xl border border-white/10 bg-surface shadow-2xl py-2 z-50">
+                          {SERVICE_LINKS.map((service) => (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              className="block px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-white/5 transition-colors"
+                              onClick={() => setServicesOpen(false)}
+                            >
+                              {service.label}
+                            </Link>
+                          ))}
+                          <div className="border-t border-white/10 mt-2 pt-2 px-2">
+                            <Link
+                              href="/services"
+                              className="block rounded-xl px-3 py-2.5 text-sm font-bold text-primary hover:bg-primary/10 transition-colors"
+                              onClick={() => setServicesOpen(false)}
+                            >
+                              View all services
+                            </Link>
+                          </div>
+                        </div>
+                      ) : null}
+                    </div>
+                  ) : (
+                    <Link key={item.label} className={getLinkClass(item.href)} href={item.href}>
+                      {item.label}
+                    </Link>
+                  )
+                )}
+                <Link className={getLinkClass("/jobseekers")} href="/jobseekers">
+                  Jobseekers
+                </Link>
+              </div>
+
+              <Link
+                href="/contact-us"
+                className="glow-button text-on-primary px-8 py-3 rounded-full font-headline font-extrabold text-sm hover:scale-105 active:scale-95 transition-all shrink-0"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
         </div>
       </nav>
 

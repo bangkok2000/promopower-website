@@ -30,7 +30,7 @@ export default function HomepageExplore({ children }: HomepageExploreProps) {
 
   return (
     <section id="wayfinding" className="homepage-explore page-section" aria-label="Explore PromoPower">
-      <div className="site-shell">
+      <div className="page-container">
         <div className="homepage-quick-paths">
           {HOMEPAGE_QUICK_PATHS.map((path) => {
             const isActive = activeId === path.sectionId;
@@ -58,14 +58,16 @@ export default function HomepageExplore({ children }: HomepageExploreProps) {
           })}
         </div>
 
-        <div
-          id="homepage-section-nav"
-          data-visible="true"
-          role="tablist"
-          aria-label="Homepage sections"
-          className="homepage-tab-bar"
-        >
-          <div className="homepage-tab-list">
+        <div className="px-[var(--site-gutter)]">
+          <div
+            id="homepage-section-nav"
+            data-visible="true"
+            role="tablist"
+            aria-label="Homepage sections"
+            className="homepage-tab-bar lg:grid lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14"
+          >
+            <div className="hidden lg:block lg:col-span-4 xl:col-span-3" aria-hidden="true" />
+            <div className="homepage-tab-list lg:col-span-8 xl:col-span-9">
             {HOMEPAGE_SECTIONS.map((section) => {
               const isActive = activeId === section.id;
               return (
@@ -83,6 +85,7 @@ export default function HomepageExplore({ children }: HomepageExploreProps) {
                 </button>
               );
             })}
+            </div>
           </div>
         </div>
 
