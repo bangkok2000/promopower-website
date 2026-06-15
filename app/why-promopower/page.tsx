@@ -1,6 +1,8 @@
-import type { Metadata } from "next";
+import ContentList from "@/components/ContentList";
 import CTASection from "@/components/CTASection";
+import PageContentRail from "@/components/PageContentRail";
 import PageHero from "@/components/PageHero";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Why PromoPower | PromoPower",
@@ -58,33 +60,27 @@ export default function WhyPromoPowerPage() {
       />
 
       <section className="page-section">
-        <div className="page-container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {reasons.map((reason) => (
-            <article key={reason.title} className="content-card h-full">
-              <div className="icon-badge">
-                <span className="material-symbols-outlined">{reason.icon}</span>
-              </div>
-              <h2 className="text-2xl font-headline font-normal text-on-surface mb-3">{reason.title}</h2>
-              <p className="text-on-surface-variant leading-relaxed">{reason.description}</p>
-            </article>
-          ))}
-        </div>
+        <PageContentRail>
+          <ContentList items={reasons} ariaLabel="Why organisations choose PromoPower" />
+        </PageContentRail>
       </section>
 
       <section className="page-section section-muted">
-        <div className="page-container-narrow text-center prose-block">
-          <h2 className="section-title">A Practical Partner For Campaign Execution</h2>
-          <p>
-            We understand that each deployment represents your brand in front of real customers. This is why
-            our support model combines suitable personnel, clear preparation and dependable coordination.
-          </p>
-          <p>
-            Our objective is to help your team execute with confidence while reducing operational uncertainty.
-          </p>
-          <p className="text-sm">
-            PromoPower Pte Ltd is a MOM licensed employment agency. EA License No: 20C0109.
-          </p>
-        </div>
+        <PageContentRail>
+          <div className="prose-block max-w-3xl">
+            <h2 className="section-title">A Practical Partner For Campaign Execution</h2>
+            <p>
+              We understand that each deployment represents your brand in front of real customers. This is why
+              our support model combines suitable personnel, clear preparation and dependable coordination.
+            </p>
+            <p>
+              Our objective is to help your team execute with confidence while reducing operational uncertainty.
+            </p>
+            <p className="text-sm">
+              PromoPower Pte Ltd is a MOM licensed employment agency. EA License No: 20C0109.
+            </p>
+          </div>
+        </PageContentRail>
       </section>
 
       <CTASection
