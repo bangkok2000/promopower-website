@@ -1,8 +1,10 @@
 import Link from "next/link";
+import ExpandableProse from "@/components/ExpandableProse";
 
 interface CTASectionProps {
   heading: string;
-  body: string;
+  body?: string;
+  bodyParagraphs?: string[];
   primaryLabel?: string;
   primaryHref?: string;
   secondaryLabel?: string;
@@ -12,6 +14,7 @@ interface CTASectionProps {
 export default function CTASection({
   heading,
   body,
+  bodyParagraphs,
   primaryLabel = "Speak With Our Team",
   primaryHref = "/contact-us",
   secondaryLabel,
@@ -21,7 +24,11 @@ export default function CTASection({
     <section className="page-section section-muted">
       <div className="page-container-narrow text-center">
         <h2 className="section-title">{heading}</h2>
-        <p className="page-intro mx-auto mb-10">{body}</p>
+        {bodyParagraphs ? (
+          <ExpandableProse paragraphs={bodyParagraphs} visibleCount={1} expandLabel="Read full message" className="mx-auto mb-10 text-left sm:text-center" />
+        ) : (
+          <p className="page-intro mx-auto mb-10">{body}</p>
+        )}
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link

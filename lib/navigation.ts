@@ -9,11 +9,9 @@ export const SERVICE_LINKS = [
 
 export const HOMEPAGE_SECTIONS = [
   { id: "trust", label: "Trust" },
-  { id: "approach", label: "Our Approach" },
   { id: "framework", label: "Process" },
   { id: "services", label: "Services" },
   { id: "industries", label: "Industries" },
-  { id: "experience", label: "Experience" },
   { id: "contact", label: "Contact" },
 ] as const;
 

@@ -214,6 +214,60 @@
     }
   }
 
+  .prose-details-summary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    cursor: pointer;
+    list-style: none;
+    font-size: 0.9375rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    transition: gap 0.2s ease;
+  }
+
+  .prose-details-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .prose-details-summary::after {
+    content: "expand_more";
+    font-family: "Material Symbols Outlined", sans-serif;
+    font-size: 1.125rem;
+    font-weight: normal;
+    transition: transform 0.2s ease;
+  }
+
+  .prose-details[open] .prose-details-summary::after {
+    content: "expand_less";
+  }
+
+  .prose-details-summary:hover {
+    gap: 0.5rem;
+  }
+
+  .quick-path-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    border-radius: 1rem;
+    border: 1px solid rgb(255 255 255 / 0.1);
+    background-color: rgb(30 30 30 / 0.85);
+    padding: 1.5rem;
+    backdrop-filter: blur(12px);
+    transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .quick-path-card:hover {
+    border-color: rgb(255 140 0 / 0.35);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.35);
+  }
+
+  .section-snap {
+    scroll-margin-top: 8rem;
+  }
+
   .icon-badge {
     display: flex;
     align-items: center;

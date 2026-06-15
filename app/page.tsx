@@ -3,11 +3,12 @@ import type { Metadata } from "next";
 import AwardsStrip from "@/components/AwardsStrip";
 import CTASection from "@/components/CTASection";
 import DualAudiencePanel from "@/components/DualAudiencePanel";
+import ExpandableProse from "@/components/ExpandableProse";
+import HomeHero from "@/components/HomeHero";
 import HomepageSectionNav from "@/components/HomepageSectionNav";
-import IndustryCard from "@/components/IndustryCard";
 import PromoPowerFramework from "@/components/PromoPowerFramework";
+import QuickPaths from "@/components/QuickPaths";
 import TrustCard from "@/components/TrustCard";
-import { HERO_IMAGE_URL } from "@/lib/navigation";
 
 export const metadata: Metadata = {
   title: "PromoPower Singapore | Professional Staffing Solutions Since 2002",
@@ -70,58 +71,63 @@ const trustIndicators = [
   },
 ];
 
+const trustParagraphs = [
+  "Successful campaigns depend on far more than creative ideas.",
+  "No matter how strong the strategy, customers ultimately interact with the people representing the brand. Those interactions influence perceptions, shape experiences and often determine how a campaign is remembered.",
+  "Since 2002, PromoPower has partnered with organisations across Singapore to provide professional staffing solutions for promotions, retail activations, product launches, roadshows, exhibitions and customer engagement initiatives.",
+  "Over the years, we have learned that successful execution depends on preparation, professionalism and reliability. This understanding continues to guide the way we recruit, prepare, deploy and support our people today.",
+  "Our clients value us not only for the quality of our personnel, but also for the responsiveness of our team, the consistency of our processes and our commitment to helping campaigns run smoothly from start to finish.",
+];
+
+const approachParagraphs = [
+  "At PromoPower, we believe that every customer interaction matters.",
+  "Whether a customer is encountering a product for the first time, attending an event, visiting a retail environment or engaging with a brand ambassador, those moments contribute to how a brand is perceived.",
+  "That is why our role extends beyond supplying manpower.",
+  "We work closely with clients to understand campaign objectives, customer profiles and operational requirements before identifying personnel who are suitable for the task. By taking the time to understand what success looks like for each campaign, we are able to recommend workforce solutions that support both business goals and customer expectations.",
+  "Our involvement continues throughout the campaign. From deployment planning and scheduling to ongoing support and coordination, our team remains focused on helping clients execute with confidence.",
+  "For more than twenty years, this approach has enabled us to build long-term relationships with organisations that value professionalism, reliability and accountability.",
+];
+
 const serviceHighlights = [
   {
     title: "Brand Ambassadors",
-    descriptionOne:
+    summary:
       "Brand ambassadors play an important role in shaping customer perceptions and creating memorable interactions.",
-    descriptionTwo:
-      "Our ambassadors are selected based on their communication skills, professionalism and ability to represent brands confidently in customer-facing environments. Whether supporting experiential campaigns, product launches or promotional activities, they help create meaningful connections between brands and customers.",
     href: "/services/brand-ambassadors",
     icon: "person_celebrate",
   },
   {
     title: "Product Promoters",
-    descriptionOne:
+    summary:
       "Consumers increasingly expect informed and engaging interactions before making purchasing decisions.",
-    descriptionTwo:
-      "Our product promoters are trained to communicate key product benefits clearly, answer customer questions confidently and support customer decision-making through positive engagement. By combining product knowledge with strong interpersonal skills, they help brands create meaningful customer experiences.",
     href: "/services/product-promoters",
     icon: "campaign",
   },
   {
     title: "Event Personnel",
-    descriptionOne:
+    summary:
       "Events often involve numerous moving parts and operational requirements.",
-    descriptionTwo:
-      "From registration and guest management to customer assistance and event support, our personnel help ensure smooth and professional event execution. We provide dependable staffing solutions for exhibitions, conferences, corporate functions, launches and public events.",
     href: "/services/event-personnel",
     icon: "event_available",
   },
   {
     title: "Retail Activation Teams",
-    descriptionOne:
+    summary:
       "Retail environments provide valuable opportunities to engage customers at the point of decision.",
-    descriptionTwo:
-      "Our activation teams support in-store promotions, product demonstrations and customer engagement activities designed to increase visibility, encourage product discovery and support campaign objectives.",
     href: "/services/retail-activation-teams",
     icon: "storefront",
   },
   {
     title: "Roadshows & Consumer Engagement",
-    descriptionOne:
+    summary:
       "Roadshows offer brands valuable opportunities to interact directly with consumers.",
-    descriptionTwo:
-      "Our teams help organisations create positive experiences through professional customer engagement, strong operational support and consistent brand representation.",
     href: "/services/roadshows-consumer-engagement",
     icon: "route",
   },
   {
     title: "Campaign Support & Coordination",
-    descriptionOne:
+    summary:
       "Successful campaigns require effective coordination behind the scenes.",
-    descriptionTwo:
-      "Beyond staffing solutions, PromoPower provides operational support that helps campaigns remain organised and well-managed throughout their duration. This includes deployment planning, scheduling support, attendance monitoring and ongoing coordination.",
     href: "/services/campaign-support-coordination",
     icon: "monitoring",
   },
@@ -140,14 +146,24 @@ const industryNames = [
   "Corporate Events & Exhibitions",
 ];
 
-const experienceIndicators = [
-  "Established Since 2002",
-  "More Than 20 Years Of Workforce Experience",
-  "Multi-Industry Campaign Support",
-  "Professional Recruitment & Screening",
-  "Structured Preparation & Briefing",
-  "End-To-End Workforce Solutions",
-  "Responsive Operational Coordination",
+const proofParagraphs = [
+  "Over the years, PromoPower has supported organisations across a wide range of industries, campaign types and customer engagement environments.",
+  "From retail promotions and product launches to exhibitions, roadshows and customer engagement programmes, our focus has always been on helping clients execute professionally through quality people and reliable operational support.",
+  "The relationships we have built over the years reflect our commitment to professionalism, responsiveness and service excellence.",
+  "To respect client confidentiality, intellectual property rights and brand ownership, client names and logos are only featured where appropriate permissions have been obtained.",
+];
+
+const whyParagraphs = [
+  "Choosing a staffing partner is about more than filling positions.",
+  "Organisations need confidence that their partner understands the importance of reliability, professionalism and accountability.",
+  "For more than two decades, PromoPower has earned that confidence by focusing on the fundamentals that matter most: quality people, structured processes, responsive support and professional execution.",
+  "We understand that every deployment represents an extension of our client's brand. This understanding influences every aspect of our work, from recruitment and preparation to deployment and ongoing support.",
+  "While campaigns may vary in size and complexity, our commitment remains the same: helping clients execute with confidence while delivering positive experiences for their customers.",
+  "Successful customer-facing campaigns require more than manpower.",
+  "They require experience, preparation, operational discipline and the ability to adapt to different customer environments.",
+  "For more than two decades, PromoPower has helped organisations execute professionally through structured workforce solutions and dependable support.",
+  "While every campaign is unique, our commitment remains consistent: helping clients execute professionally through quality people and reliable operational support.",
+  "Specific campaign volumes, deployment figures and project statistics are not published in order to respect client confidentiality requirements.",
 ];
 
 const differentiators = [
@@ -161,77 +177,26 @@ const differentiators = [
   "Long-Term Partnership Mindset",
 ];
 
+const ctaParagraphs = [
+  "Every campaign presents its own opportunities and challenges.",
+  "Whether you are planning a product launch, organising a roadshow, supporting a retail promotion or preparing for a large-scale activation, having the right people in place can make a significant difference to the outcome.",
+  "At PromoPower, we take the time to understand your objectives, operational requirements and desired outcomes before recommending a solution tailored to your needs.",
+  "If you are looking for an experienced partner that can provide professional staffing solutions supported by proven operational processes, we would welcome the opportunity to discuss how we can help.",
+];
+
 export default function Home() {
   return (
     <>
-      <section id="top" className="page-hero relative overflow-hidden min-h-[85vh] flex items-center scroll-mt-nav">
-        <div className="absolute inset-0 z-0" aria-hidden="true">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={HERO_IMAGE_URL} alt="" className="hero-photo w-full h-full" />
-          <div className="absolute inset-0 hero-overlay" />
-          <div className="absolute inset-0 midnight-gradient opacity-40" />
-        </div>
-        <div className="hero-glow hero-glow-primary -top-24 -left-20 z-[1]" aria-hidden="true" />
-        <div className="hero-glow hero-glow-accent -bottom-16 right-0 z-[1]" aria-hidden="true" />
-
-        <div className="relative z-10 page-section max-w-5xl mx-auto w-full pb-8">
-          <span className="section-label">PromoPower Singapore</span>
-          <h1 className="page-title">
-            Building Successful Brand Experiences Through Exceptional People
-          </h1>
-          <div className="prose-block max-w-4xl mb-12">
-            <p>
-              For more than two decades, PromoPower has helped organisations connect with customers through professional promoters, brand ambassadors, event personnel and retail support teams.
-            </p>
-            <p>
-              Behind every successful campaign is a team of people responsible for representing the brand, engaging customers and delivering positive customer experiences. Finding, preparing and managing those people requires more than simply filling positions. It requires experience, planning, operational discipline and a deep understanding of what it takes to execute successfully in real-world environments.
-            </p>
-            <p>
-              PromoPower provides end-to-end workforce solutions that cover recruitment, screening, preparation, deployment and ongoing campaign support. Whether supporting a single activation or coordinating multiple locations across Singapore, our team helps organisations execute confidently while maintaining the standards their brands deserve.
-            </p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start">
-            <Link
-              href="#contact"
-              className="glow-button text-on-primary px-9 sm:px-11 py-4 sm:py-5 rounded-full font-headline font-normal text-base sm:text-lg hover:scale-105 active:scale-95 transition-all text-center"
-            >
-              Get In Touch
-            </Link>
-            <Link href="#services" className="btn-secondary px-9 sm:px-11 py-4 sm:py-5 text-base sm:text-lg">
-              Explore Our Services
-            </Link>
-          </div>
-
-          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-            <div className="trust-chip">20+ Years Experience</div>
-            <div className="trust-chip">MOM Licensed Employment Agency</div>
-            <div className="trust-chip">Professional Staffing Solutions</div>
-          </div>
-        </div>
-      </section>
-
+      <HomeHero />
       <AwardsStrip />
+      <QuickPaths />
       <HomepageSectionNav />
 
       <section id="trust" className="page-section scroll-mt-nav">
         <div className="page-container grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="section-title">Trusted Workforce Solutions Since 2002</h2>
-            <div className="prose-block">
-              <p>Successful campaigns depend on far more than creative ideas.</p>
-              <p>
-                No matter how strong the strategy, customers ultimately interact with the people representing the brand. Those interactions influence perceptions, shape experiences and often determine how a campaign is remembered.
-              </p>
-              <p>
-                Since 2002, PromoPower has partnered with organisations across Singapore to provide professional staffing solutions for promotions, retail activations, product launches, roadshows, exhibitions and customer engagement initiatives.
-              </p>
-              <p>
-                Over the years, we have learned that successful execution depends on preparation, professionalism and reliability. This understanding continues to guide the way we recruit, prepare, deploy and support our people today.
-              </p>
-              <p>
-                Our clients value us not only for the quality of our personnel, but also for the responsiveness of our team, the consistency of our processes and our commitment to helping campaigns run smoothly from start to finish.
-              </p>
-            </div>
+            <ExpandableProse paragraphs={trustParagraphs} visibleCount={2} expandLabel="Read more about our experience" />
             <Link href="/about-us" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-8">
               Read our full story
               <span className="material-symbols-outlined text-base">arrow_forward</span>
@@ -251,25 +216,13 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="approach" className="page-section section-muted scroll-mt-nav">
-        <div className="page-container-narrow text-center">
-          <h2 className="section-title">More Than Staffing. A Partner In Execution.</h2>
-          <div className="prose-block text-left sm:text-center">
-            <p>At PromoPower, we believe that every customer interaction matters.</p>
-            <p>
-              Whether a customer is encountering a product for the first time, attending an event, visiting a retail environment or engaging with a brand ambassador, those moments contribute to how a brand is perceived.
-            </p>
-            <p>That is why our role extends beyond supplying manpower.</p>
-            <p>
-              We work closely with clients to understand campaign objectives, customer profiles and operational requirements before identifying personnel who are suitable for the task. By taking the time to understand what success looks like for each campaign, we are able to recommend workforce solutions that support both business goals and customer expectations.
-            </p>
-            <p>
-              Our involvement continues throughout the campaign. From deployment planning and scheduling to ongoing support and coordination, our team remains focused on helping clients execute with confidence.
-            </p>
-            <p>
-              For more than twenty years, this approach has enabled us to build long-term relationships with organisations that value professionalism, reliability and accountability.
-            </p>
+      <section id="approach" className="page-section section-muted">
+        <div className="page-container grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-10 lg:gap-16 items-start">
+          <div>
+            <h2 className="section-title">More Than Staffing. A Partner In Execution.</h2>
+            <p className="page-intro">{approachParagraphs[0]}</p>
           </div>
+          <ExpandableProse paragraphs={approachParagraphs.slice(1)} visibleCount={1} expandLabel="How we partner with clients" />
         </div>
       </section>
 
@@ -313,16 +266,11 @@ export default function Home() {
 
       <section id="services" className="page-section scroll-mt-nav">
         <div className="page-container">
-          <div className="page-container-prose text-center mb-14 sm:mb-16">
+          <div className="max-w-3xl mb-12">
             <h2 className="section-title">Workforce Solutions Designed Around Your Objectives</h2>
-            <div className="prose-block">
-              <p>
-                Every campaign presents different objectives, customer expectations and operational requirements.
-              </p>
-              <p>
-                PromoPower provides flexible workforce solutions that help organisations engage customers effectively while maintaining a high standard of professionalism and execution.
-              </p>
-            </div>
+            <p className="page-intro">
+              Every campaign presents different objectives, customer expectations and operational requirements. PromoPower provides flexible workforce solutions that help organisations engage customers effectively while maintaining a high standard of professionalism and execution.
+            </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -331,9 +279,8 @@ export default function Home() {
                 <div className="icon-badge">
                   <span className="material-symbols-outlined">{service.icon}</span>
                 </div>
-                <h3 className="text-2xl font-headline font-normal text-on-surface mb-4">{service.title}</h3>
-                <p className="text-on-surface-variant leading-relaxed mb-4">{service.descriptionOne}</p>
-                <p className="text-on-surface-variant leading-relaxed mb-6 flex-1">{service.descriptionTwo}</p>
+                <h3 className="text-2xl font-headline font-normal text-on-surface mb-3">{service.title}</h3>
+                <p className="text-on-surface-variant leading-relaxed mb-6 flex-1">{service.summary}</p>
                 <Link
                   href={service.href}
                   className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-auto"
@@ -356,116 +303,56 @@ export default function Home() {
 
       <section id="industries" className="page-section section-muted scroll-mt-nav">
         <div className="page-container">
-          <div className="page-container-prose mb-12">
+          <div className="max-w-3xl mb-10">
             <h2 className="section-title">Supporting Organisations Across Diverse Industries</h2>
-            <div className="prose-block">
-              <p>
-                Different industries present different customer expectations, operational environments and engagement requirements.
-              </p>
-              <p>
-                Over the years, PromoPower has supported organisations across a wide range of sectors, allowing us to develop a practical understanding of how staffing requirements vary across different environments.
-              </p>
-              <p>
-                Our experience enables us to recommend workforce solutions that align with the specific needs of each campaign while maintaining professionalism and consistency throughout execution.
-              </p>
-            </div>
+            <ExpandableProse
+              paragraphs={[
+                "Different industries present different customer expectations, operational environments and engagement requirements.",
+                "Over the years, PromoPower has supported organisations across a wide range of sectors, allowing us to develop a practical understanding of how staffing requirements vary across different environments.",
+                "Our experience enables us to recommend workforce solutions that align with the specific needs of each campaign while maintaining professionalism and consistency throughout execution.",
+              ]}
+              visibleCount={1}
+              expandLabel="How industry experience shapes our recommendations"
+            />
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div className="flex flex-wrap gap-3 mb-10">
             {industryNames.map((industry) => (
-              <IndustryCard
-                key={industry}
-                name={industry}
-                description="Different industries present different customer expectations, operational environments and engagement requirements."
-                icon="business_center"
-              />
+              <span key={industry} className="pillar-chip">
+                {industry}
+              </span>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Link href="/industries" className="btn-secondary">
-              Explore industries we support
+          <Link href="/industries" className="btn-secondary">
+            Explore industries we support
+            <span className="material-symbols-outlined text-base">arrow_forward</span>
+          </Link>
+        </div>
+      </section>
+
+      <section className="page-section section-elevated">
+        <div className="page-container-narrow">
+          <h2 className="section-title text-center">Supporting Organisations Across Singapore</h2>
+          <div className="text-center mb-8">
+            <p className="text-on-surface font-headline text-xl sm:text-2xl">Our focus is not on who we have worked for.</p>
+            <p className="text-primary font-headline text-xl sm:text-2xl mt-2">Our focus is on how we can help you succeed.</p>
+          </div>
+          <ExpandableProse paragraphs={proofParagraphs} visibleCount={0} expandLabel="Our approach to client confidentiality" className="max-w-3xl mx-auto" />
+          <div className="text-center mt-10">
+            <Link href="/our-work" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
+              View our work approach
               <span className="material-symbols-outlined text-base">arrow_forward</span>
             </Link>
           </div>
         </div>
       </section>
 
-      <section className="page-section section-elevated">
-        <div className="page-container-narrow text-center">
-          <h2 className="section-title">Supporting Organisations Across Singapore</h2>
-          <div className="prose-block">
-            <p>
-              Over the years, PromoPower has supported organisations across a wide range of industries, campaign types and customer engagement environments.
-            </p>
-            <p>
-              From retail promotions and product launches to exhibitions, roadshows and customer engagement programmes, our focus has always been on helping clients execute professionally through quality people and reliable operational support.
-            </p>
-            <p>
-              The relationships we have built over the years reflect our commitment to professionalism, responsiveness and service excellence.
-            </p>
-            <p>
-              To respect client confidentiality, intellectual property rights and brand ownership, client names and logos are only featured where appropriate permissions have been obtained.
-            </p>
-            <p className="text-on-surface font-headline text-xl sm:text-2xl pt-4">Our focus is not on who we have worked for.</p>
-            <p className="text-primary font-headline text-xl sm:text-2xl">Our focus is on how we can help you succeed.</p>
-          </div>
-          <Link href="/our-work" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-10">
-            View our work approach
-            <span className="material-symbols-outlined text-base">arrow_forward</span>
-          </Link>
-        </div>
-      </section>
-
-      <section id="experience" className="page-section section-muted scroll-mt-nav">
-        <div className="page-container">
-          <h2 className="section-title text-center">Built On Experience</h2>
-          <div className="page-container-prose prose-block text-center mb-10">
-            <p>Successful customer-facing campaigns require more than manpower.</p>
-            <p>
-              They require experience, preparation, operational discipline and the ability to adapt to different customer environments.
-            </p>
-            <p>
-              For more than two decades, PromoPower has helped organisations execute professionally through structured workforce solutions and dependable support.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
-            {experienceIndicators.map((item) => (
-              <div key={item} className="pillar-chip text-center">
-                {item}
-              </div>
-            ))}
-          </div>
-
-          <div className="page-container-prose prose-block text-center">
-            <p>
-              While every campaign is unique, our commitment remains consistent: helping clients execute professionally through quality people and reliable operational support.
-            </p>
-            <p className="text-sm">
-              Specific campaign volumes, deployment figures and project statistics are not published in order to respect client confidentiality requirements.
-            </p>
-          </div>
-        </div>
-      </section>
-
       <section id="why-us" className="page-section scroll-mt-nav">
-        <div className="page-container-narrow text-center">
-          <h2 className="section-title">Why Organisations Continue To Work With PromoPower</h2>
-          <div className="prose-block mb-10">
-            <p>Choosing a staffing partner is about more than filling positions.</p>
-            <p>
-              Organisations need confidence that their partner understands the importance of reliability, professionalism and accountability.
-            </p>
-            <p>
-              For more than two decades, PromoPower has earned that confidence by focusing on the fundamentals that matter most: quality people, structured processes, responsive support and professional execution.
-            </p>
-            <p>
-              We understand that every deployment represents an extension of our client&apos;s brand. This understanding influences every aspect of our work, from recruitment and preparation to deployment and ongoing support.
-            </p>
-            <p>
-              While campaigns may vary in size and complexity, our commitment remains the same: helping clients execute with confidence while delivering positive experiences for their customers.
-            </p>
+        <div className="page-container">
+          <div className="max-w-3xl mx-auto text-center mb-10">
+            <h2 className="section-title">Why Organisations Continue To Work With PromoPower</h2>
+            <p className="page-intro">{whyParagraphs[0]}</p>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
@@ -476,10 +363,14 @@ export default function Home() {
             ))}
           </div>
 
-          <Link href="/why-promopower" className="btn-secondary">
-            Why PromoPower
-            <span className="material-symbols-outlined text-base">arrow_forward</span>
-          </Link>
+          <ExpandableProse paragraphs={whyParagraphs.slice(1)} visibleCount={0} expandLabel="Read more about our approach" className="max-w-3xl mx-auto" />
+
+          <div className="text-center mt-10">
+            <Link href="/why-promopower" className="btn-secondary">
+              Why PromoPower
+              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            </Link>
+          </div>
         </div>
       </section>
 
@@ -487,7 +378,7 @@ export default function Home() {
 
       <CTASection
         heading="Let's Start A Conversation"
-        body="Every campaign presents its own opportunities and challenges. Whether you are planning a product launch, organising a roadshow, supporting a retail promotion or preparing for a large-scale activation, having the right people in place can make a significant difference to the outcome. At PromoPower, we take the time to understand your objectives, operational requirements and desired outcomes before recommending a solution tailored to your needs. If you are looking for an experienced partner that can provide professional staffing solutions supported by proven operational processes, we would welcome the opportunity to discuss how we can help."
+        bodyParagraphs={ctaParagraphs}
         primaryLabel="Speak With Our Team"
         primaryHref="/contact-us"
       />

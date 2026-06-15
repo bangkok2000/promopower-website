@@ -16,7 +16,7 @@ const NAV_ITEMS: NavItem[] = [
   { label: "About Us", href: "/about-us", homeSection: "trust" },
   { label: "Services", href: "/services", homeSection: "services" },
   { label: "Industries", href: "/industries", homeSection: "industries" },
-  { label: "Why PromoPower", href: "/why-promopower", homeSection: "experience" },
+  { label: "Why PromoPower", href: "/why-promopower", homeSection: "why-us" },
   { label: "Our Work", href: "/our-work" },
   { label: "FAQ", href: "/faq" },
 ];

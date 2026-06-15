@@ -5,6 +5,20 @@ import { HOMEPAGE_SECTIONS } from "@/lib/navigation";
 
 export default function HomepageSectionNav() {
   const [activeId, setActiveId] = useState<string>(HOMEPAGE_SECTIONS[0].id);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const hero = document.getElementById("top");
+    if (!hero) return;
+
+    const heroObserver = new IntersectionObserver(
+      ([entry]) => setIsVisible(!entry.isIntersecting),
+      { threshold: 0, rootMargin: "-72px 0px 0px 0px" }
+    );
+
+    heroObserver.observe(hero);
+    return () => heroObserver.disconnect();
+  }, []);
 
   useEffect(() => {
     const sections = HOMEPAGE_SECTIONS.map((section) => document.getElementById(section.id)).filter(
@@ -23,7 +37,7 @@ export default function HomepageSectionNav() {
           setActiveId(visible[0].target.id);
         }
       },
-      { rootMargin: "-40% 0px -45% 0px", threshold: [0, 0.25, 0.5] }
+      { rootMargin: "-35% 0px -50% 0px", threshold: [0, 0.2, 0.4] }
     );
 
     sections.forEach((section) => observer.observe(section));
@@ -32,13 +46,12 @@ export default function HomepageSectionNav() {
 
   return (
     <nav
-      aria-label="On this page"
-      className="sticky top-[76px] z-40 border-b border-white/5 bg-background/90 backdrop-blur-xl"
+      aria-label="Page sections"
+      className={`sticky top-[76px] z-40 border-b border-white/5 bg-background/95 backdrop-blur-xl transition-all duration-300 ${
+        isVisible ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2 pointer-events-none"
+      }`}
     >
-      <div className="page-container flex items-center gap-2 overflow-x-auto py-3 custom-scrollbar">
-        <span className="hidden sm:inline text-xs font-label uppercase tracking-widest text-on-surface-variant shrink-0 mr-2">
-          On this page
-        </span>
+      <div className="page-container flex items-center gap-2 overflow-x-auto py-2.5 custom-scrollbar">
         {HOMEPAGE_SECTIONS.map((section) => {
           const isActive = activeId === section.id;
           return (
