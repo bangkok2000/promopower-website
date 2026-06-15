@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import DualAudienceCards from "@/components/DualAudienceCards";
 import ExpandableProse from "@/components/ExpandableProse";
 import HomeHero from "@/components/HomeHero";
-import HomepageWayfinding from "@/components/HomepageWayfinding";
+import HomepageExplore from "@/components/HomepageExplore";
 import { HomepageTabLayout, HomepageTabSubsection } from "@/components/HomepageTabLayout";
 import { HomepageTabPanel, HomepageTabsProvider } from "@/components/HomepageTabs";
 import TrustCard from "@/components/TrustCard";
@@ -219,9 +219,8 @@ export default function Home() {
   return (
     <HomepageTabsProvider>
       <HomeHero />
-      <HomepageWayfinding />
 
-      <div id="homepage-tab-panels">
+      <HomepageExplore>
         <HomepageTabPanel sectionId="trust">
           <HomepageTabLayout
             title="Trusted Workforce Solutions Since 2002"
@@ -387,7 +386,7 @@ export default function Home() {
             <DualAudienceCards />
           </HomepageTabLayout>
         </HomepageTabPanel>
-      </div>
+      </HomepageExplore>
     </HomepageTabsProvider>
   );
 }

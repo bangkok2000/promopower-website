@@ -16,19 +16,17 @@ type HomepageTabLayoutProps = {
 
 export function HomepageTabLayout({ title, intro, link, children, sections }: HomepageTabLayoutProps) {
   return (
-    <section className="homepage-tab-panel page-section">
-      <div className="page-container">
-        <div className="homepage-tab-grid">
-          <header className="homepage-tab-intro">
-            <h2 className="section-title">{title}</h2>
-            <div className="homepage-tab-intro-body">{intro}</div>
-            {link ? <TabLink href={link.href} label={link.label} /> : null}
-          </header>
-          <div className="homepage-tab-content">{children}</div>
-        </div>
-        {sections ? <div className="homepage-tab-sections">{sections}</div> : null}
+    <div className="homepage-tab-panel-inner">
+      <div className="homepage-tab-grid">
+        <header className="homepage-tab-intro">
+          <h2 className="section-title">{title}</h2>
+          <div className="homepage-tab-intro-body">{intro}</div>
+          {link ? <TabLink href={link.href} label={link.label} /> : null}
+        </header>
+        <div className="homepage-tab-content">{children}</div>
       </div>
-    </section>
+      {sections ? <div className="homepage-tab-sections">{sections}</div> : null}
+    </div>
   );
 }
 
