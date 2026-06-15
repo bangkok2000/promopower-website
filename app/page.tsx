@@ -1,12 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import CTASection from "@/components/CTASection";
-import DualAudiencePanel from "@/components/DualAudiencePanel";
+import DualAudienceCards from "@/components/DualAudienceCards";
 import ExpandableProse from "@/components/ExpandableProse";
 import HomeHero from "@/components/HomeHero";
 import HomepageWayfinding from "@/components/HomepageWayfinding";
+import { HomepageTabLayout, HomepageTabSubsection } from "@/components/HomepageTabLayout";
 import { HomepageTabPanel, HomepageTabsProvider } from "@/components/HomepageTabs";
-import PromoPowerFramework from "@/components/PromoPowerFramework";
 import TrustCard from "@/components/TrustCard";
 
 export const metadata: Metadata = {
@@ -85,6 +84,39 @@ const approachParagraphs = [
   "We work closely with clients to understand campaign objectives, customer profiles and operational requirements before identifying personnel who are suitable for the task. By taking the time to understand what success looks like for each campaign, we are able to recommend workforce solutions that support both business goals and customer expectations.",
   "Our involvement continues throughout the campaign. From deployment planning and scheduling to ongoing support and coordination, our team remains focused on helping clients execute with confidence.",
   "For more than twenty years, this approach has enabled us to build long-term relationships with organisations that value professionalism, reliability and accountability.",
+];
+
+const frameworkSteps = [
+  {
+    title: "Recruit",
+    description:
+      "Every successful campaign begins with selecting the right people. We identify suitable personnel based on communication skills, experience, campaign requirements and customer engagement capabilities.",
+    icon: "group_add",
+  },
+  {
+    title: "Prepare",
+    description:
+      "Personnel receive campaign briefings, product information and engagement guidance designed to help them represent brands professionally and confidently.",
+    icon: "school",
+  },
+  {
+    title: "Deploy",
+    description:
+      "Careful planning helps ensure that the right people are assigned to the right locations at the right time, supporting smooth execution and operational efficiency.",
+    icon: "location_on",
+  },
+  {
+    title: "Support",
+    description:
+      "Our team remains actively involved throughout the campaign, providing coordination, oversight and assistance whenever required.",
+    icon: "support_agent",
+  },
+  {
+    title: "Review",
+    description:
+      "Every campaign provides valuable insights. We review learnings and feedback to support continuous improvement and strengthen future outcomes.",
+    icon: "insights",
+  },
 ];
 
 const serviceHighlights = [
@@ -191,203 +223,169 @@ export default function Home() {
 
       <div id="homepage-tab-panels">
         <HomepageTabPanel sectionId="trust">
-          <section className="page-section">
-        <div className="page-container grid lg:grid-cols-2 gap-12 items-start">
-          <div>
-            <h2 className="section-title">Trusted Workforce Solutions Since 2002</h2>
-            <ExpandableProse paragraphs={trustParagraphs} visibleCount={2} expandLabel="Read more about our experience" />
-            <Link href="/about-us" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-8">
-              Read our full story
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
-            </Link>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-            {trustIndicators.map((indicator) => (
-              <TrustCard
-                key={indicator.title}
-                title={indicator.title}
-                description={indicator.description}
-                icon={indicator.icon}
-              />
-            ))}
-          </div>
-        </div>
-          </section>
-
-          <section className="page-section section-muted">
-        <div className="page-container grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-10 lg:gap-16 items-start">
-          <div>
-            <h2 className="section-title">More Than Staffing. A Partner In Execution.</h2>
-            <p className="page-intro">{approachParagraphs[0]}</p>
-          </div>
-          <ExpandableProse paragraphs={approachParagraphs.slice(1)} visibleCount={1} expandLabel="How we partner with clients" />
-        </div>
-          </section>
+          <HomepageTabLayout
+            title="Trusted Workforce Solutions Since 2002"
+            intro={<ExpandableProse paragraphs={trustParagraphs} visibleCount={2} expandLabel="Read more about our experience" />}
+            link={{ href: "/about-us", label: "Read our full story" }}
+            sections={
+              <HomepageTabSubsection
+                title="More Than Staffing. A Partner In Execution."
+                intro={<p className="page-intro">{approachParagraphs[0]}</p>}
+              >
+                <ExpandableProse paragraphs={approachParagraphs.slice(1)} visibleCount={1} expandLabel="How we partner with clients" />
+              </HomepageTabSubsection>
+            }
+          >
+            <div className="homepage-tab-card-grid">
+              {trustIndicators.map((indicator) => (
+                <TrustCard
+                  key={indicator.title}
+                  title={indicator.title}
+                  description={indicator.description}
+                  icon={indicator.icon}
+                />
+              ))}
+            </div>
+          </HomepageTabLayout>
         </HomepageTabPanel>
 
         <HomepageTabPanel sectionId="framework">
-          <PromoPowerFramework
-            heading="A Structured Approach To Successful Campaigns"
-        intro="Consistent execution is rarely achieved by chance. Over the years, PromoPower has developed a practical framework that helps ensure quality, accountability and reliability across every deployment. While every campaign is different, the principles of successful execution remain remarkably consistent."
-        steps={[
-          {
-            title: "Recruit",
-            description:
-              "Every successful campaign begins with selecting the right people. We identify suitable personnel based on communication skills, experience, campaign requirements and customer engagement capabilities.",
-            icon: "group_add",
-          },
-          {
-            title: "Prepare",
-            description:
-              "Personnel receive campaign briefings, product information and engagement guidance designed to help them represent brands professionally and confidently.",
-            icon: "school",
-          },
-          {
-            title: "Deploy",
-            description:
-              "Careful planning helps ensure that the right people are assigned to the right locations at the right time, supporting smooth execution and operational efficiency.",
-            icon: "location_on",
-          },
-          {
-            title: "Support",
-            description:
-              "Our team remains actively involved throughout the campaign, providing coordination, oversight and assistance whenever required.",
-            icon: "support_agent",
-          },
-          {
-            title: "Review",
-            description:
-              "Every campaign provides valuable insights. We review learnings and feedback to support continuous improvement and strengthen future outcomes.",
-            icon: "insights",
-          },
-        ]}
-          />
+          <HomepageTabLayout
+            title="A Structured Approach To Successful Campaigns"
+            intro={
+              <p className="page-intro">
+                Consistent execution is rarely achieved by chance. Over the years, PromoPower has developed a practical
+                framework that helps ensure quality, accountability and reliability across every deployment. While every
+                campaign is different, the principles of successful execution remain remarkably consistent.
+              </p>
+            }
+          >
+            <div className="homepage-tab-card-grid">
+              {frameworkSteps.map((step, index) => (
+                <article key={step.title} className="content-card h-full">
+                  <div className="icon-badge">
+                    <span className="material-symbols-outlined">{step.icon}</span>
+                  </div>
+                  <p className="text-xs text-on-surface-variant uppercase tracking-widest mb-2">Step {index + 1}</p>
+                  <h3 className="text-2xl font-headline font-normal text-on-surface mb-3">{step.title}</h3>
+                  <p className="text-on-surface-variant leading-relaxed">{step.description}</p>
+                </article>
+              ))}
+            </div>
+          </HomepageTabLayout>
         </HomepageTabPanel>
 
         <HomepageTabPanel sectionId="services">
-          <section className="page-section">
-        <div className="page-container">
-          <div className="max-w-3xl mb-12">
-            <h2 className="section-title">Workforce Solutions Designed Around Your Objectives</h2>
-            <p className="page-intro">
-              Every campaign presents different objectives, customer expectations and operational requirements. PromoPower provides flexible workforce solutions that help organisations engage customers effectively while maintaining a high standard of professionalism and execution.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-            {serviceHighlights.map((service) => (
-              <article key={service.title} className="content-card service-card flex flex-col h-full">
-                <div className="icon-badge">
-                  <span className="material-symbols-outlined">{service.icon}</span>
-                </div>
-                <h3 className="text-2xl font-headline font-normal text-on-surface mb-3">{service.title}</h3>
-                <p className="text-on-surface-variant leading-relaxed mb-6 flex-1">{service.summary}</p>
-                <Link
-                  href={service.href}
-                  className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-auto"
-                >
-                  Learn More
-                  <span className="material-symbols-outlined text-base">arrow_forward</span>
-                </Link>
-              </article>
-            ))}
-          </div>
-
-          <div className="text-center mt-12">
-            <Link href="/services" className="btn-secondary">
-              View all services
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
-            </Link>
-          </div>
-        </div>
-          </section>
+          <HomepageTabLayout
+            title="Workforce Solutions Designed Around Your Objectives"
+            intro={
+              <p className="page-intro">
+                Every campaign presents different objectives, customer expectations and operational requirements.
+                PromoPower provides flexible workforce solutions that help organisations engage customers effectively
+                while maintaining a high standard of professionalism and execution.
+              </p>
+            }
+            link={{ href: "/services", label: "View all services" }}
+          >
+            <div className="homepage-tab-card-grid">
+              {serviceHighlights.map((service) => (
+                <article key={service.title} className="content-card service-card flex flex-col h-full">
+                  <div className="icon-badge">
+                    <span className="material-symbols-outlined">{service.icon}</span>
+                  </div>
+                  <h3 className="text-2xl font-headline font-normal text-on-surface mb-3">{service.title}</h3>
+                  <p className="text-on-surface-variant leading-relaxed mb-6 flex-1">{service.summary}</p>
+                  <Link
+                    href={service.href}
+                    className="homepage-tab-link mt-auto"
+                  >
+                    Learn More
+                    <span className="material-symbols-outlined text-base" aria-hidden="true">
+                      arrow_forward
+                    </span>
+                  </Link>
+                </article>
+              ))}
+            </div>
+          </HomepageTabLayout>
         </HomepageTabPanel>
 
         <HomepageTabPanel sectionId="industries">
-          <section className="page-section section-muted">
-        <div className="page-container">
-          <div className="max-w-3xl mb-10">
-            <h2 className="section-title">Supporting Organisations Across Diverse Industries</h2>
-            <ExpandableProse
-              paragraphs={[
-                "Different industries present different customer expectations, operational environments and engagement requirements.",
-                "Over the years, PromoPower has supported organisations across a wide range of sectors, allowing us to develop a practical understanding of how staffing requirements vary across different environments.",
-                "Our experience enables us to recommend workforce solutions that align with the specific needs of each campaign while maintaining professionalism and consistency throughout execution.",
-              ]}
-              visibleCount={1}
-              expandLabel="How industry experience shapes our recommendations"
-            />
-          </div>
-
-          <div className="flex flex-wrap gap-3 mb-10">
-            {industryNames.map((industry) => (
-              <span key={industry} className="pillar-chip">
-                {industry}
-              </span>
-            ))}
-          </div>
-
-          <Link href="/industries" className="btn-secondary">
-            Explore industries we support
-            <span className="material-symbols-outlined text-base">arrow_forward</span>
-          </Link>
-        </div>
-          </section>
-
-          <section className="page-section section-elevated">
-        <div className="page-container-narrow">
-          <h2 className="section-title text-center">Supporting Organisations Across Singapore</h2>
-          <div className="text-center mb-8">
-            <p className="text-on-surface font-headline text-xl sm:text-2xl">Our focus is not on who we have worked for.</p>
-            <p className="text-primary font-headline text-xl sm:text-2xl mt-2">Our focus is on how we can help you succeed.</p>
-          </div>
-          <ExpandableProse paragraphs={proofParagraphs} visibleCount={0} expandLabel="Our approach to client confidentiality" className="max-w-3xl mx-auto" />
-          <div className="text-center mt-10">
-            <Link href="/our-work" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all">
-              View our work approach
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
-            </Link>
-          </div>
-        </div>
-          </section>
-
-          <section className="page-section">
-        <div className="page-container">
-          <div className="max-w-3xl mx-auto text-center mb-10">
-            <h2 className="section-title">Why Organisations Continue To Work With PromoPower</h2>
-            <p className="page-intro">{whyParagraphs[0]}</p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-            {differentiators.map((item) => (
-              <div key={item} className="pillar-chip text-center">
-                {item}
-              </div>
-            ))}
-          </div>
-
-          <ExpandableProse paragraphs={whyParagraphs.slice(1)} visibleCount={0} expandLabel="Read more about our approach" className="max-w-3xl mx-auto" />
-
-          <div className="text-center mt-10">
-            <Link href="/why-promopower" className="btn-secondary">
-              Why PromoPower
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
-            </Link>
-          </div>
-        </div>
-          </section>
+          <HomepageTabLayout
+            title="Supporting Organisations Across Diverse Industries"
+            intro={
+              <ExpandableProse
+                paragraphs={[
+                  "Different industries present different customer expectations, operational environments and engagement requirements.",
+                  "Over the years, PromoPower has supported organisations across a wide range of sectors, allowing us to develop a practical understanding of how staffing requirements vary across different environments.",
+                  "Our experience enables us to recommend workforce solutions that align with the specific needs of each campaign while maintaining professionalism and consistency throughout execution.",
+                ]}
+                visibleCount={1}
+                expandLabel="How industry experience shapes our recommendations"
+              />
+            }
+            link={{ href: "/industries", label: "Explore industries we support" }}
+            sections={
+              <>
+                <HomepageTabSubsection
+                  title="Supporting Organisations Across Singapore"
+                  intro={
+                    <>
+                      <p className="page-intro">Our focus is not on who we have worked for.</p>
+                      <p className="page-intro text-primary">Our focus is on how we can help you succeed.</p>
+                    </>
+                  }
+                  link={{ href: "/our-work", label: "View our work approach" }}
+                >
+                  <ExpandableProse
+                    paragraphs={proofParagraphs}
+                    visibleCount={0}
+                    expandLabel="Our approach to client confidentiality"
+                  />
+                </HomepageTabSubsection>
+                <HomepageTabSubsection
+                  title="Why Organisations Continue To Work With PromoPower"
+                  intro={<p className="page-intro">{whyParagraphs[0]}</p>}
+                  link={{ href: "/why-promopower", label: "Why PromoPower" }}
+                >
+                  <>
+                    <div className="homepage-tab-chip-grid mb-6">
+                      {differentiators.map((item) => (
+                        <span key={item} className="pillar-chip">
+                          {item}
+                        </span>
+                      ))}
+                    </div>
+                    <ExpandableProse
+                      paragraphs={whyParagraphs.slice(1)}
+                      visibleCount={0}
+                      expandLabel="Read more about our approach"
+                    />
+                  </>
+                </HomepageTabSubsection>
+              </>
+            }
+          >
+            <div className="homepage-tab-chip-grid">
+              {industryNames.map((industry) => (
+                <span key={industry} className="pillar-chip">
+                  {industry}
+                </span>
+              ))}
+            </div>
+          </HomepageTabLayout>
         </HomepageTabPanel>
 
         <HomepageTabPanel sectionId="contact">
-          <DualAudiencePanel />
-
-          <CTASection
-            heading="Let's Start A Conversation"
-            bodyParagraphs={ctaParagraphs}
-            primaryLabel="Speak With Our Team"
-            primaryHref="/contact-us"
-          />
+          <HomepageTabLayout
+            title="Let's Start A Conversation"
+            intro={
+              <ExpandableProse paragraphs={ctaParagraphs} visibleCount={1} expandLabel="Read full message" />
+            }
+            link={{ href: "/contact-us", label: "Speak With Our Team" }}
+          >
+            <DualAudienceCards />
+          </HomepageTabLayout>
         </HomepageTabPanel>
       </div>
     </HomepageTabsProvider>

@@ -346,6 +346,111 @@
     color: var(--color-on-surface-variant);
   }
 
+  .homepage-tab-panel {
+    padding-block: 3rem 3.5rem;
+    min-height: 28rem;
+  }
+
+  @media (min-width: 1024px) {
+    .homepage-tab-panel {
+      padding-block: 3.5rem 4rem;
+      min-height: 32rem;
+    }
+  }
+
+  .homepage-tab-grid {
+    display: grid;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  @media (min-width: 1024px) {
+    .homepage-tab-grid {
+      grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+      gap: 2.5rem 3rem;
+    }
+  }
+
+  .homepage-tab-intro {
+    max-width: 36rem;
+  }
+
+  .homepage-tab-intro-body {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .homepage-tab-intro .section-title {
+    margin-bottom: 1.25rem;
+  }
+
+  .homepage-tab-subtitle {
+    margin-bottom: 1rem;
+    font-family: var(--font-headline);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--color-on-surface);
+  }
+
+  .homepage-tab-content {
+    min-width: 0;
+  }
+
+  .homepage-tab-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    transition: gap 0.2s ease;
+  }
+
+  .homepage-tab-link:hover {
+    gap: 0.75rem;
+  }
+
+  .homepage-tab-sections {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    margin-top: 2.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid rgb(255 255 255 / 0.08);
+  }
+
+  @media (min-width: 1024px) {
+    .homepage-tab-sections {
+      gap: 3rem;
+      margin-top: 3rem;
+      padding-top: 3rem;
+    }
+  }
+
+  .homepage-tab-subsection {
+    padding-top: 0;
+  }
+
+  .homepage-tab-card-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  @media (min-width: 640px) {
+    .homepage-tab-card-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  .homepage-tab-chip-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
   .quick-path-card {
     display: flex;
     flex-direction: column;
