@@ -105,10 +105,24 @@ export default function NavBar() {
       : "text-on-surface-variant font-headline font-medium text-3xl hover:text-primary transition-colors duration-200";
   };
 
+  const handleLogoClick = useCallback(
+    (event: React.MouseEvent<HTMLAnchorElement>) => {
+      if (pathname !== "/") return;
+
+      event.preventDefault();
+      closeMenu();
+      setServicesOpen(false);
+      window.history.pushState(null, "", "/");
+      syncScrollOffsetVars({ includeSectionNav: true });
+      window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    },
+    [closeMenu, pathname]
+  );
+
   return (
     <>
       <nav id="site-header" className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl flex justify-between items-center px-4 sm:px-6 md:px-8 py-4 sm:py-5 border-b border-white/5">
-        <Link href="/" className="relative h-12 w-48 sm:h-14 sm:w-60 md:h-16 md:w-72 shrink-0">
+        <Link href="/" onClick={handleLogoClick} className="relative h-12 w-48 sm:h-14 sm:w-60 md:h-16 md:w-72 shrink-0">
           <Image
             src="/logo-transparent.png"
             alt="PromoPower Logo"
