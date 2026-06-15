@@ -5,6 +5,7 @@ import CTASection from "@/components/CTASection";
 import DualAudiencePanel from "@/components/DualAudiencePanel";
 import ExpandableProse from "@/components/ExpandableProse";
 import HomeHero from "@/components/HomeHero";
+import HomepageAnchorScroll from "@/components/HomepageAnchorScroll";
 import HomepageSectionNav from "@/components/HomepageSectionNav";
 import PromoPowerFramework from "@/components/PromoPowerFramework";
 import QuickPaths from "@/components/QuickPaths";
@@ -187,12 +188,13 @@ const ctaParagraphs = [
 export default function Home() {
   return (
     <>
+      <HomepageAnchorScroll />
       <HomeHero />
       <AwardsStrip />
       <QuickPaths />
       <HomepageSectionNav />
 
-      <section id="trust" className="page-section scroll-mt-nav">
+      <section id="trust" className="page-section scroll-mt-section">
         <div className="page-container grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="section-title">Trusted Workforce Solutions Since 2002</h2>
@@ -264,7 +266,7 @@ export default function Home() {
         ]}
       />
 
-      <section id="services" className="page-section scroll-mt-nav">
+      <section id="services" className="page-section scroll-mt-section">
         <div className="page-container">
           <div className="max-w-3xl mb-12">
             <h2 className="section-title">Workforce Solutions Designed Around Your Objectives</h2>
@@ -301,7 +303,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="industries" className="page-section section-muted scroll-mt-nav">
+      <section id="industries" className="page-section section-muted scroll-mt-section">
         <div className="page-container">
           <div className="max-w-3xl mb-10">
             <h2 className="section-title">Supporting Organisations Across Diverse Industries</h2>
@@ -348,7 +350,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="why-us" className="page-section scroll-mt-nav">
+      <section id="why-us" className="page-section scroll-mt-section">
         <div className="page-container">
           <div className="max-w-3xl mx-auto text-center mb-10">
             <h2 className="section-title">Why Organisations Continue To Work With PromoPower</h2>

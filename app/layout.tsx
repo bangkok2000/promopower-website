@@ -116,7 +116,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
         <NavBar />
-        <main className="flex-1 pt-[76px]">{children}</main>
+        <main className="flex-1 pt-[var(--site-header-height,5rem)]">{children}</main>
         <Footer />
         {GA_ID && <GoogleAnalytics gaId={GA_ID} />}
       </body>

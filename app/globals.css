@@ -34,6 +34,19 @@
 }
 
 @layer base {
+  :root {
+    --site-header-height: 5rem;
+    --site-section-nav-height: 0px;
+    --site-scroll-gutter: 1.5rem;
+    --site-scroll-offset: calc(
+      var(--site-header-height) + var(--site-section-nav-height) + var(--site-scroll-gutter)
+    );
+  }
+
+  html {
+    scroll-padding-top: var(--site-scroll-offset);
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-on-surface);
@@ -204,14 +217,12 @@
     );
   }
 
-  .scroll-mt-nav {
-    scroll-margin-top: 7.5rem;
+  .scroll-mt-section {
+    scroll-margin-top: var(--site-scroll-offset);
   }
 
-  @media (min-width: 1024px) {
-    .scroll-mt-nav {
-      scroll-margin-top: 8.5rem;
-    }
+  .scroll-mt-header {
+    scroll-margin-top: calc(var(--site-header-height) + var(--site-scroll-gutter));
   }
 
   .prose-details-summary {
@@ -265,7 +276,7 @@
   }
 
   .section-snap {
-    scroll-margin-top: 8rem;
+    scroll-margin-top: var(--site-scroll-offset);
   }
 
   .icon-badge {

@@ -10,7 +10,7 @@ const heroParagraphs = [
 
 export default function HomeHero() {
   return (
-    <section id="top" className="page-hero relative overflow-hidden min-h-[62vh] lg:min-h-[68vh] flex items-end lg:items-center scroll-mt-nav">
+    <section id="top" className="page-hero relative overflow-hidden min-h-[62vh] lg:min-h-[68vh] flex items-end lg:items-center scroll-mt-header">
       <div className="absolute inset-0 z-0" aria-hidden="true">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={HERO_IMAGE_URL} alt="" className="hero-photo w-full h-full" />

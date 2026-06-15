@@ -10,11 +10,13 @@
   ],
   "typescript.tsserver.maxTsServerMemory": 2048,
   "typescript.tsserver.watchOptions": {
-    "excludeDirectories": [".next", ".vercel", "node_modules"]
+    "excludeDirectories": [".next", ".open-next", ".vercel", ".wrangler", "node_modules"]
   },
   "search.followSymlinks": false,
   "search.maxResults": 10000,
   "files.watcherExclude": {
+    "**/.open-next/**": true,
+    "**/.wrangler/**": true,
     "**/.vercel/**": true,
     "**/.next/**": true,
     "**/node_modules/**": true,
@@ -24,9 +26,13 @@
   },
   "files.exclude": {
     "**/.next": true,
+    "**/.open-next": true,
+    "**/.wrangler": true,
     "**/.vercel": true
   },
   "search.exclude": {
+    "**/.open-next": true,
+    "**/.wrangler": true,
     "**/.vercel": true,
     "**/.next": true,
     "**/node_modules": true,

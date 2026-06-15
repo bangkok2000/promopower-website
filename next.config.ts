@@ -4,6 +4,10 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  // Keep local builds from spawning too many workers on smaller machines.
+  experimental: {
+    cpus: 2,
+  },
   async redirects() {
     return [
       {
