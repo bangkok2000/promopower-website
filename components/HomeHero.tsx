@@ -11,7 +11,7 @@ const heroParagraphs = [
 
 export default function HomeHero() {
   return (
-    <section id="top" className="page-hero relative overflow-hidden min-h-[62vh] lg:min-h-[68vh] flex items-end lg:items-center scroll-mt-header">
+    <section id="top" className="page-hero relative overflow-hidden min-h-[min(100svh,var(--site-header-height)+36rem)] lg:min-h-[min(100svh,var(--site-header-height)+40rem)] flex items-center scroll-mt-header">
       <div className="absolute inset-0 z-0" aria-hidden="true">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={HERO_IMAGE_URL} alt="" className="hero-photo w-full h-full" />
@@ -21,25 +21,27 @@ export default function HomeHero() {
       <div className="hero-glow hero-glow-primary -top-24 -left-20 z-[1]" aria-hidden="true" />
       <div className="hero-glow hero-glow-accent -bottom-16 right-0 z-[1]" aria-hidden="true" />
 
-      <div className="relative z-10 page-section w-full pb-10 lg:pb-12">
-        <div className="page-container grid lg:grid-cols-[minmax(0,17rem)_minmax(0,1fr)] xl:grid-cols-[minmax(0,20rem)_minmax(0,1fr)] gap-10 lg:gap-12 xl:gap-16 items-end lg:items-center">
-          <HeroAccolades className="hidden lg:block" />
+      <div className="relative z-10 w-full py-10 sm:py-12 lg:py-14">
+        <div className="page-container px-[var(--site-gutter)]">
+          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
+            <HeroAccolades className="hidden lg:block lg:col-span-4 xl:col-span-3 lg:self-center" />
 
-          <div className="max-w-4xl lg:max-w-3xl xl:max-w-4xl">
-            <span className="section-label">PromoPower Singapore</span>
-            <h1 className="page-title max-w-3xl">Building Successful Brand Experiences Through Exceptional People</h1>
-            <p className="page-intro max-w-2xl mb-8">{heroParagraphs[0]}</p>
+            <div className="lg:col-span-8 xl:col-span-9 lg:min-h-[24rem] flex flex-col justify-center">
+              <span className="section-label">PromoPower Singapore</span>
+              <h1 className="page-title max-w-3xl">Building Successful Brand Experiences Through Exceptional People</h1>
+              <p className="page-intro max-w-2xl mb-8">{heroParagraphs[0]}</p>
 
-            <ExpandableProse
-              paragraphs={heroParagraphs.slice(1)}
-              visibleCount={0}
-              expandLabel="More about how we work"
-              className="max-w-2xl mb-8"
-            />
+              <ExpandableProse
+                paragraphs={heroParagraphs.slice(1)}
+                visibleCount={0}
+                expandLabel="More about how we work"
+                className="max-w-2xl mb-8"
+              />
 
-            <HomeHeroActions />
+              <HomeHeroActions />
 
-            <HeroAccolades className="lg:hidden mt-10 pt-8 border-t border-white/10" />
+              <HeroAccolades className="lg:hidden mt-10" />
+            </div>
           </div>
         </div>
       </div>

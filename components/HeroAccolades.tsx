@@ -26,20 +26,15 @@ type HeroAccoladesProps = {
 export default function HeroAccolades({ className = "" }: HeroAccoladesProps) {
   return (
     <aside className={className} aria-label="Accreditations and credentials">
-      <ul className="flex flex-col gap-6 lg:gap-7">
-        {AWARDS.map((award, index) => (
-          <li key={award.title}>
-            {index > 0 ? <div className="mb-6 lg:mb-7 h-px w-full max-w-[16rem] bg-white/10" aria-hidden="true" /> : null}
-            <div className="flex items-center gap-4">
-              <div className="w-12 h-12 lg:w-14 lg:h-14 rounded-full bg-surface/90 border border-white/10 flex items-center justify-center shadow-lg shrink-0 backdrop-blur-sm">
-                <span className={`material-symbols-outlined text-2xl lg:text-3xl ${award.iconClass}`}>{award.icon}</span>
-              </div>
-              <div className="text-left text-on-surface-variant min-w-0">
-                <span className="font-bold tracking-widest text-xs sm:text-sm uppercase block text-primary leading-snug">
-                  {award.title}
-                </span>
-                <span className="text-xs sm:text-sm font-medium">{award.subtitle}</span>
-              </div>
+      <ul className="hero-accolades-list">
+        {AWARDS.map((award) => (
+          <li key={award.title} className="hero-accolades-item">
+            <div className="hero-accolade-icon">
+              <span className={`material-symbols-outlined text-[1.75rem] ${award.iconClass}`}>{award.icon}</span>
+            </div>
+            <div className="hero-accolade-copy">
+              <span className="hero-accolade-title">{award.title}</span>
+              <span className="hero-accolade-subtitle">{award.subtitle}</span>
             </div>
           </li>
         ))}
