@@ -20,11 +20,18 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
   }
 
   return {
-    title: `${campaign.title} | PromoPower Portfolio`,
-    description: campaign.challenge.substring(0, 160) + "...",
+    title: `${campaign.title} | Our Work`,
+    description: campaign.challenge,
+    alternates: {
+      canonical: `/our-work/${params.slug}`,
+    },
     openGraph: {
       title: `${campaign.title} | PromoPower`,
-      description: campaign.challenge.substring(0, 160) + "...",
+      description: campaign.challenge,
+      url: `https://promopower.com.sg/our-work/${params.slug}`,
+      siteName: "PromoPower",
+      locale: "en_SG",
+      type: "website",
       images: [
         {
           url: campaign.imageUrl,
@@ -37,7 +44,7 @@ export async function generateMetadata(props: { params: Promise<{ slug: string }
     twitter: {
       card: "summary_large_image",
       title: `${campaign.title} | PromoPower`,
-      description: campaign.challenge.substring(0, 160) + "...",
+      description: campaign.challenge,
       images: [campaign.imageUrl],
     },
   };

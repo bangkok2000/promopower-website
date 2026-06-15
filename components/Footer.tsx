@@ -24,9 +24,9 @@ export default function Footer() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 flex-1 md:justify-items-end">
           <div className="space-y-4">
-            <h5 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
+            <h2 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
               Quick Links
-            </h5>
+            </h2>
             <ul className="space-y-3 text-sm text-on-surface-variant/70">
               <li>
                 <Link className="hover:text-primary transition-colors" href="/">
@@ -34,8 +34,8 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link className="hover:text-primary transition-colors" href="/our-story">
-                  Our Story
+                <Link className="hover:text-primary transition-colors" href="/about-us">
+                  About Us
                 </Link>
               </li>
               <li>
@@ -44,21 +44,41 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link className="hover:text-primary transition-colors" href="/industries">
+                  Industries
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-primary transition-colors" href="/why-promopower">
+                  Why PromoPower
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-primary transition-colors" href="/faq">
+                  FAQ
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-primary transition-colors" href="/contact-us">
+                  Contact
+                </Link>
+              </li>
+              <li>
                 <Link className="hover:text-primary transition-colors" href="/our-work">
-                  Our Work & Talent
+                  Our Work
                 </Link>
               </li>
               <li>
                 <Link className="hover:text-primary transition-colors" href="/jobseekers">
-                  Apply Now
+                  Jobseekers
                 </Link>
               </li>
             </ul>
           </div>
           <div className="space-y-4">
-            <h5 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
+            <h2 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
               Contact
-            </h5>
+            </h2>
             <ul className="space-y-3 text-sm text-on-surface-variant/70">
               <li>admin@promopower.com.sg</li>
               <li>+65 6123 4567</li>
@@ -66,9 +86,9 @@ export default function Footer() {
             </ul>
           </div>
           <div className="space-y-4">
-            <h5 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
+            <h2 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
               Follow Us
-            </h5>
+            </h2>
             <div className="flex gap-4">
               <a
                 href="https://www.linkedin.com/company/promopowersg/"

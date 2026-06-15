@@ -4,8 +4,24 @@ import { PORTFOLIO_CAMPAIGNS } from "@/lib/data";
 
 export const metadata: Metadata = {
   title: "Our Work & Portfolio | PromoPower",
-  description: "Browse PromoPower's portfolio of high-impact brand activations for leading global brands across Singapore.",
+  description:
+    "Browse selected campaign examples that reflect PromoPower's professional staffing support across promotions, retail activations, events and customer engagement initiatives.",
   alternates: { canonical: "/our-work" },
+  openGraph: {
+    title: "Our Work | PromoPower",
+    description:
+      "Explore campaign examples that demonstrate PromoPower's structured workforce support and professional customer-facing execution.",
+    url: "https://promopower.com.sg/our-work",
+    siteName: "PromoPower",
+    locale: "en_SG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Work | PromoPower",
+    description:
+      "Campaign examples showing professional staffing support for customer-facing initiatives in Singapore.",
+  },
 };
 
 export default function OurWork() {
@@ -40,7 +56,7 @@ export default function OurWork() {
                 <div className="bg-primary/20 absolute -inset-6 rounded-lg transform -rotate-3 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  alt="Case Study 1"
+                  alt="Featured case study showing retail campaign deployment"
                   className="relative z-10 w-full aspect-video object-cover rounded-lg shadow-2xl border border-white/10"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7f9Z8zstYE4mr-MVEbvUyKOq47PuzFn3pIEf9RPoRL11vIjlcKN7bE9-6kTtVYr2XL76Naff9FnB_Fz6eV8QzCXqc6kCKDVexPTCG0DO03AdYiXuKnCUcUTfnWHeTvM2d-ZWmfJaUXDEPAT9Tt-0pVsMmeOAz-Ivw19kKJaeM4BNLMZbVOwJoQ7Wk3yZtbwSLBA2xe-NC62sB8yC1bRs1cQqO4mihkCo_b5zMPG_xRUPUw6cHFXMM-p6AulenC6gEpSR_VAXtnxQ"
                 />
@@ -51,7 +67,7 @@ export default function OurWork() {
                 <div className="space-y-6 text-lg text-on-surface-variant">
                   <div><strong className="text-on-surface">The Challenge:</strong> Deploy and manage 50 highly technical promoters across 3 days at a massive convention.</div>
                   <div><strong className="text-on-surface">The Solution:</strong> End-to-end management, comprehensive pre-event tech briefing, and 2 dedicated on-site supervisors.</div>
-                  <div><strong className="text-primary">The Impact:</strong> 100% attendance rate, 4,500+ qualified leads generated, zero logistical friction.</div>
+                  <div><strong className="text-on-surface">The Outcome:</strong> Full deployment achieved across all locations with consistent brand representation and smooth operational execution throughout the campaign.</div>
                 </div>
               </div>
             </div>
@@ -62,7 +78,7 @@ export default function OurWork() {
                 <div className="bg-accent-amber/20 absolute -inset-6 rounded-lg transform rotate-3 blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  alt="Case Study 2"
+                  alt="Featured case study showing beauty campaign customer engagement"
                   className="relative z-10 w-full aspect-video object-cover rounded-lg shadow-2xl border border-white/10"
                   src="https://lh3.googleusercontent.com/aida-public/AB6AXuDP2SOtLdxFredw6LyC0e7DHwJvFwNQGT2IE1NAMhP3qWRuMayvdElhXj9SWjJbqgP0wW8WQDZvfoQEqgXsRrc7hutiCIhR-4vN2VE-8cUpwEV-KL8l243Vp4aWrCEfZ4RB0BbyhDZcitxnM2ehivDjGWN6jyhnClIeyaLQJ2yP-Hhpm_6hGwAahtQP9jFJTLrdkgrFp0TnbE_JpozXk9Z_BBJXEu1f9HsOsUrWKVgvQ6rRNUy7ovEfmFUWuJG-kTASrFvi1I2WrW0"
                 />
@@ -73,7 +89,7 @@ export default function OurWork() {
                 <div className="space-y-6 text-lg text-on-surface-variant">
                   <div><strong className="text-on-surface">The Challenge:</strong> Create high-volume brand awareness for a flagship product launch.</div>
                   <div><strong className="text-on-surface">The Solution:</strong> Deployment of 15 premium roving talents equipped with bespoke brand knowledge.</div>
-                  <div><strong className="text-primary">The Impact:</strong> 1,200+ samples distributed, massive social media uplift, and seamless crowd flow.</div>
+                  <div><strong className="text-on-surface">The Outcome:</strong> Wide product distribution achieved across targeted demographics with professional brand representation throughout the campaign period.</div>
                 </div>
               </div>
             </div>
@@ -123,9 +139,8 @@ export default function OurWork() {
             
             {/* Spotlight Card 1 */}
             <div className="min-w-[85vw] sm:min-w-[350px] lg:min-w-[300px] snap-start shrink-0 bg-surface rounded-2xl overflow-hidden border border-white/5 hover:border-primary/50 transition-all hover:-translate-y-2 group shadow-xl">
-              <div className="h-64 bg-surface-container relative overflow-hidden">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDAkDfZjSIzWuipfD0wziDUkpjtBK3uz5EFgCdvUSFISkiWKsRdsv5x6CDrSz-4i2kfWKMowoswUjKPifDvFyE3433mp_zmkVCqylnZVOOXr8bcYwVvhM8bN0u3Mn-eEBSie5W0RMzECovUSz_evE4vU12L_dckjBqntVoMmBs3okPZr7YhVMZjGTwO7ukk9BVz-IqzsOkY22nELZaSOEL6ZUB8C0Y2IBOPQDWAz9qICesKBCsT9LwksY7HnLoxLxakBt9j_0ECyf4" className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" alt="Sarah" />
+              <div className="h-64 bg-surface-container relative overflow-hidden flex items-center justify-center">
+                <span className="material-symbols-outlined text-6xl text-white/10 group-hover:text-primary transition-colors">person</span>
               </div>
               <div className="p-6 text-left relative z-10">
                 <h3 className="text-2xl font-headline font-normal text-on-surface">Sarah</h3>

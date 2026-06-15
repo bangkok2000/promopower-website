@@ -38,27 +38,31 @@ export default function NavBar() {
             src="/logo-transparent.png" 
             alt="PromoPower Logo" 
             fill
+            sizes="(max-width: 640px) 12rem, (max-width: 768px) 15rem, 18rem"
             className="object-contain object-left opacity-100 hover:opacity-80 transition-opacity drop-shadow-md"
             priority
           />
         </Link>
-        <div className="hidden lg:flex gap-10 items-center">
-          <Link className={getLinkClass("/our-story")} href="/our-story">
-            Our Story
+        <div className="hidden lg:flex gap-6 items-center">
+          <Link className={getLinkClass("/about-us")} href="/about-us">
+            About Us
           </Link>
           <Link className={getLinkClass("/services")} href="/services">
             Services
           </Link>
-          <Link className={getLinkClass("/our-work")} href="/our-work">
-            Our Work & Talent
+          <Link className={getLinkClass("/industries")} href="/industries">
+            Industries
           </Link>
-          <Link className={getLinkClass("/jobseekers")} href="/jobseekers">
-            Jobseekers
+          <Link className={getLinkClass("/why-promopower")} href="/why-promopower">
+            Why PromoPower
+          </Link>
+          <Link className={getLinkClass("/faq")} href="/faq">
+            FAQ
           </Link>
         </div>
         <div className="hidden lg:block">
           <Link href="/contact-us" className="glow-button text-on-primary px-8 py-3 rounded-full font-headline font-extrabold text-sm hover:scale-105 active:scale-95 transition-all">
-              Plan a Campaign
+              Contact Us
           </Link>
         </div>
         
@@ -82,11 +86,20 @@ export default function NavBar() {
         className={`fixed inset-0 bg-charcoal-dark/95 backdrop-blur-2xl z-40 lg:hidden flex flex-col items-center justify-center gap-10 transition-all duration-500 origin-top
         ${isMenuOpen ? 'opacity-100 visible scale-y-100' : 'opacity-0 invisible scale-y-0'}`}
       >
-        <Link className={getMobileLinkClass("/our-story")} href="/our-story">
-          Our Story
+        <Link className={getMobileLinkClass("/about-us")} href="/about-us">
+          About Us
         </Link>
         <Link className={getMobileLinkClass("/services")} href="/services">
           Services
+        </Link>
+        <Link className={getMobileLinkClass("/industries")} href="/industries">
+          Industries
+        </Link>
+        <Link className={getMobileLinkClass("/why-promopower")} href="/why-promopower">
+          Why PromoPower
+        </Link>
+        <Link className={getMobileLinkClass("/faq")} href="/faq">
+          FAQ
         </Link>
         <Link className={getMobileLinkClass("/our-work")} href="/our-work">
           Our Work
@@ -95,7 +108,7 @@ export default function NavBar() {
           Jobseekers
         </Link>
         <Link href="/contact-us" className="mt-8 glow-button text-on-primary px-10 py-5 rounded-full font-headline font-extrabold text-xl hover:scale-105 active:scale-95 transition-all inline-block">
-            Plan a Campaign
+            Contact Us
         </Link>
       </div>
     </>

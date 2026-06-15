@@ -3,8 +3,24 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Our Story | PromoPower",
-  description: "Learn about PromoPower's journey as Singapore's premier event staffing and brand talent agency. MOM-licensed and award-winning.",
+  description:
+    "Learn how PromoPower has supported organisations across Singapore since 2002 through professional staffing solutions, structured processes and reliable operational support.",
   alternates: { canonical: "/our-story" },
+  openGraph: {
+    title: "Our Story | PromoPower",
+    description:
+      "Built on experience and strengthened by long-term relationships, PromoPower supports customer-facing campaigns through professional workforce solutions.",
+    url: "https://promopower.com.sg/our-story",
+    siteName: "PromoPower",
+    locale: "en_SG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Our Story | PromoPower",
+    description:
+      "Explore PromoPower's experience, philosophy and commitment to professional staffing solutions since 2002.",
+  },
 };
 
 export default function OurStory() {

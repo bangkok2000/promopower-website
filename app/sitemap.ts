@@ -1,8 +1,9 @@
 import { MetadataRoute } from 'next';
+import { PORTFOLIO_CAMPAIGNS } from '@/lib/data';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://promopower.com.sg';
-  const lastModified = '2026-04-20';
+  const lastModified = '2026-06-15';
 
   return [
     {
@@ -41,5 +42,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'yearly',
       priority: 0.5,
     },
+    ...PORTFOLIO_CAMPAIGNS.map((campaign) => ({
+      url: `${baseUrl}/our-work/${campaign.slug}`,
+      lastModified,
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
   ];
 }

@@ -3,8 +3,24 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Services | PromoPower",
-  description: "Explore PromoPower's end-to-end event staffing services: premium brand ambassadors, roving talents, and full campaign management in Singapore.",
+  description:
+    "Explore PromoPower's professional workforce solutions, including brand ambassadors, product promoters, event personnel and campaign support services in Singapore.",
   alternates: { canonical: "/services" },
+  openGraph: {
+    title: "Services | PromoPower",
+    description:
+      "Professional workforce solutions designed around your campaign objectives, supported by structured recruitment, preparation and coordination.",
+    url: "https://promopower.com.sg/services",
+    siteName: "PromoPower",
+    locale: "en_SG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Services | PromoPower",
+    description:
+      "Professional staffing services for promotions, retail activations, events and customer engagement programmes.",
+  },
 };
 
 export default function Services() {

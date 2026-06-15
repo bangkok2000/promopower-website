@@ -31,17 +31,30 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: "PromoPower | Premium Event Staffing",
-  description: "Singapore's Premier Event Staffing & Brand Talent Agency. We combine operational precision with kinetic human energy to execute flawless on-site activations.",
-  keywords: ["Event Staffing Singapore", "Brand Ambassadors", "Talent Agency", "Event Management", "PromoPower", "Roving Talent"],
+  title: {
+    default: "PromoPower | Professional Staffing Solutions",
+    template: "%s | PromoPower",
+  },
+  description:
+    "PromoPower provides professional staffing solutions for promotions, retail activations, events and customer engagement programmes in Singapore.",
+  keywords: [
+    "Professional staffing solutions Singapore",
+    "Brand ambassadors Singapore",
+    "Product promoters Singapore",
+    "Event personnel Singapore",
+    "Retail activation teams",
+    "Campaign support and coordination",
+    "PromoPower",
+  ],
   authors: [{ name: "PromoPower" }],
   metadataBase: new URL("https://promopower.com.sg"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "PromoPower | Premium Event Staffing in Singapore",
-    description: "Singapore's Premier Event Staffing & Brand Talent Agency.",
+    title: "PromoPower | Professional Staffing Solutions",
+    description:
+      "Professional staffing solutions for promotions, retail activations, events and customer engagement programmes in Singapore.",
     url: "https://promopower.com.sg",
     siteName: "PromoPower",
     locale: "en_SG",
@@ -49,9 +62,34 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "PromoPower | Premium Event Staffing",
-    description: "Singapore's Premier Event Staffing & Brand Talent Agency.",
+    title: "PromoPower | Professional Staffing Solutions",
+    description:
+      "Professional staffing solutions for promotions, retail activations, events and customer engagement programmes in Singapore.",
   },
+};
+
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "PromoPower Pte Ltd",
+  url: "https://promopower.com.sg",
+  email: "admin@promopower.com.sg",
+  telephone: "+65 6123 4567",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "65 Airport Boulevard, #03-37 Changi Airport Terminal 3",
+    addressLocality: "Singapore",
+    postalCode: "819663",
+    addressCountry: "SG",
+  },
+  foundingDate: "2002",
+  description:
+    "Professional staffing solutions for promotions, retail activations, events and customer engagement programmes in Singapore.",
+  sameAs: [
+    "https://www.linkedin.com/company/promopowersg/",
+    "https://www.instagram.com/promopowersg/",
+    "https://www.facebook.com/PromoPower.com.sg",
+  ],
 };
 
 export default function RootLayout({
@@ -73,6 +111,10 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col selection:bg-primary selection:text-on-primary">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <NavBar />
         <main className="flex-1 pt-[76px]">{children}</main>
         <Footer />
