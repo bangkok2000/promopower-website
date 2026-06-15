@@ -4,6 +4,15 @@ const nextConfig: NextConfig = {
   turbopack: {
     root: process.cwd(),
   },
+  async redirects() {
+    return [
+      {
+        source: "/our-story",
+        destination: "/about-us",
+        permanent: true,
+      },
+    ];
+  },
   images: {
     remotePatterns: [
       {
@@ -16,3 +25,5 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
+import("@opennextjs/cloudflare").then((m) => m.initOpenNextCloudflareForDev());

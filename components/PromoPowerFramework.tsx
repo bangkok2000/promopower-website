@@ -5,6 +5,7 @@ interface FrameworkStep {
 }
 
 interface PromoPowerFrameworkProps {
+  id?: string;
   heading?: string;
   intro?: string;
   steps?: FrameworkStep[];
@@ -19,28 +20,24 @@ const defaultSteps: FrameworkStep[] = [
 ];
 
 export default function PromoPowerFramework({
+  id,
   heading = "A Structured Approach To Campaign Execution",
   intro = "PromoPower's framework supports quality, accountability and consistency across customer-facing campaigns.",
   steps = defaultSteps,
 }: PromoPowerFrameworkProps) {
   return (
-    <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16">
-      <div className="max-w-7xl mx-auto">
-        <div className="max-w-3xl mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-4">
-            {heading}
-          </h2>
-          <p className="text-on-surface-variant text-lg leading-relaxed">{intro}</p>
+    <section id={id} className="page-section section-elevated scroll-mt-28">
+      <div className="page-container">
+        <div className="page-container-prose mb-12 sm:mb-16">
+          <h2 className="section-title">{heading}</h2>
+          <p className="page-intro">{intro}</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {steps.map((step, index) => (
-            <article
-              key={step.title}
-              className="bg-surface border border-white/10 rounded-2xl p-6 sm:p-8 hover:border-primary/30 transition-colors"
-            >
-              <div className="w-12 h-12 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center mb-5">
-                <span className="material-symbols-outlined text-primary">{step.icon}</span>
+            <article key={step.title} className="content-card h-full">
+              <div className="icon-badge">
+                <span className="material-symbols-outlined">{step.icon}</span>
               </div>
               <p className="text-xs text-on-surface-variant uppercase tracking-widest mb-2">Step {index + 1}</p>
               <h3 className="text-2xl font-headline font-normal text-on-surface mb-3">{step.title}</h3>

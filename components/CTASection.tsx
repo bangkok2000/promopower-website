@@ -18,10 +18,10 @@ export default function CTASection({
   secondaryHref,
 }: CTASectionProps) {
   return (
-    <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 border-t border-white/10 bg-charcoal-dark/70">
-      <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6">{heading}</h2>
-        <p className="text-lg text-on-surface-variant leading-relaxed mb-10">{body}</p>
+    <section className="page-section section-muted">
+      <div className="page-container-narrow text-center">
+        <h2 className="section-title">{heading}</h2>
+        <p className="page-intro mx-auto mb-10">{body}</p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <Link
@@ -33,10 +33,7 @@ export default function CTASection({
           </Link>
 
           {secondaryLabel && secondaryHref ? (
-            <Link
-              href={secondaryHref}
-              className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal hover:bg-white/20 transition-all"
-            >
+            <Link href={secondaryHref} className="btn-secondary">
               {secondaryLabel}
             </Link>
           ) : null}

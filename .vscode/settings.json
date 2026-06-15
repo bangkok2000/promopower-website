@@ -1,0 +1,35 @@
+{
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.useFlatConfig": true,
+  "eslint.run": "onSave",
+  "eslint.probe": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "typescript.tsserver.maxTsServerMemory": 2048,
+  "typescript.tsserver.watchOptions": {
+    "excludeDirectories": [".next", ".vercel", "node_modules"]
+  },
+  "search.followSymlinks": false,
+  "search.maxResults": 10000,
+  "files.watcherExclude": {
+    "**/.vercel/**": true,
+    "**/.next/**": true,
+    "**/node_modules/**": true,
+    "**/.git/objects/**": true,
+    "**/.git/subtree-cache/**": true,
+    "**/tsconfig.tsbuildinfo": true
+  },
+  "files.exclude": {
+    "**/.next": true,
+    "**/.vercel": true
+  },
+  "search.exclude": {
+    "**/.vercel": true,
+    "**/.next": true,
+    "**/node_modules": true,
+    "**/tsconfig.tsbuildinfo": true
+  }
+}

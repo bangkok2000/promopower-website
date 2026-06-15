@@ -84,19 +84,19 @@ export default async function CampaignDetail(props: { params: Promise<{ slug: st
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-12 lg:gap-16">
           <div className="space-y-6 bg-surface p-8 rounded-2xl border border-white/5 shadow-lg relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-[50px] group-hover:bg-primary/20 transition-all duration-700"></div>
-            <h3 className="text-xl font-headline text-on-surface-variant uppercase tracking-widest border-b border-white/10 pb-4 relative z-10">The Challenge</h3>
+            <h3 className="text-xl font-headline text-on-surface-variant uppercase tracking-widest border-b border-white/10 pb-4 relative z-10">Campaign Challenge</h3>
             <p className="text-lg leading-relaxed text-on-surface/90 relative z-10">{campaign.challenge}</p>
           </div>
           
           <div className="space-y-6 bg-surface p-8 rounded-2xl border border-white/5 shadow-lg relative overflow-hidden group">
             <div className="absolute top-0 right-0 w-32 h-32 bg-accent-amber/5 rounded-full blur-[50px] group-hover:bg-accent-amber/20 transition-all duration-700"></div>
-            <h3 className="text-xl font-headline text-on-surface-variant uppercase tracking-widest border-b border-white/10 pb-4 relative z-10">The Solution</h3>
+            <h3 className="text-xl font-headline text-on-surface-variant uppercase tracking-widest border-b border-white/10 pb-4 relative z-10">PromoPower Support</h3>
             <p className="text-lg leading-relaxed text-on-surface/90 relative z-10">{campaign.solution}</p>
           </div>
           
           <div className="space-y-6 bg-charcoal-dark p-8 rounded-2xl border border-primary/20 shadow-2xl relative overflow-hidden group transform hover:-translate-y-2 transition-transform duration-300">
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-transparent"></div>
-            <h3 className="text-xl font-headline text-primary uppercase tracking-widest border-b border-primary/20 pb-4 relative z-10">The Impact</h3>
+            <h3 className="text-xl font-headline text-primary uppercase tracking-widest border-b border-primary/20 pb-4 relative z-10">Execution Outcome</h3>
             <p className="text-xl leading-relaxed text-on-surface font-medium relative z-10">{campaign.impact}</p>
           </div>
         </div>
@@ -107,16 +107,16 @@ export default async function CampaignDetail(props: { params: Promise<{ slug: st
            {/* eslint-disable-next-line @next/next/no-img-element */}
            <img src={campaign.imageUrl} alt={`${campaign.title} Execution`} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" />
            <div className="absolute bottom-6 right-6 z-20 bg-black/60 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-              <span className="text-white text-sm font-medium tracking-wide">Live Activation Capture</span>
+                <span className="text-white text-sm font-medium tracking-wide">Campaign Visual</span>
            </div>
         </div>
       </section>
 
       {/* CTA Footer */}
       <section className="mt-8 sm:mt-16 text-center px-6">
-        <h2 className="text-2xl sm:text-3xl md:text-4xl font-headline font-normal mb-6 sm:mb-10 text-on-surface drop-shadow-md">Translate this success to your brand.</h2>
-        <Link href="/contact-us" className="bg-primary hover:bg-accent-amber text-charcoal-dark font-bold px-8 sm:px-10 py-4 sm:py-5 rounded-full font-headline hover:scale-105 active:scale-95 transition-all shadow-xl inline-flex items-center gap-3">
-             Start Your Activation <span className="material-symbols-outlined">bolt</span>
+           <h2 className="text-2xl sm:text-3xl md:text-4xl font-headline font-normal mb-6 sm:mb-10 text-on-surface drop-shadow-md">Discuss Similar Support For Your Campaign</h2>
+           <Link href="/contact-us" className="bg-primary hover:bg-accent-amber text-charcoal-dark font-bold px-8 sm:px-10 py-4 sm:py-5 rounded-full font-headline hover:scale-105 active:scale-95 transition-all shadow-xl inline-flex items-center gap-3">
+             Contact Our Team <span className="material-symbols-outlined">arrow_forward</span>
         </Link>
       </section>
     </div>

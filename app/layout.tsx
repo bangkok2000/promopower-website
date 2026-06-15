@@ -3,6 +3,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { Playfair_Display, Lora, Manrope } from 'next/font/google';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import { SITE } from "@/lib/site";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     "PromoPower",
   ],
   authors: [{ name: "PromoPower" }],
-  metadataBase: new URL("https://promopower.com.sg"),
+  metadataBase: new URL(SITE.url),
   alternates: {
     canonical: "/",
   },
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     title: "PromoPower | Professional Staffing Solutions",
     description:
       "Professional staffing solutions for promotions, retail activations, events and customer engagement programmes in Singapore.",
-    url: "https://promopower.com.sg",
+    url: SITE.url,
     siteName: "PromoPower",
     locale: "en_SG",
     type: "website",
@@ -71,10 +72,9 @@ export const metadata: Metadata = {
 const structuredData = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "PromoPower Pte Ltd",
-  url: "https://promopower.com.sg",
-  email: "admin@promopower.com.sg",
-  telephone: "+65 6123 4567",
+  name: SITE.name,
+  url: SITE.url,
+  email: SITE.email,
   address: {
     "@type": "PostalAddress",
     streetAddress: "65 Airport Boulevard, #03-37 Changi Airport Terminal 3",
@@ -82,7 +82,7 @@ const structuredData = {
     postalCode: "819663",
     addressCountry: "SG",
   },
-  foundingDate: "2002",
+  foundingDate: SITE.foundingDate,
   description:
     "Professional staffing solutions for promotions, retail activations, events and customer engagement programmes in Singapore.",
   sameAs: [

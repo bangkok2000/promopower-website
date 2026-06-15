@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { SITE } from "@/lib/site";
 
 export default function Footer() {
   return (
@@ -11,6 +12,7 @@ export default function Footer() {
               src="/logo-transparent.png" 
               alt="PromoPower Logo" 
               fill
+              sizes="(max-width: 768px) 18rem, 20rem"
               className="object-contain object-left opacity-90 hover:opacity-100 transition-opacity"
             />
           </Link>
@@ -80,9 +82,17 @@ export default function Footer() {
               Contact
             </h2>
             <ul className="space-y-3 text-sm text-on-surface-variant/70">
-              <li>admin@promopower.com.sg</li>
-              <li>+65 6123 4567</li>
-              <li>65 Airport Boulevard, #03-37 Changi T3, Singapore 819663</li>
+              <li>
+                <a href={`mailto:${SITE.email}`} className="hover:text-primary transition-colors">
+                  {SITE.email}
+                </a>
+              </li>
+              <li>
+                <a href={`tel:${SITE.phoneTel}`} className="hover:text-primary transition-colors">
+                  {SITE.phone}
+                </a>
+              </li>
+              <li>{SITE.address}</li>
             </ul>
           </div>
           <div className="space-y-4">

@@ -1,9 +1,13 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import AwardsStrip from "@/components/AwardsStrip";
 import CTASection from "@/components/CTASection";
+import DualAudiencePanel from "@/components/DualAudiencePanel";
+import HomepageSectionNav from "@/components/HomepageSectionNav";
 import IndustryCard from "@/components/IndustryCard";
 import PromoPowerFramework from "@/components/PromoPowerFramework";
 import TrustCard from "@/components/TrustCard";
+import { HERO_IMAGE_URL } from "@/lib/navigation";
 
 export const metadata: Metadata = {
   title: "PromoPower Singapore | Professional Staffing Solutions Since 2002",
@@ -160,17 +164,22 @@ const differentiators = [
 export default function Home() {
   return (
     <>
-      <section className="relative overflow-hidden min-h-[72vh] py-20 sm:py-24 px-6 sm:px-8 md:px-16 flex items-center">
-        <div className="absolute inset-0 bg-charcoal-dark"></div>
-        <div className="absolute inset-0 midnight-gradient opacity-80"></div>
-        <div className="absolute -top-24 -left-20 w-72 h-72 bg-primary/15 blur-3xl rounded-full animate-pulse"></div>
-        <div className="absolute -bottom-16 right-0 w-80 h-80 bg-accent-amber/10 blur-3xl rounded-full animate-pulse"></div>
+      <section id="top" className="page-hero relative overflow-hidden min-h-[85vh] flex items-center scroll-mt-nav">
+        <div className="absolute inset-0 z-0" aria-hidden="true">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={HERO_IMAGE_URL} alt="" className="hero-photo w-full h-full" />
+          <div className="absolute inset-0 hero-overlay" />
+          <div className="absolute inset-0 midnight-gradient opacity-40" />
+        </div>
+        <div className="hero-glow hero-glow-primary -top-24 -left-20 z-[1]" aria-hidden="true" />
+        <div className="hero-glow hero-glow-accent -bottom-16 right-0 z-[1]" aria-hidden="true" />
 
-        <div className="relative z-10 max-w-5xl mx-auto w-full">
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-headline font-normal text-on-surface leading-tight tracking-tight mb-8">
+        <div className="relative z-10 page-section max-w-5xl mx-auto w-full pb-8">
+          <span className="section-label">PromoPower Singapore</span>
+          <h1 className="page-title">
             Building Successful Brand Experiences Through Exceptional People
           </h1>
-          <div className="space-y-6 text-lg sm:text-xl text-on-surface-variant max-w-4xl leading-relaxed mb-12">
+          <div className="prose-block max-w-4xl mb-12">
             <p>
               For more than two decades, PromoPower has helped organisations connect with customers through professional promoters, brand ambassadors, event personnel and retail support teams.
             </p>
@@ -183,40 +192,32 @@ export default function Home() {
           </div>
           <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 items-start">
             <Link
-              href="/contact-us"
+              href="#contact"
               className="glow-button text-on-primary px-9 sm:px-11 py-4 sm:py-5 rounded-full font-headline font-normal text-base sm:text-lg hover:scale-105 active:scale-95 transition-all text-center"
             >
               Get In Touch
             </Link>
-            <Link
-              href="/services"
-              className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-9 sm:px-11 py-4 sm:py-5 rounded-full font-headline font-normal text-base sm:text-lg hover:bg-white/20 transition-all text-center"
-            >
+            <Link href="#services" className="btn-secondary px-9 sm:px-11 py-4 sm:py-5 text-base sm:text-lg">
               Explore Our Services
             </Link>
           </div>
 
           <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
-            <div className="rounded-xl border border-white/10 bg-surface/60 px-4 py-3 text-sm sm:text-base text-on-surface-variant">
-              20+ Years Experience
-            </div>
-            <div className="rounded-xl border border-white/10 bg-surface/60 px-4 py-3 text-sm sm:text-base text-on-surface-variant">
-              MOM Licensed Employment Agency
-            </div>
-            <div className="rounded-xl border border-white/10 bg-surface/60 px-4 py-3 text-sm sm:text-base text-on-surface-variant">
-              Professional Staffing Solutions
-            </div>
+            <div className="trust-chip">20+ Years Experience</div>
+            <div className="trust-chip">MOM Licensed Employment Agency</div>
+            <div className="trust-chip">Professional Staffing Solutions</div>
           </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 max-w-7xl mx-auto">
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
+      <AwardsStrip />
+      <HomepageSectionNav />
+
+      <section id="trust" className="page-section scroll-mt-nav">
+        <div className="page-container grid lg:grid-cols-2 gap-12 items-start">
           <div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6">
-              Trusted Workforce Solutions Since 2002
-            </h2>
-            <div className="space-y-5 text-on-surface-variant text-lg leading-relaxed">
+            <h2 className="section-title">Trusted Workforce Solutions Since 2002</h2>
+            <div className="prose-block">
               <p>Successful campaigns depend on far more than creative ideas.</p>
               <p>
                 No matter how strong the strategy, customers ultimately interact with the people representing the brand. Those interactions influence perceptions, shape experiences and often determine how a campaign is remembered.
@@ -231,6 +232,10 @@ export default function Home() {
                 Our clients value us not only for the quality of our personnel, but also for the responsiveness of our team, the consistency of our processes and our commitment to helping campaigns run smoothly from start to finish.
               </p>
             </div>
+            <Link href="/about-us" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-8">
+              Read our full story
+              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            </Link>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
@@ -246,29 +251,30 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6 text-center">
-          More Than Staffing. A Partner In Execution.
-        </h2>
-        <div className="max-w-5xl mx-auto space-y-5 text-on-surface-variant text-lg leading-relaxed">
-          <p>At PromoPower, we believe that every customer interaction matters.</p>
-          <p>
-            Whether a customer is encountering a product for the first time, attending an event, visiting a retail environment or engaging with a brand ambassador, those moments contribute to how a brand is perceived.
-          </p>
-          <p>That is why our role extends beyond supplying manpower.</p>
-          <p>
-            We work closely with clients to understand campaign objectives, customer profiles and operational requirements before identifying personnel who are suitable for the task. By taking the time to understand what success looks like for each campaign, we are able to recommend workforce solutions that support both business goals and customer expectations.
-          </p>
-          <p>
-            Our involvement continues throughout the campaign. From deployment planning and scheduling to ongoing support and coordination, our team remains focused on helping clients execute with confidence.
-          </p>
-          <p>
-            For more than twenty years, this approach has enabled us to build long-term relationships with organisations that value professionalism, reliability and accountability.
-          </p>
+      <section id="approach" className="page-section section-muted scroll-mt-nav">
+        <div className="page-container-narrow text-center">
+          <h2 className="section-title">More Than Staffing. A Partner In Execution.</h2>
+          <div className="prose-block text-left sm:text-center">
+            <p>At PromoPower, we believe that every customer interaction matters.</p>
+            <p>
+              Whether a customer is encountering a product for the first time, attending an event, visiting a retail environment or engaging with a brand ambassador, those moments contribute to how a brand is perceived.
+            </p>
+            <p>That is why our role extends beyond supplying manpower.</p>
+            <p>
+              We work closely with clients to understand campaign objectives, customer profiles and operational requirements before identifying personnel who are suitable for the task. By taking the time to understand what success looks like for each campaign, we are able to recommend workforce solutions that support both business goals and customer expectations.
+            </p>
+            <p>
+              Our involvement continues throughout the campaign. From deployment planning and scheduling to ongoing support and coordination, our team remains focused on helping clients execute with confidence.
+            </p>
+            <p>
+              For more than twenty years, this approach has enabled us to build long-term relationships with organisations that value professionalism, reliability and accountability.
+            </p>
+          </div>
         </div>
       </section>
 
       <PromoPowerFramework
+        id="framework"
         heading="A Structured Approach To Successful Campaigns"
         intro="Consistent execution is rarely achieved by chance. Over the years, PromoPower has developed a practical framework that helps ensure quality, accountability and reliability across every deployment. While every campaign is different, the principles of successful execution remain remarkably consistent."
         steps={[
@@ -305,52 +311,54 @@ export default function Home() {
         ]}
       />
 
-      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 max-w-7xl mx-auto bokeh-overlay">
-        <div className="max-w-4xl mx-auto text-center mb-14 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6">
-            Workforce Solutions Designed Around Your Objectives
-          </h2>
-          <div className="space-y-4 text-on-surface-variant text-lg leading-relaxed">
-            <p>
-              Every campaign presents different objectives, customer expectations and operational requirements.
-            </p>
-            <p>
-              PromoPower provides flexible workforce solutions that help organisations engage customers effectively while maintaining a high standard of professionalism and execution.
-            </p>
+      <section id="services" className="page-section scroll-mt-nav">
+        <div className="page-container">
+          <div className="page-container-prose text-center mb-14 sm:mb-16">
+            <h2 className="section-title">Workforce Solutions Designed Around Your Objectives</h2>
+            <div className="prose-block">
+              <p>
+                Every campaign presents different objectives, customer expectations and operational requirements.
+              </p>
+              <p>
+                PromoPower provides flexible workforce solutions that help organisations engage customers effectively while maintaining a high standard of professionalism and execution.
+              </p>
+            </div>
           </div>
-        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {serviceHighlights.map((service) => (
-            <article
-              key={service.title}
-              className="bg-surface rounded-2xl p-6 sm:p-8 border border-white/10 hover:border-primary/30 transition-all"
-            >
-              <div className="w-12 h-12 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center mb-5">
-                <span className="material-symbols-outlined text-primary">{service.icon}</span>
-              </div>
-              <h3 className="text-2xl font-headline font-normal text-on-surface mb-4">{service.title}</h3>
-              <p className="text-on-surface-variant leading-relaxed mb-4">{service.descriptionOne}</p>
-              <p className="text-on-surface-variant leading-relaxed mb-6">{service.descriptionTwo}</p>
-              <Link
-                href={service.href}
-                className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all"
-              >
-                Learn More
-                <span className="material-symbols-outlined text-base">arrow_forward</span>
-              </Link>
-            </article>
-          ))}
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {serviceHighlights.map((service) => (
+              <article key={service.title} className="content-card service-card flex flex-col h-full">
+                <div className="icon-badge">
+                  <span className="material-symbols-outlined">{service.icon}</span>
+                </div>
+                <h3 className="text-2xl font-headline font-normal text-on-surface mb-4">{service.title}</h3>
+                <p className="text-on-surface-variant leading-relaxed mb-4">{service.descriptionOne}</p>
+                <p className="text-on-surface-variant leading-relaxed mb-6 flex-1">{service.descriptionTwo}</p>
+                <Link
+                  href={service.href}
+                  className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-auto"
+                >
+                  Learn More
+                  <span className="material-symbols-outlined text-base">arrow_forward</span>
+                </Link>
+              </article>
+            ))}
+          </div>
+
+          <div className="text-center mt-12">
+            <Link href="/services" className="btn-secondary">
+              View all services
+              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 bg-charcoal-dark/45 border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <div className="max-w-4xl mb-12">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6">
-              Supporting Organisations Across Diverse Industries
-            </h2>
-            <div className="space-y-4 text-on-surface-variant text-lg leading-relaxed">
+      <section id="industries" className="page-section section-muted scroll-mt-nav">
+        <div className="page-container">
+          <div className="page-container-prose mb-12">
+            <h2 className="section-title">Supporting Organisations Across Diverse Industries</h2>
+            <div className="prose-block">
               <p>
                 Different industries present different customer expectations, operational environments and engagement requirements.
               </p>
@@ -373,37 +381,46 @@ export default function Home() {
               />
             ))}
           </div>
+
+          <div className="text-center mt-12">
+            <Link href="/industries" className="btn-secondary">
+              Explore industries we support
+              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            </Link>
+          </div>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6 text-center">
-          Supporting Organisations Across Singapore
-        </h2>
-        <div className="max-w-5xl mx-auto space-y-5 text-on-surface-variant text-lg leading-relaxed text-center">
-          <p>
-            Over the years, PromoPower has supported organisations across a wide range of industries, campaign types and customer engagement environments.
-          </p>
-          <p>
-            From retail promotions and product launches to exhibitions, roadshows and customer engagement programmes, our focus has always been on helping clients execute professionally through quality people and reliable operational support.
-          </p>
-          <p>
-            The relationships we have built over the years reflect our commitment to professionalism, responsiveness and service excellence.
-          </p>
-          <p>
-            To respect client confidentiality, intellectual property rights and brand ownership, client names and logos are only featured where appropriate permissions have been obtained.
-          </p>
-          <p className="text-on-surface font-headline text-xl sm:text-2xl pt-4">Our focus is not on who we have worked for.</p>
-          <p className="text-primary font-headline text-xl sm:text-2xl">Our focus is on how we can help you succeed.</p>
+      <section className="page-section section-elevated">
+        <div className="page-container-narrow text-center">
+          <h2 className="section-title">Supporting Organisations Across Singapore</h2>
+          <div className="prose-block">
+            <p>
+              Over the years, PromoPower has supported organisations across a wide range of industries, campaign types and customer engagement environments.
+            </p>
+            <p>
+              From retail promotions and product launches to exhibitions, roadshows and customer engagement programmes, our focus has always been on helping clients execute professionally through quality people and reliable operational support.
+            </p>
+            <p>
+              The relationships we have built over the years reflect our commitment to professionalism, responsiveness and service excellence.
+            </p>
+            <p>
+              To respect client confidentiality, intellectual property rights and brand ownership, client names and logos are only featured where appropriate permissions have been obtained.
+            </p>
+            <p className="text-on-surface font-headline text-xl sm:text-2xl pt-4">Our focus is not on who we have worked for.</p>
+            <p className="text-primary font-headline text-xl sm:text-2xl">Our focus is on how we can help you succeed.</p>
+          </div>
+          <Link href="/our-work" className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-10">
+            View our work approach
+            <span className="material-symbols-outlined text-base">arrow_forward</span>
+          </Link>
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 bg-surface-container/40 border-y border-white/5">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6 text-center">
-            Built On Experience
-          </h2>
-          <div className="max-w-5xl mx-auto space-y-4 text-on-surface-variant text-lg leading-relaxed text-center mb-10">
+      <section id="experience" className="page-section section-muted scroll-mt-nav">
+        <div className="page-container">
+          <h2 className="section-title text-center">Built On Experience</h2>
+          <div className="page-container-prose prose-block text-center mb-10">
             <p>Successful customer-facing campaigns require more than manpower.</p>
             <p>
               They require experience, preparation, operational discipline and the ability to adapt to different customer environments.
@@ -415,16 +432,13 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
             {experienceIndicators.map((item) => (
-              <div
-                key={item}
-                className="rounded-xl bg-surface border border-white/10 px-5 py-4 text-on-surface-variant text-sm sm:text-base"
-              >
+              <div key={item} className="pillar-chip text-center">
                 {item}
               </div>
             ))}
           </div>
 
-          <div className="max-w-5xl mx-auto space-y-3 text-center text-on-surface-variant leading-relaxed">
+          <div className="page-container-prose prose-block text-center">
             <p>
               While every campaign is unique, our commitment remains consistent: helping clients execute professionally through quality people and reliable operational support.
             </p>
@@ -435,37 +449,41 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 sm:py-24 px-6 sm:px-8 md:px-16 max-w-6xl mx-auto">
-        <h2 className="text-3xl sm:text-4xl md:text-5xl font-headline font-normal text-on-surface mb-6 text-center">
-          Why Organisations Continue To Work With PromoPower
-        </h2>
-        <div className="max-w-5xl mx-auto space-y-5 text-on-surface-variant text-lg leading-relaxed text-center mb-10">
-          <p>Choosing a staffing partner is about more than filling positions.</p>
-          <p>
-            Organisations need confidence that their partner understands the importance of reliability, professionalism and accountability.
-          </p>
-          <p>
-            For more than two decades, PromoPower has earned that confidence by focusing on the fundamentals that matter most: quality people, structured processes, responsive support and professional execution.
-          </p>
-          <p>
-            We understand that every deployment represents an extension of our client&apos;s brand. This understanding influences every aspect of our work, from recruitment and preparation to deployment and ongoing support.
-          </p>
-          <p>
-            While campaigns may vary in size and complexity, our commitment remains the same: helping clients execute with confidence while delivering positive experiences for their customers.
-          </p>
-        </div>
+      <section id="why-us" className="page-section scroll-mt-nav">
+        <div className="page-container-narrow text-center">
+          <h2 className="section-title">Why Organisations Continue To Work With PromoPower</h2>
+          <div className="prose-block mb-10">
+            <p>Choosing a staffing partner is about more than filling positions.</p>
+            <p>
+              Organisations need confidence that their partner understands the importance of reliability, professionalism and accountability.
+            </p>
+            <p>
+              For more than two decades, PromoPower has earned that confidence by focusing on the fundamentals that matter most: quality people, structured processes, responsive support and professional execution.
+            </p>
+            <p>
+              We understand that every deployment represents an extension of our client&apos;s brand. This understanding influences every aspect of our work, from recruitment and preparation to deployment and ongoing support.
+            </p>
+            <p>
+              While campaigns may vary in size and complexity, our commitment remains the same: helping clients execute with confidence while delivering positive experiences for their customers.
+            </p>
+          </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {differentiators.map((item) => (
-            <div
-              key={item}
-              className="rounded-xl border border-white/10 bg-surface px-5 py-4 text-on-surface-variant"
-            >
-              {item}
-            </div>
-          ))}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+            {differentiators.map((item) => (
+              <div key={item} className="pillar-chip text-center">
+                {item}
+              </div>
+            ))}
+          </div>
+
+          <Link href="/why-promopower" className="btn-secondary">
+            Why PromoPower
+            <span className="material-symbols-outlined text-base">arrow_forward</span>
+          </Link>
         </div>
       </section>
+
+      <DualAudiencePanel />
 
       <CTASection
         heading="Let's Start A Conversation"
