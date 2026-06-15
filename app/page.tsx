@@ -284,7 +284,7 @@ export default function Home() {
                 while maintaining a high standard of professionalism and execution.
               </p>
             }
-            link={{ href: "/services", label: "View all services" }}
+            link={{ href: "/services", label: "Read the full Services page" }}
           >
             <div className="homepage-tab-card-grid">
               {serviceHighlights.map((service) => (
@@ -323,7 +323,7 @@ export default function Home() {
                 expandLabel="How industry experience shapes our recommendations"
               />
             }
-            link={{ href: "/industries", label: "Explore industries we support" }}
+            link={{ href: "/industries", label: "Read the full Industries page" }}
             sections={
               <>
                 <HomepageTabSubsection

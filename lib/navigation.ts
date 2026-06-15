@@ -10,8 +10,8 @@ export const SERVICE_LINKS = [
 export const HOMEPAGE_SECTIONS = [
   { id: "trust", label: "Trust" },
   { id: "framework", label: "Process" },
-  { id: "services", label: "Services" },
-  { id: "industries", label: "Industries" },
+  { id: "services", label: "Solutions" },
+  { id: "industries", label: "Sectors" },
   { id: "contact", label: "Contact" },
 ] as const;
 
@@ -25,8 +25,8 @@ export const HOMEPAGE_QUICK_PATHS = [
     icon: "groups",
   },
   {
-    title: "Industries We Serve",
-    description: "Sector experience across beauty, retail, FMCG, events and more.",
+    title: "Sector Experience",
+    description: "Beauty, retail, FMCG, events and other customer-facing environments.",
     sectionId: "industries" as const,
     icon: "domain",
   },
