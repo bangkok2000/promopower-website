@@ -345,7 +345,7 @@ export default function Home() {
                 <HomepageTabSubsection
                   title="Why Organisations Continue To Work With PromoPower"
                   intro={<p className="page-intro">{whyParagraphs[0]}</p>}
-                  link={{ href: "/why-promopower", label: "Why PromoPower" }}
+                  link={{ href: "/why-promopower", label: "Read the full Why PromoPower page" }}
                 >
                   <>
                     <div className="homepage-tab-chip-grid mb-6">

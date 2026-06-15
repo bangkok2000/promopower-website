@@ -25,10 +25,10 @@ export const HOMEPAGE_QUICK_PATHS = [
     icon: "groups",
   },
   {
-    title: "Why PromoPower",
-    description: "Experience, process and accountability built since 2002.",
+    title: "Industries We Serve",
+    description: "Sector experience across beauty, retail, FMCG, events and more.",
     sectionId: "industries" as const,
-    icon: "verified",
+    icon: "domain",
   },
   {
     title: "Speak With Us",
