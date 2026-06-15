@@ -1,5 +1,8 @@
-# PromoPower — static site on Cloudflare Pages (NOT Workers/OpenNext)
+# PromoPower — static site via Workers static assets (no OpenNext, no Worker code)
 name = "promopower-website"
 account_id = "b8913fb4c5f8fe17d60ce0f824cdd1aa"
-pages_build_output_dir = "out"
 compatibility_date = "2026-04-17"
+
+[assets]
+directory = "./out"
+not_found_handling = "404-page"

@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "npx serve out",
     "lint": "eslint",
-    "deploy": "npm run build && wrangler pages deploy out --project-name=promopower-website --branch=main"
+    "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {
     "@next/third-parties": "^16.2.9",
