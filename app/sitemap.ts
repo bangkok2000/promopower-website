@@ -1,6 +1,8 @@
 import { MetadataRoute } from "next";
 import { PORTFOLIO_CAMPAIGNS } from "@/lib/data";
 
+export const dynamic = "force-static";
+
 const SERVICE_SLUGS = [
   "brand-ambassadors",
   "product-promoters",

@@ -1,23 +1,15 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export",
   turbopack: {
     root: process.cwd(),
   },
-  // Keep local builds from spawning too many workers on smaller machines.
   experimental: {
     cpus: 2,
   },
-  async redirects() {
-    return [
-      {
-        source: "/our-story",
-        destination: "/about-us",
-        permanent: true,
-      },
-    ];
-  },
   images: {
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: "https",
@@ -29,5 +21,3 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
-
-import("@opennextjs/cloudflare").then((m) => m.initOpenNextCloudflareForDev());

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { submitContactInquiry } from "../actions";
-import type { ActionResult } from "../actions";
+import { submitContactInquiry } from "@/lib/forms";
+import type { FormSubmitResult } from "@/lib/forms";
 import { FORM_DEMO_MODE, SITE } from "@/lib/site";
 
 export default function ContactUs() {
@@ -46,7 +46,7 @@ export default function ContactUs() {
     setIsSubmitting(true);
     setError(null);
     const formData = new FormData(formRef.current);
-    const result: ActionResult = await submitContactInquiry(null, formData);
+    const result: FormSubmitResult = await submitContactInquiry(formData);
     setIsSubmitting(false);
     if (result.success) {
       setStep(4);

@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useRef } from "react";
-import { submitJobseekerApplication } from "../actions";
-import type { ActionResult } from "../actions";
+import { submitJobseekerApplication } from "@/lib/forms";
+import type { FormSubmitResult } from "@/lib/forms";
 import { FORM_DEMO_MODE } from "@/lib/site";
 
 export default function Jobseekers() {
@@ -52,7 +52,7 @@ export default function Jobseekers() {
     setError(null);
     const formData = new FormData(formRef.current);
     formData.set("pdpaConsent", isAgreed ? "true" : "false");
-    const result: ActionResult = await submitJobseekerApplication(null, formData);
+    const result: FormSubmitResult = await submitJobseekerApplication(formData);
     setIsSubmitting(false);
     if (result.success) {
       setStep(4);

@@ -10,5 +10,6 @@ export const SITE = {
   foundingDate: "2002",
 } as const;
 
-/** Form submissions are logged only until an email/CRM integration is connected. */
-export const FORM_DEMO_MODE = process.env.NEXT_PUBLIC_FORM_DEMO_MODE !== "false";
+/** Demo mode when no Web3Forms key is set, or when NEXT_PUBLIC_FORM_DEMO_MODE=true. */
+export const FORM_DEMO_MODE =
+  process.env.NEXT_PUBLIC_FORM_DEMO_MODE === "true" || !process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
