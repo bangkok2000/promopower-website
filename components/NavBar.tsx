@@ -1,5 +1,6 @@
 "use client";
 
+import { syncScrollOffsetVars } from "@/lib/scroll-offset";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -38,16 +39,13 @@ export default function NavBar() {
 
   useEffect(() => {
     const syncHeaderHeight = () => {
-      const header = document.getElementById("site-header");
-      if (header) {
-        document.documentElement.style.setProperty("--site-header-height", `${header.offsetHeight}px`);
-      }
+      syncScrollOffsetVars({ includeSectionNav: pathname === "/" });
     };
 
     syncHeaderHeight();
     window.addEventListener("resize", syncHeaderHeight);
     return () => window.removeEventListener("resize", syncHeaderHeight);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
     if (!isMenuOpen) return;
@@ -124,15 +122,18 @@ export default function NavBar() {
         <div className="hidden lg:flex gap-5 xl:gap-6 items-center">
           {NAV_ITEMS.map((item) =>
             item.label === "Services" ? (
-              <div key={item.label} className="relative" ref={servicesRef}>
+              <div key={item.label} className="relative inline-flex items-center gap-0.5" ref={servicesRef}>
+                <Link href={item.href} className={getLinkClass(item.href)}>
+                  Services
+                </Link>
                 <button
                   type="button"
-                  className={`inline-flex items-center gap-1 ${getLinkClass(item.href)}`}
+                  className="inline-flex items-center text-on-surface-variant hover:text-primary transition-colors p-1 -ml-1"
                   aria-expanded={servicesOpen}
                   aria-haspopup="true"
+                  aria-label="Show services menu"
                   onClick={() => setServicesOpen((open) => !open)}
                 >
-                  Services
                   <span className="material-symbols-outlined text-base">{servicesOpen ? "expand_less" : "expand_more"}</span>
                 </button>
                 {servicesOpen ? (

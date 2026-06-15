@@ -216,7 +216,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="approach" className="page-section section-muted">
+      <section id="approach" className="page-section section-muted scroll-mt-section">
         <div className="page-container grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-10 lg:gap-16 items-start">
           <div>
             <h2 className="section-title">More Than Staffing. A Partner In Execution.</h2>

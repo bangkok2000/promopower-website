@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect } from "react";
+import { scrollToElement, syncScrollOffsetVars } from "@/lib/scroll-offset";
 import { HOMEPAGE_SECTIONS } from "@/lib/navigation";
+import { useEffect } from "react";
 
-const SCROLL_GUTTER_PX = 24;
 const VALID_SECTION_IDS = new Set<string>([
   ...HOMEPAGE_SECTIONS.map((section) => section.id),
   "top",
@@ -11,58 +11,21 @@ const VALID_SECTION_IDS = new Set<string>([
   "approach",
 ]);
 
-function measureHeaderHeight(): number {
-  const header = document.getElementById("site-header");
-  return header?.offsetHeight ?? 80;
-}
-
-function getScrollOffset(forSectionId?: string): number {
-  const headerHeight = measureHeaderHeight();
-  const sectionNav = document.getElementById("homepage-section-nav");
-  const sectionNavHeight =
-    forSectionId === "top" || !sectionNav ? 0 : sectionNav.offsetHeight || 52;
-
-  return headerHeight + sectionNavHeight + SCROLL_GUTTER_PX;
-}
-
-function syncScrollOffsetVars() {
-  const headerHeight = measureHeaderHeight();
-  const sectionNav = document.getElementById("homepage-section-nav");
-  const sectionNavHeight = sectionNav?.offsetHeight ?? 52;
-  const root = document.documentElement;
-
-  root.style.setProperty("--site-header-height", `${headerHeight}px`);
-  root.style.setProperty("--site-section-nav-height", `${sectionNavHeight}px`);
-  root.style.setProperty(
-    "--site-scroll-offset",
-    `${headerHeight + sectionNavHeight + SCROLL_GUTTER_PX}px`
-  );
-}
-
-function scrollToSection(id: string) {
-  const target = document.getElementById(id);
-  if (!target) return;
-
-  syncScrollOffsetVars();
-  const top = target.getBoundingClientRect().top + window.scrollY - getScrollOffset(id);
-  window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
-}
-
 function scrollToHash(hash: string) {
   const id = hash.replace(/^#/, "");
   if (!id || !VALID_SECTION_IDS.has(id)) return;
-  scrollToSection(id);
+  scrollToElement(id);
 }
 
 export default function HomepageAnchorScroll() {
   useEffect(() => {
-    syncScrollOffsetVars();
+    syncScrollOffsetVars({ includeSectionNav: true });
 
-    const handleResize = () => syncScrollOffsetVars();
+    const handleResize = () => syncScrollOffsetVars({ includeSectionNav: true });
     window.addEventListener("resize", handleResize);
 
     const sectionNav = document.getElementById("homepage-section-nav");
-    const resizeObserver = sectionNav ? new ResizeObserver(syncScrollOffsetVars) : null;
+    const resizeObserver = sectionNav ? new ResizeObserver(() => syncScrollOffsetVars({ includeSectionNav: true })) : null;
     if (sectionNav) resizeObserver?.observe(sectionNav);
 
     const handleClick = (event: MouseEvent) => {
@@ -76,13 +39,14 @@ export default function HomepageAnchorScroll() {
       if (!VALID_SECTION_IDS.has(id) || !document.getElementById(id)) return;
 
       event.preventDefault();
-      scrollToSection(id);
+      event.stopPropagation();
+      scrollToElement(id);
       window.history.pushState(null, "", hash);
     };
 
     const handleHashChange = () => scrollToHash(window.location.hash);
 
-    document.addEventListener("click", handleClick);
+    document.addEventListener("click", handleClick, true);
     window.addEventListener("hashchange", handleHashChange);
 
     const initialHash = window.location.hash;
@@ -95,7 +59,7 @@ export default function HomepageAnchorScroll() {
     return () => {
       window.removeEventListener("resize", handleResize);
       resizeObserver?.disconnect();
-      document.removeEventListener("click", handleClick);
+      document.removeEventListener("click", handleClick, true);
       window.removeEventListener("hashchange", handleHashChange);
     };
   }, []);

@@ -44,7 +44,8 @@
   }
 
   html {
-    scroll-padding-top: var(--site-scroll-offset);
+    /* Section targets use scroll-margin-top only — avoid doubling with scroll-padding. */
+    scroll-behavior: auto;
   }
 
   body {

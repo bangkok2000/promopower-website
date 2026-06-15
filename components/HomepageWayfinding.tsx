@@ -1,18 +1,12 @@
 "use client";
 
+import { syncScrollOffsetVars } from "@/lib/scroll-offset";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { HOMEPAGE_QUICK_PATHS, HOMEPAGE_SECTIONS } from "@/lib/navigation";
 
 function syncScrollOffset() {
-  const header = document.getElementById("site-header");
-  const sectionNav = document.getElementById("homepage-section-nav");
-  const headerHeight = header?.offsetHeight ?? 80;
-  const sectionNavHeight = sectionNav?.offsetHeight ?? 52;
-  const scrollOffset = headerHeight + sectionNavHeight + 24;
-
-  document.documentElement.style.setProperty("--site-section-nav-height", `${sectionNavHeight}px`);
-  document.documentElement.style.setProperty("--site-scroll-offset", `${scrollOffset}px`);
+  syncScrollOffsetVars({ includeSectionNav: true });
 }
 
 export default function HomepageWayfinding() {
