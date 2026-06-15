@@ -22,27 +22,20 @@ export default function HomeHero() {
       <div className="hero-glow hero-glow-accent -bottom-16 right-0 z-[1]" aria-hidden="true" />
 
       <div className="relative z-10 w-full py-10 sm:py-12 lg:py-14">
-        <div className="page-container px-[var(--site-gutter)]">
-          <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
-            <HeroAccolades className="hidden lg:block lg:col-span-4 xl:col-span-3 lg:self-center" />
+        <div className="site-shell">
+          <span className="section-label">PromoPower Singapore</span>
+          <h1 className="page-title max-w-3xl">Building Successful Brand Experiences Through Exceptional People</h1>
+          <p className="page-intro max-w-2xl mb-8">{heroParagraphs[0]}</p>
 
-            <div className="lg:col-span-8 xl:col-span-9 lg:min-h-[24rem] flex flex-col justify-center">
-              <span className="section-label">PromoPower Singapore</span>
-              <h1 className="page-title max-w-3xl">Building Successful Brand Experiences Through Exceptional People</h1>
-              <p className="page-intro max-w-2xl mb-8">{heroParagraphs[0]}</p>
+          <ExpandableProse
+            paragraphs={heroParagraphs.slice(1)}
+            visibleCount={0}
+            expandLabel="More about how we work"
+            className="max-w-2xl mb-8"
+          />
 
-              <ExpandableProse
-                paragraphs={heroParagraphs.slice(1)}
-                visibleCount={0}
-                expandLabel="More about how we work"
-                className="max-w-2xl mb-8"
-              />
-
-              <HomeHeroActions />
-
-              <HeroAccolades className="lg:hidden mt-10" />
-            </div>
-          </div>
+          <HomeHeroActions />
+          <HeroAccolades />
         </div>
       </div>
     </section>

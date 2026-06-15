@@ -122,7 +122,8 @@ export default function NavBar() {
 
   return (
     <>
-      <nav id="site-header" className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl flex justify-between items-center px-[var(--site-gutter)] py-4 sm:py-5 border-b border-white/5">
+      <nav id="site-header" className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/5">
+        <div className="site-shell flex justify-between items-center gap-4 py-4 sm:py-5">
         <Link href="/" onClick={handleLogoClick} className="relative h-12 w-48 sm:h-14 sm:w-60 md:h-16 md:w-72 shrink-0">
           <Image
             src="/logo-transparent.png"
@@ -209,6 +210,7 @@ export default function NavBar() {
         >
           <span className="material-symbols-outlined text-3xl">{isMenuOpen ? "close" : "menu"}</span>
         </button>
+        </div>
       </nav>
 
       <div

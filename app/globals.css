@@ -97,31 +97,21 @@
 
   .page-section {
     padding-block: 4rem;
-    padding-inline: var(--site-gutter);
   }
 
-  @media (min-width: 640px) {
-    .page-section {
-      padding-block: 4rem;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .page-section {
-      padding-block: 4rem;
-    }
-  }
-
+  .site-shell,
   .page-container {
     width: 100%;
     max-width: 80rem;
     margin-inline: auto;
+    padding-inline: var(--site-gutter);
   }
 
   .page-container-narrow {
     width: 100%;
     max-width: 64rem;
     margin-inline: auto;
+    padding-inline: var(--site-gutter);
   }
 
   .page-container-prose {
@@ -292,19 +282,38 @@
   }
 
   .hero-accolades-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
     width: 100%;
-    border-block: 1px solid rgb(255 255 255 / 0.1);
+    margin-top: 2.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgb(255 255 255 / 0.1);
+  }
+
+  @media (min-width: 768px) {
+    .hero-accolades-list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
   }
 
   .hero-accolades-item {
     display: flex;
     align-items: center;
     gap: 1rem;
-    padding-block: 1.25rem;
+    padding-block: 0;
   }
 
   .hero-accolades-item + .hero-accolades-item {
-    border-top: 1px solid rgb(255 255 255 / 0.1);
+    border-top: none;
+  }
+
+  @media (min-width: 768px) {
+    .hero-accolades-item + .hero-accolades-item {
+      border-left: 1px solid rgb(255 255 255 / 0.1);
+      padding-left: 1.5rem;
+    }
   }
 
   .hero-accolade-icon {

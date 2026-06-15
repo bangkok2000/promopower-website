@@ -30,7 +30,7 @@ export default function HomepageExplore({ children }: HomepageExploreProps) {
 
   return (
     <section id="wayfinding" className="homepage-explore page-section" aria-label="Explore PromoPower">
-      <div className="page-container">
+      <div className="site-shell">
         <div className="homepage-quick-paths">
           {HOMEPAGE_QUICK_PATHS.map((path) => {
             const isActive = activeId === path.sectionId;
