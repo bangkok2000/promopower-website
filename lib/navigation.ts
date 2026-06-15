@@ -15,23 +15,25 @@ export const HOMEPAGE_SECTIONS = [
   { id: "contact", label: "Contact" },
 ] as const;
 
+export type HomepageSectionId = (typeof HOMEPAGE_SECTIONS)[number]["id"];
+
 export const HOMEPAGE_QUICK_PATHS = [
   {
     title: "Workforce Solutions",
     description: "Brand ambassadors, promoters, event teams and campaign coordination.",
-    href: "#services",
+    sectionId: "services" as const,
     icon: "groups",
   },
   {
     title: "Why PromoPower",
     description: "Experience, process and accountability built since 2002.",
-    href: "#why-us",
+    sectionId: "industries" as const,
     icon: "verified",
   },
   {
     title: "Speak With Us",
     description: "Discuss objectives, timelines and staffing requirements.",
-    href: "#contact",
+    sectionId: "contact" as const,
     icon: "forum",
   },
 ] as const;

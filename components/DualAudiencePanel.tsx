@@ -3,7 +3,7 @@ import { HERO_IMAGE_URL } from "@/lib/navigation";
 
 export default function DualAudiencePanel() {
   return (
-    <section id="contact" className="relative overflow-hidden border-t border-white/10 scroll-mt-section">
+    <section className="relative overflow-hidden border-t border-white/10">
       <div className="absolute inset-0 z-0 bg-charcoal-dark" aria-hidden="true">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img

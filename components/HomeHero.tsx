@@ -1,6 +1,6 @@
-import Link from "next/link";
-import { HERO_IMAGE_URL } from "@/lib/navigation";
 import ExpandableProse from "@/components/ExpandableProse";
+import HomeHeroActions from "@/components/HomeHeroActions";
+import { HERO_IMAGE_URL } from "@/lib/navigation";
 
 const heroParagraphs = [
   "For more than two decades, PromoPower has helped organisations connect with customers through professional promoters, brand ambassadors, event personnel and retail support teams.",
@@ -32,17 +32,7 @@ export default function HomeHero() {
           className="max-w-2xl mb-8"
         />
 
-        <div className="flex flex-col sm:flex-row gap-4 sm:gap-5 items-stretch sm:items-center">
-          <Link
-            href="#contact"
-            className="glow-button text-on-primary px-8 sm:px-10 py-4 rounded-full font-headline font-normal text-base hover:scale-105 active:scale-95 transition-all text-center"
-          >
-            Get In Touch
-          </Link>
-          <Link href="#services" className="btn-secondary px-8 sm:px-10 py-4 text-base">
-            Explore Our Services
-          </Link>
-        </div>
+        <HomeHeroActions />
       </div>
     </section>
   );

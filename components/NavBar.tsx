@@ -113,6 +113,7 @@ export default function NavBar() {
       closeMenu();
       setServicesOpen(false);
       window.history.pushState(null, "", "/");
+      window.dispatchEvent(new Event("homepage-reset"));
       syncScrollOffsetVars({ includeSectionNav: true });
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     },

@@ -270,6 +270,13 @@
     transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
   }
 
+  button.quick-path-card {
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+    text-align: left;
+  }
+
   .quick-path-card:hover {
     border-color: rgb(255 140 0 / 0.35);
     transform: translateY(-2px);

@@ -26,7 +26,7 @@ export default function PromoPowerFramework({
   steps = defaultSteps,
 }: PromoPowerFrameworkProps) {
   return (
-    <section id={id} className="page-section section-elevated scroll-mt-section">
+    <section id={id || undefined} className="page-section section-elevated">
       <div className="page-container">
         <div className="page-container-prose mb-12 sm:mb-16">
           <h2 className="section-title">{heading}</h2>

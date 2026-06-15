@@ -5,8 +5,8 @@ import CTASection from "@/components/CTASection";
 import DualAudiencePanel from "@/components/DualAudiencePanel";
 import ExpandableProse from "@/components/ExpandableProse";
 import HomeHero from "@/components/HomeHero";
-import HomepageAnchorScroll from "@/components/HomepageAnchorScroll";
 import HomepageWayfinding from "@/components/HomepageWayfinding";
+import { HomepageTabPanel, HomepageTabsProvider } from "@/components/HomepageTabs";
 import PromoPowerFramework from "@/components/PromoPowerFramework";
 import TrustCard from "@/components/TrustCard";
 
@@ -186,13 +186,14 @@ const ctaParagraphs = [
 
 export default function Home() {
   return (
-    <>
-      <HomepageAnchorScroll />
+    <HomepageTabsProvider>
       <HomeHero />
       <AwardsStrip />
       <HomepageWayfinding />
 
-      <section id="trust" className="page-section scroll-mt-section">
+      <div id="homepage-tab-panels">
+        <HomepageTabPanel sectionId="trust">
+          <section className="page-section">
         <div className="page-container grid lg:grid-cols-2 gap-12 items-start">
           <div>
             <h2 className="section-title">Trusted Workforce Solutions Since 2002</h2>
@@ -214,9 +215,9 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+          </section>
 
-      <section id="approach" className="page-section section-muted scroll-mt-section">
+          <section className="page-section section-muted">
         <div className="page-container grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] gap-10 lg:gap-16 items-start">
           <div>
             <h2 className="section-title">More Than Staffing. A Partner In Execution.</h2>
@@ -224,11 +225,12 @@ export default function Home() {
           </div>
           <ExpandableProse paragraphs={approachParagraphs.slice(1)} visibleCount={1} expandLabel="How we partner with clients" />
         </div>
-      </section>
+          </section>
+        </HomepageTabPanel>
 
-      <PromoPowerFramework
-        id="framework"
-        heading="A Structured Approach To Successful Campaigns"
+        <HomepageTabPanel sectionId="framework">
+          <PromoPowerFramework
+            heading="A Structured Approach To Successful Campaigns"
         intro="Consistent execution is rarely achieved by chance. Over the years, PromoPower has developed a practical framework that helps ensure quality, accountability and reliability across every deployment. While every campaign is different, the principles of successful execution remain remarkably consistent."
         steps={[
           {
@@ -262,9 +264,11 @@ export default function Home() {
             icon: "insights",
           },
         ]}
-      />
+          />
+        </HomepageTabPanel>
 
-      <section id="services" className="page-section scroll-mt-section">
+        <HomepageTabPanel sectionId="services">
+          <section className="page-section">
         <div className="page-container">
           <div className="max-w-3xl mb-12">
             <h2 className="section-title">Workforce Solutions Designed Around Your Objectives</h2>
@@ -299,9 +303,11 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+          </section>
+        </HomepageTabPanel>
 
-      <section id="industries" className="page-section section-muted scroll-mt-section">
+        <HomepageTabPanel sectionId="industries">
+          <section className="page-section section-muted">
         <div className="page-container">
           <div className="max-w-3xl mb-10">
             <h2 className="section-title">Supporting Organisations Across Diverse Industries</h2>
@@ -329,9 +335,9 @@ export default function Home() {
             <span className="material-symbols-outlined text-base">arrow_forward</span>
           </Link>
         </div>
-      </section>
+          </section>
 
-      <section className="page-section section-elevated">
+          <section className="page-section section-elevated">
         <div className="page-container-narrow">
           <h2 className="section-title text-center">Supporting Organisations Across Singapore</h2>
           <div className="text-center mb-8">
@@ -346,9 +352,9 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+          </section>
 
-      <section id="why-us" className="page-section scroll-mt-section">
+          <section className="page-section">
         <div className="page-container">
           <div className="max-w-3xl mx-auto text-center mb-10">
             <h2 className="section-title">Why Organisations Continue To Work With PromoPower</h2>
@@ -372,16 +378,20 @@ export default function Home() {
             </Link>
           </div>
         </div>
-      </section>
+          </section>
+        </HomepageTabPanel>
 
-      <DualAudiencePanel />
+        <HomepageTabPanel sectionId="contact">
+          <DualAudiencePanel />
 
-      <CTASection
-        heading="Let's Start A Conversation"
-        bodyParagraphs={ctaParagraphs}
-        primaryLabel="Speak With Our Team"
-        primaryHref="/contact-us"
-      />
-    </>
+          <CTASection
+            heading="Let's Start A Conversation"
+            bodyParagraphs={ctaParagraphs}
+            primaryLabel="Speak With Our Team"
+            primaryHref="/contact-us"
+          />
+        </HomepageTabPanel>
+      </div>
+    </HomepageTabsProvider>
   );
 }
