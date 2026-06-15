@@ -1,6 +1,5 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import AwardsStrip from "@/components/AwardsStrip";
 import CTASection from "@/components/CTASection";
 import DualAudiencePanel from "@/components/DualAudiencePanel";
 import ExpandableProse from "@/components/ExpandableProse";
@@ -188,7 +187,6 @@ export default function Home() {
   return (
     <HomepageTabsProvider>
       <HomeHero />
-      <AwardsStrip />
       <HomepageWayfinding />
 
       <div id="homepage-tab-panels">
