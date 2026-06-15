@@ -1,0 +1,5 @@
+# PromoPower — static site on Cloudflare Pages (NOT Workers/OpenNext)
+name = "promopower-website"
+account_id = "b8913fb4c5f8fe17d60ce0f824cdd1aa"
+pages_build_output_dir = "out"
+compatibility_date = "2026-04-17"
