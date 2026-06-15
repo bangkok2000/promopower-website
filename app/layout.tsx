@@ -3,6 +3,7 @@ import { GoogleAnalytics } from '@next/third-parties/google';
 import { Playfair_Display, Lora, Manrope } from 'next/font/google';
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
@@ -102,7 +103,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`h-full antialiased scroll-smooth ${playfair.variable} ${lora.variable} ${manrope.variable}`}
+      className={`h-full antialiased ${playfair.variable} ${lora.variable} ${manrope.variable}`}
     >
       <head>
         <link
@@ -115,6 +116,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
+        <ScrollToTop />
         <NavBar />
         <main className="flex-1 pt-[var(--site-header-height,5rem)]">{children}</main>
         <Footer />

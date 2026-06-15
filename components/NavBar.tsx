@@ -9,21 +9,19 @@ import { SERVICE_LINKS } from "@/lib/navigation";
 type NavItem = {
   label: string;
   href: string;
-  homeSection?: string;
 };
 
 const NAV_ITEMS: NavItem[] = [
-  { label: "About Us", href: "/about-us", homeSection: "trust" },
-  { label: "Services", href: "/services", homeSection: "services" },
-  { label: "Industries", href: "/industries", homeSection: "industries" },
-  { label: "Why PromoPower", href: "/why-promopower", homeSection: "why-us" },
+  { label: "About Us", href: "/about-us" },
+  { label: "Services", href: "/services" },
+  { label: "Industries", href: "/industries" },
+  { label: "Why PromoPower", href: "/why-promopower" },
   { label: "Our Work", href: "/our-work" },
   { label: "FAQ", href: "/faq" },
 ];
 
 export default function NavBar() {
   const pathname = usePathname();
-  const isHome = pathname === "/";
   const [openPath, setOpenPath] = useState<string | null>(null);
   const [servicesOpen, setServicesOpen] = useState(false);
   const menuButtonRef = useRef<HTMLButtonElement>(null);
@@ -37,16 +35,6 @@ export default function NavBar() {
   const toggleMenu = useCallback(() => {
     setOpenPath((current) => (current === pathname ? null : pathname));
   }, [pathname]);
-
-  const resolveHref = useCallback(
-    (item: NavItem) => {
-      if (isHome && item.homeSection) {
-        return `#${item.homeSection}`;
-      }
-      return item.href;
-    },
-    [isHome]
-  );
 
   useEffect(() => {
     const syncHeaderHeight = () => {
@@ -161,18 +149,18 @@ export default function NavBar() {
                     ))}
                     <div className="border-t border-white/10 mt-2 pt-2 px-2">
                       <Link
-                        href={resolveHref(item)}
+                        href="/services"
                         className="block rounded-xl px-3 py-2.5 text-sm font-bold text-primary hover:bg-primary/10 transition-colors"
                         onClick={() => setServicesOpen(false)}
                       >
-                        {isHome ? "All services on this page" : "View all services"}
+                        View all services
                       </Link>
                     </div>
                   </div>
                 ) : null}
               </div>
             ) : (
-              <Link key={item.label} className={getLinkClass(item.href)} href={resolveHref(item)}>
+              <Link key={item.label} className={getLinkClass(item.href)} href={item.href}>
                 {item.label}
               </Link>
             )
@@ -187,7 +175,7 @@ export default function NavBar() {
 
         <div className="hidden lg:block shrink-0">
           <Link
-            href={isHome ? "#contact" : "/contact-us"}
+            href="/contact-us"
             className="glow-button text-on-primary px-8 py-3 rounded-full font-headline font-extrabold text-sm hover:scale-105 active:scale-95 transition-all"
           >
             Contact Us
@@ -222,7 +210,7 @@ export default function NavBar() {
           <Link
             key={item.label}
             className={getMobileLinkClass(item.href)}
-            href={resolveHref(item)}
+            href={item.href}
             onClick={closeMenu}
           >
             {item.label}
@@ -232,7 +220,7 @@ export default function NavBar() {
           Jobseekers
         </Link>
         <Link
-          href={isHome ? "#contact" : "/contact-us"}
+          href="/contact-us"
           onClick={closeMenu}
           className="mt-8 glow-button text-on-primary px-10 py-5 rounded-full font-headline font-extrabold text-xl hover:scale-105 active:scale-95 transition-all inline-block"
         >
