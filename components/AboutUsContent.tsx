@@ -24,6 +24,31 @@ const values = [
   },
 ];
 
+// Placeholder leadership cards — replace name and bio fields once the
+// approved details and headshots are confirmed for publication.
+const leadership = [
+  {
+    role: "Director",
+    responsibility:
+      "Overall direction, client relationships and long-term partnerships across PromoPower's promotional staffing operations.",
+  },
+  {
+    role: "Operations Manager",
+    responsibility:
+      "Recruitment, screening, deployment planning and day-to-day campaign coordination across multiple concurrent activations.",
+  },
+  {
+    role: "Client Services Manager",
+    responsibility:
+      "Campaign briefings, client engagement and ongoing communication throughout the campaign lifecycle.",
+  },
+  {
+    role: "Field Operations Lead",
+    responsibility:
+      "On-site supervision, schedule management and operational support for personnel across deployment locations.",
+  },
+];
+
 export default function AboutUsContent() {
   return (
     <>
@@ -87,6 +112,30 @@ export default function AboutUsContent() {
                 </div>
                 <h3 className="text-2xl font-headline font-normal text-on-surface mb-3">{value.title}</h3>
                 <p className="text-on-surface-variant leading-relaxed">{value.body}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section">
+        <div className="page-container">
+          <div className="max-w-3xl mb-12">
+            <h2 className="section-title">Leadership</h2>
+            <p className="page-intro mt-4">
+              A small, experienced team accountable for service quality, operational consistency and the day-to-day
+              delivery of every PromoPower campaign.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+            {leadership.map((member) => (
+              <article key={member.role} className="content-card leadership-card h-full">
+                <div className="leadership-avatar" aria-hidden="true">
+                  <span className="material-symbols-outlined">person</span>
+                </div>
+                <p className="leadership-name">Name to be confirmed</p>
+                <h3 className="leadership-role">{member.role}</h3>
+                <p className="leadership-body">{member.responsibility}</p>
               </article>
             ))}
           </div>

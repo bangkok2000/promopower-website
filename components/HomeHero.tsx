@@ -27,7 +27,7 @@ export default function HomeHero() {
             <HeroAccolades className="hidden lg:block lg:col-span-4 xl:col-span-3 lg:self-start" />
 
             <div className="lg:col-span-8 xl:col-span-9 flex flex-col">
-              <span className="section-label">PromoPower Singapore</span>
+              <span className="section-label">Singapore&rsquo;s Trusted Staffing Partner Since 2002</span>
               <h1 className="page-title max-w-3xl">Building Successful Brand Experiences Through Exceptional People</h1>
               <p className="page-intro max-w-2xl mb-8">{heroParagraphs[0]}</p>
 
