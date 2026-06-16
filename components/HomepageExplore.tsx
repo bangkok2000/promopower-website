@@ -58,32 +58,30 @@ export default function HomepageExplore({ children }: HomepageExploreProps) {
           })}
         </div>
 
-        <div className="px-[var(--site-gutter)]">
-          <div
-            id="homepage-section-nav"
-            data-visible="true"
-            aria-label="Homepage sections"
-            className="homepage-tab-bar lg:grid lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14"
-          >
-            <div className="hidden lg:block lg:col-span-4 xl:col-span-3" aria-hidden="true" />
-            <nav aria-label="Jump to section" className="homepage-tab-list lg:col-span-8 xl:col-span-9">
-            {HOMEPAGE_SECTIONS.map((section) => {
-              const isActive = activeId === section.id;
-              return (
-                <button
-                  key={section.id}
-                  type="button"
-                  id={`homepage-tab-${section.id}`}
-                  aria-current={isActive ? "true" : undefined}
-                  onClick={() => activateTab(section.id)}
-                  className={`homepage-tab-pill ${isActive ? "homepage-tab-pill-active" : ""}`}
-                >
-                  {section.label}
-                </button>
-              );
-            })}
-            </nav>
-          </div>
+        <div
+          id="homepage-section-nav"
+          data-visible="true"
+          aria-label="Homepage sections"
+          className="homepage-tab-bar lg:grid lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14"
+        >
+          <div className="hidden lg:block lg:col-span-4 xl:col-span-3" aria-hidden="true" />
+          <nav aria-label="Jump to section" className="homepage-tab-list lg:col-span-8 xl:col-span-9">
+          {HOMEPAGE_SECTIONS.map((section) => {
+            const isActive = activeId === section.id;
+            return (
+              <button
+                key={section.id}
+                type="button"
+                id={`homepage-tab-${section.id}`}
+                aria-current={isActive ? "true" : undefined}
+                onClick={() => activateTab(section.id)}
+                className={`homepage-tab-pill ${isActive ? "homepage-tab-pill-active" : ""}`}
+              >
+                {section.label}
+              </button>
+            );
+          })}
+          </nav>
         </div>
 
         <div id="homepage-tab-panels" className="homepage-tab-panels">
