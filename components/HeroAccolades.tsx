@@ -38,6 +38,12 @@ export const AWARDS: readonly Award[] = [
     iconClass: "text-on-surface",
     title: "MOM Licensed Agency",
     subtitle: "EA License No: 20C0109",
+    image: {
+      src: "/awards/mom-licensed-agency.png",
+      alt: "Ministry of Manpower licensed employment agency badge",
+      width: 1258,
+      height: 1258,
+    },
   },
 ] as const;
 
