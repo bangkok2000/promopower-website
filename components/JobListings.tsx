@@ -198,16 +198,15 @@ export default function JobListings() {
             .map((s) => s.replace(/^\*/, "").trim())
             .filter(Boolean);
 
-          // Parse apply emails — handle "cc" keyword and multiple addresses
-          const emailRaw = job.applyEmail;
-          const emailParts = emailRaw.split(/\s+cc\s+|\s+CC\s+/);
-          const primaryEmail = emailParts[0]?.trim() ?? "";
-          const ccEmails = emailParts
-            .slice(1)
-            .join(" ")
-            .split(/[\s,]+/)
-            .map((e) => e.trim())
-            .filter((e) => e.includes("@"));
+          // Parse apply emails — handles formats:
+          //   "Primary: a@b.com; CC: c@b.com d@b.com"
+          //   "a@b.com cc b@b.com"
+          //   "a@b.com"
+          const emailRaw = job.applyEmail.replace(/\n|\r/g, " ");
+          // Extract all email addresses from the raw string
+          const allEmails = (emailRaw.match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/g) ?? []);
+          const primaryEmail = allEmails[0] ?? "";
+          const ccEmails = allEmails.slice(1);
 
           const mailtoCC = ccEmails.length > 0 ? `?cc=${ccEmails.join(",")}&subject=${encodeURIComponent(`Application: ${job.title}`)}` : `?subject=${encodeURIComponent(`Application: ${job.title}`)}`;
           const mailtoHref = `mailto:${primaryEmail}${mailtoCC}`;
