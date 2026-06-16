@@ -1,5 +1,7 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import CTASection from "@/components/CTASection";
+import PageContentRail from "@/components/PageContentRail";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Event Personnel",
@@ -31,15 +33,72 @@ export const metadata: Metadata = {
 };
 
 export default function EventPersonnelPage() {
+  const supportAreas = [
+    "Registration",
+    "Guest management",
+    "Ushering",
+    "Customer assistance",
+    "Crowd coordination",
+    "Information counters",
+    "VIP support",
+    "General event operations",
+  ];
+
   return (
-    <section className="min-h-[60vh] px-6 sm:px-8 md:px-16 py-24 flex items-center justify-center">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-normal text-on-surface mb-6">
-          Event Personnel
-        </h1>
-        <p className="text-lg text-on-surface-variant mb-10">Page scaffold created for Phase 4.</p>
-        <Link href="/services" className="text-primary font-bold hover:text-white transition-colors">Back to Services</Link>
-      </div>
-    </section>
+    <>
+      <PageHero
+        badge="Service"
+        title="Reliable Event Personnel For Professional Event Execution"
+        description="Events often involve numerous moving parts, tight schedules and high customer expectations. PromoPower provides dependable event personnel who help organisations deliver smooth, professional and well-organised events."
+      />
+
+      <section className="page-section">
+        <PageContentRail>
+          <div className="prose-block max-w-3xl">
+            <h2 className="section-title">Supporting Successful Events</h2>
+            <p>
+              From exhibitions and conferences to launches and corporate functions, event personnel play a critical role
+              in shaping attendee experiences.
+            </p>
+            <p>
+              Our personnel can assist with registration, customer assistance, crowd management, guest engagement and
+              general event support.
+            </p>
+            <p>
+              Every deployment is supported by preparation, coordination and operational oversight designed to help
+              events run efficiently.
+            </p>
+          </div>
+        </PageContentRail>
+      </section>
+
+      <section className="page-section section-muted">
+        <PageContentRail>
+          <div className="max-w-3xl">
+            <h2 className="section-title">Support Areas</h2>
+            <p className="page-intro mb-8">
+              Our event teams support the customer-facing operations that keep events running smoothly:
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3" aria-label="Event support areas">
+              {supportAreas.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-on-surface">
+                  <span aria-hidden="true" className="material-symbols-outlined text-primary text-base mt-1">check_circle</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </PageContentRail>
+      </section>
+
+      <CTASection
+        heading="Planning An Event?"
+        body="Let’s discuss how PromoPower can support your event staffing requirements."
+        primaryLabel="Speak With Our Team"
+        primaryHref="/contact-us"
+        secondaryLabel="Explore All Services"
+        secondaryHref="/services"
+      />
+    </>
   );
 }

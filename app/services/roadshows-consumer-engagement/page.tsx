@@ -1,5 +1,7 @@
-import Link from "next/link";
 import type { Metadata } from "next";
+import CTASection from "@/components/CTASection";
+import PageContentRail from "@/components/PageContentRail";
+import PageHero from "@/components/PageHero";
 
 export const metadata: Metadata = {
   title: "Roadshows & Consumer Engagement",
@@ -31,15 +33,85 @@ export const metadata: Metadata = {
 };
 
 export default function RoadshowsConsumerEngagementPage() {
+  const supportAreas = [
+    "Roadshows",
+    "Public activations",
+    "Consumer engagement campaigns",
+    "Lead generation activities",
+    "Sampling initiatives",
+    "Awareness campaigns",
+    "Product introductions",
+    "Community engagement programmes",
+  ];
+
   return (
-    <section className="min-h-[60vh] px-6 sm:px-8 md:px-16 py-24 flex items-center justify-center">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-normal text-on-surface mb-6">
-          Roadshows & Consumer Engagement
-        </h1>
-        <p className="text-lg text-on-surface-variant mb-10">Page scaffold created for Phase 4.</p>
-        <Link href="/services" className="text-primary font-bold hover:text-white transition-colors">Back to Services</Link>
-      </div>
-    </section>
+    <>
+      <PageHero
+        badge="Service"
+        title="Creating Positive Customer Experiences Through Meaningful Engagement"
+        description="Roadshows and public-facing campaigns provide valuable opportunities for organisations to engage directly with customers, increase visibility and strengthen awareness. PromoPower provides experienced personnel who help brands create positive customer experiences in dynamic and highly interactive environments."
+      />
+
+      <section className="page-section">
+        <PageContentRail>
+          <div className="prose-block max-w-3xl">
+            <h2 className="section-title">Connecting Brands With People</h2>
+            <p>
+              Roadshows create opportunities for brands to step outside traditional environments and engage directly
+              with customers.
+            </p>
+            <p>
+              Whether the objective is awareness building, lead generation, product introduction or customer engagement,
+              the quality of interactions often determines the success of the campaign.
+            </p>
+            <p>
+              Our teams are selected and prepared to support these objectives while ensuring customers experience
+              professional, positive and engaging interactions throughout the campaign.
+            </p>
+          </div>
+        </PageContentRail>
+      </section>
+
+      <section className="page-section section-muted">
+        <PageContentRail>
+          <div className="max-w-3xl">
+            <h2 className="section-title">Support Areas</h2>
+            <p className="page-intro mb-8">
+              Our roadshow and engagement teams support a range of consumer-facing initiatives, including:
+            </p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3" aria-label="Roadshow support areas">
+              {supportAreas.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-on-surface">
+                  <span aria-hidden="true" className="material-symbols-outlined text-primary text-base mt-1">check_circle</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </PageContentRail>
+      </section>
+
+      <section className="page-section">
+        <PageContentRail>
+          <div className="prose-block max-w-3xl">
+            <h2 className="section-title">Every Interaction Shapes Perception</h2>
+            <p>Roadshows place brands directly in front of customers.</p>
+            <p>
+              Professional engagement helps organisations maximise these opportunities by creating memorable
+              experiences, encouraging participation and strengthening brand awareness through meaningful conversations.
+            </p>
+          </div>
+        </PageContentRail>
+      </section>
+
+      <CTASection
+        heading="Planning A Roadshow Or Consumer Campaign?"
+        body="Speak with our team about your staffing requirements."
+        primaryLabel="Get In Touch"
+        primaryHref="/contact-us"
+        secondaryLabel="Explore All Services"
+        secondaryHref="/services"
+      />
+    </>
   );
 }
