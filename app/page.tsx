@@ -7,6 +7,7 @@ import HomepageExplore from "@/components/HomepageExplore";
 import { HomepageTabLayout, HomepageTabSubsection } from "@/components/HomepageTabLayout";
 import { HomepageTabPanel, HomepageTabsProvider } from "@/components/HomepageTabs";
 import StatBand from "@/components/StatBand";
+import ClientMarquee from "@/components/ClientMarquee";
 import TrustCard from "@/components/TrustCard";
 
 export const metadata: Metadata = {
@@ -221,6 +222,7 @@ export default function Home() {
     <HomepageTabsProvider>
       <HomeHero />
       <StatBand />
+      <ClientMarquee />
 
       <HomepageExplore>
         <HomepageTabPanel sectionId="trust">
