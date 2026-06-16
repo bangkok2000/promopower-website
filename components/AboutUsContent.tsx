@@ -137,22 +137,24 @@ export default function AboutUsContent() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
             {leadership.map((member) => (
-              <article key={member.role} className="content-card leadership-card h-full">
-                <div className="leadership-avatar" aria-hidden="true">
+              <article key={member.role} className="content-card leadership-card h-full flex flex-row items-start gap-4">
+                <div className="flex-1 min-w-0">
+                  <p className="leadership-name">{member.name}</p>
+                  <h3 className="leadership-role">{member.role}</h3>
+                  <p className="leadership-body">{member.responsibility}</p>
+                </div>
+                <div className="leadership-avatar shrink-0" aria-hidden="true">
                   {member.photo ? (
                     // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={member.photo}
                       alt={member.name}
-                      className="w-full h-full object-cover rounded-full"
+                      className="w-full h-full object-cover object-center"
                     />
                   ) : (
                     <span className="material-symbols-outlined">person</span>
                   )}
                 </div>
-                <p className="leadership-name">{member.name}</p>
-                <h3 className="leadership-role">{member.role}</h3>
-                <p className="leadership-body">{member.responsibility}</p>
               </article>
             ))}
           </div>
