@@ -149,7 +149,7 @@ export default function AboutUsContent() {
                       <img
                         src={member.photo}
                         alt={member.name}
-                        className="w-full h-full object-cover object-center"
+                        className="w-full h-full object-cover object-[center_20%]"
                       />
                     ) : (
                       <span className="material-symbols-outlined">person</span>
