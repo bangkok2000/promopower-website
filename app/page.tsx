@@ -109,13 +109,13 @@ const frameworkSteps = [
   {
     title: "Support",
     description:
-      "Our team remains actively involved throughout the campaign, providing coordination, oversight and assistance whenever required.",
+      "Our team remains actively involved throughout the campaign, providing coordination, oversight and ongoing performance feedback to keep personnel focused on the standards each brand expects.",
     icon: "support_agent",
   },
   {
     title: "Review",
     description:
-      "Every campaign provides valuable insights. We review learnings and feedback to support continuous improvement and strengthen future outcomes.",
+      "Performance is logged consistently throughout the campaign, giving every review an evidence-based picture of how the team performed and clear inputs to strengthen future outcomes.",
     icon: "insights",
   },
 ];

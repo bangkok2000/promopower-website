@@ -37,6 +37,12 @@ const reasons = [
     icon: "support_agent",
   },
   {
+    title: "Continuous Staff Development",
+    description:
+      "Most providers stop at deployment. PromoPower coaches personnel throughout the campaign and maintains a structured performance record for every team member, supported by our internal coaching and performance system. The result is a workforce that improves with every campaign.",
+    icon: "trending_up",
+  },
+  {
     title: "MOM Licensed Agency",
     description:
       "Licensed employment agency operations provide compliance-conscious support and client confidence.",
