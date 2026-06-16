@@ -91,16 +91,19 @@ export default function NavBar() {
     };
   }, [servicesOpen]);
 
-  const getLinkClass = (path: string) => {
-    const isActive = pathname === path;
+  const isPathActive = (path: string) => {
+    if (path === "/") return pathname === "/";
+    return pathname === path || pathname.startsWith(`${path}/`);
+  };
 
-    return isActive
+  const getLinkClass = (path: string) => {
+    return isPathActive(path)
       ? "text-primary border-b-2 border-primary pb-1 font-headline font-bold tracking-tight"
       : "text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 pb-1 border-b-2 border-transparent";
   };
 
   const getMobileLinkClass = (path: string) => {
-    return pathname === path
+    return isPathActive(path)
       ? "text-primary font-headline font-black text-3xl"
       : "text-on-surface-variant font-headline font-medium text-3xl hover:text-primary transition-colors duration-200";
   };
@@ -199,17 +202,25 @@ export default function NavBar() {
                       </button>
                       {servicesOpen ? (
                         <div role="menu" aria-label="Services" className="absolute left-0 top-full mt-3 w-72 rounded-2xl border border-white/10 bg-surface shadow-2xl py-2 z-50">
-                          {SERVICE_LINKS.map((service) => (
-                            <Link
-                              key={service.href}
-                              href={service.href}
-                              role="menuitem"
-                              className="block px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-white/5 transition-colors"
-                              onClick={() => setServicesOpen(false)}
-                            >
-                              {service.label}
-                            </Link>
-                          ))}
+                          {SERVICE_LINKS.map((service) => {
+                            const active = pathname === service.href;
+                            return (
+                              <Link
+                                key={service.href}
+                                href={service.href}
+                                role="menuitem"
+                                aria-current={active ? "page" : undefined}
+                                className={`block px-4 py-2.5 text-sm transition-colors ${
+                                  active
+                                    ? "text-primary font-bold bg-primary/10"
+                                    : "text-on-surface-variant hover:text-primary hover:bg-white/5"
+                                }`}
+                                onClick={() => setServicesOpen(false)}
+                              >
+                                {service.label}
+                              </Link>
+                            );
+                          })}
                           <div className="border-t border-white/10 mt-2 pt-2 px-2">
                             <Link
                               href="/services"
