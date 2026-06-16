@@ -72,7 +72,7 @@ export const metadata: Metadata = {
 
 const structuredData = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "EmploymentAgency",
   name: SITE.name,
   url: SITE.url,
   email: SITE.email,
@@ -82,6 +82,10 @@ const structuredData = {
     addressLocality: "Singapore",
     postalCode: "819663",
     addressCountry: "SG",
+  },
+  areaServed: {
+    "@type": "Country",
+    name: "Singapore",
   },
   foundingDate: SITE.foundingDate,
   description:
@@ -108,7 +112,6 @@ export default function RootLayout({
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        <link rel="preconnect" href="https://lh3.googleusercontent.com" crossOrigin="" />
         <link
           href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
           rel="stylesheet"

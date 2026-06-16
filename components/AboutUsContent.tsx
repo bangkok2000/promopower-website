@@ -24,25 +24,29 @@ const values = [
   },
 ];
 
-// Placeholder leadership cards — replace name and bio fields once the
-// approved details and headshots are confirmed for publication.
+// Leadership cards — add name and confirm role against LinkedIn before go-live.
 const leadership = [
   {
+    name: "Name to be confirmed",
     role: "Director",
     responsibility:
       "Overall direction, client relationships and long-term partnerships across PromoPower's promotional staffing operations.",
   },
   {
+    // Confirm exact title via https://www.linkedin.com/in/khing-koh-ba9a6036/
+    name: "Khing Koh",
     role: "Operations Manager",
     responsibility:
       "Recruitment, screening, deployment planning and day-to-day campaign coordination across multiple concurrent activations.",
   },
   {
+    name: "Name to be confirmed",
     role: "Client Services Manager",
     responsibility:
       "Campaign briefings, client engagement and ongoing communication throughout the campaign lifecycle.",
   },
   {
+    name: "Name to be confirmed",
     role: "Field Operations Lead",
     responsibility:
       "On-site supervision, schedule management and operational support for personnel across deployment locations.",
@@ -133,7 +137,7 @@ export default function AboutUsContent() {
                 <div className="leadership-avatar" aria-hidden="true">
                   <span className="material-symbols-outlined">person</span>
                 </div>
-                <p className="leadership-name">Name to be confirmed</p>
+                <p className="leadership-name">{member.name}</p>
                 <h3 className="leadership-role">{member.role}</h3>
                 <p className="leadership-body">{member.responsibility}</p>
               </article>

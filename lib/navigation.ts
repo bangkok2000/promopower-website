@@ -38,6 +38,5 @@ export const HOMEPAGE_QUICK_PATHS = [
   },
 ] as const;
 
-/** Shared hero / ambient imagery (copyright-safe stock-style operational photo). */
-export const HERO_IMAGE_URL =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCngfDSiPUSTPlVZOWwrFiPBp6R3YgjYd8OA0plw1NMFkRvlY_K50b2c5KSwGBD54TQ-pAl0z9WQ1JXbbohFk1HTQy2CaZ3Q2aOeg6OCwBrWR_i_swTYK7in5W6ivD8lIfY7hQ-bBe2_MgU4DhMltFjmtlkEqKYupDM1qfnQpxE5MlZn7d-pVogaC4pKdZpTVKTdR1aBPfQ8exfqJdev_ANmpP6CnVMpWfo-IjY37rvX9rQ8IQ37LaLTHpH4iDrnYwuklFs4cps96Y";
+/** Hero background — served from public/hero-bg.jpg (self-hosted). */
+export const HERO_IMAGE_URL = "/hero-bg.jpg";
