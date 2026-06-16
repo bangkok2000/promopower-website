@@ -135,22 +135,22 @@ export default function AboutUsContent() {
               delivery of every PromoPower campaign.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6" style={{gridTemplateRows: 'auto auto'}}>
             {leadership.map((member) => (
-              <article key={member.role} className="content-card leadership-card relative h-full flex flex-col gap-4">
-                <div className="leadership-avatar absolute top-4 right-4" aria-hidden="true">
-                  {member.photo ? (
-                    // eslint-disable-next-line @next/next/no-img-element
-                    <img
-                      src={member.photo}
-                      alt={member.name}
-                      className="w-full h-full object-cover object-top"
-                    />
-                  ) : (
-                    <span className="material-symbols-outlined">person</span>
-                  )}
-                </div>
-                <div style={{paddingRight: "6.5rem", minHeight: "5rem"}}>
+              <article key={member.role} className="content-card leadership-card relative" style={{display:'grid', gridRow:'span 2', gridTemplateRows:'subgrid', gap:0}}>
+                <div className="relative" style={{paddingRight: "6rem"}}>
+                  <div className="leadership-avatar absolute top-0 right-0" aria-hidden="true">
+                    {member.photo ? (
+                      // eslint-disable-next-line @next/next/no-img-element
+                      <img
+                        src={member.photo}
+                        alt={member.name}
+                        className="w-full h-full object-cover object-top"
+                      />
+                    ) : (
+                      <span className="material-symbols-outlined">person</span>
+                    )}
+                  </div>
                   <p className="leadership-name">{member.name}</p>
                   <h3 className="leadership-role">{member.role}</h3>
                 </div>
