@@ -150,7 +150,7 @@ export default function AboutUsContent() {
                     <span className="material-symbols-outlined">person</span>
                   )}
                 </div>
-                <div style={{paddingRight: "6.5rem"}}>
+                <div style={{paddingRight: "6.5rem", minHeight: "5rem"}}>
                   <p className="leadership-name">{member.name}</p>
                   <h3 className="leadership-role">{member.role}</h3>
                 </div>
