@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useState, useRef } from "react";
 import { submitJobseekerApplication } from "@/lib/forms";
 import type { FormSubmitResult } from "@/lib/forms";
@@ -241,10 +242,10 @@ export default function JobseekersContent() {
                   </div>
                   <p className="text-sm text-on-surface-variant leading-relaxed text-left">
                     I acknowledge and accept the{" "}
-                    <a href="https://promopower.com.sg/wp-content/uploads/2020/05/PROMOPOWER-PTE-LTD-DATA-PROTECTION-POLICY-the-%E2%80%9Cpolicy%E2%80%9D-FOR-EMPLOYEES-AND-JOB-APPLICANTS_25-OCT-2019-.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors underline underline-offset-4 decoration-primary/30">
-                      PromoPower Data Protection Policy
-                    </a>{" "}
-                    for Employees and Job Applicants.
+                    <Link href="/privacy" className="text-primary hover:text-white transition-colors underline underline-offset-4 decoration-primary/30">
+                      PromoPower Privacy Policy
+                    </Link>{" "}
+                    and consent to the collection and use of my personal data for jobseeker assessment and campaign matching (Singapore PDPA).
                   </p>
                 </label>
               </div>

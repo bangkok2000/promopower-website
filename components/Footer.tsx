@@ -24,7 +24,7 @@ export default function Footer() {
             EA LICENSE NO: 20C0109.
           </p>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 sm:gap-12 flex-1 md:justify-items-end">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 sm:gap-12 flex-1 md:justify-items-end">
           <div className="space-y-4">
             <h2 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
               Quick Links
@@ -73,6 +73,23 @@ export default function Footer() {
               <li>
                 <Link className="hover:text-primary transition-colors" href="/jobseekers">
                   Jobseekers
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div className="space-y-4">
+            <h2 className="font-headline font-bold text-on-surface text-sm uppercase tracking-widest">
+              Legal
+            </h2>
+            <ul className="space-y-3 text-sm text-on-surface-variant/70">
+              <li>
+                <Link className="hover:text-primary transition-colors" href="/privacy">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link className="hover:text-primary transition-colors" href="/terms">
+                  Terms of Use
                 </Link>
               </li>
             </ul>

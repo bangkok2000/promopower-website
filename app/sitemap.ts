@@ -27,6 +27,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/our-work`, lastModified, changeFrequency: "monthly", priority: 0.8 },
     { url: `${baseUrl}/jobseekers`, lastModified, changeFrequency: "weekly", priority: 0.9 },
     { url: `${baseUrl}/contact-us`, lastModified, changeFrequency: "yearly", priority: 0.5 },
+    { url: `${baseUrl}/privacy`, lastModified, changeFrequency: "yearly", priority: 0.3 },
+    { url: `${baseUrl}/terms`, lastModified, changeFrequency: "yearly", priority: 0.3 },
   ];
 
   const servicePages = SERVICE_SLUGS.map((slug) => ({

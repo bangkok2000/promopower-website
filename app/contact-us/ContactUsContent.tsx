@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import PageContentRail from "@/components/PageContentRail";
 import { useState, useRef } from "react";
 import { submitContactInquiry } from "@/lib/forms";
@@ -255,9 +256,9 @@ export default function ContactUsContent() {
                       </div>
                       <p className="text-sm text-on-surface-variant leading-relaxed text-left">
                         I consent to PromoPower collecting and using the information provided to respond to my enquiry, in line with the{" "}
-                        <a href="https://promopower.com.sg/wp-content/uploads/2020/05/PROMOPOWER-PTE-LTD-DATA-PROTECTION-POLICY-the-%E2%80%9Cpolicy%E2%80%9D-FOR-EMPLOYEES-AND-JOB-APPLICANTS_25-OCT-2019-.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors underline underline-offset-4 decoration-primary/30">
-                          PromoPower Data Protection Policy
-                        </a>{" "}
+                        <Link href="/privacy" className="text-primary hover:text-white transition-colors underline underline-offset-4 decoration-primary/30">
+                          PromoPower Privacy Policy
+                        </Link>{" "}
                         (Singapore PDPA).
                       </p>
                     </label>
