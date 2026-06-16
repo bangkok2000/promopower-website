@@ -42,7 +42,7 @@ export default function HomepageExplore({ children }: HomepageExploreProps) {
                 aria-current={isActive ? "true" : undefined}
                 onClick={() => activateTab(path.sectionId, { scrollToPanels: true })}
               >
-                <div className="icon-badge mb-4 group-hover:border-primary/50 transition-colors">
+                <div className="icon-badge mb-4 group-hover:border-accent-steel/50 transition-colors">
                   <span className="material-symbols-outlined">{path.icon}</span>
                 </div>
                 <h2 className="text-xl font-headline font-normal text-on-surface mb-2">{path.title}</h2>

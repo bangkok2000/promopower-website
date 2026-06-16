@@ -10,6 +10,7 @@
   --color-on-surface-variant: #D1C9BC;
   --color-accent-amber: #FFBF00;
   --color-accent-copper: #B85C1A;
+  --color-accent-steel: #6E91A8;
   --color-charcoal-dark: #0A0A0A;
   --color-background: #121212;
   
@@ -210,13 +211,13 @@
     height: 4rem;
     margin-bottom: 1rem;
     border-radius: 9999px;
-    border: 1px solid rgb(255 140 0 / 0.25);
+    border: 1px solid rgb(110 145 168 / 0.3);
     background: linear-gradient(
       135deg,
-      rgb(255 140 0 / 0.18),
-      rgb(255 140 0 / 0.04)
+      rgb(110 145 168 / 0.2),
+      rgb(110 145 168 / 0.04)
     );
-    color: var(--color-primary);
+    color: var(--color-accent-steel);
   }
 
   .leadership-avatar .material-symbols-outlined {
@@ -280,9 +281,9 @@
     flex-shrink: 0;
     margin-top: 0.125rem;
     border-radius: 9999px;
-    border: 1px solid rgb(255 140 0 / 0.25);
-    background-color: rgb(255 140 0 / 0.1);
-    color: var(--color-primary);
+    border: 1px solid rgb(110 145 168 / 0.3);
+    background-color: rgb(110 145 168 / 0.12);
+    color: var(--color-accent-steel);
   }
 
   .content-list-icon .material-symbols-outlined {
@@ -772,9 +773,9 @@
     height: 3rem;
     margin-bottom: 1.25rem;
     border-radius: 9999px;
-    border: 1px solid rgb(255 140 0 / 0.3);
-    background-color: rgb(255 140 0 / 0.15);
-    color: var(--color-primary);
+    border: 1px solid rgb(110 145 168 / 0.32);
+    background-color: rgb(110 145 168 / 0.15);
+    color: var(--color-accent-steel);
   }
 
   .pillar-chip {
@@ -949,7 +950,7 @@
       height: 2px;
       background: repeating-linear-gradient(
         90deg,
-        rgb(255 140 0 / 0.45) 0 10px,
+        rgb(110 145 168 / 0.5) 0 10px,
         transparent 10px 20px
       );
     }
@@ -970,9 +971,9 @@
     width: 3.5rem;
     height: 3.5rem;
     border-radius: 9999px;
-    border: 1px solid rgb(255 140 0 / 0.3);
-    background-color: rgb(255 140 0 / 0.15);
-    color: var(--color-primary);
+    border: 1px solid rgb(110 145 168 / 0.35);
+    background-color: rgb(110 145 168 / 0.16);
+    color: var(--color-accent-steel);
     position: relative;
     z-index: 1;
   }
@@ -981,7 +982,7 @@
     font-size: 0.75rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--color-accent-amber);
+    color: var(--color-accent-steel);
   }
 
   .process-step-title {
@@ -1007,7 +1008,7 @@
     background-color: var(--color-surface);
     background-image: radial-gradient(
         130% 90% at 50% -15%,
-        rgb(255 140 0 / 0.1),
+        rgb(110 145 168 / 0.12),
         transparent 55%
       ),
       radial-gradient(
@@ -1029,8 +1030,8 @@
   }
 
   .blueprint-panel .process-node {
-    background-color: rgb(255 140 0 / 0.16);
-    box-shadow: 0 0 0 6px rgb(255 140 0 / 0.04),
+    background-color: rgb(110 145 168 / 0.18);
+    box-shadow: 0 0 0 6px rgb(110 145 168 / 0.05),
       0 8px 20px rgb(0 0 0 / 0.35);
   }
 

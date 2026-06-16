@@ -4,7 +4,7 @@ import { SITE } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-charcoal-dark border-t border-white/5 px-6 sm:px-12 xl:px-24 py-12 sm:py-24">
+    <footer className="w-full bg-charcoal-dark border-t border-white/5 px-6 sm:px-12 xl:px-24 py-10 sm:py-14">
       <div className="flex flex-col md:flex-row justify-between items-start gap-10 sm:gap-12 max-w-7xl mx-auto">
         <div className="max-w-sm">
           <Link href="/" className="relative block h-20 w-72 md:h-24 md:w-80 mb-6 -ml-2">
