@@ -39,7 +39,7 @@ const reasons = [
   {
     title: "Continuous Staff Development",
     description:
-      "Most providers stop at deployment. PromoPower coaches personnel throughout the campaign and maintains a structured performance record for every team member, supported by our internal coaching and performance system. The result is a workforce that improves with every campaign.",
+      "Most providers stop at deployment. PromoPower coaches personnel throughout the campaign and maintains a structured performance record for every team member, supported by PowerCoach, our in-house coaching and performance system. The result is a workforce that improves with every campaign.",
     icon: "trending_up",
   },
   {
