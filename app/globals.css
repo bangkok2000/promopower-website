@@ -28,20 +28,20 @@
   
   --animate-marquee: marquee 90s linear infinite;
   --animate-marquee-reverse: marquee-reverse 90s linear infinite;
-  
-  @keyframes marquee {
-    to {
-      transform: translateX(-50%);
-    }
-  }
+}
 
-  @keyframes marquee-reverse {
-    from {
-      transform: translateX(-50%);
-    }
-    to {
-      transform: translateX(0%);
-    }
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-reverse {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0%);
   }
 }
 

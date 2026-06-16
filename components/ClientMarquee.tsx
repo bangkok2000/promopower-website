@@ -43,12 +43,7 @@ function MarqueeRow({
   return (
     <div className="overflow-hidden">
       <ul
-        className="flex gap-0 whitespace-nowrap"
-        style={{
-          animation: reverse
-            ? "marquee-reverse 90s linear infinite"
-            : "marquee 90s linear infinite",
-        }}
+        className={`flex gap-0 whitespace-nowrap ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
         aria-hidden="true"
       >
         {doubled.map((name, i) => (
