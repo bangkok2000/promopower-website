@@ -6,6 +6,7 @@ import HomeHero from "@/components/HomeHero";
 import HomepageExplore from "@/components/HomepageExplore";
 import { HomepageTabLayout, HomepageTabSubsection } from "@/components/HomepageTabLayout";
 import { HomepageTabPanel, HomepageTabsProvider } from "@/components/HomepageTabs";
+import StatBand from "@/components/StatBand";
 import TrustCard from "@/components/TrustCard";
 
 export const metadata: Metadata = {
@@ -165,16 +166,16 @@ const serviceHighlights = [
 ];
 
 const industryNames = [
-  "Beauty & Cosmetics",
-  "Luxury Retail",
-  "Travel Retail",
-  "Consumer Electronics",
-  "FMCG",
-  "Food & Beverage",
-  "Healthcare & Wellness",
-  "Financial Services",
-  "Lifestyle Brands",
-  "Corporate Events & Exhibitions",
+  { name: "Beauty & Cosmetics", icon: "spa" },
+  { name: "Luxury Retail", icon: "diamond" },
+  { name: "Travel Retail", icon: "flight" },
+  { name: "Consumer Electronics", icon: "memory" },
+  { name: "FMCG", icon: "shopping_basket" },
+  { name: "Food & Beverage", icon: "restaurant" },
+  { name: "Healthcare & Wellness", icon: "health_and_safety" },
+  { name: "Financial Services", icon: "account_balance" },
+  { name: "Lifestyle Brands", icon: "checkroom" },
+  { name: "Corporate Events & Exhibitions", icon: "event" },
 ];
 
 const proofParagraphs = [
@@ -219,6 +220,7 @@ export default function Home() {
   return (
     <HomepageTabsProvider>
       <HomeHero />
+      <StatBand />
 
       <HomepageExplore>
         <HomepageTabPanel sectionId="trust">
@@ -249,29 +251,35 @@ export default function Home() {
         </HomepageTabPanel>
 
         <HomepageTabPanel sectionId="framework">
-          <HomepageTabLayout
-            title="A Structured Approach To Successful Campaigns"
-            intro={
+          <div className="homepage-tab-panel-inner">
+            <div className="page-container-prose mb-8 sm:mb-10">
+              <h2 className="section-title">A Structured Approach To Successful Campaigns</h2>
               <p className="page-intro">
                 Consistent execution is rarely achieved by chance. Over the years, PromoPower has developed a practical
                 framework that helps ensure quality, accountability and reliability across every deployment. While every
                 campaign is different, the principles of successful execution remain remarkably consistent.
               </p>
-            }
-          >
-            <div className="homepage-tab-card-grid">
-              {frameworkSteps.map((step, index) => (
-                <article key={step.title} className="content-card h-full">
-                  <div className="icon-badge">
-                    <span className="material-symbols-outlined">{step.icon}</span>
-                  </div>
-                  <p className="text-xs text-on-surface-variant uppercase tracking-widest mb-2">Step {index + 1}</p>
-                  <h3 className="text-2xl font-headline font-normal text-on-surface mb-3">{step.title}</h3>
-                  <p className="text-on-surface-variant leading-relaxed">{step.description}</p>
-                </article>
-              ))}
             </div>
-          </HomepageTabLayout>
+
+            <div className="blueprint-panel">
+              <p className="blueprint-caption mb-6">The PromoPower Execution Framework</p>
+              <div className="process-flow">
+                <div className="process-rail" aria-hidden="true" />
+                {frameworkSteps.map((step, index) => (
+                  <div key={step.title} className="process-step">
+                    <div className="process-node">
+                      <span className="material-symbols-outlined" aria-hidden="true">
+                        {step.icon}
+                      </span>
+                    </div>
+                    <p className="process-step-label">Step {index + 1}</p>
+                    <h3 className="process-step-title">{step.title}</h3>
+                    <p className="process-step-body">{step.description}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </HomepageTabPanel>
 
         <HomepageTabPanel sectionId="services">
@@ -338,7 +346,7 @@ export default function Home() {
                 >
                   <ExpandableProse
                     paragraphs={proofParagraphs}
-                    visibleCount={0}
+                    visibleCount={2}
                     expandLabel="Our approach to client confidentiality"
                   />
                 </HomepageTabSubsection>
@@ -357,7 +365,7 @@ export default function Home() {
                     </div>
                     <ExpandableProse
                       paragraphs={whyParagraphs.slice(1)}
-                      visibleCount={0}
+                      visibleCount={2}
                       expandLabel="Read more about our approach"
                     />
                   </>
@@ -367,8 +375,13 @@ export default function Home() {
           >
             <div className="homepage-tab-chip-grid">
               {industryNames.map((industry) => (
-                <span key={industry} className="pillar-chip">
-                  {industry}
+                <span key={industry.name} className="industry-chip">
+                  <span className="industry-chip-icon">
+                    <span className="material-symbols-outlined" aria-hidden="true">
+                      {industry.icon}
+                    </span>
+                  </span>
+                  <span className="industry-chip-label">{industry.name}</span>
                 </span>
               ))}
             </div>

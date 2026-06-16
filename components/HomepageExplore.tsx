@@ -62,30 +62,27 @@ export default function HomepageExplore({ children }: HomepageExploreProps) {
           <div
             id="homepage-section-nav"
             data-visible="true"
-            role="tablist"
             aria-label="Homepage sections"
             className="homepage-tab-bar lg:grid lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14"
           >
             <div className="hidden lg:block lg:col-span-4 xl:col-span-3" aria-hidden="true" />
-            <div className="homepage-tab-list lg:col-span-8 xl:col-span-9">
+            <nav aria-label="Jump to section" className="homepage-tab-list lg:col-span-8 xl:col-span-9">
             {HOMEPAGE_SECTIONS.map((section) => {
               const isActive = activeId === section.id;
               return (
                 <button
                   key={section.id}
                   type="button"
-                  role="tab"
                   id={`homepage-tab-${section.id}`}
-                  aria-selected={isActive}
-                  aria-controls={section.id}
-                  onClick={() => activateTab(section.id, { scrollToPanels: false })}
+                  aria-current={isActive ? "true" : undefined}
+                  onClick={() => activateTab(section.id)}
                   className={`homepage-tab-pill ${isActive ? "homepage-tab-pill-active" : ""}`}
                 >
                   {section.label}
                 </button>
               );
             })}
-            </div>
+            </nav>
           </div>
         </div>
 

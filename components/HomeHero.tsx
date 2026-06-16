@@ -33,7 +33,7 @@ export default function HomeHero() {
 
               <ExpandableProse
                 paragraphs={heroParagraphs.slice(1)}
-                visibleCount={0}
+                visibleCount={1}
                 expandLabel="More about how we work"
                 className="max-w-2xl mb-8"
               />

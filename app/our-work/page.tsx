@@ -4,6 +4,18 @@ import { FEATURED_CASES, PORTFOLIO_CAMPAIGNS } from "@/lib/data";
 import CTASection from "@/components/CTASection";
 import PageHero from "@/components/PageHero";
 
+const FEATURED_ICONS = ["hub", "auto_awesome"];
+const PORTFOLIO_ICONS = [
+  "storefront",
+  "campaign",
+  "celebration",
+  "diamond",
+  "local_bar",
+  "spa",
+  "shopping_bag",
+  "event",
+];
+
 export const metadata: Metadata = {
   title: "Our Work & Portfolio | PromoPower",
   description:
@@ -48,14 +60,13 @@ export default function OurWork() {
             >
               <div className="md:w-3/5 relative">
                 <div className="bg-primary/15 absolute -inset-4 rounded-lg blur-xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  alt={`${item.title} case study`}
-                  className="relative z-10 w-full aspect-video object-cover rounded-lg shadow-2xl border border-white/10"
-                  src={item.imageUrl}
-                  loading="lazy"
-                  decoding="async"
-                />
+                <div className="relative z-10 w-full aspect-video rounded-lg shadow-2xl border border-white/10 overflow-hidden">
+                  <div className={`portfolio-visual pv-${index % 4} !items-center !justify-center`}>
+                    <span className="relative z-[2] material-symbols-outlined text-on-surface/25" style={{ fontSize: "5rem" }} aria-hidden="true">
+                      {FEATURED_ICONS[index % FEATURED_ICONS.length]}
+                    </span>
+                  </div>
+                </div>
               </div>
               <div className="md:w-2/5">
                 <span className="text-primary font-black text-7xl opacity-20 block mb-2 leading-none">{item.id}</span>
@@ -93,14 +104,14 @@ export default function OurWork() {
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-x-6 gap-y-6 space-y-6 relative z-10">
           {PORTFOLIO_CAMPAIGNS.map((campaign, i) => (
             <Link href={`/our-work/${campaign.slug}`} key={campaign.slug} className="block break-inside-avoid w-full">
-              <div className={`bg-surface rounded-2xl overflow-hidden shadow-xl border border-white/10 group cursor-pointer w-full relative ${i % 4 === 0 ? "aspect-[3/4]" : i % 3 === 0 ? "aspect-[4/5]" : "aspect-square"}`}>
-                <div className="w-full h-full bg-surface-container relative">
-                  <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-color-dodge"></div>
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={campaign.imageUrl} alt={campaign.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale opacity-35 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105" />
-                  <div className="absolute bottom-6 left-6 right-6 z-20 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
+              <div className={`rounded-2xl overflow-hidden shadow-xl border border-white/10 group cursor-pointer w-full relative ${i % 4 === 0 ? "aspect-[3/4]" : i % 3 === 0 ? "aspect-[4/5]" : "aspect-square"}`}>
+                <div className={`portfolio-visual pv-${i % 4} transition-transform duration-700 group-hover:scale-105`}>
+                  <span className="portfolio-visual-watermark">
+                    <span className="material-symbols-outlined" aria-hidden="true">{PORTFOLIO_ICONS[i % PORTFOLIO_ICONS.length]}</span>
+                  </span>
+                  <div className="relative z-[2] w-full p-6 bg-gradient-to-t from-black/70 via-black/20 to-transparent">
                     <p className="font-headline font-normal text-2xl text-on-surface drop-shadow-md">{campaign.title}</p>
-                    <p className="text-white/80 text-sm">{campaign.subtitle}</p>
+                    <p className="text-white/75 text-sm">{campaign.subtitle}</p>
                   </div>
                 </div>
               </div>

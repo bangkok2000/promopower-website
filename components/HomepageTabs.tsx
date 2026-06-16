@@ -33,21 +33,22 @@ export function HomepageTabsProvider({ children }: { children: ReactNode }) {
     if (options?.scrollToPanels === false) return;
 
     requestAnimationFrame(() => {
-      const panels = document.getElementById("homepage-tab-panels");
-      if (!panels) return;
+      const target = document.getElementById(id);
+      if (!target) return;
 
       const header = document.getElementById("site-header");
       const nav = document.getElementById("homepage-section-nav");
       const offset = (header?.offsetHeight ?? 80) + (nav?.offsetHeight ?? 52) + 16;
-      const top = panels.getBoundingClientRect().top + window.scrollY - offset;
+      const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: Math.max(0, top), behavior: "auto" });
     });
   }, []);
 
   useEffect(() => {
     const hash = window.location.hash.slice(1);
+    let raf = 0;
     if (isHomepageSectionId(hash)) {
-      activateTab(hash, { scrollToPanels: true });
+      raf = requestAnimationFrame(() => activateTab(hash, { scrollToPanels: true }));
     }
 
     const handleReset = () => {
@@ -55,8 +56,39 @@ export function HomepageTabsProvider({ children }: { children: ReactNode }) {
     };
 
     window.addEventListener("homepage-reset", handleReset);
-    return () => window.removeEventListener("homepage-reset", handleReset);
+    return () => {
+      if (raf) cancelAnimationFrame(raf);
+      window.removeEventListener("homepage-reset", handleReset);
+    };
   }, [activateTab]);
+
+  // Scroll-spy: reflect the section currently in view in the sticky nav.
+  useEffect(() => {
+    const sections = HOMEPAGE_SECTIONS.map((section) => document.getElementById(section.id)).filter(
+      (el): el is HTMLElement => el !== null
+    );
+    if (sections.length === 0) return;
+
+    const header = document.getElementById("site-header");
+    const nav = document.getElementById("homepage-section-nav");
+    const topOffset = (header?.offsetHeight ?? 80) + (nav?.offsetHeight ?? 52) + 24;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        const topEntry = visible[0];
+        if (topEntry && isHomepageSectionId(topEntry.target.id)) {
+          setActiveId(topEntry.target.id);
+        }
+      },
+      { rootMargin: `-${topOffset}px 0px -55% 0px`, threshold: 0 }
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
 
   const value = useMemo(
     () => ({ activeId, setActiveId, activateTab }),
@@ -81,18 +113,14 @@ export function HomepageTabPanel({
   sectionId: HomepageSectionId;
   children: ReactNode;
 }) {
-  const { activeId } = useHomepageTabs();
-  const isActive = activeId === sectionId;
-
   return (
-    <div
+    <section
       id={sectionId}
-      role="tabpanel"
+      role="region"
       aria-labelledby={`homepage-tab-${sectionId}`}
-      hidden={!isActive}
-      tabIndex={isActive ? 0 : -1}
+      className="homepage-section section-snap"
     >
       {children}
-    </div>
+    </section>
   );
 }

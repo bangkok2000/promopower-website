@@ -58,13 +58,14 @@ export default async function CampaignDetail(props: { params: Promise<{ slug: st
     notFound();
   }
 
+  const visualIndex = Math.max(0, PORTFOLIO_CAMPAIGNS.findIndex((c) => c.slug === params.slug));
+
   return (
     <div className="bg-background min-h-screen text-on-surface pb-16">
       {/* Hero Header */}
       <section className="relative h-[50vh] sm:h-[60vh] flex flex-col items-center justify-center text-center px-6 sm:px-8 overflow-hidden bg-charcoal-dark border-b border-white/5">
         <div className="absolute inset-0 z-0">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src={campaign.imageUrl} alt={campaign.title} className="w-full h-full object-cover opacity-20 grayscale" />
+          <div className={`portfolio-visual pv-${visualIndex % 4} opacity-45`} aria-hidden="true" />
           <div className="absolute inset-0 bg-gradient-to-t from-background via-charcoal-dark/80 to-transparent"></div>
         </div>
         
@@ -101,11 +102,11 @@ export default async function CampaignDetail(props: { params: Promise<{ slug: st
           </div>
         </div>
 
-        {/* Feature Image */}
+        {/* Feature Visual */}
         <div className="mt-12 sm:mt-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[16/9] sm:aspect-[21/9] relative group">
-           <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-color-dodge"></div>
-           {/* eslint-disable-next-line @next/next/no-img-element */}
-           <img src={campaign.imageUrl} alt={`${campaign.title} Execution`} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" />
+           <div className={`portfolio-visual pv-${(visualIndex + 1) % 4} !items-center !justify-center`}>
+             <span className="relative z-[2] material-symbols-outlined text-on-surface/20" style={{ fontSize: "6rem" }} aria-hidden="true">workspace_premium</span>
+           </div>
            <div className="absolute bottom-6 right-6 z-20 bg-black/60 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                 <span className="text-white text-sm font-medium tracking-wide">Campaign Visual</span>
            </div>
@@ -115,7 +116,7 @@ export default async function CampaignDetail(props: { params: Promise<{ slug: st
       {/* CTA Footer */}
       <section className="mt-8 sm:mt-16 text-center px-6">
            <h2 className="text-2xl sm:text-3xl md:text-4xl font-headline font-normal mb-6 sm:mb-10 text-on-surface drop-shadow-md">Discuss Similar Support For Your Campaign</h2>
-           <Link href="/contact-us" className="bg-primary hover:bg-accent-amber text-charcoal-dark font-bold px-8 sm:px-10 py-4 sm:py-5 rounded-full font-headline hover:scale-105 active:scale-95 transition-all shadow-xl inline-flex items-center gap-3">
+           <Link href="/contact-us" className="btn-primary">
              Contact Our Team <span className="material-symbols-outlined">arrow_forward</span>
         </Link>
       </section>

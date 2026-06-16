@@ -31,10 +31,7 @@ export default function CTASection({
         )}
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Link
-            href={primaryHref}
-            className="glow-button text-on-primary px-8 py-4 rounded-full font-headline font-normal hover:scale-105 transition-transform inline-flex items-center gap-2"
-          >
+          <Link href={primaryHref} className="btn-primary">
             {primaryLabel}
             <span className="material-symbols-outlined">arrow_forward</span>
           </Link>
