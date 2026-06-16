@@ -26,8 +26,8 @@
   --font-body: var(--font-lora), serif;
   --font-label: var(--font-manrope), sans-serif;
   
-  --animate-marquee: marquee 90s linear infinite;
-  --animate-marquee-reverse: marquee-reverse 90s linear infinite;
+  --animate-marquee: marquee 55s linear infinite;
+  --animate-marquee-reverse: marquee-reverse 55s linear infinite;
 }
 
 @keyframes marquee {
