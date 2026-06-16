@@ -24,17 +24,17 @@ const values = [
   },
 ];
 
-// Leadership cards — add name and confirm role against LinkedIn before go-live.
+// Leadership cards — add remaining names before go-live.
 const leadership = [
   {
-    name: "Name to be confirmed",
+    // Confirmed: https://www.linkedin.com/in/khing-koh-ba9a6036/
+    name: "Khing Koh",
     role: "Director",
     responsibility:
       "Overall direction, client relationships and long-term partnerships across PromoPower's promotional staffing operations.",
   },
   {
-    // Confirm exact title via https://www.linkedin.com/in/khing-koh-ba9a6036/
-    name: "Khing Koh",
+    name: "Name to be confirmed",
     role: "Operations Manager",
     responsibility:
       "Recruitment, screening, deployment planning and day-to-day campaign coordination across multiple concurrent activations.",
