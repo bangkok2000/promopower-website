@@ -14,7 +14,8 @@ const SERVICE_SLUGS = [
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://promopower.com.sg";
-  const lastModified = "2026-06-15";
+  // Generated at build time; tracks the most recent build/deploy.
+  const lastModified = new Date().toISOString().split("T")[0];
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: baseUrl, lastModified, changeFrequency: "weekly", priority: 1 },

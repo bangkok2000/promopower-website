@@ -2,9 +2,32 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Roadshows & Consumer Engagement | PromoPower",
-  description: "Service route scaffold for Roadshows & Consumer Engagement.",
+  title: "Roadshows & Consumer Engagement",
+  description:
+    "Roadshow and consumer engagement staffing in Singapore for islandwide promotional tours, consumer festivals, sampling drives and on-ground brand experiences.",
+  keywords: [
+    "roadshow staffing Singapore",
+    "consumer engagement",
+    "islandwide roadshow",
+    "on-ground brand activation",
+    "consumer festival staffing",
+  ],
   alternates: { canonical: "/services/roadshows-consumer-engagement" },
+  openGraph: {
+    title: "Roadshows & Consumer Engagement | PromoPower",
+    description:
+      "Roadshow and consumer engagement staffing for islandwide promotional tours and on-ground brand experiences in Singapore.",
+    url: "https://promopower.com.sg/services/roadshows-consumer-engagement",
+    siteName: "PromoPower",
+    locale: "en_SG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Roadshows & Consumer Engagement | PromoPower",
+    description:
+      "Staffing for islandwide roadshows and on-ground consumer engagement campaigns in Singapore.",
+  },
 };
 
 export default function RoadshowsConsumerEngagementPage() {

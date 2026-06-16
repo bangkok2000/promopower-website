@@ -32,7 +32,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
               aria-controls={panelId}
             >
               <h3 className="text-xl font-headline font-normal text-on-surface">{item.question}</h3>
-              <span className="material-symbols-outlined text-primary shrink-0">{isOpen ? "remove" : "add"}</span>
+              <span aria-hidden="true" className="material-symbols-outlined text-primary shrink-0">{isOpen ? "remove" : "add"}</span>
             </button>
             {isOpen ? (
               <div id={panelId} role="region" aria-labelledby={buttonId} className="px-6 sm:px-8 pb-6 text-on-surface-variant leading-relaxed border-t border-white/5">

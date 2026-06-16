@@ -810,3 +810,57 @@
   background-image: radial-gradient(circle at 20% 30%, rgba(255, 140, 0, 0.15) 0%, transparent 40%),
                     radial-gradient(circle at 80% 70%, rgba(255, 191, 0, 0.1) 0%, transparent 30%);
 }
+
+/* ----------------------------------------------------------------------- */
+/* Form controls — shared base classes for inputs/selects/textareas.        */
+/* Two visual variants exist in the design system:                          */
+/*   .form-input  → rounded-xl,  px-6, used on the contact-us form          */
+/*   .form-input-pill → rounded-full, px-8, used on the jobseekers form     */
+/* ----------------------------------------------------------------------- */
+@layer components {
+  .form-input,
+  .form-input-pill {
+    width: 100%;
+    background-color: var(--color-background);
+    border: 1px solid rgb(255 255 255 / 0.1);
+    color: var(--color-on-surface);
+    padding-block: 1rem;
+    transition-property: all;
+    transition-duration: 150ms;
+  }
+
+  .form-input {
+    border-radius: 0.75rem;
+    padding-inline: 1.5rem;
+  }
+  .form-input::placeholder {
+    color: rgb(255 255 255 / 0.3);
+  }
+
+  .form-input-pill {
+    border-radius: 9999px;
+    padding-inline: 2rem;
+  }
+  .form-input-pill::placeholder {
+    color: rgb(255 255 255 / 0.2);
+  }
+
+  .form-input:focus,
+  .form-input-pill:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgb(255 140 0 / 0.5);
+  }
+
+  .form-select,
+  .form-select-pill {
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .form-textarea {
+    border-radius: 1rem;
+    padding-inline: 2rem;
+    padding-block: 1.5rem;
+  }
+}

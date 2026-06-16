@@ -2,9 +2,32 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Event Personnel | PromoPower",
-  description: "Service route scaffold for Event Personnel.",
+  title: "Event Personnel",
+  description:
+    "Reliable event personnel in Singapore for corporate events, conferences, brand activations, VIP hospitality and large-scale public events.",
+  keywords: [
+    "event staffing Singapore",
+    "event personnel",
+    "corporate event staff",
+    "VIP event hostess",
+    "conference staffing Singapore",
+  ],
   alternates: { canonical: "/services/event-personnel" },
+  openGraph: {
+    title: "Event Personnel | PromoPower",
+    description:
+      "Professional event personnel for corporate events, brand activations and VIP hospitality in Singapore.",
+    url: "https://promopower.com.sg/services/event-personnel",
+    siteName: "PromoPower",
+    locale: "en_SG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Event Personnel | PromoPower",
+    description:
+      "Event staffing for corporate, conference and VIP hospitality programmes in Singapore.",
+  },
 };
 
 export default function EventPersonnelPage() {

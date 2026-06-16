@@ -154,7 +154,36 @@ export default function NavBar() {
               <div className="flex gap-5 xl:gap-6 items-center min-w-0">
                 {NAV_ITEMS.map((item) =>
                   item.label === "Services" ? (
-                    <div key={item.label} className="relative inline-flex items-center gap-0.5" ref={servicesRef}>
+                    <div
+                      key={item.label}
+                      className="relative inline-flex items-center gap-0.5"
+                      ref={servicesRef}
+                      onKeyDown={(event) => {
+                        if (!servicesOpen) return;
+                        const menu = servicesRef.current?.querySelector<HTMLDivElement>('[role="menu"]');
+                        if (!menu) return;
+                        const items = Array.from(menu.querySelectorAll<HTMLAnchorElement>('[role="menuitem"]'));
+                        if (items.length === 0) return;
+                        const currentIndex = items.findIndex((el) => el === document.activeElement);
+                        if (event.key === "ArrowDown") {
+                          event.preventDefault();
+                          const next = currentIndex < 0 ? 0 : (currentIndex + 1) % items.length;
+                          items[next].focus();
+                        } else if (event.key === "ArrowUp") {
+                          event.preventDefault();
+                          const prev = currentIndex <= 0 ? items.length - 1 : currentIndex - 1;
+                          items[prev].focus();
+                        } else if (event.key === "Home") {
+                          event.preventDefault();
+                          items[0].focus();
+                        } else if (event.key === "End") {
+                          event.preventDefault();
+                          items[items.length - 1].focus();
+                        } else if (event.key === "Tab") {
+                          setServicesOpen(false);
+                        }
+                      }}
+                    >
                       <Link href={item.href} className={getLinkClass(item.href)}>
                         Services
                       </Link>
@@ -162,18 +191,19 @@ export default function NavBar() {
                         type="button"
                         className="inline-flex items-center text-on-surface-variant hover:text-primary transition-colors p-1 -ml-1"
                         aria-expanded={servicesOpen}
-                        aria-haspopup="true"
+                        aria-haspopup="menu"
                         aria-label="Show services menu"
                         onClick={() => setServicesOpen((open) => !open)}
                       >
-                        <span className="material-symbols-outlined text-base">{servicesOpen ? "expand_less" : "expand_more"}</span>
+                        <span aria-hidden="true" className="material-symbols-outlined text-base">{servicesOpen ? "expand_less" : "expand_more"}</span>
                       </button>
                       {servicesOpen ? (
-                        <div className="absolute left-0 top-full mt-3 w-72 rounded-2xl border border-white/10 bg-surface shadow-2xl py-2 z-50">
+                        <div role="menu" aria-label="Services" className="absolute left-0 top-full mt-3 w-72 rounded-2xl border border-white/10 bg-surface shadow-2xl py-2 z-50">
                           {SERVICE_LINKS.map((service) => (
                             <Link
                               key={service.href}
                               href={service.href}
+                              role="menuitem"
                               className="block px-4 py-2.5 text-sm text-on-surface-variant hover:text-primary hover:bg-white/5 transition-colors"
                               onClick={() => setServicesOpen(false)}
                             >
@@ -183,6 +213,7 @@ export default function NavBar() {
                           <div className="border-t border-white/10 mt-2 pt-2 px-2">
                             <Link
                               href="/services"
+                              role="menuitem"
                               className="block rounded-xl px-3 py-2.5 text-sm font-bold text-primary hover:bg-primary/10 transition-colors"
                               onClick={() => setServicesOpen(false)}
                             >

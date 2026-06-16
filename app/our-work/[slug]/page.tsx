@@ -105,7 +105,7 @@ export default async function CampaignDetail(props: { params: Promise<{ slug: st
         <div className="mt-12 sm:mt-24 rounded-2xl overflow-hidden shadow-2xl border border-white/10 aspect-[16/9] sm:aspect-[21/9] relative group">
            <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-color-dodge"></div>
            {/* eslint-disable-next-line @next/next/no-img-element */}
-           <img src={campaign.imageUrl} alt={`${campaign.title} Execution`} className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" />
+           <img src={campaign.imageUrl} alt={`${campaign.title} Execution`} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" />
            <div className="absolute bottom-6 right-6 z-20 bg-black/60 backdrop-blur-md px-6 py-2 rounded-full border border-white/20 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
                 <span className="text-white text-sm font-medium tracking-wide">Campaign Visual</span>
            </div>

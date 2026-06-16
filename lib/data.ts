@@ -6,6 +6,8 @@ export interface Campaign {
   solution: string;
   impact: string;
   imageUrl: string;
+  /** When true, surface this campaign on summary/featured listings. Optional. */
+  featured?: boolean;
 }
 
 const PORTFOLIO_IMAGE_URLS = [
@@ -122,3 +124,43 @@ export const PORTFOLIO_CAMPAIGNS: Campaign[] = CAMPAIGN_DATA.map((campaign, inde
 export function getCampaignBySlug(slug: string): Campaign | undefined {
   return PORTFOLIO_CAMPAIGNS.find((c) => c.slug === slug);
 }
+
+/**
+ * Featured "case study" entries used on the Our Work page above the campaign
+ * grid. These intentionally use a slightly different shape (challenge / solution
+ * / outcome instead of impact, plus an `id` for the large numeric label) and
+ * are kept here so the data layer is the single source of truth.
+ */
+export interface FeaturedCase {
+  id: string;
+  title: string;
+  challenge: string;
+  solution: string;
+  outcome: string;
+  imageUrl: string;
+}
+
+export const FEATURED_CASES: FeaturedCase[] = [
+  {
+    id: "01",
+    title: "Major Global Technology Brand",
+    challenge:
+      "Deploy and manage a large promoter team across a multi-day convention environment while maintaining service consistency.",
+    solution:
+      "Provided end-to-end staffing operations, structured campaign briefings and dedicated on-site supervision.",
+    outcome:
+      "Full deployment achieved across all locations with consistent customer-facing delivery and smooth operations.",
+    imageUrl: PORTFOLIO_IMAGE_URLS[1],
+  },
+  {
+    id: "02",
+    title: "International Beauty Campaign",
+    challenge:
+      "Support high-volume customer engagement for a flagship launch while preserving premium brand presentation standards.",
+    solution:
+      "Selected and prepared campaign personnel with clear brand and customer-interaction briefings.",
+    outcome:
+      "Strong campaign execution and consistent representation maintained throughout the launch period.",
+    imageUrl: PORTFOLIO_IMAGE_URLS[2],
+  },
+];

@@ -11,11 +11,18 @@ const ALLOWED_FILE_TYPES = new Set(["application/pdf", "image/jpeg", "image/png"
 
 function sanitize(value: unknown): string {
   if (typeof value !== "string") return "";
-  return value.trim().slice(0, MAX_FIELD_LENGTH);
+  // Defence-in-depth: strip script/style/iframe blocks and any remaining HTML tags
+  // before trimming and length-capping. Web3Forms validates server-side; this guards
+  // against a compromised or replaced endpoint reflecting raw input.
+  const stripped = value
+    .replace(/<\s*(script|style|iframe|object|embed)\b[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi, "")
+    .replace(/<\/?[a-z][^>]*>/gi, "");
+  return stripped.trim().slice(0, MAX_FIELD_LENGTH);
 }
 
 function isValidEmail(email: string): boolean {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  // RFC 5322 simplified — local@domain.tld with reasonable length and at least one TLD char.
+  return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email) && email.length <= 254;
 }
 
 function validateFile(file: File): string | null {
@@ -70,6 +77,7 @@ async function postToWeb3Forms(formData: FormData, subject: string): Promise<For
 export async function submitContactInquiry(formData: FormData): Promise<FormSubmitResult> {
   const name = sanitize(formData.get("fullName"));
   const email = sanitize(formData.get("email"));
+  const pdpaConsent = sanitize(formData.get("pdpaConsent"));
 
   if (!name || !email) {
     return { success: false, error: "Full name and email are required." };
@@ -77,6 +85,10 @@ export async function submitContactInquiry(formData: FormData): Promise<FormSubm
 
   if (!isValidEmail(email)) {
     return { success: false, error: "Please provide a valid email address." };
+  }
+
+  if (pdpaConsent !== "true") {
+    return { success: false, error: "Please accept the Data Protection Policy before submitting." };
   }
 
   if (shouldUseDemoMode()) {

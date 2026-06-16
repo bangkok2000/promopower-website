@@ -1,6 +1,6 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { PORTFOLIO_CAMPAIGNS } from "@/lib/data";
+import { FEATURED_CASES, PORTFOLIO_CAMPAIGNS } from "@/lib/data";
 import CTASection from "@/components/CTASection";
 import PageHero from "@/components/PageHero";
 
@@ -26,33 +26,6 @@ export const metadata: Metadata = {
   },
 };
 
-const featuredCases = [
-  {
-    id: "01",
-    title: "Major Global Technology Brand",
-    challenge:
-      "Deploy and manage a large promoter team across a multi-day convention environment while maintaining service consistency.",
-    solution:
-      "Provided end-to-end staffing operations, structured campaign briefings and dedicated on-site supervision.",
-    outcome:
-      "Full deployment achieved across all locations with consistent customer-facing delivery and smooth operations.",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuA7f9Z8zstYE4mr-MVEbvUyKOq47PuzFn3pIEf9RPoRL11vIjlcKN7bE9-6kTtVYr2XL76Naff9FnB_Fz6eV8QzCXqc6kCKDVexPTCG0DO03AdYiXuKnCUcUTfnWHeTvM2d-ZWmfJaUXDEPAT9Tt-0pVsMmeOAz-Ivw19kKJaeM4BNLMZbVOwJoQ7Wk3yZtbwSLBA2xe-NC62sB8yC1bRs1cQqO4mihkCo_b5zMPG_xRUPUw6cHFXMM-p6AulenC6gEpSR_VAXtnxQ",
-  },
-  {
-    id: "02",
-    title: "International Beauty Campaign",
-    challenge:
-      "Support high-volume customer engagement for a flagship launch while preserving premium brand presentation standards.",
-    solution:
-      "Selected and prepared campaign personnel with clear brand and customer-interaction briefings.",
-    outcome:
-      "Strong campaign execution and consistent representation maintained throughout the launch period.",
-    imageUrl:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuDP2SOtLdxFredw6LyC0e7DHwJvFwNQGT2IE1NAMhP3qWRuMayvdElhXj9SWjJbqgP0wW8WQDZvfoQEqgXsRrc7hutiCIhR-4vN2VE-8cUpwEV-KL8l243Vp4aWrCEfZ4RB0BbyhDZcitxnM2ehivDjGWN6jyhnClIeyaLQJ2yP-Hhpm_6hGwAahtQP9jFJTLrdkgrFp0TnbE_JpozXk9Z_BBJXEu1f9HsOsUrWKVgvQ6rRNUy7ovEfmFUWuJG-kTASrFvi1I2WrW0",
-  },
-];
-
 export default function OurWork() {
   return (
     <>
@@ -68,7 +41,7 @@ export default function OurWork() {
           Featured Examples
         </h2>
         <div className="space-y-12 sm:space-y-20">
-          {featuredCases.map((item, index) => (
+          {FEATURED_CASES.map((item, index) => (
             <div
               key={item.id}
               className={`flex flex-col ${index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-8 sm:gap-14 group`}
@@ -80,6 +53,8 @@ export default function OurWork() {
                   alt={`${item.title} case study`}
                   className="relative z-10 w-full aspect-video object-cover rounded-lg shadow-2xl border border-white/10"
                   src={item.imageUrl}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
               <div className="md:w-2/5">
@@ -122,7 +97,7 @@ export default function OurWork() {
                 <div className="w-full h-full bg-surface-container relative">
                   <div className="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10 mix-blend-color-dodge"></div>
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={campaign.imageUrl} alt={campaign.title} className="w-full h-full object-cover grayscale opacity-35 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105" />
+                  <img src={campaign.imageUrl} alt={campaign.title} loading="lazy" decoding="async" className="w-full h-full object-cover grayscale opacity-35 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 transform group-hover:scale-105" />
                   <div className="absolute bottom-6 left-6 right-6 z-20 translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300">
                     <p className="font-headline font-normal text-2xl text-on-surface drop-shadow-md">{campaign.title}</p>
                     <p className="text-white/80 text-sm">{campaign.subtitle}</p>

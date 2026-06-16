@@ -2,9 +2,32 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Brand Ambassadors | PromoPower",
-  description: "Service route scaffold for Brand Ambassadors.",
+  title: "Brand Ambassadors",
+  description:
+    "Professionally trained brand ambassadors in Singapore for product launches, retail activations, customer-facing campaigns and premium brand engagement.",
+  keywords: [
+    "brand ambassadors Singapore",
+    "luxury brand ambassadors",
+    "product launch staffing",
+    "retail activation ambassadors",
+    "PromoPower brand ambassadors",
+  ],
   alternates: { canonical: "/services/brand-ambassadors" },
+  openGraph: {
+    title: "Brand Ambassadors | PromoPower",
+    description:
+      "Professional brand ambassadors for customer-facing campaigns, product launches and retail activations in Singapore.",
+    url: "https://promopower.com.sg/services/brand-ambassadors",
+    siteName: "PromoPower",
+    locale: "en_SG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Brand Ambassadors | PromoPower",
+    description:
+      "Professional brand ambassadors for product launches and retail activations in Singapore.",
+  },
 };
 
 export default function BrandAmbassadorsPage() {

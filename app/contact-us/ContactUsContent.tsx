@@ -9,6 +9,7 @@ import { FORM_DEMO_MODE, SITE } from "@/lib/site";
 export default function ContactUsContent() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isAgreed, setIsAgreed] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -29,6 +30,10 @@ export default function ContactUsContent() {
       setError("Please complete all required contact fields.");
       return false;
     }
+    if (!isAgreed) {
+      setError("Please accept the Data Protection Policy before submitting.");
+      return false;
+    }
     setError(null);
     return true;
   };
@@ -47,6 +52,7 @@ export default function ContactUsContent() {
     setIsSubmitting(true);
     setError(null);
     const formData = new FormData(formRef.current);
+    formData.set("pdpaConsent", isAgreed ? "true" : "false");
     const result: FormSubmitResult = await submitContactInquiry(formData);
     setIsSubmitting(false);
     if (result.success) {
@@ -134,6 +140,8 @@ export default function ContactUsContent() {
               )}
 
               <form ref={formRef} className="space-y-8" noValidate>
+                <input type="hidden" name="pdpaConsent" value={isAgreed ? "true" : "false"} readOnly />
+
                 <div hidden={step !== 1} className={step === 1 ? "animate-in fade-in slide-in-from-right-4 duration-500" : undefined}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div className="space-y-3">
@@ -232,14 +240,37 @@ export default function ContactUsContent() {
                       <input id="contact-phone" name="phone" className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/30" placeholder="Contact Number" type="tel" />
                     </div>
                   </div>
+
+                  <div className="pt-2 pb-2">
+                    <label className="flex items-start gap-4 cursor-pointer group">
+                      <div className="relative flex items-center justify-center mt-1">
+                        <input
+                          type="checkbox"
+                          aria-label="I agree to the PromoPower Data Protection Policy"
+                          className="appearance-none w-6 h-6 border-2 border-white/20 rounded-md bg-transparent checked:bg-primary checked:border-primary peer transition-all cursor-pointer flex-shrink-0"
+                          checked={isAgreed}
+                          onChange={(e) => setIsAgreed(e.target.checked)}
+                        />
+                        <span aria-hidden="true" className="material-symbols-outlined absolute text-charcoal-dark font-bold opacity-0 peer-checked:opacity-100 transition-opacity text-sm pointer-events-none">check</span>
+                      </div>
+                      <p className="text-sm text-on-surface-variant leading-relaxed text-left">
+                        I consent to PromoPower collecting and using the information provided to respond to my enquiry, in line with the{" "}
+                        <a href="https://promopower.com.sg/wp-content/uploads/2020/05/PROMOPOWER-PTE-LTD-DATA-PROTECTION-POLICY-the-%E2%80%9Cpolicy%E2%80%9D-FOR-EMPLOYEES-AND-JOB-APPLICANTS_25-OCT-2019-.pdf" target="_blank" rel="noopener noreferrer" className="text-primary hover:text-white transition-colors underline underline-offset-4 decoration-primary/30">
+                          PromoPower Data Protection Policy
+                        </a>{" "}
+                        (Singapore PDPA).
+                      </p>
+                    </label>
+                  </div>
+
                   <div className="pt-6 flex justify-between items-center">
                     <button type="button" onClick={prevStep} className="text-on-surface-variant hover:text-white font-bold transition-colors inline-flex items-center gap-2">
-                      <span className="material-symbols-outlined">arrow_back</span>
+                      <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
                       Back
                     </button>
-                    <button type="button" onClick={submitForm} disabled={isSubmitting} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100">
+                    <button type="button" onClick={submitForm} disabled={isSubmitting || !isAgreed} className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed">
                       {isSubmitting ? "Sending Request..." : "Submit Enquiry"}
-                      <span className="material-symbols-outlined">send</span>
+                      <span aria-hidden="true" className="material-symbols-outlined">send</span>
                     </button>
                   </div>
                 </div>

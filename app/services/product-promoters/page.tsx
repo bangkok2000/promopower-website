@@ -2,9 +2,32 @@ import Link from "next/link";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Product Promoters | PromoPower",
-  description: "Service route scaffold for Product Promoters.",
+  title: "Product Promoters",
+  description:
+    "Trained product promoters in Singapore for retail demonstrations, in-store sampling, FMCG campaigns and consumer trial programmes.",
+  keywords: [
+    "product promoters Singapore",
+    "retail promoters",
+    "in-store sampling",
+    "FMCG promoter staffing",
+    "product demonstration staff",
+  ],
   alternates: { canonical: "/services/product-promoters" },
+  openGraph: {
+    title: "Product Promoters | PromoPower",
+    description:
+      "Product promoters for in-store demonstrations, sampling and FMCG retail campaigns in Singapore.",
+    url: "https://promopower.com.sg/services/product-promoters",
+    siteName: "PromoPower",
+    locale: "en_SG",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Product Promoters | PromoPower",
+    description:
+      "Product promoters for retail demonstrations and consumer trial programmes in Singapore.",
+  },
 };
 
 export default function ProductPromotersPage() {
