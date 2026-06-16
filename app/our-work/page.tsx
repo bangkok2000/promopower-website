@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { GALLERY_PHOTOS } from "@/lib/data";
 import CTASection from "@/components/CTASection";
 import PageHero from "@/components/PageHero";
+import GalleryGrid from "@/components/GalleryGrid";
 
 export const metadata: Metadata = {
   title: "Our Work & Portfolio | PromoPower",
@@ -36,22 +37,7 @@ export default function OurWork() {
 
       <section className="page-section">
         <div className="page-container">
-          <div className="columns-2 sm:columns-3 lg:columns-4 gap-x-3">
-            {GALLERY_PHOTOS.map((src, i) => (
-              <div
-                key={i}
-                className="mb-3 overflow-hidden rounded-lg break-inside-avoid"
-              >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={src}
-                  alt={`PromoPower campaign activation ${i + 1}`}
-                  loading={i < 12 ? "eager" : "lazy"}
-                  className="w-full h-auto block object-cover transition-transform duration-300 hover:scale-[1.03]"
-                />
-              </div>
-            ))}
-          </div>
+          <GalleryGrid photos={GALLERY_PHOTOS} />
         </div>
       </section>
 
