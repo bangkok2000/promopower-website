@@ -1,4 +1,5 @@
 import PageHero from "@/components/PageHero";
+import JobListings from "@/components/JobListings";
 import JobseekersContent from "./JobseekersContent";
 
 export default function JobseekersPage() {
@@ -16,6 +17,7 @@ export default function JobseekersPage() {
           Start Your Application <span className="material-symbols-outlined">arrow_downward</span>
         </a>
       </PageHero>
+      <JobListings />
       <JobseekersContent />
     </>
   );
