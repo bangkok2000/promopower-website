@@ -51,10 +51,10 @@ function MarqueeRow({
             key={i}
             className="inline-flex items-center gap-0 px-6 py-0"
           >
-            <span className="font-label text-xs font-semibold tracking-[0.18em] uppercase text-on-surface-variant/40">
+            <span className="font-label text-xs font-semibold tracking-[0.18em] uppercase text-on-surface-variant/70">
               {name}
             </span>
-            <span className="ml-6 text-on-surface-variant/20 select-none">·</span>
+            <span className="ml-6 text-on-surface-variant/35 select-none">·</span>
           </li>
         ))}
       </ul>
