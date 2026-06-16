@@ -167,12 +167,7 @@ export default function PrivacyPage() {
                   {SITE.email}
                 </a>
               </li>
-              <li>
-                Telephone:{" "}
-                <a className="text-primary hover:text-white transition-colors" href={`tel:${SITE.phoneTel}`}>
-                  {SITE.phone}
-                </a>
-              </li>
+
             </ul>
 
             <p className="text-sm text-on-surface-variant/70 mt-8">

@@ -81,17 +81,7 @@ export default function ContactUsContent() {
                   </a>
                 </div>
               </div>
-              <div className="contact-detail-item">
-                <div className="contact-detail-icon" aria-hidden="true">
-                  <span className="material-symbols-outlined">phone</span>
-                </div>
-                <div>
-                  <p className="contact-detail-label">Phone</p>
-                  <a href={`tel:${SITE.phoneTel}`} className="contact-detail-value hover:text-primary transition-colors">
-                    {SITE.phone}
-                  </a>
-                </div>
-              </div>
+
               <div className="contact-detail-item">
                 <div className="contact-detail-icon" aria-hidden="true">
                   <span className="material-symbols-outlined">location_on</span>

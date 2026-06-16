@@ -104,11 +104,6 @@ export default function Footer() {
                   {SITE.email}
                 </a>
               </li>
-              <li>
-                <a href={`tel:${SITE.phoneTel}`} className="hover:text-primary transition-colors">
-                  {SITE.phone}
-                </a>
-              </li>
               <li>{SITE.address}</li>
             </ul>
           </div>
