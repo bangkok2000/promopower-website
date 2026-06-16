@@ -30,24 +30,28 @@ const leadership = [
     // Confirmed: https://www.linkedin.com/in/khing-koh-ba9a6036/
     name: "Khing Koh",
     role: "Director",
+    photo: "/team/khing-koh.jpg",
     responsibility:
       "Overall direction, client relationships and long-term partnerships across PromoPower's promotional staffing operations.",
   },
   {
     name: "Name to be confirmed",
     role: "Operations Manager",
+    photo: null,
     responsibility:
       "Recruitment, screening, deployment planning and day-to-day campaign coordination across multiple concurrent activations.",
   },
   {
     name: "Name to be confirmed",
     role: "Client Services Manager",
+    photo: null,
     responsibility:
       "Campaign briefings, client engagement and ongoing communication throughout the campaign lifecycle.",
   },
   {
     name: "Name to be confirmed",
     role: "Field Operations Lead",
+    photo: null,
     responsibility:
       "On-site supervision, schedule management and operational support for personnel across deployment locations.",
   },
@@ -135,7 +139,16 @@ export default function AboutUsContent() {
             {leadership.map((member) => (
               <article key={member.role} className="content-card leadership-card h-full">
                 <div className="leadership-avatar" aria-hidden="true">
-                  <span className="material-symbols-outlined">person</span>
+                  {member.photo ? (
+                    // eslint-disable-next-line @next/next/no-img-element
+                    <img
+                      src={member.photo}
+                      alt={member.name}
+                      className="w-full h-full object-cover rounded-full"
+                    />
+                  ) : (
+                    <span className="material-symbols-outlined">person</span>
+                  )}
                 </div>
                 <p className="leadership-name">{member.name}</p>
                 <h3 className="leadership-role">{member.role}</h3>

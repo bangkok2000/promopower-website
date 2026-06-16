@@ -217,10 +217,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 4rem;
-    height: 4rem;
+    width: 5rem;
+    height: 5rem;
     margin-bottom: 1rem;
     border-radius: 9999px;
+    overflow: hidden;
     border: 1px solid rgb(110 145 168 / 0.3);
     background: linear-gradient(
       135deg,
