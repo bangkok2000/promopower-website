@@ -4,7 +4,6 @@ export const dynamic = "force-static";
 
 const SERVICE_SLUGS = [
   "brand-ambassadors",
-  "product-promoters",
   "event-personnel",
   "retail-activation-teams",
   "roadshows-consumer-engagement",

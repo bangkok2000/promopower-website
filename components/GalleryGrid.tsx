@@ -4,9 +4,10 @@ import { useState, useEffect, useCallback } from "react";
 
 interface Props {
   photos: string[];
+  label?: string;
 }
 
-export default function GalleryGrid({ photos }: Props) {
+export default function GalleryGrid({ photos, label = "campaign" }: Props) {
   const [lightbox, setLightbox] = useState<number | null>(null);
 
   const close = useCallback(() => setLightbox(null), []);
@@ -43,13 +44,13 @@ export default function GalleryGrid({ photos }: Props) {
             key={i}
             type="button"
             onClick={() => setLightbox(i)}
-            aria-label={`View campaign photo ${i + 1}`}
+            aria-label={`View ${label} photo ${i + 1}`}
             className="group relative aspect-[4/3] overflow-hidden rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)]"
           >
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={src}
-              alt={`PromoPower campaign activation ${i + 1}`}
+              alt={`PromoPower ${label} activation ${i + 1}`}
               loading={i < 12 ? "eager" : "lazy"}
               className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.05]"
             />
@@ -89,7 +90,7 @@ export default function GalleryGrid({ photos }: Props) {
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src={photos[lightbox]}
-              alt={`PromoPower campaign activation ${lightbox + 1}`}
+              alt={`PromoPower ${label} activation ${lightbox + 1}`}
               className="max-w-[90vw] max-h-[90vh] rounded-lg object-contain shadow-2xl"
             />
 

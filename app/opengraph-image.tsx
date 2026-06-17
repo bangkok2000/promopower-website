@@ -109,8 +109,8 @@ export default function OGImage() {
               maxWidth: 760,
             }}
           >
-            Brand ambassadors, product promoters, event personnel and retail
-            activation teams across Singapore.
+            Brand ambassadors, event personnel and retail activation teams
+            across Singapore.
           </div>
         </div>
 

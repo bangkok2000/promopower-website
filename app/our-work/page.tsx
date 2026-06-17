@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { GALLERY_PHOTOS } from "@/lib/data";
+import { PORTFOLIO_GROUPS } from "@/lib/data";
 import CTASection from "@/components/CTASection";
 import PageHero from "@/components/PageHero";
 import GalleryGrid from "@/components/GalleryGrid";
@@ -37,7 +37,19 @@ export default function OurWork() {
 
       <section className="page-section">
         <div className="page-container">
-          <GalleryGrid photos={GALLERY_PHOTOS} />
+          <div className="space-y-12">
+            {PORTFOLIO_GROUPS.map((group) => (
+              <section key={group.client} className="space-y-5">
+                <div className="border-b border-white/10 pb-4">
+                  <h2 className="font-headline text-3xl sm:text-4xl font-normal text-on-surface">
+                    {group.client}
+                  </h2>
+                </div>
+
+                <GalleryGrid photos={group.photos} label={group.client} />
+              </section>
+            ))}
+          </div>
         </div>
       </section>
 

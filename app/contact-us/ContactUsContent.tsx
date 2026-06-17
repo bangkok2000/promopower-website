@@ -143,7 +143,6 @@ export default function ContactUsContent() {
                         <select id="contact-service" name="serviceType" defaultValue="" required className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer">
                           <option value="" disabled>Select service type...</option>
                           <option value="brand-ambassadors">Brand Ambassadors</option>
-                          <option value="product-promoters">Product Promoters</option>
                           <option value="event-personnel">Event Personnel</option>
                           <option value="retail-activation">Retail Activation Teams</option>
                           <option value="roadshow">Roadshows & Consumer Engagement</option>

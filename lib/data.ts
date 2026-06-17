@@ -173,3 +173,45 @@ export const GALLERY_PHOTOS: string[] = [
   `${WP}/8-3.jpeg`,
   `${WP}/1-9.jpg`,
 ];
+
+export interface PortfolioGroup {
+  client: string;
+  photos: string[];
+}
+
+const PORTFOLIO_GROUP_COUNTS = [
+  { client: "APB Singapore", count: 7 },
+  { client: "Bacardi", count: 4 },
+  { client: "Pernod Ricard", count: 6 },
+  { client: "Piper-Heidsieck", count: 5 },
+  { client: "Remy Cointreau", count: 7 },
+  { client: "Somersby", count: 3 },
+  { client: "Strongbow", count: 5 },
+  { client: "VCT Group of Wineries Asia", count: 5 },
+  { client: "Bvlgari", count: 7 },
+  { client: "Chanel", count: 9 },
+  { client: "Chopard", count: 4 },
+  { client: "Dior", count: 6 },
+  { client: "Elizabeth Arden", count: 7 },
+  { client: "Giorgio Armani", count: 8 },
+  { client: "Guerlain", count: 13 },
+  { client: "Jo Malone London", count: 2 },
+  { client: "Kiehl's", count: 12 },
+  { client: "Kenzo", count: 2 },
+  { client: "La Prairie", count: 10 },
+  { client: "Lancome", count: 27 },
+  { client: "Maison Margiela", count: 3 },
+  { client: "Puig", count: 6 },
+  { client: "Shiseido", count: 4 },
+  { client: "Yves Saint Laurent", count: 8 },
+] as const;
+
+export const PORTFOLIO_GROUPS: PortfolioGroup[] = (() => {
+  let offset = 0;
+
+  return PORTFOLIO_GROUP_COUNTS.map(({ client, count }) => {
+    const photos = GALLERY_PHOTOS.slice(offset, offset + count);
+    offset += count;
+    return { client, photos };
+  });
+})();

@@ -4,7 +4,7 @@ import HomeHeroActions from "@/components/HomeHeroActions";
 import { HERO_IMAGE_URL } from "@/lib/navigation";
 
 const heroParagraphs = [
-  "For more than two decades, PromoPower has helped organisations connect with customers through professional promoters, brand ambassadors, event personnel and retail support teams.",
+  "For more than two decades, PromoPower has helped organisations connect with customers through trained product promoters, event personnel and retail support teams.",
   "Behind every successful campaign is a team of people responsible for representing the brand, engaging customers and delivering positive customer experiences. Finding, preparing and managing those people requires more than simply filling positions. It requires experience, planning, operational discipline and a deep understanding of what it takes to execute successfully in real-world environments.",
   "PromoPower provides end-to-end workforce solutions that cover recruitment, screening, preparation, deployment and ongoing campaign support. Whether supporting a single activation or coordinating multiple locations across Singapore, our team helps organisations execute confidently while maintaining the standards their brands deserve.",
 ];

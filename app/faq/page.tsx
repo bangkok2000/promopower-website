@@ -13,7 +13,7 @@ const faqs = [
   {
     question: "What services does PromoPower provide?",
     answer:
-      "PromoPower provides workforce support for customer-facing campaigns, including brand ambassadors, product promoters, event personnel, retail activation teams, roadshows and campaign coordination support.",
+      "PromoPower provides workforce support for customer-facing campaigns, including brand ambassadors, event personnel, retail activation teams, roadshows and campaign coordination support.",
   },
   {
     question: "How early should we engage your team before a campaign?",

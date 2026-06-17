@@ -1,6 +1,5 @@
 export const SERVICE_LINKS = [
   { label: "Brand Ambassadors", href: "/services/brand-ambassadors" },
-  { label: "Product Promoters", href: "/services/product-promoters" },
   { label: "Event Personnel", href: "/services/event-personnel" },
   { label: "Retail Activation Teams", href: "/services/retail-activation-teams" },
   { label: "Roadshows & Engagement", href: "/services/roadshows-consumer-engagement" },
@@ -20,7 +19,7 @@ export type HomepageSectionId = (typeof HOMEPAGE_SECTIONS)[number]["id"];
 export const HOMEPAGE_QUICK_PATHS = [
   {
     title: "Workforce Solutions",
-    description: "Brand ambassadors, promoters, event teams and campaign coordination.",
+    description: "Brand ambassadors, event teams and campaign coordination.",
     sectionId: "services" as const,
     icon: "groups",
   },

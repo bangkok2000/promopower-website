@@ -6,7 +6,7 @@ import PageHero from "@/components/PageHero";
 export const metadata: Metadata = {
   title: "Services | PromoPower",
   description:
-    "Explore PromoPower's professional workforce solutions, including brand ambassadors, product promoters, event personnel and campaign support services in Singapore.",
+    "Explore PromoPower's workforce solutions, including brand ambassadors, event personnel, retail activation teams and campaign support services in Singapore.",
   alternates: { canonical: "/services" },
   openGraph: {
     title: "Services | PromoPower",
@@ -29,26 +29,14 @@ const services = [
   {
     title: "Brand Ambassadors",
     summary:
-      "Professional ambassadors who represent your brand with confidence in customer-facing environments.",
+      "Customer-facing personnel suited to launches and activations where presentation, confidence, product explanation and engagement matter.",
     points: [
       "Selected based on communication ability, professionalism and campaign fit.",
-      "Prepared with campaign briefings and engagement guidance before deployment.",
-      "Suitable for product launches, experiential activities and brand engagement programmes.",
+      "Prepared with campaign briefings, product information and engagement guidance before deployment.",
+      "Suitable for product launches, demonstrations, experiential activities and brand engagement programmes.",
     ],
     href: "/services/brand-ambassadors",
     icon: "person_celebrate",
-  },
-  {
-    title: "Product Promoters",
-    summary:
-      "Trained promoters who help customers understand product benefits and make informed decisions.",
-    points: [
-      "Supports product demonstrations, sampling and customer education.",
-      "Designed for retail and event environments where product knowledge matters.",
-      "Focused on clear communication and positive customer interactions.",
-    ],
-    href: "/services/product-promoters",
-    icon: "campaign",
   },
   {
     title: "Event Personnel",

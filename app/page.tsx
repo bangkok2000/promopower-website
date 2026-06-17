@@ -125,16 +125,9 @@ const serviceHighlights = [
   {
     title: "Brand Ambassadors",
     summary:
-      "Brand ambassadors play an important role in shaping customer perceptions and creating memorable interactions.",
+      "For launches and activations where customer engagement, product explanation and strong brand presentation are especially important.",
     href: "/services/brand-ambassadors",
     icon: "person_celebrate",
-  },
-  {
-    title: "Product Promoters",
-    summary:
-      "Consumers increasingly expect informed and engaging interactions before making purchasing decisions.",
-    href: "/services/product-promoters",
-    icon: "campaign",
   },
   {
     title: "Event Personnel",
