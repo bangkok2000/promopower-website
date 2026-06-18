@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { PORTFOLIO_GROUPS } from "@/lib/data";
+import { getPortfolioNavItems, portfolioClientSlug, portfolioSectionId } from "@/lib/portfolio";
 import CTASection from "@/components/CTASection";
-import PageHero from "@/components/PageHero";
 import GalleryGrid from "@/components/GalleryGrid";
+import PageContentRail from "@/components/PageContentRail";
+import PageHero from "@/components/PageHero";
+import PortfolioClientNav, { PortfolioBackToTop } from "@/components/PortfolioClientNav";
 
 export const metadata: Metadata = {
   title: "Our Work & Portfolio | PromoPower",
@@ -26,6 +29,8 @@ export const metadata: Metadata = {
   },
 };
 
+const portfolioNavItems = getPortfolioNavItems();
+
 export default function OurWork() {
   return (
     <>
@@ -36,21 +41,33 @@ export default function OurWork() {
       />
 
       <section className="page-section">
-        <div className="page-container">
-          <div className="space-y-12">
-            {PORTFOLIO_GROUPS.map((group) => (
-              <section key={group.client} className="space-y-5">
-                <div className="border-b border-white/10 pb-4">
-                  <h2 className="font-headline text-3xl sm:text-4xl font-normal text-on-surface">
-                    {group.client}
-                  </h2>
-                </div>
+        <PageContentRail>
+          <PortfolioClientNav items={portfolioNavItems} />
 
-                <GalleryGrid photos={group.photos} label={group.client} />
-              </section>
-            ))}
+          <div className="space-y-12 pt-8">
+            {PORTFOLIO_GROUPS.map((group) => {
+              const slug = portfolioClientSlug(group.client);
+
+              return (
+                <section
+                  key={group.client}
+                  id={portfolioSectionId(slug)}
+                  className="portfolio-client-section space-y-5"
+                  aria-labelledby={`portfolio-heading-${slug}`}
+                >
+                  <div className="border-b border-white/10 pb-4">
+                    <h2 id={`portfolio-heading-${slug}`} className="font-headline text-3xl sm:text-4xl font-normal text-on-surface">
+                      {group.client}
+                    </h2>
+                  </div>
+
+                  <GalleryGrid photos={group.photos} label={group.client} />
+                  <PortfolioBackToTop />
+                </section>
+              );
+            })}
           </div>
-        </div>
+        </PageContentRail>
       </section>
 
       <CTASection

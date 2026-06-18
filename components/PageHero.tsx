@@ -11,6 +11,7 @@ interface PageHeroProps {
 export default function PageHero({ badge, title, description, children, compact = false }: PageHeroProps) {
   return (
     <section
+      id="top"
       className={`page-hero relative overflow-hidden scroll-mt-header ${compact ? "min-h-[40vh]" : "min-h-[45vh]"}`}
     >
       <div className="absolute inset-0 midnight-gradient opacity-80" aria-hidden="true" />
