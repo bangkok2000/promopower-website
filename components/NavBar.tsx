@@ -98,7 +98,7 @@ export default function NavBar() {
 
   const getLinkClass = (path: string) => {
     return isPathActive(path)
-      ? "text-primary border-b-2 border-primary pb-1 font-headline font-bold tracking-tight"
+      ? "text-primary font-medium border-b-2 border-primary pb-1 transition-colors duration-200"
       : "text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 pb-1 border-b-2 border-transparent";
   };
 
