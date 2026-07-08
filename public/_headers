@@ -7,11 +7,15 @@
   X-Frame-Options: SAMEORIGIN
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=(), interest-cohort=()
-  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self' https://api.web3forms.com; frame-ancestors 'self'; img-src 'self' data: https://lh3.googleusercontent.com https://*.googleusercontent.com https://www.googletagmanager.com https://www.google-analytics.com; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://api.web3forms.com https://www.google-analytics.com https://*.google-analytics.com https://www.googletagmanager.com https://docs.google.com https://*.googleusercontent.com; object-src 'none'; upgrade-insecure-requests
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; img-src 'self' data: https://lh3.googleusercontent.com https://*.googleusercontent.com; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; connect-src 'self' https://docs.google.com https://*.googleusercontent.com; object-src 'none'; upgrade-insecure-requests
 
 # ---- Long-cache static assets (Next.js fingerprinted output) ---------------
 /_next/static/*
   Cache-Control: public,max-age=31536000,immutable
+
+# ---- LLMs guidance (GEO) ---------------------------------------------------
+/llms.txt
+  Cache-Control: public,max-age=86400
 
 # ---- HTML pages: always revalidate so deploys propagate immediately --------
 /*.html

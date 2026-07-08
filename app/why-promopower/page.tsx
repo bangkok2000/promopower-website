@@ -1,15 +1,28 @@
 import ContentList from "@/components/ContentList";
 import CTASection from "@/components/CTASection";
-import PageContentRail from "@/components/PageContentRail";
+import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import PageSectionNavGroup from "@/components/PageSectionNavGroup";
 import type { Metadata } from "next";
+import { buildPageMetadata, webPageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Why PromoPower | PromoPower",
+const whyNav = [
+  { id: "section-reasons", label: "Why us" },
+  { id: "section-partner", label: "Partnership" },
+];
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Why PromoPower",
   description:
-    "Learn why organisations trust PromoPower for professional staffing support, structured processes and reliable campaign execution.",
-  alternates: { canonical: "/why-promopower" },
-};
+    "Learn why organisations trust PromoPower for professional staffing support, structured preparation, reliable deployment and campaign execution in Singapore since 2002.",
+  path: "/why-promopower",
+  keywords: [
+    "why choose PromoPower",
+    "staffing partner Singapore",
+    "reliable campaign staffing",
+    "MOM licensed agency",
+  ],
+});
 
 const reasons = [
   {
@@ -59,20 +72,25 @@ const reasons = [
 export default function WhyPromoPowerPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd(
+          "Why Organisations Choose PromoPower",
+          "/why-promopower",
+          "Experience since 2002, structured preparation, reliable deployment and MOM licensed employment agency support in Singapore.",
+        )}
+      />
       <PageHero
         badge="Why PromoPower"
         title="Why Organisations Choose PromoPower"
         description="A successful staffing partnership requires more than manpower. It requires experience, process discipline, responsive support and consistent execution."
       />
 
-      <section className="page-section">
-        <PageContentRail>
+      <PageSectionNavGroup navItems={whyNav} navLabel="Why PromoPower sections" scrollHint="Scroll sideways for more sections">
+        <section id="section-reasons" className="page-section-anchor">
           <ContentList items={reasons} ariaLabel="Why organisations choose PromoPower" />
-        </PageContentRail>
-      </section>
+        </section>
 
-      <section className="page-section section-muted">
-        <PageContentRail>
+        <section id="section-partner" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">A Practical Partner For Campaign Execution</h2>
             <p>
@@ -86,8 +104,8 @@ export default function WhyPromoPowerPage() {
               PromoPower Pte Ltd is a MOM licensed employment agency. EA License No: 20C0109.
             </p>
           </div>
-        </PageContentRail>
-      </section>
+        </section>
+      </PageSectionNavGroup>
 
       <CTASection
         heading="Let Us Support Your Next Campaign"

@@ -17,21 +17,27 @@ export default function Error({
         <p className="text-lg text-on-surface-variant mb-10">
           An unexpected error occurred. Please try again or return to the homepage.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <nav aria-label="Helpful links" className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
           <button
             type="button"
             onClick={reset}
             className="glow-button text-on-primary px-8 py-4 rounded-full font-headline font-normal"
           >
-            Try Again
+            Try again
           </button>
           <Link
             href="/"
             className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
           >
-            Return Home
+            Return home
           </Link>
-        </div>
+          <Link
+            href="/contact-us"
+            className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
+          >
+            Contact us
+          </Link>
+        </nav>
       </div>
     </section>
   );

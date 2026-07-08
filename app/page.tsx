@@ -9,26 +9,24 @@ import { HomepageTabPanel, HomepageTabsProvider } from "@/components/HomepageTab
 import StatBand from "@/components/StatBand";
 import ClientMarquee from "@/components/ClientMarquee";
 import TrustCard from "@/components/TrustCard";
+import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = {
-  title: "PromoPower Singapore | Professional Staffing Solutions Since 2002",
-  description:
-    "PromoPower provides professional staffing solutions for promotions, retail activations, events, roadshows and customer engagement campaigns across Singapore. Trusted since 2002.",
-  alternates: { canonical: "/" },
-  openGraph: {
-    title: "PromoPower | Professional Staffing Solutions",
+  ...buildPageMetadata({
+    title: "Professional Staffing Solutions Since 2002",
     description:
-      "Trusted workforce solutions since 2002, supporting customer-facing campaigns through professional staffing, preparation, deployment and operational support.",
-    url: "https://promopower.com.sg",
-    siteName: "PromoPower",
-    locale: "en_SG",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "PromoPower | Professional Staffing Solutions",
-    description:
-      "Professional staffing solutions for promotions, retail activations, events and customer engagement programmes in Singapore.",
+      "PromoPower provides professional staffing solutions for promotions, retail activations, events, roadshows and customer engagement campaigns across Singapore. MOM licensed employment agency since 2002.",
+    path: "/",
+    keywords: [
+      "staffing solutions Singapore",
+      "brand ambassadors Singapore",
+      "event personnel Singapore",
+      "retail activation Singapore",
+      "PromoPower Singapore",
+    ],
+  }),
+  title: {
+    absolute: "PromoPower Singapore | Professional Staffing Solutions Since 2002",
   },
 };
 
@@ -172,37 +170,6 @@ const industryNames = [
   { name: "Corporate Events & Exhibitions", icon: "event" },
 ];
 
-const proofParagraphs = [
-  "Over the years, PromoPower has supported organisations across a wide range of industries, campaign types and customer engagement environments.",
-  "From retail promotions and product launches to exhibitions, roadshows and customer engagement programmes, our focus has always been on helping clients execute professionally through quality people and reliable operational support.",
-  "The relationships we have built over the years reflect our commitment to professionalism, responsiveness and service excellence.",
-  "To respect client confidentiality, intellectual property rights and brand ownership, client names and logos are only featured where appropriate permissions have been obtained.",
-];
-
-const whyParagraphs = [
-  "Choosing a staffing partner is about more than filling positions.",
-  "Organisations need confidence that their partner understands the importance of reliability, professionalism and accountability.",
-  "For more than two decades, PromoPower has earned that confidence by focusing on the fundamentals that matter most: quality people, structured processes, responsive support and professional execution.",
-  "We understand that every deployment represents an extension of our client's brand. This understanding influences every aspect of our work, from recruitment and preparation to deployment and ongoing support.",
-  "While campaigns may vary in size and complexity, our commitment remains the same: helping clients execute with confidence while delivering positive experiences for their customers.",
-  "Successful customer-facing campaigns require more than manpower.",
-  "They require experience, preparation, operational discipline and the ability to adapt to different customer environments.",
-  "For more than two decades, PromoPower has helped organisations execute professionally through structured workforce solutions and dependable support.",
-  "While every campaign is unique, our commitment remains consistent: helping clients execute professionally through quality people and reliable operational support.",
-  "Specific campaign volumes, deployment figures and project statistics are not published in order to respect client confidentiality requirements.",
-];
-
-const differentiators = [
-  "More Than 20 Years Of Experience",
-  "Professional Recruitment & Screening",
-  "Structured Preparation & Briefing",
-  "Reliable Deployment Management",
-  "Responsive Operations Team",
-  "Flexible Workforce Solutions",
-  "Customer-Focused Service Approach",
-  "Long-Term Partnership Mindset",
-];
-
 const ctaParagraphs = [
   "Every campaign presents its own opportunities and challenges.",
   "Whether you are planning a product launch, organising a roadshow, supporting a retail promotion or preparing for a large-scale activation, having the right people in place can make a significant difference to the outcome.",
@@ -316,57 +283,13 @@ export default function Home() {
           <HomepageTabLayout
             title="Supporting Organisations Across Diverse Industries"
             intro={
-              <ExpandableProse
-                paragraphs={[
-                  "Different industries present different customer expectations, operational environments and engagement requirements.",
-                  "Over the years, PromoPower has supported organisations across a wide range of sectors, allowing us to develop a practical understanding of how staffing requirements vary across different environments.",
-                  "Our experience enables us to recommend workforce solutions that align with the specific needs of each campaign while maintaining professionalism and consistency throughout execution.",
-                ]}
-                visibleCount={1}
-                expandLabel="How industry experience shapes our recommendations"
-              />
+              <p className="page-intro">
+                Different industries present different customer expectations, operational environments and
+                engagement requirements. Over the years, PromoPower has supported organisations across a wide
+                range of sectors.
+              </p>
             }
             link={{ href: "/industries", label: "Read the full Industries page" }}
-            sections={
-              <>
-                <HomepageTabSubsection
-                  title="Supporting Organisations Across Singapore"
-                  intro={
-                    <>
-                      <p className="page-intro">Our focus is not on who we have worked for.</p>
-                      <p className="page-intro text-primary">Our focus is on how we can help you succeed.</p>
-                    </>
-                  }
-                  link={{ href: "/our-work", label: "View our work approach" }}
-                >
-                  <ExpandableProse
-                    paragraphs={proofParagraphs}
-                    visibleCount={2}
-                    expandLabel="Our approach to client confidentiality"
-                  />
-                </HomepageTabSubsection>
-                <HomepageTabSubsection
-                  title="Why Organisations Continue To Work With PromoPower"
-                  intro={<p className="page-intro">{whyParagraphs[0]}</p>}
-                  link={{ href: "/why-promopower", label: "Read the full Why PromoPower page" }}
-                >
-                  <>
-                    <div className="homepage-tab-chip-grid mb-6">
-                      {differentiators.map((item) => (
-                        <span key={item} className="pillar-chip">
-                          {item}
-                        </span>
-                      ))}
-                    </div>
-                    <ExpandableProse
-                      paragraphs={whyParagraphs.slice(1)}
-                      visibleCount={2}
-                      expandLabel="Read more about our approach"
-                    />
-                  </>
-                </HomepageTabSubsection>
-              </>
-            }
           >
             <div className="homepage-tab-chip-grid">
               {industryNames.map((industry) => (

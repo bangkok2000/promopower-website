@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ExpandableProse from "@/components/ExpandableProse";
 import HeroAccolades from "@/components/HeroAccolades";
 import HomeHeroActions from "@/components/HomeHeroActions";
@@ -11,10 +12,9 @@ const heroParagraphs = [
 
 export default function HomeHero() {
   return (
-    <section id="top" className="page-hero relative overflow-hidden min-h-[min(100svh,var(--site-header-height)+36rem)] lg:min-h-[min(100svh,var(--site-header-height)+40rem)] scroll-mt-header">
+    <section id="top" className="page-hero relative overflow-hidden min-h-[min(100svh,var(--site-header-height)+28rem)] lg:min-h-[min(100svh,var(--site-header-height)+40rem)] scroll-mt-header">
       <div className="absolute inset-0 z-0" aria-hidden="true">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src={HERO_IMAGE_URL} alt="" className="hero-photo w-full h-full" />
+        <Image src={HERO_IMAGE_URL} alt="" fill priority sizes="100vw" className="hero-photo" />
         <div className="absolute inset-0 hero-overlay" />
         <div className="absolute inset-0 midnight-gradient opacity-40" />
       </div>
@@ -22,7 +22,7 @@ export default function HomeHero() {
       <div className="hero-glow hero-glow-accent -bottom-16 right-0 z-[1]" aria-hidden="true" />
 
       <div className="relative z-10 w-full py-10 sm:py-12 lg:py-14">
-        <div className="page-container px-[var(--site-gutter)]">
+        <div className="page-container">
           <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
             <HeroAccolades className="hidden lg:block lg:col-span-4 xl:col-span-3 lg:self-start" />
 

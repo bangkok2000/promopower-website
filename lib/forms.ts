@@ -1,3 +1,5 @@
+import { isHoneypotTriggered, isValidEmail, sanitize, validateFile } from "@/lib/form-validation";
+
 export interface FormSubmitResult {
   success: boolean;
   timestamp?: string;
@@ -5,109 +7,77 @@ export interface FormSubmitResult {
   demo?: boolean;
 }
 
-const MAX_FIELD_LENGTH = 1000;
-const MAX_FILE_SIZE = 5 * 1024 * 1024;
-const ALLOWED_FILE_TYPES = new Set(["application/pdf", "image/jpeg", "image/png"]);
-
-function sanitize(value: unknown): string {
-  if (typeof value !== "string") return "";
-  // Defence-in-depth: strip script/style/iframe blocks and any remaining HTML tags
-  // before trimming and length-capping. Web3Forms validates server-side; this guards
-  // against a compromised or replaced endpoint reflecting raw input.
-  const stripped = value
-    .replace(/<\s*(script|style|iframe|object|embed)\b[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi, "")
-    .replace(/<\/?[a-z][^>]*>/gi, "");
-  return stripped.trim().slice(0, MAX_FIELD_LENGTH);
-}
-
-function isValidEmail(email: string): boolean {
-  // RFC 5322 simplified — local@domain.tld with reasonable length and at least one TLD char.
-  return /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/.test(email) && email.length <= 254;
-}
-
-function validateFile(file: File): string | null {
-  if (file.size === 0) return null;
-  if (file.size > MAX_FILE_SIZE) return "File exceeds the 5MB size limit.";
-  if (!ALLOWED_FILE_TYPES.has(file.type)) return "Invalid file type. Please upload a PDF, JPG, or PNG file.";
-  return null;
-}
-
-function shouldUseDemoMode(): boolean {
-  if (process.env.NEXT_PUBLIC_FORM_DEMO_MODE === "true") return true;
-  if (!process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY) return true;
-  return false;
-}
-
-async function postToWeb3Forms(formData: FormData, subject: string): Promise<FormSubmitResult> {
-  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
-  if (!accessKey) {
-    return { success: false, error: "Form delivery is not configured yet." };
-  }
-
-  const payload = new FormData();
-  payload.append("access_key", accessKey);
-  payload.append("subject", subject);
-
-  for (const [key, value] of formData.entries()) {
-    if (value instanceof File) {
-      if (value.size > 0) payload.append(key, value);
-      continue;
-    }
-    payload.append(key, sanitize(value));
-  }
-
-  const response = await fetch("https://api.web3forms.com/submit", {
-    method: "POST",
-    body: payload,
-    headers: { Accept: "application/json" },
-  });
-
-  const result = (await response.json()) as { success?: boolean; message?: string };
+async function parseApiResponse(response: Response): Promise<FormSubmitResult> {
+  const result = (await response.json()) as FormSubmitResult & { error?: string };
 
   if (!response.ok || !result.success) {
     return {
       success: false,
-      error: result.message ?? "Unable to send your submission. Please try again or email us directly.",
+      error: result.error ?? "Unable to send your submission. Please try again or email us directly.",
     };
   }
 
-  return { success: true, timestamp: new Date().toISOString() };
+  return {
+    success: true,
+    timestamp: result.timestamp ?? new Date().toISOString(),
+    demo: result.demo,
+  };
 }
 
 export async function submitContactInquiry(formData: FormData): Promise<FormSubmitResult> {
-  const name = sanitize(formData.get("fullName"));
-  const email = sanitize(formData.get("email"));
-  const pdpaConsent = sanitize(formData.get("pdpaConsent"));
+  if (isHoneypotTriggered(formData.get("companyWebsite"))) {
+    return { success: true, timestamp: new Date().toISOString() };
+  }
 
-  if (!name || !email) {
+  const payload = {
+    serviceType: sanitize(formData.get("serviceType")),
+    headcount: sanitize(formData.get("headcount")),
+    campaignDate: sanitize(formData.get("campaignDate")),
+    location: sanitize(formData.get("location")),
+    campaignBrief: sanitize(formData.get("campaignBrief")),
+    fullName: sanitize(formData.get("fullName")),
+    company: sanitize(formData.get("company")),
+    email: sanitize(formData.get("email")),
+    phone: sanitize(formData.get("phone")),
+    pdpaConsent: sanitize(formData.get("pdpaConsent")),
+    companyWebsite: sanitize(formData.get("companyWebsite")),
+  };
+
+  if (!payload.fullName || !payload.email) {
     return { success: false, error: "Full name and email are required." };
   }
 
-  if (!isValidEmail(email)) {
+  if (!isValidEmail(payload.email)) {
     return { success: false, error: "Please provide a valid email address." };
   }
 
-  if (pdpaConsent !== "true") {
+  if (payload.pdpaConsent !== "true") {
     return { success: false, error: "Please accept the Data Protection Policy before submitting." };
   }
 
-  if (shouldUseDemoMode()) {
-    if (process.env.NODE_ENV === "development") {
-      console.info("[DEMO] Contact inquiry", Object.fromEntries(formData.entries()));
-    }
-    return { success: true, timestamp: new Date().toISOString(), demo: true };
-  }
+  const response = await fetch("/api/contact", {
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(payload),
+  });
 
-  return postToWeb3Forms(formData, "PromoPower — Contact enquiry");
+  return parseApiResponse(response);
 }
 
 export async function submitJobseekerApplication(formData: FormData): Promise<FormSubmitResult> {
-  const name = sanitize(formData.get("fullName"));
+  if (isHoneypotTriggered(formData.get("companyWebsite"))) {
+    return { success: true, timestamp: new Date().toISOString() };
+  }
+
+  const fullName = sanitize(formData.get("fullName"));
   const email = sanitize(formData.get("email"));
   const phone = sanitize(formData.get("phone"));
   const pdpaConsent = sanitize(formData.get("pdpaConsent"));
 
-  if (!name || !email || !phone) {
+  if (!fullName || !email || !phone) {
     return { success: false, error: "Full name, email, and phone are required." };
   }
 
@@ -125,12 +95,11 @@ export async function submitJobseekerApplication(formData: FormData): Promise<Fo
     if (fileError) return { success: false, error: fileError };
   }
 
-  if (shouldUseDemoMode()) {
-    if (process.env.NODE_ENV === "development") {
-      console.info("[DEMO] Jobseeker application", Object.fromEntries(formData.entries()));
-    }
-    return { success: true, timestamp: new Date().toISOString(), demo: true };
-  }
+  const response = await fetch("/api/jobseekers", {
+    method: "POST",
+    body: formData,
+    headers: { Accept: "application/json" },
+  });
 
-  return postToWeb3Forms(formData, "PromoPower — Jobseeker application");
+  return parseApiResponse(response);
 }

@@ -3,37 +3,37 @@ import { PORTFOLIO_GROUPS } from "@/lib/data";
 import { getPortfolioNavItems, portfolioClientSlug, portfolioSectionId } from "@/lib/portfolio";
 import CTASection from "@/components/CTASection";
 import GalleryGrid from "@/components/GalleryGrid";
+import JsonLd from "@/components/JsonLd";
 import PageContentRail from "@/components/PageContentRail";
 import PageHero from "@/components/PageHero";
-import PortfolioClientNav, { PortfolioBackToTop } from "@/components/PortfolioClientNav";
+import PortfolioClientNav from "@/components/PortfolioClientNav";
+import { buildPageMetadata, webPageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Our Work & Portfolio | PromoPower",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Our Work",
   description:
-    "Browse our portfolio of campaign activations, retail promotions, roadshows and customer engagement initiatives across Singapore.",
-  alternates: { canonical: "/our-work" },
-  openGraph: {
-    title: "Our Work | PromoPower",
-    description:
-      "Portfolio of professional staffing activations and customer-facing campaign executions across Singapore.",
-    url: "https://promopower.com.sg/our-work",
-    siteName: "PromoPower",
-    locale: "en_SG",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Our Work | PromoPower",
-    description:
-      "Portfolio of professional staffing activations across Singapore.",
-  },
-};
+    "Browse PromoPower portfolio of campaign activations, retail promotions, roadshows and customer engagement initiatives supported across Singapore.",
+  path: "/our-work",
+  keywords: [
+    "PromoPower portfolio",
+    "retail activation Singapore examples",
+    "roadshow campaigns Singapore",
+    "brand activation portfolio",
+  ],
+});
 
 const portfolioNavItems = getPortfolioNavItems();
 
 export default function OurWork() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd(
+          "Campaign Portfolio",
+          "/our-work",
+          "Portfolio of retail promotions, roadshows and customer engagement campaigns supported by PromoPower in Singapore.",
+        )}
+      />
       <PageHero
         badge="Our Work"
         title="Campaign Portfolio"
@@ -52,7 +52,7 @@ export default function OurWork() {
                 <section
                   key={group.client}
                   id={portfolioSectionId(slug)}
-                  className="portfolio-client-section space-y-5"
+                  className="page-section-anchor space-y-5"
                   aria-labelledby={`portfolio-heading-${slug}`}
                 >
                   <div className="border-b border-white/10 pb-4">
@@ -62,7 +62,6 @@ export default function OurWork() {
                   </div>
 
                   <GalleryGrid photos={group.photos} label={group.client} />
-                  <PortfolioBackToTop />
                 </section>
               );
             })}

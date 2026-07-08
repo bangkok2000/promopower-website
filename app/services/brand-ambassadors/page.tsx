@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
-import PageContentRail from "@/components/PageContentRail";
 import PageHero from "@/components/PageHero";
+import ServicePageWayfinding from "@/components/ServicePageWayfinding";
+
+const serviceNav = [
+  { id: "section-overview", label: "Overview" },
+  { id: "section-support", label: "Support areas" },
+  { id: "section-value", label: "Value" },
+];
 
 export const metadata: Metadata = {
   title: "Brand Ambassadors",
@@ -55,8 +61,13 @@ export default function BrandAmbassadorsPage() {
         description="Brand ambassadors play a vital role in creating positive first impressions, strengthening customer engagement and helping organisations build meaningful connections with their audiences. PromoPower provides trained brand ambassadors who can support both brand representation and product promotion across a wide range of customer-facing environments."
       />
 
-      <section className="page-section">
-        <PageContentRail>
+      <ServicePageWayfinding
+        title="Brand Ambassadors"
+        path="/services/brand-ambassadors"
+        description="Trained brand ambassadors in Singapore for product launches, product promotion, retail activations, sampling and customer-facing campaigns."
+        navItems={serviceNav}
+      >
+      <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">Supporting Brand Representation And Product Promotion</h2>
             <p>Brand ambassadors often serve as the face of a campaign while also helping customers understand the product in front of them.</p>
@@ -75,11 +86,9 @@ export default function BrandAmbassadorsPage() {
               specific environment in which they will operate.
             </p>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section section-muted">
-        <PageContentRail>
+      <section id="section-support" className="page-section-anchor">
           <div className="max-w-3xl">
             <h2 className="section-title">Supporting Customer-Facing Campaign Activity</h2>
             <p className="page-intro mb-8">Our brand ambassadors can support a variety of activities including:</p>
@@ -97,11 +106,9 @@ export default function BrandAmbassadorsPage() {
               product information.
             </p>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section">
-        <PageContentRail>
+      <section id="section-value" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">People Shape Perceptions And Purchase Confidence</h2>
             <p>Customers often remember the people they interacted with long after they have forgotten the details of a campaign.</p>
@@ -111,8 +118,8 @@ export default function BrandAmbassadorsPage() {
               organisations can strengthen campaign effectiveness while protecting brand reputation.
             </p>
           </div>
-        </PageContentRail>
       </section>
+      </ServicePageWayfinding>
 
       <CTASection
         heading="Looking For Trained Brand Ambassadors?"

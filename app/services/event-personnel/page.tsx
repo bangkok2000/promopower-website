@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
-import PageContentRail from "@/components/PageContentRail";
 import PageHero from "@/components/PageHero";
+import ServicePageWayfinding from "@/components/ServicePageWayfinding";
+
+const serviceNav = [
+  { id: "section-overview", label: "Overview" },
+  { id: "section-support", label: "Support areas" },
+];
 
 export const metadata: Metadata = {
   title: "Event Personnel",
@@ -52,8 +57,13 @@ export default function EventPersonnelPage() {
         description="Events often involve numerous moving parts, tight schedules and high customer expectations. PromoPower provides dependable event personnel who help organisations deliver smooth, professional and well-organised events."
       />
 
-      <section className="page-section">
-        <PageContentRail>
+      <ServicePageWayfinding
+        title="Event Personnel"
+        path="/services/event-personnel"
+        description="Reliable event personnel in Singapore for corporate events, conferences, brand activations, VIP hospitality and large-scale public events."
+        navItems={serviceNav}
+      >
+      <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">Supporting Successful Events</h2>
             <p>
@@ -69,11 +79,9 @@ export default function EventPersonnelPage() {
               events run efficiently.
             </p>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section section-muted">
-        <PageContentRail>
+      <section id="section-support" className="page-section-anchor">
           <div className="max-w-3xl">
             <h2 className="section-title">Support Areas</h2>
             <p className="page-intro mb-8">
@@ -88,8 +96,8 @@ export default function EventPersonnelPage() {
               ))}
             </ul>
           </div>
-        </PageContentRail>
       </section>
+      </ServicePageWayfinding>
 
       <CTASection
         heading="Planning An Event?"

@@ -1,30 +1,49 @@
 import Link from "next/link";
 import type { Metadata } from "next";
+import PageContentRail from "@/components/PageContentRail";
+import PageHero from "@/components/PageHero";
+import { buildPageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Thank You | PromoPower",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Thank You",
   description:
     "Thank you for contacting PromoPower. Our team will review your request and respond as soon as possible.",
-  alternates: { canonical: "/thank-you" },
-};
+  path: "/thank-you",
+  noIndex: true,
+});
 
 export default function ThankYouPage() {
   return (
-    <section className="min-h-[60vh] px-6 sm:px-8 md:px-16 py-24 flex items-center justify-center">
-      <div className="max-w-3xl mx-auto text-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl font-headline font-normal text-on-surface mb-6">
-          Thank You
-        </h1>
-        <p className="text-lg text-on-surface-variant mb-10">
-          Your enquiry has been received. Our team will get back to you as soon as possible.
-        </p>
-        <Link
-          href="/"
-          className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center gap-2 hover:bg-white/20 transition-all"
-        >
-          Return Home
-        </Link>
-      </div>
-    </section>
+    <>
+      <PageHero
+        badge="Thank you"
+        title="Your Enquiry Has Been Received"
+        description="Our team will review your request and respond as soon as possible."
+        compact
+      />
+
+      <section className="page-section">
+        <PageContentRail>
+          <nav aria-label="Next steps" className="flex flex-wrap gap-4">
+            <Link href="/" className="btn-secondary">
+              Return home
+              <span className="material-symbols-outlined text-base">home</span>
+            </Link>
+            <Link href="/services" className="btn-secondary">
+              View services
+              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            </Link>
+            <Link href="/our-work" className="btn-secondary">
+              Our work
+              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            </Link>
+            <Link href="/contact-us" className="btn-secondary">
+              Contact us
+              <span className="material-symbols-outlined text-base">mail</span>
+            </Link>
+          </nav>
+        </PageContentRail>
+      </section>
+    </>
   );
 }

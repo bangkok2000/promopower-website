@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "Page Not Found",
+  description: "The page you requested could not be found on the PromoPower website.",
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   return (
@@ -11,12 +18,26 @@ export default function NotFound() {
         <p className="text-lg text-on-surface-variant mb-10">
           The page you requested could not be found. It may have moved or no longer exists.
         </p>
-        <Link
-          href="/"
-          className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center gap-2 hover:bg-white/20 transition-all"
-        >
-          Return Home
-        </Link>
+        <nav aria-label="Helpful links" className="flex flex-col sm:flex-row flex-wrap gap-4 justify-center">
+          <Link
+            href="/"
+            className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
+          >
+            Return home
+          </Link>
+          <Link
+            href="/services"
+            className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
+          >
+            View services
+          </Link>
+          <Link
+            href="/contact-us"
+            className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
+          >
+            Contact us
+          </Link>
+        </nav>
       </div>
     </section>
   );

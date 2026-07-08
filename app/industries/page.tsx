@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
 import IndustryCard from "@/components/IndustryCard";
 import CTASection from "@/components/CTASection";
+import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import { buildPageMetadata, webPageJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Industries | PromoPower",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Industries",
   description:
-    "Explore the industries PromoPower supports with professional staffing and campaign execution solutions in Singapore.",
-  alternates: { canonical: "/industries" },
-};
+    "Explore the industries PromoPower supports with professional staffing and campaign execution in Singapore, including FMCG, luxury retail, electronics, F&B and events.",
+  path: "/industries",
+  keywords: [
+    "staffing by industry Singapore",
+    "FMCG promoters Singapore",
+    "luxury retail staffing",
+    "event staffing Singapore",
+  ],
+});
 
 const industryGroups = [
   {
@@ -61,6 +69,13 @@ const industryGroups = [
 export default function IndustriesPage() {
   return (
     <>
+      <JsonLd
+        data={webPageJsonLd(
+          "Industries We Support",
+          "/industries",
+          "Professional staffing support across beauty, luxury retail, FMCG, electronics, F&B, events and more in Singapore.",
+        )}
+      />
       <PageHero
         badge="Industries"
         title="Industries We Support"

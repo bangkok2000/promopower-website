@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { HERO_IMAGE_URL } from "@/lib/navigation";
 
@@ -5,11 +6,12 @@ export default function DualAudiencePanel() {
   return (
     <section className="relative overflow-hidden border-t border-white/10">
       <div className="absolute inset-0 z-0 bg-charcoal-dark" aria-hidden="true">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
+        <Image
           src={HERO_IMAGE_URL}
           alt=""
-          className="w-full h-full object-cover opacity-35 grayscale"
+          fill
+          sizes="100vw"
+          className="object-cover opacity-35 grayscale"
         />
         <div className="absolute inset-0 bg-charcoal-dark/60" />
       </div>

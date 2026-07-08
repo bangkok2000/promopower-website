@@ -19,7 +19,7 @@ export default function PageHero({ badge, title, description, children, compact 
       <div className="hero-glow hero-glow-accent -bottom-16 right-0" aria-hidden="true" />
 
       <div className="relative z-10 w-full py-10 sm:py-12 lg:py-14">
-        <div className="page-container px-[var(--site-gutter)]">
+        <div className="page-container">
           <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
             <div className="hidden lg:block lg:col-span-4 xl:col-span-3" aria-hidden="true" />
 

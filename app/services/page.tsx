@@ -1,29 +1,28 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
+import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import PageSectionNavGroup from "@/components/PageSectionNavGroup";
+import { buildPageMetadata, servicesHubJsonLd } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services | PromoPower",
+const servicesNav = [
+  { id: "section-services", label: "Services" },
+  { id: "section-approach", label: "Approach" },
+];
+
+export const metadata: Metadata = buildPageMetadata({
+  title: "Services",
   description:
-    "Explore PromoPower's workforce solutions, including brand ambassadors, event personnel, retail activation teams and campaign support services in Singapore.",
-  alternates: { canonical: "/services" },
-  openGraph: {
-    title: "Services | PromoPower",
-    description:
-      "Professional workforce solutions designed around campaign objectives, supported by structured recruitment, preparation and coordination.",
-    url: "https://promopower.com.sg/services",
-    siteName: "PromoPower",
-    locale: "en_SG",
-    type: "website",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Services | PromoPower",
-    description:
-      "Professional staffing services for promotions, retail activations, events and customer engagement programmes.",
-  },
-};
+    "Explore PromoPower workforce solutions in Singapore, including brand ambassadors, event personnel, retail activation teams, roadshows and campaign support coordination.",
+  path: "/services",
+  keywords: [
+    "staffing services Singapore",
+    "brand ambassador agency",
+    "event staffing services",
+    "retail activation staffing",
+  ],
+});
 
 const services = [
   {
@@ -98,14 +97,16 @@ const servicePillars = [
 export default function Services() {
   return (
     <>
+      <JsonLd data={servicesHubJsonLd()} />
       <PageHero
         badge="Services"
         title="Workforce Solutions Built Around Campaign Objectives"
         description="Every campaign has different customer expectations, operating conditions and staffing requirements. PromoPower provides practical workforce solutions that help organisations execute with confidence."
       />
 
-      <section className="page-section">
-        <div className="page-container grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+      <PageSectionNavGroup navItems={servicesNav} navLabel="Services sections" scrollHint="Scroll sideways for more sections">
+        <section id="section-services" className="page-section-anchor">
+        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {services.map((service) => (
             <article key={service.title} className="content-card flex flex-col h-full">
               <div className="icon-badge">
@@ -128,10 +129,10 @@ export default function Services() {
             </article>
           ))}
         </div>
-      </section>
+        </section>
 
-      <section className="page-section section-elevated">
-        <div className="page-container grid lg:grid-cols-2 gap-10 items-start">
+        <section id="section-approach" className="page-section-anchor">
+        <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div>
             <h2 className="section-title">A Structured Service Approach</h2>
             <p className="prose-block">
@@ -147,7 +148,8 @@ export default function Services() {
             ))}
           </div>
         </div>
-      </section>
+        </section>
+      </PageSectionNavGroup>
 
       <CTASection
         heading="Discuss Your Campaign Requirements"

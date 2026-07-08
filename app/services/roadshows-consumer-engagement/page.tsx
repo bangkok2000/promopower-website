@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
-import PageContentRail from "@/components/PageContentRail";
 import PageHero from "@/components/PageHero";
+import ServicePageWayfinding from "@/components/ServicePageWayfinding";
+
+const serviceNav = [
+  { id: "section-overview", label: "Overview" },
+  { id: "section-support", label: "Support areas" },
+  { id: "section-value", label: "Value" },
+];
 
 export const metadata: Metadata = {
   title: "Roadshows & Consumer Engagement",
@@ -52,8 +58,13 @@ export default function RoadshowsConsumerEngagementPage() {
         description="Roadshows and public-facing campaigns provide valuable opportunities for organisations to engage directly with customers, increase visibility and strengthen awareness. PromoPower provides experienced personnel who help brands create positive customer experiences in dynamic and highly interactive environments."
       />
 
-      <section className="page-section">
-        <PageContentRail>
+      <ServicePageWayfinding
+        title="Roadshows & Consumer Engagement"
+        path="/services/roadshows-consumer-engagement"
+        description="Roadshow and consumer engagement staffing in Singapore for islandwide promotional tours, consumer festivals, sampling drives and on-ground brand experiences."
+        navItems={serviceNav}
+      >
+      <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">Connecting Brands With People</h2>
             <p>
@@ -69,11 +80,9 @@ export default function RoadshowsConsumerEngagementPage() {
               professional, positive and engaging interactions throughout the campaign.
             </p>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section section-muted">
-        <PageContentRail>
+      <section id="section-support" className="page-section-anchor">
           <div className="max-w-3xl">
             <h2 className="section-title">Support Areas</h2>
             <p className="page-intro mb-8">
@@ -88,11 +97,9 @@ export default function RoadshowsConsumerEngagementPage() {
               ))}
             </ul>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section">
-        <PageContentRail>
+      <section id="section-value" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">Every Interaction Shapes Perception</h2>
             <p>Roadshows place brands directly in front of customers.</p>
@@ -101,8 +108,8 @@ export default function RoadshowsConsumerEngagementPage() {
               experiences, encouraging participation and strengthening brand awareness through meaningful conversations.
             </p>
           </div>
-        </PageContentRail>
       </section>
+      </ServicePageWayfinding>
 
       <CTASection
         heading="Planning A Roadshow Or Consumer Campaign?"

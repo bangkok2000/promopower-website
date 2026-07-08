@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect, useCallback } from "react";
 
 interface Props {
@@ -47,12 +48,13 @@ export default function GalleryGrid({ photos, label = "campaign" }: Props) {
             aria-label={`View ${label} photo ${i + 1}`}
             className="group relative aspect-[4/3] overflow-hidden rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)]"
           >
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
+            <Image
               src={src}
               alt={`PromoPower ${label} activation ${i + 1}`}
+              fill
+              sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
               loading={i < 12 ? "eager" : "lazy"}
-              className="absolute inset-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-[1.05]"
+              className="object-cover transition-transform duration-300 group-hover:scale-[1.05]"
             />
             {/* subtle expand hint on hover */}
             <span className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-black/30">
@@ -76,7 +78,7 @@ export default function GalleryGrid({ photos, label = "campaign" }: Props) {
       {/* Lightbox */}
       {lightbox !== null && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
+          className="gallery-lightbox fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm"
           onClick={close}
           role="dialog"
           aria-modal="true"
@@ -95,72 +97,48 @@ export default function GalleryGrid({ photos, label = "campaign" }: Props) {
             />
 
             {/* Counter */}
-            <span className="absolute bottom-3 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium tabular-nums">
+            <span className="gallery-lightbox-counter absolute bottom-3 left-1/2 -translate-x-1/2 text-white/70 text-sm font-medium tabular-nums">
               {lightbox + 1} / {photos.length}
             </span>
           </div>
 
-          {/* Close */}
           <button
             type="button"
             onClick={close}
             aria-label="Close lightbox"
-            className="absolute top-4 right-4 text-white/80 hover:text-white transition-colors"
+            className="gallery-lightbox-btn gallery-lightbox-close"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-7 h-7"
-            >
-              <path d="M18 6 6 18M6 6l12 12" />
-            </svg>
+            <span className="material-symbols-outlined text-2xl" aria-hidden="true">
+              close
+            </span>
           </button>
 
-          {/* Prev */}
           <button
             type="button"
-            onClick={(e) => { e.stopPropagation(); prev(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              prev();
+            }}
             aria-label="Previous photo"
-            className="absolute left-3 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors bg-black/40 rounded-full p-2 hover:bg-black/60"
+            className="gallery-lightbox-btn gallery-lightbox-prev"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-6 h-6"
-            >
-              <path d="M15 18l-6-6 6-6" />
-            </svg>
+            <span className="material-symbols-outlined text-2xl" aria-hidden="true">
+              chevron_left
+            </span>
           </button>
 
-          {/* Next */}
           <button
             type="button"
-            onClick={(e) => { e.stopPropagation(); next(); }}
+            onClick={(e) => {
+              e.stopPropagation();
+              next();
+            }}
             aria-label="Next photo"
-            className="absolute right-3 top-1/2 -translate-y-1/2 text-white/80 hover:text-white transition-colors bg-black/40 rounded-full p-2 hover:bg-black/60"
+            className="gallery-lightbox-btn gallery-lightbox-next"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="w-6 h-6"
-            >
-              <path d="M9 18l6-6-6-6" />
-            </svg>
+            <span className="material-symbols-outlined text-2xl" aria-hidden="true">
+              chevron_right
+            </span>
           </button>
         </div>
       )}

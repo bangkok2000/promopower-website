@@ -1,14 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import PageSectionNavGroup from "@/components/PageSectionNavGroup";
+import { TERMS_NAV } from "@/lib/page-nav-config";
+import { buildPageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
-export const metadata: Metadata = {
-  title: "Terms of Use | PromoPower",
+export const metadata: Metadata = buildPageMetadata({
+  title: "Terms of Use",
   description:
     "The terms governing your use of the PromoPower website and the relationship between you and PromoPower Pte Ltd.",
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 
 const lastUpdated = "16 June 2026";
 
@@ -21,8 +24,13 @@ export default function TermsPage() {
         description="The terms governing your use of the PromoPower website and the relationship between you and PromoPower Pte Ltd."
       />
 
-      <section className="page-section">
-        <div className="page-container-narrow">
+      <PageSectionNavGroup
+        navItems={TERMS_NAV}
+        navLabel="Terms sections"
+        scrollHint="Scroll sideways for more sections"
+        contentClassName="pt-8"
+      >
+          <div className="max-w-3xl">
           <div className="content-card mb-10" role="note" aria-label="Document status">
             <p className="text-sm text-on-surface-variant leading-relaxed">
               <span className="font-headline text-accent-amber uppercase tracking-widest text-xs block mb-2">
@@ -36,7 +44,7 @@ export default function TermsPage() {
           <div className="prose-block">
             <p className="text-sm text-on-surface-variant/70">Last updated: {lastUpdated}</p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">1. Acceptance of these terms</h2>
+            <h2 id="terms-section-1" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">1. Acceptance of these terms</h2>
             <p>
               These Terms of Use (&ldquo;Terms&rdquo;) govern your access to and use of the website operated by{" "}
               {SITE.name} (&ldquo;PromoPower&rdquo;, &ldquo;we&rdquo;, &ldquo;our&rdquo; or &ldquo;us&rdquo;). By
@@ -44,7 +52,7 @@ export default function TermsPage() {
               use this website.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">2. Information on this website</h2>
+            <h2 id="terms-section-2" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">2. Information on this website</h2>
             <p>
               The information on this website is provided for general informational purposes regarding PromoPower&rsquo;s
               staffing solutions and related services. It does not constitute an offer, contract, or professional advice
@@ -52,7 +60,7 @@ export default function TermsPage() {
               complete, current or free from error.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">3. Intellectual property</h2>
+            <h2 id="terms-section-3" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">3. Intellectual property</h2>
             <p>
               All content on this website, including text, graphics, logos, illustrations, photographs, icons,
               trademarks and the overall site design, is owned by PromoPower or its licensors and is protected under
@@ -61,7 +69,7 @@ export default function TermsPage() {
               modification or republication, requires our prior written consent.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">4. Acceptable use</h2>
+            <h2 id="terms-section-4" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">4. Acceptable use</h2>
             <p>You agree not to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Use this website in any way that violates applicable laws or regulations</li>
@@ -71,7 +79,7 @@ export default function TermsPage() {
               <li>Submit information that is false, misleading or infringing of third-party rights</li>
             </ul>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">5. Submissions and forms</h2>
+            <h2 id="terms-section-5" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">5. Submissions and forms</h2>
             <p>
               When you submit information through any form on this website, you represent that the information is
               accurate, that you have the right to share it and that you have read and understood our{" "}
@@ -81,14 +89,14 @@ export default function TermsPage() {
               . Submissions do not, by themselves, create any contractual relationship between you and PromoPower.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">6. Third-party links</h2>
+            <h2 id="terms-section-6" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">6. Third-party links</h2>
             <p>
               This website may contain links to third-party websites that are not operated by PromoPower. We are not
               responsible for the content, accuracy or practices of any third-party site. Linking to a third-party site
               does not constitute an endorsement.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">7. Disclaimer of warranties</h2>
+            <h2 id="terms-section-7" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">7. Disclaimer of warranties</h2>
             <p>
               This website is provided on an &ldquo;as is&rdquo; and &ldquo;as available&rdquo; basis. To the fullest
               extent permitted by law, PromoPower disclaims all warranties, whether express or implied, including
@@ -96,14 +104,14 @@ export default function TermsPage() {
               that the website will be uninterrupted, secure or error-free.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">8. Limitation of liability</h2>
+            <h2 id="terms-section-8" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">8. Limitation of liability</h2>
             <p>
               To the fullest extent permitted by law, PromoPower shall not be liable for any indirect, incidental,
               consequential, special or exemplary damages arising out of or in connection with your use of, or inability
               to use, this website, even if PromoPower has been advised of the possibility of such damages.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">9. Privacy</h2>
+            <h2 id="terms-section-9" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">9. Privacy</h2>
             <p>
               Your use of this website is also governed by our{" "}
               <Link className="text-primary hover:text-white transition-colors" href="/privacy">
@@ -112,21 +120,21 @@ export default function TermsPage() {
               , which forms part of these Terms.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">10. Changes to these terms</h2>
+            <h2 id="terms-section-10" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">10. Changes to these terms</h2>
             <p>
               We may revise these Terms from time to time. The most current version will always be available on this
               page, with the &ldquo;Last updated&rdquo; date revised accordingly. Continued use of the website after any
               such change constitutes acceptance of the revised Terms.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">11. Governing law</h2>
+            <h2 id="terms-section-11" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">11. Governing law</h2>
             <p>
               These Terms are governed by, and shall be construed in accordance with, the laws of Singapore. Any dispute
               arising out of or in connection with these Terms shall be subject to the exclusive jurisdiction of the
               courts of Singapore.
             </p>
 
-            <h2 className="text-2xl font-headline font-normal text-on-surface mt-6">12. Contact</h2>
+            <h2 id="terms-section-12" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">12. Contact</h2>
             <p>If you have any questions about these Terms, please contact us:</p>
             <ul className="list-none pl-0 space-y-1">
               <li>{SITE.name}</li>
@@ -144,8 +152,8 @@ export default function TermsPage() {
               {SITE.name} is a MOM Licensed Employment Agency. EA License No: {SITE.eaLicense}.
             </p>
           </div>
-        </div>
-      </section>
+          </div>
+      </PageSectionNavGroup>
     </>
   );
 }

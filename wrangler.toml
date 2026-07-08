@@ -1,8 +1,19 @@
-# PromoPower — static site via Workers static assets (no OpenNext, no Worker code)
+# PromoPower — static site + form API on Cloudflare Workers
 name = "promopower-website"
+main = "worker/index.ts"
 account_id = "b8913fb4c5f8fe17d60ce0f824cdd1aa"
 compatibility_date = "2026-04-17"
 
 [assets]
 directory = "./out"
+binding = "ASSETS"
 not_found_handling = "404-page"
+
+[vars]
+FORM_FROM_NAME = "PromoPower Website"
+FORM_FROM_EMAIL = "noreply@promopower.com.sg"
+
+# Secrets (set when PromoPower owns DNS / inbox access):
+#   wrangler secret put FORM_RECIPIENT_EMAIL
+# Optional:
+#   wrangler secret put FORM_FORCE_DEMO   # set to "true" to keep demo responses even with a recipient

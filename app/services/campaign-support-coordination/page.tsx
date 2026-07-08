@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
-import PageContentRail from "@/components/PageContentRail";
 import PageHero from "@/components/PageHero";
+import ServicePageWayfinding from "@/components/ServicePageWayfinding";
+
+const serviceNav = [
+  { id: "section-overview", label: "Overview" },
+  { id: "section-services", label: "Support services" },
+  { id: "section-reliability", label: "Reliability" },
+  { id: "section-execution", label: "Execution" },
+];
 
 export const metadata: Metadata = {
   title: "Campaign Support & Coordination",
@@ -52,8 +59,13 @@ export default function CampaignSupportCoordinationPage() {
         description="Successful campaigns depend on more than the people customers see. They also depend on effective planning, coordination, communication and operational support working behind the scenes. PromoPower helps organisations maintain control, visibility and confidence throughout the campaign lifecycle through practical campaign support services."
       />
 
-      <section className="page-section">
-        <PageContentRail>
+      <ServicePageWayfinding
+        title="Campaign Support & Coordination"
+        path="/services/campaign-support-coordination"
+        description="Campaign support and on-ground coordination for promotional rollouts in Singapore — supervisors, deployment management and end-to-end operational oversight."
+        navItems={serviceNav}
+      >
+      <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">Helping Campaigns Run Smoothly</h2>
             <p>
@@ -69,11 +81,9 @@ export default function CampaignSupportCoordinationPage() {
               operational complexity throughout campaign delivery.
             </p>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section section-muted">
-        <PageContentRail>
+      <section id="section-services" className="page-section-anchor">
           <div className="max-w-3xl">
             <h2 className="section-title">Support Services</h2>
             <p className="page-intro mb-8">
@@ -88,11 +98,9 @@ export default function CampaignSupportCoordinationPage() {
               ))}
             </ul>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section">
-        <PageContentRail>
+      <section id="section-reliability" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">Focused On Reliability And Accountability</h2>
             <p>
@@ -103,11 +111,9 @@ export default function CampaignSupportCoordinationPage() {
               we help organisations focus on campaign outcomes while we help manage operational requirements.
             </p>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section section-muted">
-        <PageContentRail>
+      <section id="section-execution" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">Execution Often Determines Success</h2>
             <p>
@@ -118,14 +124,16 @@ export default function CampaignSupportCoordinationPage() {
               into successful customer experiences.
             </p>
           </div>
-        </PageContentRail>
       </section>
+      </ServicePageWayfinding>
 
       <CTASection
         heading="Need Additional Campaign Support?"
         body="Let’s discuss how PromoPower can help support your next campaign."
         primaryLabel="Speak With Our Team"
         primaryHref="/contact-us"
+        secondaryLabel="Explore All Services"
+        secondaryHref="/services"
       />
     </>
   );

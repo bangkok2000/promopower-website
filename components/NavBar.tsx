@@ -104,8 +104,8 @@ export default function NavBar() {
 
   const getMobileLinkClass = (path: string) => {
     return isPathActive(path)
-      ? "text-primary font-headline font-black text-3xl"
-      : "text-on-surface-variant font-headline font-medium text-3xl hover:text-primary transition-colors duration-200";
+      ? "text-primary font-headline font-black text-2xl sm:text-3xl"
+      : "text-on-surface-variant font-headline font-medium text-2xl sm:text-3xl hover:text-primary transition-colors duration-200";
   };
 
   const handleLogoClick = useCallback(
@@ -126,7 +126,7 @@ export default function NavBar() {
   return (
     <>
       <nav id="site-header" className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/5">
-        <div className="page-container px-[var(--site-gutter)] py-4 sm:py-5">
+        <div className="page-container py-4 sm:py-5">
           <div className="grid items-center gap-4 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
             <div className="flex items-center justify-between lg:contents">
               <Link href="/" onClick={handleLogoClick} className="relative h-12 w-48 sm:h-14 sm:w-60 md:h-16 md:w-72 shrink-0 lg:col-span-4 xl:col-span-3">
@@ -143,7 +143,7 @@ export default function NavBar() {
               <button
                 ref={menuButtonRef}
                 type="button"
-                className="lg:hidden text-white hover:text-primary transition-colors"
+                className="lg:hidden inline-flex min-h-11 min-w-11 items-center justify-center -mr-1 text-white hover:text-primary transition-colors"
                 onClick={toggleMenu}
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-navigation"
@@ -263,30 +263,55 @@ export default function NavBar() {
         aria-label="Navigation menu"
         aria-hidden={!isMenuOpen}
         {...(!isMenuOpen ? { inert: true } : {})}
-        className={`fixed inset-0 bg-charcoal-dark/95 backdrop-blur-2xl z-40 lg:hidden flex flex-col items-center justify-center gap-8 transition-all duration-500 origin-top ${
-          isMenuOpen ? "opacity-100 visible scale-y-100" : "opacity-0 invisible scale-y-0 pointer-events-none"
+        className={`fixed inset-0 z-40 bg-charcoal-dark/95 backdrop-blur-2xl transition-all duration-500 origin-top lg:hidden ${
+          isMenuOpen ? "visible opacity-100 scale-y-100" : "invisible pointer-events-none scale-y-0 opacity-0"
         }`}
       >
-        {NAV_ITEMS.map((item) => (
-          <Link
-            key={item.label}
-            className={getMobileLinkClass(item.href)}
-            href={item.href}
-            onClick={closeMenu}
-          >
-            {item.label}
-          </Link>
-        ))}
-        <Link className={getMobileLinkClass("/jobseekers")} href="/jobseekers" onClick={closeMenu}>
-          Jobseekers
-        </Link>
-        <Link
-          href="/contact-us"
-          onClick={closeMenu}
-          className="mt-8 glow-button text-on-primary px-10 py-5 rounded-full font-headline font-extrabold text-xl hover:scale-105 active:scale-95 transition-all inline-block"
-        >
-          Contact Us
-        </Link>
+        <div className="flex h-full flex-col pt-[var(--site-header-height)]">
+          <div className="flex-1 overflow-y-auto overscroll-y-contain px-6 pb-[max(2rem,env(safe-area-inset-bottom))]">
+            <div className="mx-auto flex w-full max-w-md flex-col items-center gap-5 py-8">
+              {NAV_ITEMS.map((item) =>
+                item.label === "Services" ? (
+                  <div key={item.label} className="flex w-full flex-col items-center gap-3">
+                    <Link className={getMobileLinkClass(item.href)} href={item.href} onClick={closeMenu}>
+                      {item.label}
+                    </Link>
+                    <div className="flex w-full flex-col gap-2 border-l border-white/10 pl-4">
+                      {SERVICE_LINKS.map((service) => (
+                        <Link
+                          key={service.href}
+                          href={service.href}
+                          onClick={closeMenu}
+                          className={`text-base leading-snug transition-colors ${
+                            pathname === service.href
+                              ? "font-bold text-primary"
+                              : "text-on-surface-variant hover:text-primary"
+                          }`}
+                        >
+                          {service.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link key={item.label} className={getMobileLinkClass(item.href)} href={item.href} onClick={closeMenu}>
+                    {item.label}
+                  </Link>
+                )
+              )}
+              <Link className={getMobileLinkClass("/jobseekers")} href="/jobseekers" onClick={closeMenu}>
+                Jobseekers
+              </Link>
+              <Link
+                href="/contact-us"
+                onClick={closeMenu}
+                className="mt-4 inline-flex min-h-11 items-center justify-center glow-button rounded-full px-10 py-4 text-xl font-headline font-extrabold text-on-primary transition-all hover:scale-105 active:scale-95"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

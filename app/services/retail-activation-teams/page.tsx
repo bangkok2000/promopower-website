@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
-import PageContentRail from "@/components/PageContentRail";
 import PageHero from "@/components/PageHero";
+import ServicePageWayfinding from "@/components/ServicePageWayfinding";
+
+const serviceNav = [
+  { id: "section-overview", label: "Overview" },
+  { id: "section-support", label: "Activation support" },
+  { id: "section-value", label: "Value" },
+];
 
 export const metadata: Metadata = {
   title: "Retail Activation Teams",
@@ -52,8 +58,13 @@ export default function RetailActivationTeamsPage() {
         description="Retail environments provide valuable opportunities to influence customer decisions, encourage product discovery and strengthen brand visibility. PromoPower provides retail activation teams who help organisations engage customers effectively while maintaining professional standards of representation and service."
       />
 
-      <section className="page-section">
-        <PageContentRail>
+      <ServicePageWayfinding
+        title="Retail Activation Teams"
+        path="/services/retail-activation-teams"
+        description="Coordinated retail activation teams in Singapore for multi-location campaigns, mall promotions, counter takeovers and structured retail rollouts."
+        navItems={serviceNav}
+      >
+      <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">Supporting Meaningful Retail Engagement</h2>
             <p>Many purchasing decisions are made in-store.</p>
@@ -70,11 +81,9 @@ export default function RetailActivationTeamsPage() {
               memorable and productive retail experiences.
             </p>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section section-muted">
-        <PageContentRail>
+      <section id="section-support" className="page-section-anchor">
           <div className="max-w-3xl">
             <h2 className="section-title">Activation Support</h2>
             <p className="page-intro mb-8">
@@ -89,11 +98,9 @@ export default function RetailActivationTeamsPage() {
               ))}
             </ul>
           </div>
-        </PageContentRail>
       </section>
 
-      <section className="page-section">
-        <PageContentRail>
+      <section id="section-value" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">The Retail Environment Remains A Powerful Touchpoint</h2>
             <p>
@@ -105,8 +112,8 @@ export default function RetailActivationTeamsPage() {
               exploration and reinforce brand presence where purchasing decisions are often made.
             </p>
           </div>
-        </PageContentRail>
       </section>
+      </ServicePageWayfinding>
 
       <CTASection
         heading="Planning A Retail Campaign?"

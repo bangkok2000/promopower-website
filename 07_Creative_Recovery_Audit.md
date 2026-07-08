@@ -1,6 +1,6 @@
 # PromoPower Creative Recovery & Design System Unification
 
-**Status:** Review complete — awaiting approval before any implementation  
+**Status:** Superseded by `08_Creative_Audit_June_2026.md` for current assessments — retain for north star, Phase 2–3 plans, and historical context  
 **Date:** 15 June 2026  
 **Scope:** Creative direction only. No code, layout, content, or component changes have been made as part of this document.
 
