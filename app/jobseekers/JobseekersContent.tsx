@@ -280,6 +280,8 @@ export default function JobseekersContent() {
                       <option value="a_level">A Level</option>
                       <option value="diploma">Diploma</option>
                       <option value="undergrad">Undergrad</option>
+                      <option value="graduate">Graduate</option>
+                      <option value="others">Others</option>
                     </select>
                     <span className="material-symbols-outlined absolute right-4 top-4 text-slate-500 pointer-events-none">expand_more</span>
                   </div>

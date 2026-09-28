@@ -10,9 +10,18 @@ Living list of items that require decisions or action outside of code. Update as
 
 Forms use first-party API routes (`/api/contact`, `/api/jobseekers`) on the same Cloudflare Worker as the static site. **No Web3Forms.**
 
-**Current state (no domain access):** Demo mode — forms validate and show success, but no email is sent until secrets and DNS are configured.
+**Current state (Workers preview):**
 
-**When PromoPower has access to `promopower.com.sg` DNS:**
+| Item | Status |
+|------|--------|
+| `FORM_RECIPIENT_EMAIL` | Set → `admin@promopower.com.sg` |
+| `FORM_FORCE_DEMO` | Set → `true` (keeps success UI until MailChannels DNS works) |
+| MailChannels DNS on `promopower.com.sg` | **Not configured** — zone is on **sgcloudhosting** (`ns811`/`ns812.sgcloudhosting.com`); SPF is MS Hosting only, no `_mailchannels` TXT |
+| `NEXT_PUBLIC_FORMS_LIVE=true` build | Not deployed yet |
+
+Without `FORM_FORCE_DEMO`, submissions would **fail** (502) because send is attempted but MailChannels rejects `noreply@promopower.com.sg`.
+
+**When PromoPower has access to `promopower.com.sg` DNS (sgcloudhosting or after Cloudflare cutover):**
 
 1. Set the recipient inbox (Worker secret):
    ```bash
@@ -20,26 +29,26 @@ Forms use first-party API routes (`/api/contact`, `/api/jobseekers`) on the same
    # e.g. admin@promopower.com.sg
    ```
 
-2. Add MailChannels DNS on `promopower.com.sg` (required for `noreply@promopower.com.sg` to send):
-   - **SPF TXT** on `@`:
+2. Add MailChannels DNS on `promopower.com.sg` (required for `noreply@promopower.com.sg` to send). **Merge** with existing SPF (do not replace MS Hosting mail unless intended):
+   - **SPF TXT** on `@` (example — adjust with your mail host):
      ```
-     v=spf1 include:relay.mailchannels.net ~all
+     v=spf1 ip4:103.7.8.5 ip4:103.7.8.53 include:se.mschosting.com include:relay.mailchannels.net ~all
      ```
    - **Domain lockdown TXT** on `_mailchannels.promopower.com.sg`:
      ```
-     v=mc1 cfid=<your-cloudflare-account-id>
+     v=mc1 cfid=b8913fb4c5f8fe17d60ce0f824cdd1aa
      ```
-     (Account ID is in `wrangler.toml`.)
+     (Account ID from `wrangler.toml`.)
 
 3. Point `promopower.com.sg` DNS to this Cloudflare Worker (custom domain in Workers dashboard).
 
-4. Enable live forms in the **build** environment:
+4. Turn off forced demo and enable live UI:
+   ```bash
+   npx wrangler secret delete FORM_FORCE_DEMO
+   NEXT_PUBLIC_FORMS_LIVE=true npm run deploy
    ```
-   NEXT_PUBLIC_FORMS_LIVE=true
-   ```
-   Then redeploy: `npm run deploy`
 
-5. Submit a test enquiry and jobseeker application on production; confirm email arrives with attachment.
+5. Submit a test enquiry and jobseeker application on production; confirm email arrives at `admin@promopower.com.sg` (attachment on jobseeker form).
 
 **Optional secrets:**
 - `FORM_FORCE_DEMO=true` — keep demo responses even when `FORM_RECIPIENT_EMAIL` is set (staging).
