@@ -31,32 +31,32 @@ const faqs = [
   {
     question: "What services does PromoPower provide?",
     answer:
-      "PromoPower provides workforce support for customer-facing campaigns, including brand ambassadors, event personnel, retail activation teams, roadshows and campaign coordination support.",
+      "Brand ambassadors, event personnel, retail activation teams, roadshow teams, and campaign coordination. Coordination covers the roster, attendance and a contact during the campaign. It can be booked with a frontline team or on its own.",
   },
   {
     question: "How early should we engage your team before a campaign?",
     answer:
-      "Lead time depends on campaign scale and complexity. We recommend contacting our team as early as possible so recruitment, preparation and deployment planning can be aligned effectively.",
+      "There is no fixed number of weeks. Time is needed to screen people, brief them and issue a roster before the first shift. Headcount, number of locations, language needs and how specific the product script is all affect that. Send dates as soon as they are known, even if the store list is still moving.",
   },
   {
     question: "Can PromoPower support multi-location campaigns?",
     answer:
-      "Yes. We support single-site and multi-location deployments, with coordination support designed to help maintain consistency across locations.",
+      "Yes. One plan can cover several outlets or roadshow sites. Each location has its own shifts and headcount. Attendance is checked against that roster so a gap at one site is visible, rather than assumed to be covered.",
   },
   {
     question: "How are personnel selected?",
     answer:
-      "Personnel are selected based on campaign requirements, communication ability, professionalism and suitability for the customer environment.",
+      "Against the brief: communication, presentation, and fit for that store, event or roadshow. Language is included when the brief requires it. Availability alone is not the basis of the shortlist.",
   },
   {
     question: "Do you provide campaign briefing and preparation support?",
     answer:
-      "Yes. Our process includes structured campaign preparation so personnel understand campaign objectives, product context and customer interaction expectations.",
+      "Yes, before the first shift. The briefing uses your product points, what staff may and may not say, and any appearance or sampling rules you set. If you have an approved script or claims list, that is what the team uses.",
   },
   {
     question: "Is PromoPower a licensed employment agency?",
     answer:
-      "Yes. PromoPower Pte Ltd is a MOM licensed employment agency in Singapore (EA License No: 20C0109).",
+      "Yes. PromoPower Pte Ltd is a MOM licensed employment agency in Singapore. EA License No. 20C0109.",
   },
 ];
 
@@ -67,7 +67,7 @@ export default function FAQPage() {
       <PageHero
         badge="FAQ"
         title="Frequently Asked Questions"
-        description="Answers to common questions about our staffing services, process and campaign support approach."
+        description="What we staff, how early to write, how multi-site rosters work, how people are chosen, what a briefing covers, and the employment agency licence."
         compact
       />
 
@@ -78,16 +78,19 @@ export default function FAQPage() {
         contentClassName="space-y-5 pt-8"
       >
         {faqs.map((faq, index) => (
-          <article key={faq.question} id={`faq-section-${index + 1}`} className="content-card page-section-anchor">
-            <h2 className="text-2xl font-headline font-normal text-on-surface mb-3">{faq.question}</h2>
-            <p className="text-on-surface-variant leading-relaxed">{faq.answer}</p>
+          <article key={faq.question} id={`faq-section-${index + 1}`} className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 page-section-anchor hover:border-primary/30 transition-colors">
+            <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-3 font-label">
+              Q{index + 1}
+            </p>
+            <h2 className="text-xl sm:text-2xl font-bold text-slate-900 mb-4">{faq.question}</h2>
+            <p className="text-slate-600 leading-relaxed">{faq.answer}</p>
           </article>
         ))}
       </PageSectionNavGroup>
 
       <CTASection
         heading="Need More Information?"
-        body="If your question is not listed here, contact our team and we will be happy to discuss your campaign requirements."
+        body="If your question is about a live brief, send the dates, locations and headcount with it."
         primaryLabel="Contact Us"
         primaryHref="/contact-us"
       />

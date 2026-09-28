@@ -54,11 +54,8 @@ export function HomepageTabSubsection({ title, intro, link, children }: Homepage
 
 function TabLink({ href, label }: TabLink) {
   return (
-    <Link href={href} className="homepage-tab-link">
+    <Link href={href} className="text-sm font-semibold text-primary hover:underline underline-offset-4 decoration-primary/40 hover:decoration-primary transition-all">
       {label}
-      <span className="material-symbols-outlined text-base" aria-hidden="true">
-        arrow_forward
-      </span>
     </Link>
   );
 }

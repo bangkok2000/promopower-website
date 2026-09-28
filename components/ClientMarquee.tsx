@@ -31,51 +31,27 @@ const LUXURY_BEAUTY = [
   "Yves Saint Laurent",
 ];
 
-function MarqueeRow({
-  names,
-  reverse = false,
-}: {
-  names: string[];
-  reverse?: boolean;
-}) {
-  // Duplicate so the seamless loop always fills the viewport
-  const doubled = [...names, ...names];
+function ClientList({ names }: { names: string[] }) {
   return (
-    <div className="overflow-hidden">
-      <ul
-        className={`flex gap-0 whitespace-nowrap ${reverse ? "animate-marquee-reverse" : "animate-marquee"}`}
-        aria-hidden="true"
-      >
-        {doubled.map((name, i) => (
-          <li
-            key={i}
-            className="inline-flex items-center gap-0 px-6 py-0"
-          >
-            <span className="font-label text-xs font-semibold tracking-[0.18em] uppercase text-on-surface-variant/70">
-              {name}
-            </span>
-            <span className="ml-6 text-on-surface-variant/35 select-none">·</span>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <ul className="client-list">
+      {names.map((name) => (
+        <li key={name} className="client-list-name">
+          {name}
+        </li>
+      ))}
+    </ul>
   );
 }
 
 export default function ClientMarquee() {
   return (
-    <section
-      aria-label="Selected clients"
-      className="section-muted py-8"
-    >
-      <div className="site-shell mb-5">
-        <p className="font-label text-xs font-semibold tracking-[0.18em] uppercase text-on-surface-variant/50">
-          Brands We&rsquo;ve Served
-        </p>
-      </div>
-      <div className="flex flex-col gap-3">
-        <MarqueeRow names={SPIRITS_BEVERAGES} />
-        <MarqueeRow names={LUXURY_BEAUTY} reverse />
+    <section aria-label="Selected clients" className="client-list-section">
+      <div className="page-container client-list-layout">
+        <h2 className="client-list-heading">Brands We&rsquo;ve Served</h2>
+        <div className="client-list-groups">
+          <ClientList names={SPIRITS_BEVERAGES} />
+          <ClientList names={LUXURY_BEAUTY} />
+        </div>
       </div>
     </section>
   );

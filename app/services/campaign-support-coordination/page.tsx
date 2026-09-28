@@ -41,22 +41,21 @@ export const metadata: Metadata = {
 
 export default function CampaignSupportCoordinationPage() {
   const supportServices = [
-    "Deployment planning",
-    "Scheduling coordination",
-    "Attendance monitoring",
-    "Personnel coordination",
-    "Campaign communication",
-    "Operational support",
-    "Field coordination",
-    "Execution oversight",
+    "Deployment plan by location and shift",
+    "Schedules issued before the first day",
+    "Attendance checked against the roster",
+    "Replacements when someone cannot attend",
+    "Client updates while the campaign is running",
+    "Briefing coordinated before people go on site",
+    "A field contact where the brief requires one",
   ];
 
   return (
     <>
       <PageHero
         badge="Service"
-        title="Supporting Successful Campaign Execution Behind The Scenes"
-        description="Successful campaigns depend on more than the people customers see. They also depend on effective planning, coordination, communication and operational support working behind the scenes. PromoPower helps organisations maintain control, visibility and confidence throughout the campaign lifecycle through practical campaign support services."
+        title="Rosters, Attendance And A Contact While The Campaign Is Live"
+        description="Coordination is the work behind the people on site: who is where, whether they attended, and who the client calls when something changes. It is included with a frontline team, or booked on its own."
       />
 
       <ServicePageWayfinding
@@ -67,18 +66,12 @@ export default function CampaignSupportCoordinationPage() {
       >
       <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">Helping Campaigns Run Smoothly</h2>
+            <h2 className="section-title">What Coordination Covers</h2>
             <p>
-              Managing customer-facing campaigns often involves coordinating multiple moving parts, locations, schedules
-              and personnel.
+              A plan that names locations, shifts and headcount. Attendance checked against that plan. A replacement if someone cannot attend. A person the client can call during the campaign.
             </p>
             <p>
-              Without proper oversight, even well-planned campaigns can encounter operational challenges that affect
-              execution quality.
-            </p>
-            <p>
-              PromoPower provides support that helps organisations maintain consistency, improve coordination and reduce
-              operational complexity throughout campaign delivery.
+              If you already have your own supervisors and only need people on the floor, say so. Coordination is then limited to the roster and attendance, not a second management layer.
             </p>
           </div>
       </section>
@@ -87,13 +80,12 @@ export default function CampaignSupportCoordinationPage() {
           <div className="max-w-3xl">
             <h2 className="section-title">Support Services</h2>
             <p className="page-intro mb-8">
-              Our coordination services keep campaign operations on track from briefing through to execution:
+              Tasks included. They are not eight different products.
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3" aria-label="Campaign support services">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2" aria-label="Campaign support services">
               {supportServices.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-on-surface">
-                  <span aria-hidden="true" className="material-symbols-outlined text-primary text-base mt-1">check_circle</span>
-                  <span>{item}</span>
+                <li key={item} className="text-slate-700 pl-4 border-l-2 border-slate-300 text-sm">
+                  {item}
                 </li>
               ))}
             </ul>
@@ -102,34 +94,26 @@ export default function CampaignSupportCoordinationPage() {
 
       <section id="section-reliability" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">Focused On Reliability And Accountability</h2>
+            <h2 className="section-title">Who You Deal With</h2>
             <p>
-              Our role is to help create an environment where campaigns can operate efficiently and confidently.
-            </p>
-            <p>
-              By maintaining visibility across staffing activities and supporting communication between stakeholders,
-              we help organisations focus on campaign outcomes while we help manage operational requirements.
+              One operations contact for the roster and for changes. If a site needs someone physically present, that is agreed in the brief. It is not assumed.
             </p>
           </div>
       </section>
 
       <section id="section-execution" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">Execution Often Determines Success</h2>
+            <h2 className="section-title">What We Need To Build The Roster</h2>
             <p>
-              Many campaigns succeed or fail based on operational execution rather than strategic intent.
-            </p>
-            <p>
-              Strong coordination helps reduce uncertainty, improve consistency and ensure that plans are translated
-              into successful customer experiences.
+              Dates, locations, hours, headcount per site, and who on your side approves changes. If uniforms, call times or reporting lines are already set, send those with the brief.
             </p>
           </div>
       </section>
       </ServicePageWayfinding>
 
       <CTASection
-        heading="Need Additional Campaign Support?"
-        body="Let’s discuss how PromoPower can help support your next campaign."
+        heading="Send The Site List"
+        body="Include dates, hours and headcount per location. Say whether you also need a field contact."
         primaryLabel="Speak With Our Team"
         primaryHref="/contact-us"
         secondaryLabel="Explore All Services"

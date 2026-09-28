@@ -26,7 +26,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
             <button
               id={buttonId}
               type="button"
-              className="w-full px-6 sm:px-8 py-5 text-left flex items-center justify-between gap-4 hover:bg-white/5 transition-colors"
+              className="w-full px-6 sm:px-8 py-5 text-left flex items-center justify-between gap-4 hover:bg-surface-container transition-colors"
               onClick={() => setOpenIndex(isOpen ? null : index)}
               aria-expanded={isOpen}
               aria-controls={panelId}
@@ -35,7 +35,7 @@ export default function FAQAccordion({ items }: FAQAccordionProps) {
               <span aria-hidden="true" className="material-symbols-outlined text-primary shrink-0">{isOpen ? "remove" : "add"}</span>
             </button>
             {isOpen ? (
-              <div id={panelId} role="region" aria-labelledby={buttonId} className="px-6 sm:px-8 pb-6 text-on-surface-variant leading-relaxed border-t border-white/5">
+              <div id={panelId} role="region" aria-labelledby={buttonId} className="px-6 sm:px-8 pb-6 text-on-surface-variant leading-relaxed border-t border-black/8">
                 {item.answer}
               </div>
             ) : null}

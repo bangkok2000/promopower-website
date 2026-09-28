@@ -25,21 +25,17 @@ export default function ThankYouPage() {
       <section className="page-section">
         <PageContentRail>
           <nav aria-label="Next steps" className="flex flex-wrap gap-4">
-            <Link href="/" className="btn-secondary">
-              Return home
-              <span className="material-symbols-outlined text-base">home</span>
+            <Link href="/" className="px-5 py-2.5 border border-slate-300 rounded-full text-slate-700 font-semibold text-sm hover:border-primary hover:text-primary transition-all">
+              Return Home
             </Link>
-            <Link href="/services" className="btn-secondary">
-              View services
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            <Link href="/services" className="px-5 py-2.5 border border-slate-300 rounded-full text-slate-700 font-semibold text-sm hover:border-primary hover:text-primary transition-all">
+              View Services
             </Link>
-            <Link href="/our-work" className="btn-secondary">
-              Our work
-              <span className="material-symbols-outlined text-base">arrow_forward</span>
+            <Link href="/our-work" className="px-5 py-2.5 border border-slate-300 rounded-full text-slate-700 font-semibold text-sm hover:border-primary hover:text-primary transition-all">
+              Our Work
             </Link>
-            <Link href="/contact-us" className="btn-secondary">
-              Contact us
-              <span className="material-symbols-outlined text-base">mail</span>
+            <Link href="/contact-us" className="px-5 py-2.5 border border-slate-300 rounded-full text-slate-700 font-semibold text-sm hover:border-primary hover:text-primary transition-all">
+              Contact Us
             </Link>
           </nav>
         </PageContentRail>

@@ -21,8 +21,8 @@ export default function ContactUsPage() {
     <>
       <PageHero
         badge="Contact Us"
-        title="Let's Discuss Your Campaign Requirements"
-        description="Share your objectives, timeline and staffing needs. Our team will review your request and recommend a practical workforce solution aligned with your campaign goals."
+        title="Send A Campaign Brief"
+        description="Include the service, approximate headcount, start date, locations and what customers should be told. That is what the reply is based on."
       />
       <ContactUsContent />
     </>

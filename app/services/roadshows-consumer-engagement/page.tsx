@@ -40,22 +40,20 @@ export const metadata: Metadata = {
 
 export default function RoadshowsConsumerEngagementPage() {
   const supportAreas = [
-    "Roadshows",
-    "Public activations",
-    "Consumer engagement campaigns",
-    "Lead generation activities",
-    "Sampling initiatives",
-    "Awareness campaigns",
+    "Mall and public-site roadshows",
+    "Sampling",
+    "Product demonstration",
+    "Lead capture, when the brief requires it",
     "Product introductions",
-    "Community engagement programmes",
+    "Touring stands across more than one location",
   ];
 
   return (
     <>
       <PageHero
         badge="Service"
-        title="Creating Positive Customer Experiences Through Meaningful Engagement"
-        description="Roadshows and public-facing campaigns provide valuable opportunities for organisations to engage directly with customers, increase visibility and strengthen awareness. PromoPower provides experienced personnel who help brands create positive customer experiences in dynamic and highly interactive environments."
+        title="Roadshow Teams For Public Sites, Malls And Sampling Drives"
+        description="Shorter conversations, uneven footfall, and site rules that are not the same as a store. Teams are rostered by site and shift, and briefed on what they can hand out or record."
       />
 
       <ServicePageWayfinding
@@ -66,18 +64,12 @@ export default function RoadshowsConsumerEngagementPage() {
       >
       <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">Connecting Brands With People</h2>
+            <h2 className="section-title">What Is Different From A Store Shift</h2>
             <p>
-              Roadshows create opportunities for brands to step outside traditional environments and engage directly
-              with customers.
+              A roadshow is usually a temporary site: a mall atrium, a public event or a touring stand. Peak hours are uneven, interactions are short, and the venue often sets what can be set up, sampled or collected.
             </p>
             <p>
-              Whether the objective is awareness building, lead generation, product introduction or customer engagement,
-              the quality of interactions often determines the success of the campaign.
-            </p>
-            <p>
-              Our teams are selected and prepared to support these objectives while ensuring customers experience
-              professional, positive and engaging interactions throughout the campaign.
+              Confirm site rules, call times and whether lead capture is required before the briefing. If names or contact details are collected, say what staff may ask for and where that information goes.
             </p>
           </div>
       </section>
@@ -86,13 +78,12 @@ export default function RoadshowsConsumerEngagementPage() {
           <div className="max-w-3xl">
             <h2 className="section-title">Support Areas</h2>
             <p className="page-intro mb-8">
-              Our roadshow and engagement teams support a range of consumer-facing initiatives, including:
+              Work we staff on the ground. Overlapping labels below are the same job unless your brief splits them.
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3" aria-label="Roadshow support areas">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2" aria-label="Roadshow support areas">
               {supportAreas.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-on-surface">
-                  <span aria-hidden="true" className="material-symbols-outlined text-primary text-base mt-1">check_circle</span>
-                  <span>{item}</span>
+                <li key={item} className="text-slate-700 pl-4 border-l-2 border-slate-300 text-sm">
+                  {item}
                 </li>
               ))}
             </ul>
@@ -101,11 +92,9 @@ export default function RoadshowsConsumerEngagementPage() {
 
       <section id="section-value" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">Every Interaction Shapes Perception</h2>
-            <p>Roadshows place brands directly in front of customers.</p>
+            <h2 className="section-title">What To Include In The Brief</h2>
             <p>
-              Professional engagement helps organisations maximise these opportunities by creating memorable
-              experiences, encouraging participation and strengthening brand awareness through meaningful conversations.
+              Sites and dates, headcount per site, what is being sampled or demonstrated, and whether staff collect leads. If the tour moves, send the order of locations so travel and call times can be rostered.
             </p>
           </div>
       </section>
@@ -113,7 +102,7 @@ export default function RoadshowsConsumerEngagementPage() {
 
       <CTASection
         heading="Planning A Roadshow Or Consumer Campaign?"
-        body="Speak with our team about your staffing requirements."
+        body="Send the sites, dates and whether sampling or lead capture is part of the job."
         primaryLabel="Get In Touch"
         primaryHref="/contact-us"
         secondaryLabel="Explore All Services"

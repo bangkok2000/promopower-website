@@ -21,48 +21,53 @@ export const metadata: Metadata = buildPageMetadata({
 const industryGroups = [
   {
     name: "Beauty & Cosmetics",
-    description: "Support for launches, sampling and in-store customer engagement across beauty retail environments.",
+    description: "Sampling, launches and counter work. Staff need the product points and the brand's presentation standard before the shift.",
     icon: "spa",
   },
   {
     name: "Luxury Retail",
-    description: "Personnel selected for premium environments where presentation, service standards and discretion matter.",
+    description: "Selected for stores where the brief sets a higher bar for presentation, conduct and how customers are approached.",
     icon: "diamond",
   },
   {
     name: "Consumer Electronics",
-    description: "Product promoters prepared to communicate key features clearly in high-consideration purchase journeys.",
+    description: "Demonstrations and in-store explanation of features. The approved comparison points are part of the briefing.",
     icon: "memory",
   },
   {
     name: "FMCG",
-    description: "Scalable deployment support for retail campaigns requiring broad customer outreach and consistent execution.",
+    description: "Higher headcount across outlets for promotions and sampling. The same script is used unless a banner needs a change.",
     icon: "shopping_basket",
   },
   {
     name: "Food & Beverage",
-    description: "Customer-facing teams for tasting campaigns, in-store promotions and branded engagement initiatives.",
+    description: "Tasting and in-store promotion. The briefing covers how the product is offered and any sampling limits.",
     icon: "restaurant",
   },
   {
     name: "Events & Exhibitions",
-    description: "Operational staffing support for registration, visitor management and front-of-house campaign activities.",
+    description: "Registration, visitor flow and front-of-house roles. Positions and the run of show are briefed before call time.",
     icon: "event",
   },
   {
     name: "Travel Retail",
-    description: "Campaign support tailored to transit environments and service expectations in high-footfall locations.",
+    description: "Airport and transit counters, where footfall is uneven and shifts have to match retail hours.",
     icon: "flight",
   },
   {
     name: "Financial Services",
-    description: "Professional staffing support for customer education, outreach and lead-generation activities.",
+    description: "Booths, roadshows and customer-education stands. Staff use the approved script and do not go beyond it.",
     icon: "account_balance",
   },
   {
     name: "Healthcare & Wellness",
-    description: "Personnel prepared for customer interactions requiring care, professionalism and product clarity.",
+    description: "Awareness and product explanation where claims stay inside the approved brief.",
     icon: "health_and_safety",
+  },
+  {
+    name: "Lifestyle Brands",
+    description: "Apparel, home and personal-care work where the brief is about how the product is shown, worn or used.",
+    icon: "checkroom",
   },
 ];
 
@@ -79,42 +84,47 @@ export default function IndustriesPage() {
       <PageHero
         badge="Industries"
         title="Industries We Support"
-        description="PromoPower supports organisations across diverse sectors. Our team adapts staffing strategy, preparation and deployment based on each industry&apos;s customer expectations and operating conditions."
+        description="The setting changes the briefing. A luxury counter, a supermarket sampling stand and an exhibition desk do not use the same script, uniform standard or customer approach."
       />
 
-      <section className="page-section">
-        <div className="page-container grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-          {industryGroups.map((industry) => (
-            <IndustryCard
-              key={industry.name}
-              name={industry.name}
-              description={industry.description}
-              icon={industry.icon}
-            />
-          ))}
+      <section className="py-12 sm:py-14 lg:py-16">
+        <div className="page-container">
+          <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-8 font-label">
+            Sector Experience
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {industryGroups.map((industry) => (
+              <IndustryCard
+                key={industry.name}
+                name={industry.name}
+                description={industry.description}
+                icon={industry.icon}
+              />
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="page-section section-muted">
-        <div className="page-container-narrow text-center prose-block">
-          <h2 className="section-title">Adapted For Each Campaign Environment</h2>
-          <p>
-            Different industries require different customer engagement approaches, service expectations and
-            operational planning. Our experience helps us tailor workforce support accordingly.
+      <section className="py-12 sm:py-14 lg:py-16 bg-slate-50 border-y border-slate-200">
+        <div className="page-container-narrow text-center">
+          <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-4 font-label">
+            Our Approach
           </p>
-          <p>
-            We focus on consistent execution, professional representation and practical support that aligns
-            with campaign objectives.
-          </p>
-          <p className="text-sm">
-            To respect confidentiality and intellectual property requirements, campaign details are shared selectively.
-          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-6">Name The Setting In The Brief</h2>
+          <div className="space-y-4 text-slate-600 leading-relaxed max-w-2xl mx-auto">
+            <p>
+              Tell us the banner or venue, what customers should be told, and any rules on sampling, claims or appearance. That is what the shortlist and the briefing are built from.
+            </p>
+            <p className="text-sm text-slate-500 pt-2">
+              Client names and campaign details are not published here.
+            </p>
+          </div>
         </div>
       </section>
 
       <CTASection
-        heading="Plan An Industry-Specific Campaign"
-        body="If you need workforce support for a specific industry context, speak with our team and we will recommend a practical deployment approach."
+        heading="Send The Setting With The Brief"
+        body="Name the stores or venues, the dates, and what customers are allowed to be told."
         primaryLabel="Speak With Our Team"
         primaryHref="/contact-us"
         secondaryLabel="View Services"

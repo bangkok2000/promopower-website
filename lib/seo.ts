@@ -3,6 +3,43 @@ import { SERVICE_PAGES, SITE, SOCIAL } from "@/lib/site";
 
 const ORG_ID = `${SITE.url}/#organization`;
 const WEBSITE_ID = `${SITE.url}/#website`;
+const HOME_PAGE_ID = `${SITE.url}/#home`;
+const EMPLOYMENT_AGENCY_ID = `${SITE.url}/#employment-agency`;
+
+function serviceItemList(name: string) {
+  return {
+    "@type": "ItemList" as const,
+    name,
+    itemListElement: SERVICE_PAGES.map((service, index) => ({
+      "@type": "ListItem" as const,
+      position: index + 1,
+      name: service.title,
+      url: absoluteUrl(`/services/${service.slug}`),
+      description: service.description,
+    })),
+  };
+}
+
+function staffingOfferCatalog() {
+  return {
+    "@type": "OfferCatalog" as const,
+    name: "PromoPower staffing services",
+    itemListElement: SERVICE_PAGES.map((service) => ({
+      "@type": "Offer" as const,
+      itemOffered: {
+        "@type": "Service" as const,
+        name: service.title,
+        description: service.description,
+        url: absoluteUrl(`/services/${service.slug}`),
+        provider: { "@id": EMPLOYMENT_AGENCY_ID },
+        areaServed: {
+          "@type": "Country" as const,
+          name: "Singapore",
+        },
+      },
+    })),
+  };
+}
 
 type PageMetadataOptions = {
   title: string;
@@ -67,11 +104,24 @@ export function getSiteGraphJsonLd() {
         "@type": "Organization",
         "@id": ORG_ID,
         name: SITE.name,
+        legalName: SITE.name,
         alternateName: SITE.shortName,
         url: SITE.url,
         email: SITE.email,
         foundingDate: SITE.foundingDate,
         description: SITE.defaultDescription,
+        identifier: [
+          {
+            "@type": "PropertyValue",
+            name: "UEN / Company Registration",
+            value: SITE.companyReg,
+          },
+          {
+            "@type": "PropertyValue",
+            name: "MOM Employment Agency License",
+            value: SITE.eaLicense,
+          },
+        ],
         address: {
           "@type": "PostalAddress",
           streetAddress: SITE.streetAddress,
@@ -96,13 +146,14 @@ export function getSiteGraphJsonLd() {
       },
       {
         "@type": "EmploymentAgency",
-        "@id": `${SITE.url}/#employment-agency`,
+        "@id": EMPLOYMENT_AGENCY_ID,
         name: SITE.name,
         url: SITE.url,
         email: SITE.email,
         foundingDate: SITE.foundingDate,
         description: SITE.defaultDescription,
         parentOrganization: { "@id": ORG_ID },
+        hasOfferCatalog: staffingOfferCatalog(),
         address: {
           "@type": "PostalAddress",
           streetAddress: SITE.streetAddress,
@@ -129,6 +180,7 @@ export function getSiteGraphJsonLd() {
         description: SITE.defaultDescription,
         inLanguage: "en-SG",
         publisher: { "@id": ORG_ID },
+        about: { "@id": EMPLOYMENT_AGENCY_ID },
       },
     ],
   };
@@ -188,7 +240,7 @@ export function servicePageJsonLd(title: string, path: string, description: stri
         name: title,
         description,
         url,
-        provider: { "@id": `${SITE.url}/#employment-agency` },
+        provider: { "@id": EMPLOYMENT_AGENCY_ID },
         areaServed: {
           "@type": "Country",
           name: "Singapore",
@@ -207,17 +259,7 @@ export function servicesHubJsonLd() {
         { label: "Home", href: "/" },
         { label: "Services" },
       ]),
-      {
-        "@type": "ItemList",
-        name: "PromoPower Staffing Services",
-        itemListElement: SERVICE_PAGES.map((service, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          name: service.title,
-          url: absoluteUrl(`/services/${service.slug}`),
-          description: service.description,
-        })),
-      },
+      serviceItemList("PromoPower Staffing Services"),
     ],
   };
 }
@@ -234,3 +276,36 @@ export function webPageJsonLd(title: string, path: string, description: string) 
     inLanguage: "en-SG",
   };
 }
+
+const HOME_PAGE_TITLE =
+  "PromoPower Singapore | Professional Staffing Solutions Since 2002";
+
+export function homePageJsonLd(description: string) {
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": HOME_PAGE_ID,
+        name: HOME_PAGE_TITLE,
+        description,
+        url: absoluteUrl("/"),
+        isPartOf: { "@id": WEBSITE_ID },
+        about: { "@id": EMPLOYMENT_AGENCY_ID },
+        mainEntity: { "@id": EMPLOYMENT_AGENCY_ID },
+        inLanguage: "en-SG",
+        speakable: {
+          "@type": "SpeakableSpecification",
+          cssSelector: [
+            ".home-hero-headline",
+            ".home-hero-lead",
+            ".home-about-definition",
+          ],
+        },
+      },
+      serviceItemList("PromoPower staffing services in Singapore"),
+    ],
+  };
+}
+
+export { HOME_PAGE_TITLE };

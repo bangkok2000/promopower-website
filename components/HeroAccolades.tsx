@@ -23,7 +23,7 @@ export const AWARDS: readonly Award[] = [
   },
   {
     icon: "emoji_events",
-    iconClass: "text-accent-amber",
+    iconClass: "text-primary",
     title: "Entrepreneur 100",
     subtitle: "Award Winner — 2021",
     image: {

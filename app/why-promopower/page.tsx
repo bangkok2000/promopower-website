@@ -28,43 +28,43 @@ const reasons = [
   {
     title: "Experience Since 2002",
     description:
-      "More than two decades supporting campaigns across promotions, retail activations, events and customer engagement programmes.",
+      "Promotions, retail activations, roadshows and events in Singapore since 2002. The licence and the operating model are the same business, not a recent add-on.",
     icon: "history",
   },
   {
-    title: "Professional Recruitment Standards",
+    title: "Shortlisted Against The Brief",
     description:
-      "Personnel are selected based on communication ability, professionalism and campaign suitability.",
+      "Communication, presentation and fit for the setting come before availability. A supermarket sampling stand and a luxury counter are not staffed the same way.",
     icon: "groups",
   },
   {
-    title: "Structured Preparation",
+    title: "Briefed Before The First Shift",
     description:
-      "Briefings and preparation processes help teams represent brands consistently and confidently.",
+      "Product points, what to say, what not to say, and any appearance rules the brand sets. The briefing happens before people are on site.",
     icon: "school",
   },
   {
-    title: "Operational Coordination",
+    title: "A Roster, Not A Name List",
     description:
-      "Deployment planning and responsive campaign support help reduce execution friction.",
+      "Locations, shifts and attendance are managed while the campaign is live, including cover when someone cannot attend.",
     icon: "support_agent",
   },
   {
-    title: "Continuous Staff Development",
+    title: "Performance Is Recorded",
     description:
-      "Most providers stop at deployment. PromoPower coaches personnel throughout the campaign and maintains a structured performance record for every team member, supported by PowerCoach, our in-house coaching and performance system. The result is a workforce that improves with every campaign.",
+      "Coaching continues after deployment. Each person has a performance record in PowerCoach, PromoPower's in-house coaching and performance system, and that record is used on later campaigns.",
     icon: "trending_up",
   },
   {
     title: "MOM Licensed Agency",
     description:
-      "Licensed employment agency operations provide compliance-conscious support and client confidence.",
+      "PromoPower Pte Ltd, EA License No. 20C0109. Engagement of personnel is licensed employment agency work.",
     icon: "verified_user",
   },
   {
-    title: "Partnership Mindset",
+    title: "We Ask Before We Propose",
     description:
-      "Our team works alongside clients to align staffing support with campaign objectives and practical realities.",
+      "Dates, sites, headcount and what customers need to hear come first. If the brief is incomplete, we ask rather than send a generic team.",
     icon: "handshake",
   },
 ];
@@ -82,34 +82,38 @@ export default function WhyPromoPowerPage() {
       <PageHero
         badge="Why PromoPower"
         title="Why Organisations Choose PromoPower"
-        description="A successful staffing partnership requires more than manpower. It requires experience, process discipline, responsive support and consistent execution."
+        description="A licensed agency since 2002, with briefing before the shift, a live roster, and a performance record for the people we field."
       />
 
       <PageSectionNavGroup navItems={whyNav} navLabel="Why PromoPower sections" scrollHint="Scroll sideways for more sections">
         <section id="section-reasons" className="page-section-anchor">
+          <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-8 font-label">
+            Our Differentiators
+          </p>
           <ContentList items={reasons} ariaLabel="Why organisations choose PromoPower" />
         </section>
 
         <section id="section-partner" className="page-section-anchor">
-          <div className="prose-block max-w-3xl">
-            <h2 className="section-title">A Practical Partner For Campaign Execution</h2>
-            <p>
-              We understand that each deployment represents your brand in front of real customers. This is why
-              our support model combines suitable personnel, clear preparation and dependable coordination.
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-10 lg:p-12 max-w-3xl">
+            <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-4 font-label">
+              Enquiry
             </p>
-            <p>
-              Our objective is to help your team execute with confidence while reducing operational uncertainty.
-            </p>
-            <p className="text-sm">
-              PromoPower Pte Ltd is a MOM licensed employment agency. EA License No: 20C0109.
-            </p>
+            <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-6">What To Send Us</h2>
+            <div className="space-y-4 text-slate-600 leading-relaxed">
+              <p>
+                Objective, dates, locations, headcount and the product points customers should hear. From that we say who we would field, how they will be briefed, and how the roster will be run.
+              </p>
+              <p className="text-sm text-slate-500 pt-2 border-t border-slate-200/80 mt-6">
+                PromoPower Pte Ltd is a MOM licensed employment agency. EA License No: 20C0109.
+              </p>
+            </div>
           </div>
         </section>
       </PageSectionNavGroup>
 
       <CTASection
-        heading="Let Us Support Your Next Campaign"
-        body="Speak with our team to discuss your requirements, timeline and staffing objectives. We will recommend a solution aligned with your operational needs."
+        heading="Send The Brief"
+        body="Include dates, locations and headcount if you have them. We will reply with a proposed team and how the roster would be run."
         primaryLabel="Contact PromoPower"
         primaryHref="/contact-us"
         secondaryLabel="Explore Services"

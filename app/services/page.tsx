@@ -28,11 +28,11 @@ const services = [
   {
     title: "Brand Ambassadors",
     summary:
-      "Customer-facing personnel suited to launches and activations where presentation, confidence, product explanation and engagement matter.",
+      "People who explain a product, sample it, or stand for the brand at a launch, counter or event.",
     points: [
-      "Selected based on communication ability, professionalism and campaign fit.",
-      "Prepared with campaign briefings, product information and engagement guidance before deployment.",
-      "Suitable for product launches, demonstrations, experiential activities and brand engagement programmes.",
+      "Screened for communication and for the presentation standard of that brand.",
+      "Briefed on product points and on what they may and may not say.",
+      "Used for launches, sampling, demonstrations and in-store or event representation.",
     ],
     href: "/services/brand-ambassadors",
     icon: "person_celebrate",
@@ -40,11 +40,11 @@ const services = [
   {
     title: "Event Personnel",
     summary:
-      "Dependable event teams for registration, guest management and on-site customer support.",
+      "Floor roles: registration, ushering, guest management and information counters.",
     points: [
-      "Supports exhibitions, conferences, roadshows and corporate events.",
-      "Helps maintain smooth operational flow across customer touchpoints.",
-      "Backed by structured coordination and responsive support.",
+      "Exhibitions, conferences, launches and corporate events.",
+      "Briefed on the run of show, their position, and questions they should refer on.",
+      "Rostered by shift, with a contact if cover is needed.",
     ],
     href: "/services/event-personnel",
     icon: "event_available",
@@ -52,11 +52,11 @@ const services = [
   {
     title: "Retail Activation Teams",
     summary:
-      "Customer-facing teams for in-store activities and retail engagement programmes.",
+      "In-store demonstrations, promotions and sampling, including more than one outlet.",
     points: [
-      "Supports promotions, product discovery and point-of-decision engagement.",
-      "Adapted to different store environments and campaign objectives.",
-      "Focused on consistent brand representation and service quality.",
+      "Store list, trading hours and sampling rules are part of the brief.",
+      "The same script is used across outlets unless a store needs a change.",
+      "Attendance is checked against the roster, not left to each store.",
     ],
     href: "/services/retail-activation-teams",
     icon: "storefront",
@@ -64,11 +64,11 @@ const services = [
   {
     title: "Roadshows & Consumer Engagement",
     summary:
-      "Flexible staffing support for roadshows and high-footfall public activation environments.",
+      "Public sites and mall tours, where conversations are short and footfall is uneven.",
     points: [
-      "Designed for campaigns requiring visibility and direct customer interaction.",
-      "Supports outreach, lead capture and brand engagement activities.",
-      "Delivered with operational planning and on-ground coordination.",
+      "Sampling, product introduction and lead capture when the brief includes it.",
+      "Site rules, peak hours and what can be handed out are confirmed before the first day.",
+      "Teams are rostered by site and shift, not as one undifferentiated group.",
     ],
     href: "/services/roadshows-consumer-engagement",
     icon: "route",
@@ -76,11 +76,11 @@ const services = [
   {
     title: "Campaign Support & Coordination",
     summary:
-      "Operational support services that keep campaigns organised and execution-ready.",
+      "The roster and the contact behind the people customers see.",
     points: [
-      "Includes deployment planning, scheduling and attendance monitoring.",
-      "Supports campaign continuity through responsive communication.",
-      "Helps clients reduce operational friction from start to finish.",
+      "Deployment plan, schedules and attendance.",
+      "Replacements when someone cannot attend.",
+      "Updates to the client while the campaign is running.",
     ],
     href: "/services/campaign-support-coordination",
     icon: "monitoring",
@@ -88,10 +88,10 @@ const services = [
 ];
 
 const servicePillars = [
-  "Professional recruitment and screening",
-  "Structured campaign preparation",
-  "Reliable deployment planning",
-  "Responsive operational support",
+  "Screening against the brief",
+  "Briefing before the first shift",
+  "Roster by location and shift",
+  "Attendance and cover while live",
 ];
 
 export default function Services() {
@@ -100,31 +100,29 @@ export default function Services() {
       <JsonLd data={servicesHubJsonLd()} />
       <PageHero
         badge="Services"
-        title="Workforce Solutions Built Around Campaign Objectives"
-        description="Every campaign has different customer expectations, operating conditions and staffing requirements. PromoPower provides practical workforce solutions that help organisations execute with confidence."
+        title="Five Ways We Staff A Campaign"
+        description="Most clients use one frontline team plus coordination. The pages below say what each team does, and what we need from you before the first shift."
       />
 
       <PageSectionNavGroup navItems={servicesNav} navLabel="Services sections" scrollHint="Scroll sideways for more sections">
         <section id="section-services" className="page-section-anchor">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {services.map((service) => (
-            <article key={service.title} className="content-card flex flex-col h-full">
-              <div className="icon-badge">
-                <span className="material-symbols-outlined">{service.icon}</span>
-              </div>
-              <h2 className="text-2xl font-headline font-normal text-on-surface mb-4">{service.title}</h2>
-              <p className="text-on-surface-variant leading-relaxed mb-5">{service.summary}</p>
-              <ul className="space-y-3 mb-6 flex-1">
+          {services.map((service, index) => (
+            <article key={service.title} className="border-t border-slate-200 pt-5 flex flex-col h-full">
+              <span className="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+              <h2 className="text-xl font-bold text-slate-900 mb-3">{service.title}</h2>
+              <p className="text-slate-600 leading-relaxed mb-5">{service.summary}</p>
+              <ul className="space-y-2 mb-6 flex-1">
                 {service.points.map((point) => (
-                  <li key={point} className="text-on-surface-variant text-sm leading-relaxed flex gap-2">
-                    <span className="material-symbols-outlined text-primary text-base mt-0.5">check_circle</span>
-                    <span>{point}</span>
+                  <li key={point} className="text-slate-600 text-sm leading-relaxed pl-4 border-l-2 border-slate-200">
+                    {point}
                   </li>
                 ))}
               </ul>
-              <Link href={service.href} className="inline-flex items-center gap-2 text-primary font-bold hover:gap-3 transition-all mt-auto">
+              <Link href={service.href} className="text-sm font-semibold text-primary hover:underline underline-offset-4 decoration-primary/40 hover:decoration-primary transition-all mt-auto">
                 Learn More
-                <span className="material-symbols-outlined text-base">arrow_forward</span>
               </Link>
             </article>
           ))}
@@ -134,10 +132,9 @@ export default function Services() {
         <section id="section-approach" className="page-section-anchor">
         <div className="grid lg:grid-cols-2 gap-10 items-start">
           <div>
-            <h2 className="section-title">A Structured Service Approach</h2>
+            <h2 className="section-title">Included With The Team</h2>
             <p className="prose-block">
-              Our service model combines professional staffing with structured operational processes. This helps
-              clients maintain quality, consistency and control across customer-facing campaigns.
+              Whichever frontline service you use, these four items are part of the job. They are not a separate product unless you only need coordination.
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -152,8 +149,8 @@ export default function Services() {
       </PageSectionNavGroup>
 
       <CTASection
-        heading="Discuss Your Campaign Requirements"
-        body="If you are planning a campaign and need professional workforce support, our team can recommend a solution aligned with your objectives, timeline and operational requirements."
+        heading="Send Dates, Sites And Headcount"
+        body="If you already know the service, say which one. If you do not, describe the setting and what customers need to be told."
         primaryLabel="Speak With Our Team"
         primaryHref="/contact-us"
       />

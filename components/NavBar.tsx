@@ -96,17 +96,11 @@ export default function NavBar() {
     return pathname === path || pathname.startsWith(`${path}/`);
   };
 
-  const getLinkClass = (path: string) => {
-    return isPathActive(path)
-      ? "text-primary font-medium border-b-2 border-primary pb-1 transition-colors duration-200"
-      : "text-on-surface-variant font-medium hover:text-primary transition-colors duration-200 pb-1 border-b-2 border-transparent";
-  };
+  const getLinkClass = (path: string) =>
+    isPathActive(path) ? "site-nav-link site-nav-link-active" : "site-nav-link";
 
-  const getMobileLinkClass = (path: string) => {
-    return isPathActive(path)
-      ? "text-primary font-headline font-black text-2xl sm:text-3xl"
-      : "text-on-surface-variant font-headline font-medium text-2xl sm:text-3xl hover:text-primary transition-colors duration-200";
-  };
+  const getMobileLinkClass = (path: string) =>
+    isPathActive(path) ? "site-mobile-nav-link site-mobile-nav-link-active" : "site-mobile-nav-link";
 
   const handleLogoClick = useCallback(
     (event: React.MouseEvent<HTMLAnchorElement>) => {
@@ -125,17 +119,17 @@ export default function NavBar() {
 
   return (
     <>
-      <nav id="site-header" className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-white/5">
-        <div className="page-container py-4 sm:py-5">
+      <nav id="site-header" className="site-header fixed top-0 w-full z-50">
+        <div className="page-container py-3 sm:py-3.5">
           <div className="grid items-center gap-4 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
             <div className="flex items-center justify-between lg:contents">
-              <Link href="/" onClick={handleLogoClick} className="relative h-12 w-48 sm:h-14 sm:w-60 md:h-16 md:w-72 shrink-0 lg:col-span-4 xl:col-span-3">
+              <Link href="/" onClick={handleLogoClick} className="relative h-10 w-44 sm:h-11 sm:w-52 md:h-12 md:w-60 shrink-0 lg:col-span-4 xl:col-span-3">
                 <Image
-                  src="/logo-transparent.png"
+                  src="/logo-dark.png"
                   alt="PromoPower Logo"
                   fill
                   sizes="(max-width: 640px) 12rem, (max-width: 768px) 15rem, 18rem"
-                  className="object-contain object-left opacity-100 hover:opacity-80 transition-opacity drop-shadow-md"
+                  className="object-contain object-left opacity-100 hover:opacity-85 transition-opacity"
                   priority
                 />
               </Link>
@@ -143,7 +137,7 @@ export default function NavBar() {
               <button
                 ref={menuButtonRef}
                 type="button"
-                className="lg:hidden inline-flex min-h-11 min-w-11 items-center justify-center -mr-1 text-white hover:text-primary transition-colors"
+                className="lg:hidden inline-flex min-h-11 min-w-11 items-center justify-center -mr-1 text-slate-700 hover:text-slate-900 transition-colors"
                 onClick={toggleMenu}
                 aria-expanded={isMenuOpen}
                 aria-controls="mobile-navigation"
@@ -192,7 +186,7 @@ export default function NavBar() {
                       </Link>
                       <button
                         type="button"
-                        className="inline-flex items-center text-on-surface-variant hover:text-primary transition-colors p-1 -ml-1"
+                        className="site-nav-menu-trigger inline-flex items-center p-1 -ml-1"
                         aria-expanded={servicesOpen}
                         aria-haspopup="menu"
                         aria-label="Show services menu"
@@ -201,7 +195,7 @@ export default function NavBar() {
                         <span aria-hidden="true" className="material-symbols-outlined text-base">{servicesOpen ? "expand_less" : "expand_more"}</span>
                       </button>
                       {servicesOpen ? (
-                        <div role="menu" aria-label="Services" className="absolute left-0 top-full mt-3 w-72 rounded-2xl border border-white/10 bg-surface shadow-2xl py-2 z-50">
+                        <div role="menu" aria-label="Services" className="site-nav-dropdown absolute left-0 top-full mt-3 w-72 rounded-lg py-2 z-50">
                           {SERVICE_LINKS.map((service) => {
                             const active = pathname === service.href;
                             return (
@@ -210,22 +204,18 @@ export default function NavBar() {
                                 href={service.href}
                                 role="menuitem"
                                 aria-current={active ? "page" : undefined}
-                                className={`block px-4 py-2.5 text-sm transition-colors ${
-                                  active
-                                    ? "text-primary font-bold bg-primary/10"
-                                    : "text-on-surface-variant hover:text-primary hover:bg-white/5"
-                                }`}
+                                className={active ? "site-nav-dropdown-item site-nav-dropdown-item-active" : "site-nav-dropdown-item"}
                                 onClick={() => setServicesOpen(false)}
                               >
                                 {service.label}
                               </Link>
                             );
                           })}
-                          <div className="border-t border-white/10 mt-2 pt-2 px-2">
+                          <div className="border-t border-nav-border mt-2 pt-2 px-2">
                             <Link
                               href="/services"
                               role="menuitem"
-                              className="block rounded-xl px-3 py-2.5 text-sm font-bold text-primary hover:bg-primary/10 transition-colors"
+                              className="site-nav-dropdown-item font-semibold text-nav-text"
                               onClick={() => setServicesOpen(false)}
                             >
                               View all services
@@ -247,7 +237,7 @@ export default function NavBar() {
 
               <Link
                 href="/contact-us"
-                className="glow-button text-on-primary px-8 py-3 rounded-full font-headline font-extrabold text-sm hover:scale-105 active:scale-95 transition-all shrink-0"
+                className="site-nav-cta text-on-primary hover:scale-[1.02] active:scale-[0.98] transition-all shrink-0"
               >
                 Contact Us
               </Link>
@@ -263,7 +253,7 @@ export default function NavBar() {
         aria-label="Navigation menu"
         aria-hidden={!isMenuOpen}
         {...(!isMenuOpen ? { inert: true } : {})}
-        className={`fixed inset-0 z-40 bg-charcoal-dark/95 backdrop-blur-2xl transition-all duration-500 origin-top lg:hidden ${
+        className={`site-mobile-nav fixed inset-0 z-40 backdrop-blur-2xl transition-all duration-500 origin-top lg:hidden ${
           isMenuOpen ? "visible opacity-100 scale-y-100" : "invisible pointer-events-none scale-y-0 opacity-0"
         }`}
       >
@@ -276,7 +266,7 @@ export default function NavBar() {
                     <Link className={getMobileLinkClass(item.href)} href={item.href} onClick={closeMenu}>
                       {item.label}
                     </Link>
-                    <div className="flex w-full flex-col gap-2 border-l border-white/10 pl-4">
+                    <div className="flex w-full flex-col gap-2 border-l border-nav-border pl-4">
                       {SERVICE_LINKS.map((service) => (
                         <Link
                           key={service.href}
@@ -284,8 +274,8 @@ export default function NavBar() {
                           onClick={closeMenu}
                           className={`text-base leading-snug transition-colors ${
                             pathname === service.href
-                              ? "font-bold text-primary"
-                              : "text-on-surface-variant hover:text-primary"
+                              ? "font-semibold text-nav-text"
+                              : "text-nav-text-muted hover:text-nav-text"
                           }`}
                         >
                           {service.label}
@@ -305,7 +295,7 @@ export default function NavBar() {
               <Link
                 href="/contact-us"
                 onClick={closeMenu}
-                className="mt-4 inline-flex min-h-11 items-center justify-center glow-button rounded-full px-10 py-4 text-xl font-headline font-extrabold text-on-primary transition-all hover:scale-105 active:scale-95"
+                className="site-nav-cta mt-4 inline-flex min-h-11 items-center justify-center text-on-primary transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 Contact Us
               </Link>

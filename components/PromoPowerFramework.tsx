@@ -22,7 +22,7 @@ const defaultSteps: FrameworkStep[] = [
 export default function PromoPowerFramework({
   id,
   heading = "A Structured Approach To Campaign Execution",
-  intro = "PromoPower's framework supports quality, accountability and consistency across customer-facing campaigns.",
+  intro = "Recruit, brief, roster, support the live campaign, then record how people performed.",
   steps = defaultSteps,
 }: PromoPowerFrameworkProps) {
   return (
@@ -35,13 +35,12 @@ export default function PromoPowerFramework({
 
         <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
           {steps.map((step, index) => (
-            <article key={step.title} className="content-card h-full">
-              <div className="icon-badge">
-                <span className="material-symbols-outlined">{step.icon}</span>
-              </div>
-              <p className="text-xs text-on-surface-variant uppercase tracking-widest mb-2">Step {index + 1}</p>
-              <h3 className="text-2xl font-headline font-normal text-on-surface mb-3">{step.title}</h3>
-              <p className="text-on-surface-variant leading-relaxed">{step.description}</p>
+            <article key={step.title} className="border-t border-slate-200 pt-5 h-full">
+              <span className="text-xs font-bold text-primary uppercase tracking-wider mb-3 block">
+                Step {index + 1}
+              </span>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">{step.title}</h3>
+              <p className="text-slate-600 text-sm leading-relaxed">{step.description}</p>
             </article>
           ))}
         </div>

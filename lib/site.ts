@@ -1,3 +1,11 @@
+/** Full entity summary for meta tags and JSON-LD. */
+export const HOME_ENTITY_SUMMARY =
+  "PromoPower Pte Ltd is a Ministry of Manpower licensed employment agency in Singapore (EA License No. 20C0109; UEN 200208541K), established in 2002. We provide end-to-end workforce solutions—recruitment, screening, preparation, deployment and ongoing campaign support—for brand ambassadors, event personnel, retail activations, roadshows and customer engagement programmes across Singapore. We are a workforce staffing partner for customer-facing campaigns, not a creative or experiential agency.";
+
+/** Visible homepage copy — omits facts already shown in the stat band above. */
+export const HOME_ENTITY_SUMMARY_VISIBLE =
+  "We provide end-to-end workforce solutions—recruitment, screening, preparation, deployment and ongoing campaign support—for brand ambassadors, event personnel, retail activations, roadshows and customer engagement programmes across Singapore (UEN 200208541K). We are a workforce staffing partner for customer-facing campaigns, not a creative or experiential agency.";
+
 export const SITE = {
   name: "PromoPower Pte Ltd",
   shortName: "PromoPower",
@@ -12,8 +20,7 @@ export const SITE = {
   companyReg: "200208541K",
   foundingDate: "2002",
   locale: "en_SG",
-  defaultDescription:
-    "PromoPower provides professional staffing solutions for promotions, retail activations, events, roadshows and customer engagement programmes in Singapore. MOM licensed employment agency since 2002.",
+  defaultDescription: HOME_ENTITY_SUMMARY,
 } as const;
 
 export const SOCIAL = {

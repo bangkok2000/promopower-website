@@ -11,34 +11,34 @@ const processSteps = [
   {
     step: "1",
     title: "Submit Your Details",
-    description: "Share your personal details, contact information and availability.",
+    description: "Name, contact, availability, and any relevant experience. A CV or supporting file can be attached on the last step.",
   },
   {
     step: "2",
     title: "Recruitment Review",
-    description: "Our team reviews your profile and suitability for available assignments.",
+    description: "The profile is reviewed against campaigns that are actually being staffed. Not every application is contacted.",
   },
   {
     step: "3",
     title: "Assignment Matching",
-    description: "Suitable applicants are contacted for upcoming campaign opportunities.",
+    description: "If a campaign fits your profile and availability, recruitment contacts you with the assignment details before you are rostered.",
   },
 ];
 
 const benefits = [
   {
-    title: "Professional Campaigns",
-    description: "Support customer-facing assignments across multiple industries.",
+    title: "What The Shifts Are",
+    description: "Promotions, retail activations, events and roadshows. You are briefed on the product and the site before the first shift.",
     icon: "campaign",
   },
   {
-    title: "Flexible Opportunities",
-    description: "Apply for assignments based on your availability and profile fit.",
+    title: "Work Is By Assignment",
+    description: "There is no standing roster place. You are contacted when a campaign matches your availability and profile.",
     icon: "schedule",
   },
   {
-    title: "Licensed Employer",
-    description: "Join through a MOM-licensed agency with clear operational processes.",
+    title: "Licensed Agency",
+    description: "PromoPower Pte Ltd is a MOM licensed employment agency. EA License No. 20C0109.",
     icon: "verified_user",
   },
 ];
@@ -102,28 +102,34 @@ export default function JobseekersContent() {
   return (
     <>
       <section id="section-process" className="page-section-anchor">
-          <h2 className="section-title">How Application Works</h2>
-          <p className="page-intro mb-10 max-w-3xl">
-            A straightforward three-step process to join the PromoPower roster for customer-facing campaign assignments.
+          <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-4 font-label">
+            Application Process
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-3">How Application Works</h2>
+          <p className="text-slate-600 leading-relaxed mb-10 max-w-3xl">
+            Three steps. Submitting the form puts you in the pool. It does not confirm a shift.
           </p>
 
           <ol className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {processSteps.map((item) => (
-              <li key={item.step} className="content-card h-full">
-                <div className="icon-badge mb-5">
-                  <span className="font-headline text-lg">{item.step}</span>
-                </div>
-                <h3 className="text-xl font-headline font-normal text-on-surface mb-3">{item.title}</h3>
-                <p className="text-on-surface-variant leading-relaxed">{item.description}</p>
+              <li key={item.step} className="border-t border-slate-200 pt-5 h-full">
+                <span className="text-xs font-bold text-primary uppercase tracking-wider mb-3 block">
+                  Step {item.step}
+                </span>
+                <h3 className="text-lg font-bold text-slate-900 mb-2">{item.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{item.description}</p>
               </li>
             ))}
           </ol>
       </section>
 
       <section id="section-benefits" className="page-section-anchor">
-          <h2 className="section-title">What To Expect</h2>
-          <p className="page-intro mb-8 max-w-3xl">
-            PromoPower supports jobseekers with structured onboarding, professional campaign environments and licensed employment agency processes.
+          <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-4 font-label">
+            Why Join
+          </p>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-3">What To Expect</h2>
+          <p className="text-slate-600 leading-relaxed mb-8 max-w-3xl">
+            The work is campaign shifts, not a permanent role. Read this before you apply.
           </p>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {benefits.map((item) => (
@@ -133,28 +139,31 @@ export default function JobseekersContent() {
       </section>
 
       <section id="section-apply" className="page-section-anchor pb-16 sm:pb-24">
-          <div className="contact-form-panel flex min-h-0 flex-col justify-center sm:min-h-[500px]">
+          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 lg:p-10 flex min-h-0 flex-col justify-center sm:min-h-[500px]">
             {step < 4 && (
               <div className="mb-10">
-                <h2 className="text-3xl font-headline font-normal text-on-surface mb-2">Submit Your Application</h2>
-                <p className="text-on-surface-variant text-sm mb-6">A short 3-step form to help our recruitment team review your profile.</p>
+                <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-3 font-label">
+                  Application Form
+                </p>
+                <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Submit Your Application</h2>
+                <p className="text-slate-600 text-sm mb-6">Name and contact first, then experience, then a file if you have one. Submitting this does not confirm a shift.</p>
                 {FORM_DEMO_MODE && (
                   <p className="text-xs text-primary/80 mb-4">
                     Demo mode: submissions are validated but not emailed until production delivery is configured.
                   </p>
                 )}
                 <div className="flex gap-3 items-center">
-                  <div className={`w-3 h-3 rounded-full ${step >= 1 ? "bg-primary shadow-[0_0_10px_rgba(255,140,0,0.5)]" : "bg-white/20"} transition-all`} />
-                  <div className={`w-10 h-[2px] ${step >= 2 ? "bg-primary" : "bg-white/20"} transition-all`} />
-                  <div className={`w-3 h-3 rounded-full ${step >= 2 ? "bg-primary shadow-[0_0_10px_rgba(255,140,0,0.5)]" : "bg-white/20"} transition-all`} />
-                  <div className={`w-10 h-[2px] ${step >= 3 ? "bg-primary" : "bg-white/20"} transition-all`} />
-                  <div className={`w-3 h-3 rounded-full ${step >= 3 ? "bg-primary shadow-[0_0_10px_rgba(255,140,0,0.5)]" : "bg-white/20"} transition-all`} />
+                  <div className={`w-3 h-3 rounded-full ${step >= 1 ? "bg-primary shadow-[0_0_0_3px_rgba(0,87,168,0.15)]" : "bg-slate-300"} transition-all`} />
+                  <div className={`w-10 h-[2px] ${step >= 2 ? "bg-primary" : "bg-slate-300"} transition-all`} />
+                  <div className={`w-3 h-3 rounded-full ${step >= 2 ? "bg-primary shadow-[0_0_0_3px_rgba(0,87,168,0.15)]" : "bg-slate-300"} transition-all`} />
+                  <div className={`w-10 h-[2px] ${step >= 3 ? "bg-primary" : "bg-slate-300"} transition-all`} />
+                  <div className={`w-3 h-3 rounded-full ${step >= 3 ? "bg-primary shadow-[0_0_0_3px_rgba(0,87,168,0.15)]" : "bg-slate-300"} transition-all`} />
                 </div>
               </div>
             )}
 
             {error && (
-              <div className="mb-6 p-4 bg-red-500/10 border border-red-500/30 rounded-xl text-red-400 text-sm" role="alert">
+              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl text-red-700 text-sm" role="alert">
                 {error}
               </div>
             )}
@@ -175,7 +184,7 @@ export default function JobseekersContent() {
                     <input
                       id="js-fullname"
                       name="fullName"
-                      className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/30"
+                      className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400"
                       placeholder="Jane Doe"
                       type="text"
                       required
@@ -188,7 +197,7 @@ export default function JobseekersContent() {
                     <input
                       id="js-dob"
                       name="dateOfBirth"
-                      className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
+                      className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all"
                       type="date"
                     />
                   </div>
@@ -199,7 +208,7 @@ export default function JobseekersContent() {
                     <input
                       id="js-age"
                       name="age"
-                      className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/30"
+                      className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400"
                       placeholder="21"
                       type="number"
                       min="16"
@@ -215,7 +224,7 @@ export default function JobseekersContent() {
                         id="js-gender"
                         name="gender"
                         defaultValue=""
-                        className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer pr-12"
+                        className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer pr-12"
                       >
                         <option value="" disabled>
                           Select Gender
@@ -223,7 +232,7 @@ export default function JobseekersContent() {
                         <option value="male">Male</option>
                         <option value="female">Female</option>
                       </select>
-                      <span className="material-symbols-outlined absolute right-4 top-4 text-on-surface-variant pointer-events-none">expand_more</span>
+                      <span className="material-symbols-outlined absolute right-4 top-4 text-slate-500 pointer-events-none">expand_more</span>
                     </div>
                   </div>
                   <div className="space-y-3">
@@ -233,7 +242,7 @@ export default function JobseekersContent() {
                     <input
                       id="js-email"
                       name="email"
-                      className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/30"
+                      className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400"
                       placeholder="jane@example.com"
                       type="email"
                       required
@@ -246,7 +255,7 @@ export default function JobseekersContent() {
                     <input
                       id="js-phone"
                       name="phone"
-                      className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/30"
+                      className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400"
                       placeholder="+65 9123 4567"
                       type="tel"
                       required
@@ -262,7 +271,7 @@ export default function JobseekersContent() {
                       id="js-qualification"
                       name="qualification"
                       defaultValue=""
-                      className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer pr-12"
+                      className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer pr-12"
                     >
                       <option value="" disabled>
                         Select Qualification
@@ -272,14 +281,14 @@ export default function JobseekersContent() {
                       <option value="diploma">Diploma</option>
                       <option value="undergrad">Undergrad</option>
                     </select>
-                    <span className="material-symbols-outlined absolute right-4 top-4 text-on-surface-variant pointer-events-none">expand_more</span>
+                    <span className="material-symbols-outlined absolute right-4 top-4 text-slate-500 pointer-events-none">expand_more</span>
                   </div>
                 </div>
                 <div className="pt-2 flex justify-end">
                   <button
                     type="button"
                     onClick={nextStep}
-                    className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+                    className="glow-button inline-flex items-center gap-2 text-white font-semibold px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
                   >
                     Next Step
                     <span className="material-symbols-outlined">arrow_forward</span>
@@ -295,7 +304,7 @@ export default function JobseekersContent() {
                   <input
                     id="js-portfolio"
                     name="portfolio"
-                    className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/30"
+                    className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400"
                     placeholder="https://instagram.com/janedoe"
                     type="url"
                   />
@@ -307,20 +316,20 @@ export default function JobseekersContent() {
                   <textarea
                     id="js-traits"
                     name="traits"
-                    className="w-full bg-background border border-white/10 rounded-xl px-6 py-4 text-on-surface focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-white/30"
+                    className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400"
                     placeholder="e.g. Bilingual, highly energetic, experience with luxury brands..."
                     rows={4}
                   />
                 </div>
-                <div className="form-step-actions">
-                  <button type="button" onClick={prevStep} className="text-on-surface-variant hover:text-white font-bold transition-colors inline-flex items-center gap-2">
+                <div className="pt-6 flex justify-between">
+                  <button type="button" onClick={prevStep} className="text-slate-600 hover:text-primary font-semibold transition-colors inline-flex items-center gap-2">
                     <span className="material-symbols-outlined">arrow_back</span>
                     Back
                   </button>
                   <button
                     type="button"
                     onClick={nextStep}
-                    className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
+                    className="glow-button inline-flex items-center gap-2 text-white font-semibold px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all"
                   >
                     Final Step
                     <span className="material-symbols-outlined">arrow_forward</span>
@@ -335,12 +344,12 @@ export default function JobseekersContent() {
                   </label>
                   <label
                     htmlFor="js-compcard"
-                    className="w-full bg-background border-2 border-dashed border-white/10 hover:border-primary/50 rounded-xl px-8 py-14 flex flex-col items-center justify-center transition-all cursor-pointer group"
+                    className="w-full bg-white border-2 border-dashed border-slate-300 hover:border-primary/50 rounded-xl px-8 py-14 flex flex-col items-center justify-center transition-all cursor-pointer group"
                   >
                     <input id="js-compcard" name="compCard" type="file" accept=".pdf,.jpg,.jpeg,.png" className="sr-only" />
-                    <span className="material-symbols-outlined text-5xl text-on-surface-variant mb-4 group-hover:text-primary transition-colors">cloud_upload</span>
-                    <p className="text-on-surface font-headline text-lg text-center">Click to browse or drag and drop</p>
-                    <p className="text-on-surface-variant text-sm mt-2">Max file size: 5MB (PDF, JPG, PNG)</p>
+                    <span className="material-symbols-outlined text-5xl text-slate-400 mb-4 group-hover:text-primary transition-colors">cloud_upload</span>
+                    <p className="text-slate-700 font-semibold text-lg text-center">Click to browse or drag and drop</p>
+                    <p className="text-slate-500 text-sm mt-2">Max file size: 5MB (PDF, JPG, PNG)</p>
                   </label>
                 </div>
 
@@ -350,17 +359,17 @@ export default function JobseekersContent() {
                       <input
                         type="checkbox"
                         aria-label="I agree to the PromoPower Privacy Policy"
-                        className="appearance-none w-6 h-6 border-2 border-white/20 rounded-md bg-transparent checked:bg-primary checked:border-primary peer transition-all cursor-pointer flex-shrink-0"
+                        className="appearance-none w-6 h-6 border-2 border-slate-300 rounded-md bg-white checked:bg-primary checked:border-primary peer transition-all cursor-pointer flex-shrink-0"
                         checked={isAgreed}
                         onChange={(e) => setIsAgreed(e.target.checked)}
                       />
-                      <span aria-hidden="true" className="material-symbols-outlined absolute text-charcoal-dark font-bold opacity-0 peer-checked:opacity-100 transition-opacity text-sm pointer-events-none">
+                      <span aria-hidden="true" className="material-symbols-outlined absolute text-white font-bold opacity-0 peer-checked:opacity-100 transition-opacity text-sm pointer-events-none">
                         check
                       </span>
                     </div>
-                    <p className="text-sm text-on-surface-variant leading-relaxed text-left">
+                    <p className="text-sm text-slate-600 leading-relaxed text-left">
                       I acknowledge and accept the{" "}
-                      <Link href="/privacy" className="text-primary hover:text-white transition-colors underline underline-offset-4 decoration-primary/30">
+                      <Link href="/privacy" className="text-primary hover:text-primary/80 transition-colors underline underline-offset-4 decoration-primary/30">
                         PromoPower Privacy Policy
                       </Link>{" "}
                       and consent to the collection and use of my personal data for jobseeker assessment and campaign matching (Singapore PDPA).
@@ -368,8 +377,8 @@ export default function JobseekersContent() {
                   </label>
                 </div>
 
-                <div className="form-step-actions border-t border-white/5 mt-4">
-                  <button type="button" onClick={prevStep} className="text-on-surface-variant hover:text-white font-bold transition-colors inline-flex items-center gap-2">
+                <div className="pt-6 flex justify-between border-t border-slate-200 mt-4">
+                  <button type="button" onClick={prevStep} className="text-slate-600 hover:text-primary font-semibold transition-colors inline-flex items-center gap-2">
                     <span aria-hidden="true" className="material-symbols-outlined">arrow_back</span>
                     Back
                   </button>
@@ -377,7 +386,7 @@ export default function JobseekersContent() {
                     type="button"
                     onClick={submitForm}
                     disabled={isSubmitting || !isAgreed}
-                    className="glow-button inline-flex items-center gap-2 text-on-primary font-headline font-normal px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
+                    className="glow-button inline-flex items-center gap-2 text-white font-semibold px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? "Submitting..." : "Complete Profile"}
                     <span aria-hidden="true" className="material-symbols-outlined">send</span>
@@ -386,17 +395,17 @@ export default function JobseekersContent() {
               </div>
 
               {step === 4 && (
-                <div className="animate-in zoom-in-95 duration-500 py-6 fade-in">
-                  <div className="w-20 h-20 bg-primary/20 rounded-full flex items-center justify-center mb-6 relative">
-                    <div className="absolute inset-0 bg-primary/20 rounded-full animate-ping" aria-hidden="true" />
+                <div className="animate-in zoom-in-95 duration-500 py-6 fade-in text-center">
+                  <div className="w-20 h-20 bg-blue-50 border border-primary/20 rounded-full flex items-center justify-center mb-6 mx-auto relative">
+                    <div className="absolute inset-0 bg-primary/10 rounded-full animate-ping" aria-hidden="true" />
                     <span className="material-symbols-outlined text-4xl text-primary font-bold">check</span>
                   </div>
-                  <h3 className="text-3xl font-headline font-normal text-on-surface mb-3">Application Received</h3>
-                  <p className="text-lg text-on-surface-variant max-w-sm">
+                  <h3 className="text-3xl font-bold text-slate-900 mb-3">Application Received</h3>
+                  <p className="text-lg text-slate-600 max-w-sm mx-auto">
                     Thank you for applying. Our recruitment team will review your profile and contact you if there is a suitable opportunity.
                   </p>
                   {FORM_DEMO_MODE && (
-                    <p className="text-sm text-on-surface-variant/70 max-w-sm mt-4">
+                    <p className="text-sm text-slate-500 max-w-sm mx-auto mt-4">
                       Demo mode: this submission was validated but not emailed.
                     </p>
                   )}

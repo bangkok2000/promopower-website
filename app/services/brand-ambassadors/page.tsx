@@ -57,8 +57,8 @@ export default function BrandAmbassadorsPage() {
     <>
       <PageHero
         badge="Service"
-        title="Trained Brand Ambassadors Who Represent Your Brand With Confidence"
-        description="Brand ambassadors play a vital role in creating positive first impressions, strengthening customer engagement and helping organisations build meaningful connections with their audiences. PromoPower provides trained brand ambassadors who can support both brand representation and product promotion across a wide range of customer-facing environments."
+        title="Brand Ambassadors For Launches, Sampling And Counters"
+        description="They explain a product, sample it, or represent the brand at a launch, counter or event. They are briefed on what to say, what not to say, and how the brand expects them to present."
       />
 
       <ServicePageWayfinding
@@ -69,61 +69,49 @@ export default function BrandAmbassadorsPage() {
       >
       <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">Supporting Brand Representation And Product Promotion</h2>
-            <p>Brand ambassadors often serve as the face of a campaign while also helping customers understand the product in front of them.</p>
+            <h2 className="section-title">Who Is Fielded, And On What Basis</h2>
             <p>
-              Whether introducing a new product, supporting an activation, engaging customers at an event or representing
-              a brand in a retail environment, they play an important role in shaping customer perceptions and influencing
-              experiences.
+              Selection is against the brief: communication, presentation, and whether the person suits that counter, launch or event. A beauty sampling stand and a luxury counter are not staffed from the same shortlist.
             </p>
             <p>
-              At PromoPower, we understand that effective brand representation requires more than simply placing people
-              on-site. It requires selecting individuals who align with campaign objectives, communicate effectively,
-              understand the product they are promoting and recognise the importance of professionalism.
-            </p>
-            <p>
-              Our ambassadors are chosen based on communication ability, confidence, presentation and suitability for the
-              specific environment in which they will operate.
+              Before the first shift, the team is briefed on the product points, the customer approach, and any restrictions the brand sets. If you have an approved script or claims list, that is what they use.
             </p>
           </div>
       </section>
 
       <section id="section-support" className="page-section-anchor">
           <div className="max-w-3xl">
-            <h2 className="section-title">Supporting Customer-Facing Campaign Activity</h2>
-            <p className="page-intro mb-8">Our brand ambassadors can support a variety of activities including:</p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3" aria-label="Supported activities">
+            <h2 className="section-title">Typical Assignments</h2>
+            <p className="page-intro mb-8">The role covers these jobs. Tell us which ones apply so the briefing matches the site.</p>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2" aria-label="Supported activities">
               {supportAreas.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-on-surface">
-                  <span aria-hidden="true" className="material-symbols-outlined text-primary text-base mt-1">check_circle</span>
-                  <span>{item}</span>
+                <li key={item} className="text-slate-700 pl-4 border-l-2 border-slate-300 text-sm">
+                  {item}
                 </li>
               ))}
             </ul>
             <p className="prose-block mt-8">
-              Each deployment is supported by structured preparation, clear briefing and ongoing coordination to help
-              ensure consistent representation throughout the campaign while helping customers receive clear, confident
-              product information.
+              You provide the product points, any dos and don&apos;ts, and appearance rules if you have them. PromoPower screens, briefs, rosters and stays contactable once shifts start.
             </p>
           </div>
       </section>
 
       <section id="section-value" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">People Shape Perceptions And Purchase Confidence</h2>
-            <p>Customers often remember the people they interacted with long after they have forgotten the details of a campaign.</p>
+            <h2 className="section-title">What We Need From You</h2>
             <p>
-              Trained brand ambassadors help create positive experiences, reinforce brand values, explain products clearly
-              and encourage meaningful engagement. By placing the right people in front of the right audiences,
-              organisations can strengthen campaign effectiveness while protecting brand reputation.
+              Dates, locations, headcount, and the product information customers should hear. If sampling or a demonstration is involved, include the handling rules and what staff are allowed to claim.
+            </p>
+            <p>
+              Without that, the briefing is guesswork. With it, the same points are used at every site on the roster.
             </p>
           </div>
       </section>
       </ServicePageWayfinding>
 
       <CTASection
-        heading="Looking For Trained Brand Ambassadors?"
-        body="Contact our team to discuss your campaign objectives and staffing requirements."
+        heading="Send The Product Brief"
+        body="Include dates, sites, headcount and the points customers should hear."
         primaryLabel="Speak With Our Team"
         primaryHref="/contact-us"
         secondaryLabel="Explore All Services"

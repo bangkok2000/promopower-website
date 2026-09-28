@@ -33,7 +33,7 @@ export default function TermsPage() {
           <div className="max-w-3xl">
           <div className="content-card mb-10" role="note" aria-label="Document status">
             <p className="text-sm text-on-surface-variant leading-relaxed">
-              <span className="font-headline text-accent-amber uppercase tracking-widest text-xs block mb-2">
+              <span className="font-headline text-primary uppercase tracking-widest text-xs block mb-2">
                 Draft — Pending Legal Review
               </span>
               This document is a working draft prepared for internal review. The final terms will be reviewed and
@@ -83,7 +83,7 @@ export default function TermsPage() {
             <p>
               When you submit information through any form on this website, you represent that the information is
               accurate, that you have the right to share it and that you have read and understood our{" "}
-              <Link className="text-primary hover:text-white transition-colors" href="/privacy">
+              <Link className="text-primary hover:text-primary transition-colors" href="/privacy">
                 Privacy Policy
               </Link>
               . Submissions do not, by themselves, create any contractual relationship between you and PromoPower.
@@ -114,7 +114,7 @@ export default function TermsPage() {
             <h2 id="terms-section-9" className="page-section-anchor text-2xl font-headline font-normal text-on-surface mt-6">9. Privacy</h2>
             <p>
               Your use of this website is also governed by our{" "}
-              <Link className="text-primary hover:text-white transition-colors" href="/privacy">
+              <Link className="text-primary hover:text-primary transition-colors" href="/privacy">
                 Privacy Policy
               </Link>
               , which forms part of these Terms.
@@ -141,7 +141,7 @@ export default function TermsPage() {
               <li>{SITE.address}</li>
               <li>
                 Email:{" "}
-                <a className="text-primary hover:text-white transition-colors" href={`mailto:${SITE.email}`}>
+                <a className="text-primary hover:text-primary transition-colors" href={`mailto:${SITE.email}`}>
                   {SITE.email}
                 </a>
               </li>

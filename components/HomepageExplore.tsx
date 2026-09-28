@@ -73,43 +73,16 @@ export default function HomepageExplore({ children }: HomepageExploreProps) {
   return (
     <section id="wayfinding" className="homepage-explore page-section" aria-label="Explore PromoPower">
       <div className="page-container">
-        <div className="homepage-quick-paths">
-          {HOMEPAGE_QUICK_PATHS.map((path) => {
-            const isActive = activeId === path.sectionId;
-            return (
-              <button
-                key={path.title}
-                type="button"
-                className={`quick-path-card group ${isActive ? "quick-path-card-active" : ""}`}
-                aria-current={isActive ? "true" : undefined}
-                onClick={() => activateTab(path.sectionId, { scrollToPanels: true })}
-              >
-                <div className="icon-badge mb-4 group-hover:border-accent-steel/50 transition-colors">
-                  <span className="material-symbols-outlined">{path.icon}</span>
-                </div>
-                <h2 className="text-xl font-headline font-normal text-on-surface mb-2">{path.title}</h2>
-                <p className="text-sm text-on-surface-variant leading-relaxed mb-4 flex-1">{path.description}</p>
-                <span className="inline-flex items-center gap-1 text-primary text-sm font-bold group-hover:gap-2 transition-all">
-                  Continue
-                  <span className="material-symbols-outlined text-base" aria-hidden="true">
-                    arrow_forward
-                  </span>
-                </span>
-              </button>
-            );
-          })}
-        </div>
-
         <div
           id="homepage-section-nav"
           data-visible="true"
           aria-label="Homepage sections"
-          className="homepage-tab-bar lg:grid lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14"
+          className="homepage-tab-bar"
         >
-          <div className="hidden lg:block lg:col-span-4 xl:col-span-3" aria-hidden="true" />
-          <div className="homepage-tab-nav lg:col-span-8 xl:col-span-9">
+          <div className="homepage-tab-nav">
+            <p className="sr-only">Homepage sections</p>
             {showScrollAffordance ? (
-              <p className="page-section-nav-hint">Scroll sideways for more sections</p>
+              <p className="page-section-nav-hint sr-only">Scroll sideways for more sections</p>
             ) : null}
             <div className="page-section-nav-scroll">
               {canScrollLeft ? (
@@ -172,6 +145,33 @@ export default function HomepageExplore({ children }: HomepageExploreProps) {
               />
             </div>
           </div>
+        </div>
+
+        <div className="homepage-quick-paths">
+          {HOMEPAGE_QUICK_PATHS.map((path) => {
+            const isActive = activeId === path.sectionId;
+            return (
+              <button
+                key={path.title}
+                type="button"
+                className={`quick-path-card group ${isActive ? "quick-path-card-active" : ""}`}
+                aria-current={isActive ? "true" : undefined}
+                onClick={() => activateTab(path.sectionId, { scrollToPanels: true })}
+              >
+                <div className="icon-badge mb-4 group-hover:border-accent-steel/50 transition-colors">
+                  <span className="material-symbols-outlined">{path.icon}</span>
+                </div>
+                <h2 className="text-xl font-headline font-normal text-on-surface mb-2">{path.title}</h2>
+                <p className="text-sm text-on-surface-variant leading-relaxed mb-4 flex-1">{path.description}</p>
+                <span className="inline-flex items-center gap-1 text-primary text-sm font-bold group-hover:gap-2 transition-all">
+                  Continue
+                  <span className="material-symbols-outlined text-base" aria-hidden="true">
+                    arrow_forward
+                  </span>
+                </span>
+              </button>
+            );
+          })}
         </div>
 
         <div id="homepage-tab-panels" className="homepage-tab-panels">

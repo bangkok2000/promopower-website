@@ -40,7 +40,7 @@ export default function OGImage() {
               width: 72,
               height: 72,
               borderRadius: "50%",
-              border: "3px solid #FF8C00",
+              border: "3px solid #0057A8",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -49,7 +49,7 @@ export default function OGImage() {
           >
             <span
               style={{
-                color: "#FF8C00",
+                color: "#0057A8",
                 fontSize: 44,
                 fontWeight: 800,
                 fontFamily: "serif",
@@ -78,7 +78,7 @@ export default function OGImage() {
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div
             style={{
-              color: "#FF8C00",
+              color: "#0057A8",
               fontSize: 18,
               fontFamily: "sans-serif",
               letterSpacing: 4,

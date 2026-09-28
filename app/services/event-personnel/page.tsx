@@ -53,8 +53,8 @@ export default function EventPersonnelPage() {
     <>
       <PageHero
         badge="Service"
-        title="Reliable Event Personnel For Professional Event Execution"
-        description="Events often involve numerous moving parts, tight schedules and high customer expectations. PromoPower provides dependable event personnel who help organisations deliver smooth, professional and well-organised events."
+        title="Event Personnel For Registration, Ushering And Guest Flow"
+        description="Floor roles for exhibitions, conferences, launches and corporate events. The organiser keeps the event plan. PromoPower staffs the positions, briefs them on the run of show, and covers the roster."
       />
 
       <ServicePageWayfinding
@@ -65,18 +65,12 @@ export default function EventPersonnelPage() {
       >
       <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">Supporting Successful Events</h2>
+            <h2 className="section-title">What The Team Is Briefed On</h2>
             <p>
-              From exhibitions and conferences to launches and corporate functions, event personnel play a critical role
-              in shaping attendee experiences.
+              Position, shift, who they report to on site, and which questions they answer versus refer. Registration staff need the badge and queue process. Ushers need the room flow. Information counters need the approved answers, not a general script.
             </p>
             <p>
-              Our personnel can assist with registration, customer assistance, crowd management, guest engagement and
-              general event support.
-            </p>
-            <p>
-              Every deployment is supported by preparation, coordination and operational oversight designed to help
-              events run efficiently.
+              Send the run of show and the position list before the briefing. If a call time or uniform is set by the venue or client, include that too.
             </p>
           </div>
       </section>
@@ -85,13 +79,12 @@ export default function EventPersonnelPage() {
           <div className="max-w-3xl">
             <h2 className="section-title">Support Areas</h2>
             <p className="page-intro mb-8">
-              Our event teams support the customer-facing operations that keep events running smoothly:
+              Roles we roster. Say which positions you need and how many per shift.
             </p>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-3" aria-label="Event support areas">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2" aria-label="Event support areas">
               {supportAreas.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-on-surface">
-                  <span aria-hidden="true" className="material-symbols-outlined text-primary text-base mt-1">check_circle</span>
-                  <span>{item}</span>
+                <li key={item} className="text-slate-700 pl-4 border-l-2 border-slate-300 text-sm">
+                  {item}
                 </li>
               ))}
             </ul>
@@ -101,7 +94,7 @@ export default function EventPersonnelPage() {
 
       <CTASection
         heading="Planning An Event?"
-        body="Let’s discuss how PromoPower can support your event staffing requirements."
+        body="Send the date, venue, positions and headcount per shift."
         primaryLabel="Speak With Our Team"
         primaryHref="/contact-us"
         secondaryLabel="Explore All Services"

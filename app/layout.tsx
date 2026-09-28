@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Playfair_Display, Lora, Manrope } from "next/font/google";
+import { Inter } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import BackToTopButton from "@/components/BackToTopButton";
@@ -9,26 +9,14 @@ import { getSiteGraphJsonLd } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 import "./globals.css";
 
-const playfair = Playfair_Display({
+const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-playfair",
-  display: "swap",
-});
-
-const lora = Lora({
-  subsets: ["latin"],
-  variable: "--font-lora",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
+  variable: "--font-inter",
   display: "swap",
 });
 
 export const viewport: Viewport = {
-  themeColor: "#1a1a1a",
+  themeColor: "#0c1929",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -55,9 +43,6 @@ export const metadata: Metadata = {
   creator: SITE.name,
   publisher: SITE.name,
   category: "Staffing and Recruitment",
-  alternates: {
-    canonical: "/",
-  },
   robots: {
     index: true,
     follow: true,
@@ -96,7 +81,8 @@ export default function RootLayout({
   return (
     <html
       lang="en-SG"
-      className={`h-full antialiased ${playfair.variable} ${lora.variable} ${manrope.variable}`}
+      suppressHydrationWarning
+      className={`h-full antialiased ${inter.variable}`}
     >
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />

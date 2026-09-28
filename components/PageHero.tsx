@@ -12,23 +12,28 @@ export default function PageHero({ badge, title, description, children, compact 
   return (
     <section
       id="top"
-      className={`page-hero relative overflow-hidden scroll-mt-header ${compact ? "min-h-[40vh]" : "min-h-[45vh]"}`}
+      className={`magazine-page-hero relative overflow-hidden scroll-mt-header border-b border-slate-200 bg-white ${compact ? "pt-6 pb-10 sm:pt-8 sm:pb-12" : "pt-8 pb-12 sm:pt-10 sm:pb-14 lg:pt-12 lg:pb-16"}`}
     >
-      <div className="absolute inset-0 midnight-gradient opacity-80" aria-hidden="true" />
-      <div className="hero-glow hero-glow-primary -top-24 -left-20" aria-hidden="true" />
-      <div className="hero-glow hero-glow-accent -bottom-16 right-0" aria-hidden="true" />
-
-      <div className="relative z-10 w-full py-10 sm:py-12 lg:py-14">
+      <div className="relative z-10 w-full">
         <div className="page-container">
-          <div className="grid items-start gap-10 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
-            <div className="hidden lg:block lg:col-span-4 xl:col-span-3" aria-hidden="true" />
+          {/* Editorial Dateline */}
+          <div className="flex flex-wrap items-center gap-2.5 border-b border-slate-200/80 pb-3 mb-6 sm:mb-8 text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-slate-500 font-label">
+            <span className="inline-block w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
+            {badge ? (
+              <span className="text-primary">{badge}</span>
+            ) : null}
+            <span className="text-slate-300">/</span>
+            <span>PromoPower Singapore</span>
+          </div>
 
-            <div className="lg:col-span-8 xl:col-span-9">
-              {badge ? <span className="section-label">{badge}</span> : null}
-              <h1 className="page-title max-w-3xl">{title}</h1>
-              <p className="page-intro max-w-2xl mb-8">{description}</p>
-              {children}
-            </div>
+          <div className="max-w-4xl">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[3.5rem] font-extrabold tracking-[-0.035em] text-slate-900 leading-[1.1] font-headline mb-6 sm:mb-8">
+              {title}
+            </h1>
+            <p className="text-lg sm:text-xl leading-relaxed text-slate-600 max-w-3xl">
+              {description}
+            </p>
+            {children ? <div className="mt-8">{children}</div> : null}
           </div>
         </div>
       </div>

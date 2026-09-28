@@ -27,13 +27,13 @@ export default function Error({
           </button>
           <Link
             href="/"
-            className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
+            className="bg-surface-container backdrop-blur-md text-on-surface border border-black/15 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center justify-center gap-2 hover:bg-black/5 transition-all"
           >
             Return home
           </Link>
           <Link
             href="/contact-us"
-            className="bg-white/10 backdrop-blur-md text-on-surface border border-white/20 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center justify-center gap-2 hover:bg-white/20 transition-all"
+            className="bg-surface-container backdrop-blur-md text-on-surface border border-black/15 px-8 py-4 rounded-full font-headline font-normal inline-flex items-center justify-center gap-2 hover:bg-black/5 transition-all"
           >
             Contact us
           </Link>

@@ -89,19 +89,36 @@ export default function PageSectionNav({
 
     if (sections.length === 0) return;
 
+    // Track visibility state for all sections
+    const visibilityMap = new Map<string, number>();
+
     const observer = new IntersectionObserver(
       (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio);
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibilityMap.set(entry.target.id, entry.intersectionRatio);
+          } else {
+            visibilityMap.delete(entry.target.id);
+          }
+        });
 
-        if (visible[0]?.target.id) {
-          setActiveId(visible[0].target.id);
+        // Find the section with highest visibility
+        let bestId: string | null = null;
+        let bestRatio = 0;
+        visibilityMap.forEach((ratio, id) => {
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestId = id;
+          }
+        });
+
+        if (bestId) {
+          setActiveId(bestId);
         }
       },
       {
-        rootMargin: "-40% 0px -45% 0px",
-        threshold: [0, 0.25, 0.5],
+        rootMargin: "-20% 0px -30% 0px",
+        threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1],
       }
     );
 

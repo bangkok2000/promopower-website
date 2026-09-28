@@ -4,14 +4,11 @@ interface IndustryCardProps {
   icon?: string;
 }
 
-export default function IndustryCard({ name, description, icon = "domain" }: IndustryCardProps) {
+export default function IndustryCard({ name, description }: IndustryCardProps) {
   return (
-    <article className="content-card h-full">
-      <div className="icon-badge">
-        <span className="material-symbols-outlined">{icon}</span>
-      </div>
-      <h3 className="text-2xl font-headline font-normal text-on-surface mb-3">{name}</h3>
-      <p className="text-on-surface-variant leading-relaxed">{description}</p>
+    <article className="border-t border-slate-200 pt-5">
+      <h3 className="text-lg font-bold text-slate-900 mb-2">{name}</h3>
+      <p className="text-slate-600 text-sm leading-relaxed">{description}</p>
     </article>
   );
 }

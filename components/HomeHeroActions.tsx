@@ -1,51 +1,20 @@
-"use client";
-
-import { useHomepageTabs } from "@/components/HomepageTabs";
-import type { HomepageSectionId } from "@/lib/navigation";
+import Link from "next/link";
 
 export default function HomeHeroActions() {
-  const { activateTab } = useHomepageTabs();
-
   return (
     <div className="hero-actions">
-      <button
-        type="button"
-        className="glow-button text-on-primary px-6 sm:px-8 py-4 rounded-full font-headline font-normal text-base hover:scale-105 active:scale-95 transition-all text-center"
-        onClick={() => activateTab("contact", { scrollToPanels: true })}
+      <Link
+        href="#contact"
+        className="glow-button text-on-primary px-6 sm:px-8 py-4 font-label font-semibold text-base hover:scale-[1.02] active:scale-[0.98] transition-all text-center"
       >
         Get In Touch
-      </button>
-      <button
-        type="button"
+      </Link>
+      <Link
+        href="#services"
         className="btn-secondary px-6 sm:px-8 py-4 text-base"
-        onClick={() => activateTab("services", { scrollToPanels: true })}
       >
         Explore Our Services
-      </button>
+      </Link>
     </div>
-  );
-}
-
-export function HomepageTabButton({
-  sectionId,
-  className,
-  children,
-  scrollToPanels = true,
-}: {
-  sectionId: HomepageSectionId;
-  className?: string;
-  children: React.ReactNode;
-  scrollToPanels?: boolean;
-}) {
-  const { activateTab } = useHomepageTabs();
-
-  return (
-    <button
-      type="button"
-      className={className}
-      onClick={() => activateTab(sectionId, { scrollToPanels })}
-    >
-      {children}
-    </button>
   );
 }

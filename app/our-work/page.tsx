@@ -40,7 +40,7 @@ export default function OurWork() {
         description="A selection of activations, retail promotions, roadshows and customer engagement campaigns supported by PromoPower across Singapore."
       />
 
-      <section className="page-section">
+      <section className="py-14 sm:py-16 lg:py-20 bg-white">
         <PageContentRail>
           <PortfolioClientNav items={portfolioNavItems} />
 
@@ -55,11 +55,9 @@ export default function OurWork() {
                   className="page-section-anchor space-y-5"
                   aria-labelledby={`portfolio-heading-${slug}`}
                 >
-                  <div className="border-b border-white/10 pb-4">
-                    <h2 id={`portfolio-heading-${slug}`} className="font-headline text-3xl sm:text-4xl font-normal text-on-surface">
-                      {group.client}
-                    </h2>
-                  </div>
+                  <h2 id={`portfolio-heading-${slug}`} className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 border-b border-slate-200 pb-4">
+                    {group.client}
+                  </h2>
 
                   <GalleryGrid photos={group.photos} label={group.client} />
                 </section>
@@ -70,8 +68,8 @@ export default function OurWork() {
       </section>
 
       <CTASection
-        heading="Ready to Discuss Your Next Campaign?"
-        body="Tell us about your upcoming activation and we'll help you plan the right workforce solution."
+        heading="Planning Something Similar?"
+        body="Send the dates, locations and headcount. The portfolio shows the kind of sites we staff. It is not a client list for publication."
         primaryLabel="Contact Our Team"
         primaryHref="/contact-us"
       />

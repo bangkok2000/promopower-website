@@ -1,36 +1,62 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# PromoPower Website
 
-## Getting Started
+Next.js static site with form APIs on Cloudflare Workers. See [AGENTS.md](./AGENTS.md) and the `0*_*.md` project docs before making changes.
 
-First, run the development server:
+## Requirements
+
+- Node.js 20+
+- Cloudflare account (for deploy and form API testing)
+- `CLOUDFLARE_API_TOKEN` in the environment for `wrangler` (or run `wrangler login`)
+
+## Local development (pages only)
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). This mode serves the Next.js app only. **`/api/contact` and `/api/jobseekers` are not available** here because the site uses static export; those routes live on the Worker.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Local development (pages + form API)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Build the static export, then run the Worker with the `out/` assets binding:
 
-## Learn More
+```bash
+npm run preview
+```
 
-To learn more about Next.js, take a look at the following resources:
+Open the URL shown by Wrangler (typically [http://localhost:8787](http://localhost:8787)). Form submissions hit the same handlers as production.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Optional env for the client bundle (create `.env.local` from [`.env.example`](./.env.example)):
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- `NEXT_PUBLIC_FORM_DEMO_MODE=true` — force demo banner and demo API responses
+- `NEXT_PUBLIC_FORMS_LIVE=true` — hide demo banner when building for go-live
 
-## Deploy on Vercel
+Worker secrets (email delivery) are set on Cloudflare, not in `.env.local`:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+wrangler secret put FORM_RECIPIENT_EMAIL
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+See [TODO.md](./TODO.md) for MailChannels DNS and production cutover.
+
+## Build and deploy
+
+```bash
+npm run build    # writes static files to out/
+npm run deploy   # build + wrangler deploy
+```
+
+Preview deployment: `https://promopower-website.mohmadnoorariffin.workers.dev` (see [ownershiptransfer.md](./ownershiptransfer.md)).
+
+Portfolio client sections live on a single [`/our-work`](./app/our-work/page.tsx) page. `/our-work/*` URLs redirect to `/our-work` via [`public/_redirects`](./public/_redirects).
+
+## Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `npm run dev` | Next.js dev server (UI only) |
+| `npm run preview` | Production-like Worker + static assets + APIs |
+| `npm run build` | Static export to `out/` |
+| `npm run deploy` | Deploy Worker and assets to Cloudflare |
+| `npm run lint` | ESLint |
