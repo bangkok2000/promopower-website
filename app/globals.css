@@ -1481,11 +1481,18 @@
     color: var(--color-on-surface);
   }
 
-  .back-to-top-fab {
+  .page-scroll-controls {
     position: fixed;
-    right: max(1.25rem, env(safe-area-inset-right));
-    bottom: max(1.25rem, env(safe-area-inset-bottom));
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
     z-index: 45;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .page-scroll-fab,
+  .back-to-top-fab {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -1499,12 +1506,132 @@
     transition: all 0.2s ease;
   }
 
+  .page-scroll-fab:hover,
   .back-to-top-fab:hover {
     transform: translateY(-2px);
     border-color: var(--color-primary);
     background-color: var(--color-primary);
     color: #ffffff;
     box-shadow: 0 6px 18px rgb(0 87 168 / 0.25);
+  }
+
+  .page-wayfinding-band {
+    position: sticky;
+    top: var(--site-header-height, 5rem);
+    z-index: 35;
+    padding-block: 0.4rem;
+    border-bottom: 1px solid #e2e8f0;
+    background: rgb(255 255 255 / 0.97);
+    backdrop-filter: blur(10px);
+  }
+
+  .page-wayfinding-band-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+  }
+
+  @media (min-width: 1024px) {
+    .page-wayfinding-band-inner {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 2rem;
+    }
+  }
+
+  .page-wayfinding-band .page-section-nav {
+    position: static;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    backdrop-filter: none;
+    border-bottom: none;
+  }
+
+  @media (min-width: 1024px) {
+    .page-wayfinding-band .page-section-nav {
+      flex: 1 1 16rem;
+      min-width: 0;
+      justify-content: flex-end;
+    }
+
+    .page-wayfinding-band .page-section-nav-scroll {
+      justify-content: flex-end;
+    }
+  }
+
+  .page-wayfinding-header {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 1rem;
+    margin: 0;
+    flex: 0 1 auto;
+  }
+
+  .page-wayfinding-breadcrumb {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .page-wayfinding-breadcrumb .page-breadcrumb-list {
+    font-size: 0.8125rem;
+  }
+
+  .page-wayfinding-breadcrumb .page-breadcrumb {
+    margin-bottom: 0;
+  }
+
+  .page-end-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.75rem;
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #e2e8f0;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  .page-end-link {
+    border: none;
+    background: transparent;
+    padding: 0;
+    color: var(--color-primary);
+    text-decoration: underline;
+    text-underline-offset: 0.18em;
+    text-decoration-color: rgb(0 87 168 / 0.35);
+    cursor: pointer;
+    font: inherit;
+    transition: text-decoration-color 0.2s ease;
+  }
+
+  .page-end-link:hover {
+    text-decoration-color: var(--color-primary);
+  }
+
+  .page-end-links-sep {
+    color: #94a3b8;
+    font-weight: 400;
+  }
+
+  .home-section-nav-wrap {
+    position: sticky;
+    top: var(--site-header-height, 5rem);
+    z-index: 30;
+    margin-bottom: 0.5rem;
+    padding-inline: var(--site-gutter);
+    max-width: 80rem;
+    margin-inline: auto;
+  }
+
+  .home-section-nav-wrap .page-section-nav {
+    position: static;
+    margin-bottom: 0;
   }
 
   .homepage-tab-panels {

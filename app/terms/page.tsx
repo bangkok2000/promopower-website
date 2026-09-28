@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import PageSectionNavGroup from "@/components/PageSectionNavGroup";
-import { TERMS_NAV } from "@/lib/page-nav-config";
+import { TERMS_NAV, simplePageBreadcrumb } from "@/lib/page-nav-config";
 import { buildPageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
@@ -18,13 +19,16 @@ const lastUpdated = "16 June 2026";
 export default function TermsPage() {
   return (
     <>
-      <PageHero
-        badge="Legal"
-        title="Terms of Use"
-        description="The terms governing your use of the PromoPower website and the relationship between you and PromoPower Pte Ltd."
-      />
-
       <PageSectionNavGroup
+        hero={
+          <PageHero
+            badge="Legal"
+            title="Terms of Use"
+            description="The terms governing your use of the PromoPower website and the relationship between you and PromoPower Pte Ltd."
+            compact
+          />
+        }
+        breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("Terms of Use")} />}
         navItems={TERMS_NAV}
         navLabel="Terms sections"
         scrollHint="Scroll sideways for more sections"

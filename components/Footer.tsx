@@ -15,7 +15,7 @@ const QUICK_LINKS = [
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
+    <footer id="site-footer" className="site-footer scroll-mt-header">
       <div className="page-container site-footer-main">
         <div className="site-footer-grid">
           <div>

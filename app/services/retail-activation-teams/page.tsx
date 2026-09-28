@@ -52,13 +52,15 @@ export default function RetailActivationTeamsPage() {
 
   return (
     <>
-      <PageHero
-        badge="Service"
-        title="Retail Teams For Demonstrations, Promotions And Sampling"
-        description="In-store work at the shelf or counter, including campaigns that run in more than one outlet. The script, trading hours and sampling rules are set before the roster is issued."
-      />
-
       <ServicePageWayfinding
+        hero={
+          <PageHero
+            badge="Service"
+            title="Retail Teams For Demonstrations, Promotions And Sampling"
+            description="In-store work at the shelf or counter, including campaigns that run in more than one outlet. The script, trading hours and sampling rules are set before the roster is issued."
+            compact
+          />
+        }
         title="Retail Activation Teams"
         path="/services/retail-activation-teams"
         description="Coordinated retail activation teams in Singapore for multi-location campaigns, mall promotions, counter takeovers and structured retail rollouts."

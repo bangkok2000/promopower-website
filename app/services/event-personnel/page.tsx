@@ -51,13 +51,15 @@ export default function EventPersonnelPage() {
 
   return (
     <>
-      <PageHero
-        badge="Service"
-        title="Event Personnel For Registration, Ushering And Guest Flow"
-        description="Floor roles for exhibitions, conferences, launches and corporate events. The organiser keeps the event plan. PromoPower staffs the positions, briefs them on the run of show, and covers the roster."
-      />
-
       <ServicePageWayfinding
+        hero={
+          <PageHero
+            badge="Service"
+            title="Event Personnel For Registration, Ushering And Guest Flow"
+            description="Floor roles for exhibitions, conferences, launches and corporate events. The organiser keeps the event plan. PromoPower staffs the positions, briefs them on the run of show, and covers the roster."
+            compact
+          />
+        }
         title="Event Personnel"
         path="/services/event-personnel"
         description="Reliable event personnel in Singapore for corporate events, conferences, brand activations, VIP hospitality and large-scale public events."

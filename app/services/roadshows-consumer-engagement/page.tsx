@@ -50,13 +50,15 @@ export default function RoadshowsConsumerEngagementPage() {
 
   return (
     <>
-      <PageHero
-        badge="Service"
-        title="Roadshow Teams For Public Sites, Malls And Sampling Drives"
-        description="Shorter conversations, uneven footfall, and site rules that are not the same as a store. Teams are rostered by site and shift, and briefed on what they can hand out or record."
-      />
-
       <ServicePageWayfinding
+        hero={
+          <PageHero
+            badge="Service"
+            title="Roadshow Teams For Public Sites, Malls And Sampling Drives"
+            description="Shorter conversations, uneven footfall, and site rules that are not the same as a store. Teams are rostered by site and shift, and briefed on what they can hand out or record."
+            compact
+          />
+        }
         title="Roadshows & Consumer Engagement"
         path="/services/roadshows-consumer-engagement"
         description="Roadshow and consumer engagement staffing in Singapore for islandwide promotional tours, consumer festivals, sampling drives and on-ground brand experiences."

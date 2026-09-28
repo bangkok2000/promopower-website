@@ -52,13 +52,15 @@ export default function CampaignSupportCoordinationPage() {
 
   return (
     <>
-      <PageHero
-        badge="Service"
-        title="Rosters, Attendance And A Contact While The Campaign Is Live"
-        description="Coordination is the work behind the people on site: who is where, whether they attended, and who the client calls when something changes. It is included with a frontline team, or booked on its own."
-      />
-
       <ServicePageWayfinding
+        hero={
+          <PageHero
+            badge="Service"
+            title="Rosters, Attendance And A Contact While The Campaign Is Live"
+            description="Coordination is the work behind the people on site: who is where, whether they attended, and who the client calls when something changes. It is included with a frontline team, or booked on its own."
+            compact
+          />
+        }
         title="Campaign Support & Coordination"
         path="/services/campaign-support-coordination"
         description="Campaign support and on-ground coordination for promotional rollouts in Singapore — supervisors, deployment management and end-to-end operational oversight."

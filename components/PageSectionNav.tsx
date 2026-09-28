@@ -2,6 +2,7 @@
 
 import {
   PAGE_SECTION_NAV_ID,
+  scrollToPageBottom,
   scrollToPageTop,
   scrollToSectionId,
   syncPageSectionNavHeight,
@@ -13,6 +14,7 @@ type PageSectionNavProps = {
   items: SectionNavItem[];
   ariaLabel?: string;
   showTop?: boolean;
+  showBottom?: boolean;
   scrollHint?: string;
 };
 
@@ -20,6 +22,7 @@ export default function PageSectionNav({
   items,
   ariaLabel = "On this page",
   showTop = false,
+  showBottom = false,
   scrollHint,
 }: PageSectionNavProps) {
   const [activeId, setActiveId] = useState<string | null>(null);
@@ -174,6 +177,15 @@ export default function PageSectionNav({
               </button>
             );
           })}
+          {showBottom ? (
+            <button
+              type="button"
+              className="page-section-nav-pill"
+              onClick={() => scrollToPageBottom()}
+            >
+              Page bottom
+            </button>
+          ) : null}
         </div>
 
         {canScrollRight ? (

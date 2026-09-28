@@ -3,6 +3,8 @@ import type { Metadata } from "next";
 import DualAudienceCards from "@/components/DualAudienceCards";
 import ExpandableProse from "@/components/ExpandableProse";
 import HomeHero from "@/components/HomeHero";
+import PageWayfindingBand from "@/components/PageWayfindingBand";
+import { HOMEPAGE_SECTIONS } from "@/lib/navigation";
 import { HomepageTabLayout, HomepageTabSubsection } from "@/components/HomepageTabLayout";
 import StatBand from "@/components/StatBand";
 import ClientMarquee from "@/components/ClientMarquee";
@@ -179,6 +181,11 @@ export default function Home() {
   return (
     <>
       <JsonLd data={homePageJsonLd(HOME_ENTITY_SUMMARY)} />
+      <PageWayfindingBand
+        navItems={HOMEPAGE_SECTIONS.map((section) => ({ id: section.id, label: section.label }))}
+        navLabel="Homepage sections"
+        scrollHint="Scroll sideways for more sections"
+      />
       <HomeHero />
       <StatBand />
       <ClientMarquee />

@@ -4,8 +4,12 @@ import { getPortfolioNavItems, portfolioClientSlug, portfolioSectionId } from "@
 import CTASection from "@/components/CTASection";
 import GalleryGrid from "@/components/GalleryGrid";
 import JsonLd from "@/components/JsonLd";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import PageContentRail from "@/components/PageContentRail";
+import PageEndLinks from "@/components/PageEndLinks";
 import PageHero from "@/components/PageHero";
+import PageWayfindingBand from "@/components/PageWayfindingBand";
+import { simplePageBreadcrumb } from "@/lib/page-nav-config";
 import PortfolioClientNav from "@/components/PortfolioClientNav";
 import { buildPageMetadata, webPageJsonLd } from "@/lib/seo";
 
@@ -34,10 +38,12 @@ export default function OurWork() {
           "Portfolio of retail promotions, roadshows and customer engagement campaigns supported by PromoPower in Singapore.",
         )}
       />
+      <PageWayfindingBand breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("Our Work")} />} />
       <PageHero
         badge="Our Work"
         title="Campaign Portfolio"
         description="A selection of activations, retail promotions, roadshows and customer engagement campaigns supported by PromoPower across Singapore."
+        compact
       />
 
       <section className="py-14 sm:py-16 lg:py-20 bg-white">
@@ -64,6 +70,7 @@ export default function OurWork() {
               );
             })}
           </div>
+          <PageEndLinks />
         </PageContentRail>
       </section>
 

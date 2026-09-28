@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "@/components/PageHero";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import PageSectionNavGroup from "@/components/PageSectionNavGroup";
-import { PRIVACY_NAV } from "@/lib/page-nav-config";
+import { PRIVACY_NAV, simplePageBreadcrumb } from "@/lib/page-nav-config";
 import { buildPageMetadata } from "@/lib/seo";
 import { SITE } from "@/lib/site";
 
@@ -18,13 +19,16 @@ const lastUpdated = "16 June 2026";
 export default function PrivacyPage() {
   return (
     <>
-      <PageHero
-        badge="Legal"
-        title="Privacy Policy"
-        description="How PromoPower collects, uses, discloses and protects personal data in line with the Singapore Personal Data Protection Act (PDPA)."
-      />
-
       <PageSectionNavGroup
+        hero={
+          <PageHero
+            badge="Legal"
+            title="Privacy Policy"
+            description="How PromoPower collects, uses, discloses and protects personal data in line with the Singapore Personal Data Protection Act (PDPA)."
+            compact
+          />
+        }
+        breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("Privacy Policy")} />}
         navItems={PRIVACY_NAV}
         navLabel="Privacy policy sections"
         scrollHint="Scroll sideways for more sections"

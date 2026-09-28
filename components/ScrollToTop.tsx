@@ -15,7 +15,7 @@ export default function ScrollToTop() {
   }, []);
 
   useLayoutEffect(() => {
-    syncScrollOffsetVars({ includeSectionNav: pathname === "/" });
+    syncScrollOffsetVars({ includeSectionNav: true });
 
     if (window.location.hash) return;
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });

@@ -55,13 +55,15 @@ export default function BrandAmbassadorsPage() {
 
   return (
     <>
-      <PageHero
-        badge="Service"
-        title="Brand Ambassadors For Launches, Sampling And Counters"
-        description="They explain a product, sample it, or represent the brand at a launch, counter or event. They are briefed on what to say, what not to say, and how the brand expects them to present."
-      />
-
       <ServicePageWayfinding
+        hero={
+          <PageHero
+            badge="Service"
+            title="Brand Ambassadors For Launches, Sampling And Counters"
+            description="They explain a product, sample it, or represent the brand at a launch, counter or event. They are briefed on what to say, what not to say, and how the brand expects them to present."
+            compact
+          />
+        }
         title="Brand Ambassadors"
         path="/services/brand-ambassadors"
         description="Trained brand ambassadors in Singapore for product launches, product promotion, retail activations, sampling and customer-facing campaigns."

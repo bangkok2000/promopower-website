@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
-import BackToTopButton from "@/components/BackToTopButton";
+import PageScrollControls from "@/components/PageScrollControls";
 import JsonLd from "@/components/JsonLd";
 import ScrollToTop from "@/components/ScrollToTop";
 import { getSiteGraphJsonLd } from "@/lib/seo";
@@ -99,7 +99,7 @@ export default function RootLayout({
         <NavBar />
         <main className="flex-1 pt-[var(--site-header-height,5rem)]">{children}</main>
         <Footer />
-        <BackToTopButton />
+        <PageScrollControls />
       </body>
     </html>
   );

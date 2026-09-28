@@ -11,6 +11,7 @@ type ServicePageWayfindingProps = {
   path: string;
   description: string;
   navItems: SectionNavItem[];
+  hero: ReactNode;
   children: ReactNode;
 };
 
@@ -19,12 +20,14 @@ export default function ServicePageWayfinding({
   path,
   description,
   navItems,
+  hero,
   children,
 }: ServicePageWayfindingProps) {
   return (
     <>
       <JsonLd data={servicePageJsonLd(title, path, description)} />
       <PageSectionNavGroup
+        hero={hero}
         breadcrumb={<PageBreadcrumb items={serviceBreadcrumb(title)} />}
         navItems={navItems}
         navLabel={`${title} sections`}

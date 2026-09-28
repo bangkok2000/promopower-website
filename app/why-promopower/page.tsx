@@ -2,7 +2,9 @@ import ContentList from "@/components/ContentList";
 import CTASection from "@/components/CTASection";
 import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import PageSectionNavGroup from "@/components/PageSectionNavGroup";
+import { simplePageBreadcrumb } from "@/lib/page-nav-config";
 import type { Metadata } from "next";
 import { buildPageMetadata, webPageJsonLd } from "@/lib/seo";
 
@@ -79,13 +81,20 @@ export default function WhyPromoPowerPage() {
           "Experience since 2002, structured preparation, reliable deployment and MOM licensed employment agency support in Singapore.",
         )}
       />
-      <PageHero
-        badge="Why PromoPower"
-        title="Why Organisations Choose PromoPower"
-        description="A licensed agency since 2002, with briefing before the shift, a live roster, and a performance record for the people we field."
-      />
-
-      <PageSectionNavGroup navItems={whyNav} navLabel="Why PromoPower sections" scrollHint="Scroll sideways for more sections">
+      <PageSectionNavGroup
+        hero={
+          <PageHero
+            badge="Why PromoPower"
+            title="Why Organisations Choose PromoPower"
+            description="A licensed agency since 2002, with briefing before the shift, a live roster, and a performance record for the people we field."
+            compact
+          />
+        }
+        breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("Why PromoPower")} />}
+        navItems={whyNav}
+        navLabel="Why PromoPower sections"
+        scrollHint="Scroll sideways for more sections"
+      >
         <section id="section-reasons" className="page-section-anchor">
           <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-8 font-label">
             Our Differentiators

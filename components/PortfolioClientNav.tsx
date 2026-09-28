@@ -20,6 +20,8 @@ export default function PortfolioClientNav({ items }: PortfolioClientNavProps) {
       items={navItems}
       ariaLabel="Portfolio clients"
       scrollHint="Scroll sideways for more clients"
+      showTop={false}
+      showBottom={false}
     />
   );
 }

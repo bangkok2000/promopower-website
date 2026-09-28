@@ -38,3 +38,7 @@ export function serviceBreadcrumb(title: string) {
     { label: title },
   ];
 }
+
+export function simplePageBreadcrumb(currentPage: string) {
+  return [{ label: "Home", href: "/" }, { label: currentPage }];
+}

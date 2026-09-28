@@ -1,7 +1,9 @@
 import Link from "next/link";
 import LeadershipSelector from "@/components/LeadershipSelector";
 import PageHero from "@/components/PageHero";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import PageSectionNavGroup from "@/components/PageSectionNavGroup";
+import { simplePageBreadcrumb } from "@/lib/page-nav-config";
 
 const aboutNav = [
   { id: "section-experience", label: "Experience" },
@@ -69,13 +71,20 @@ const leadership = [
 export default function AboutUsContent() {
   return (
     <>
-      <PageHero
-        badge="About PromoPower"
-        title="Staffing Promotions And Events In Singapore Since 2002"
-        description="PromoPower recruits, briefs and rosters people for retail promotions, roadshows, exhibitions and customer engagement programmes."
-      />
-
-      <PageSectionNavGroup navItems={aboutNav} navLabel="About sections" scrollHint="Scroll sideways for more sections">
+      <PageSectionNavGroup
+        hero={
+          <PageHero
+            badge="About PromoPower"
+            title="Staffing Promotions And Events In Singapore Since 2002"
+            description="PromoPower recruits, briefs and rosters people for retail promotions, roadshows, exhibitions and customer engagement programmes."
+            compact
+          />
+        }
+        breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("About Us")} />}
+        navItems={aboutNav}
+        navLabel="About sections"
+        scrollHint="Scroll sideways for more sections"
+      >
             <section id="section-experience" className="page-section-anchor">
               <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
                 <div className="lg:col-span-7">

@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import IndustryCard from "@/components/IndustryCard";
 import CTASection from "@/components/CTASection";
 import JsonLd from "@/components/JsonLd";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
+import PageContentRail from "@/components/PageContentRail";
+import PageEndLinks from "@/components/PageEndLinks";
 import PageHero from "@/components/PageHero";
+import PageWayfindingBand from "@/components/PageWayfindingBand";
+import { simplePageBreadcrumb } from "@/lib/page-nav-config";
 import { buildPageMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -81,14 +86,16 @@ export default function IndustriesPage() {
           "Professional staffing support across beauty, luxury retail, FMCG, electronics, F&B, events and more in Singapore.",
         )}
       />
+      <PageWayfindingBand breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("Industries")} />} />
       <PageHero
         badge="Industries"
         title="Industries We Support"
         description="The setting changes the briefing. A luxury counter, a supermarket sampling stand and an exhibition desk do not use the same script, uniform standard or customer approach."
+        compact
       />
 
       <section className="py-12 sm:py-14 lg:py-16">
-        <div className="page-container">
+        <PageContentRail>
           <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-8 font-label">
             Sector Experience
           </p>
@@ -102,7 +109,8 @@ export default function IndustriesPage() {
               />
             ))}
           </div>
-        </div>
+          <PageEndLinks />
+        </PageContentRail>
       </section>
 
       <section className="py-12 sm:py-14 lg:py-16 bg-slate-50 border-y border-slate-200">

@@ -3,7 +3,9 @@ import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
 import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import PageSectionNavGroup from "@/components/PageSectionNavGroup";
+import { simplePageBreadcrumb } from "@/lib/page-nav-config";
 import { buildPageMetadata, servicesHubJsonLd } from "@/lib/seo";
 
 const servicesNav = [
@@ -98,13 +100,20 @@ export default function Services() {
   return (
     <>
       <JsonLd data={servicesHubJsonLd()} />
-      <PageHero
-        badge="Services"
-        title="Five Ways We Staff A Campaign"
-        description="Most clients use one frontline team plus coordination. The pages below say what each team does, and what we need from you before the first shift."
-      />
-
-      <PageSectionNavGroup navItems={servicesNav} navLabel="Services sections" scrollHint="Scroll sideways for more sections">
+      <PageSectionNavGroup
+        hero={
+          <PageHero
+            badge="Services"
+            title="Five Ways We Staff A Campaign"
+            description="Most clients use one frontline team plus coordination. The pages below say what each team does, and what we need from you before the first shift."
+            compact
+          />
+        }
+        breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("Services")} />}
+        navItems={servicesNav}
+        navLabel="Services sections"
+        scrollHint="Scroll sideways for more sections"
+      >
         <section id="section-services" className="page-section-anchor">
         <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
           {services.map((service, index) => (

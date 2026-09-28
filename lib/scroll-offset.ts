@@ -6,7 +6,8 @@ export function measureHeaderHeight(): number {
 }
 
 export function measureSectionNavHeight(): number {
-  const sectionNav = document.getElementById("homepage-section-nav");
+  const sectionNav =
+    document.getElementById("page-section-nav") ?? document.getElementById("homepage-section-nav");
   if (!sectionNav) return 0;
   return sectionNav.offsetHeight || 52;
 }
@@ -14,7 +15,8 @@ export function measureSectionNavHeight(): number {
 export function syncScrollOffsetVars(options?: { includeSectionNav?: boolean }) {
   const headerHeight = measureHeaderHeight();
   const includeSectionNav =
-    options?.includeSectionNav ?? Boolean(document.getElementById("homepage-section-nav"));
+    options?.includeSectionNav ??
+    Boolean(document.getElementById("page-section-nav") ?? document.getElementById("homepage-section-nav"));
   const sectionNavHeight = includeSectionNav ? measureSectionNavHeight() : 0;
   const root = document.documentElement;
 

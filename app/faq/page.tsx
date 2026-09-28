@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import CTASection from "@/components/CTASection";
 import JsonLd from "@/components/JsonLd";
 import PageHero from "@/components/PageHero";
+import PageBreadcrumb from "@/components/PageBreadcrumb";
 import PageSectionNavGroup from "@/components/PageSectionNavGroup";
+import { simplePageBreadcrumb } from "@/lib/page-nav-config";
 import { buildPageMetadata, faqPageJsonLd } from "@/lib/seo";
 
 const faqNav = [
@@ -64,14 +66,16 @@ export default function FAQPage() {
   return (
     <>
       <JsonLd data={faqPageJsonLd(faqs)} />
-      <PageHero
-        badge="FAQ"
-        title="Frequently Asked Questions"
-        description="What we staff, how early to write, how multi-site rosters work, how people are chosen, what a briefing covers, and the employment agency licence."
-        compact
-      />
-
       <PageSectionNavGroup
+        hero={
+          <PageHero
+            badge="FAQ"
+            title="Frequently Asked Questions"
+            description="What we staff, how early to write, how multi-site rosters work, how people are chosen, what a briefing covers, and the employment agency licence."
+            compact
+          />
+        }
+        breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("FAQ")} />}
         navItems={faqNav}
         navLabel="FAQ sections"
         scrollHint="Scroll sideways for more topics"
