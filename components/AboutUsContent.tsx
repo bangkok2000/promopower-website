@@ -35,36 +35,45 @@ const values = [
   },
 ];
 
-// Leadership cards — add remaining names before go-live.
+// Leadership — full copy template: content/leadership-profile-template.md
 const leadership = [
   {
-    // Confirmed: https://www.linkedin.com/in/khing-koh-ba9a6036/
     name: "Khing Koh",
     role: "Director",
     photo: "/team/khing-koh.jpg",
-    responsibility:
-      "Overall direction, client relationships and long-term partnerships across PromoPower's promotional staffing operations.",
+    linkedIn: "https://www.linkedin.com/in/khing-koh-ba9a6036/",
+    bio: [
+      "Khing Koh has been Director of PromoPower Pte Ltd since the agency was established in 2002. She leads general management, client relationships and the promotional staffing operations that support retail activations, roadshows, exhibitions and customer engagement programmes in Singapore.",
+      "Her work stays close to live delivery: how teams are recruited, briefed, rostered and supported on the ground, and how issues are handled when campaigns are running. She works with operations colleagues, brand ambassadors, promoters and business partners so deployments stay accountable from initial briefing through to completion.",
+      "She invests in ongoing learning connected to premium retail and brand presentation—including structured study in luxury brand principles—so briefing and frontline standards stay aligned with what clients expect in high-touch environments.",
+    ],
   },
   {
     name: "Name to be confirmed",
     role: "Operations Manager",
     photo: null,
-    responsibility:
-      "Recruitment, screening, deployment planning and day-to-day campaign coordination across multiple concurrent activations.",
+    bio: [
+      "This profile will be published once the appointment and wording are confirmed.",
+      "It will cover accountability for recruitment, screening, deployment planning and day-to-day coordination across multiple concurrent activations, and how this role works with clients and field teams.",
+    ],
   },
   {
     name: "Name to be confirmed",
     role: "Client Services Manager",
     photo: null,
-    responsibility:
-      "Campaign briefings, client engagement and ongoing communication throughout the campaign lifecycle.",
+    bio: [
+      "This profile will be published once the appointment and wording are confirmed.",
+      "It will cover campaign briefings, client engagement and communication throughout the campaign lifecycle, and what clients should expect from enquiry through to live delivery.",
+    ],
   },
   {
     name: "Name to be confirmed",
     role: "Field Operations Lead",
     photo: null,
-    responsibility:
-      "On-site supervision, schedule management and operational support for personnel across deployment locations.",
+    bio: [
+      "This profile will be published once the appointment and wording are confirmed.",
+      "It will cover on-site supervision, schedule management and operational support for personnel across deployment locations, including how field issues are escalated and resolved.",
+    ],
   },
 ];
 

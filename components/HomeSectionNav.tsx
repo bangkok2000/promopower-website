@@ -15,8 +15,8 @@ export default function HomeSectionNav() {
         items={navItems}
         ariaLabel="Homepage sections"
         scrollHint="Scroll sideways for more sections"
-        showTop
-        showBottom
+        showTop={false}
+        showBottom={false}
       />
     </div>
   );

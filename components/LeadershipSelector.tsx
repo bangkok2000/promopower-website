@@ -7,7 +7,8 @@ export type LeadershipMember = {
   name: string;
   role: string;
   photo: string | null;
-  responsibility: string;
+  bio: string[];
+  linkedIn?: string;
 };
 
 type LeadershipSelectorProps = {
@@ -74,7 +75,23 @@ export default function LeadershipSelector({ members }: LeadershipSelectorProps)
         >
           <p className="leadership-name">{selected.name}</p>
           <h3 className="leadership-role">{selected.role}</h3>
-          <p className="leadership-body">{selected.responsibility}</p>
+          <div className="leadership-bio">
+            {selected.bio.map((paragraph, paragraphIndex) => (
+              <p key={paragraphIndex} className="leadership-body">
+                {paragraph}
+              </p>
+            ))}
+          </div>
+          {selected.linkedIn ? (
+            <a
+              href={selected.linkedIn}
+              className="leadership-linkedin"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              LinkedIn profile
+            </a>
+          ) : null}
         </div>
       </div>
     </div>

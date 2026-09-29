@@ -3,6 +3,7 @@ import { PORTFOLIO_GROUPS } from "@/lib/data";
 import { getPortfolioNavItems, portfolioClientSlug, portfolioSectionId } from "@/lib/portfolio";
 import CTASection from "@/components/CTASection";
 import GalleryGrid from "@/components/GalleryGrid";
+import LatestWorkGallery from "@/components/LatestWorkGallery";
 import JsonLd from "@/components/JsonLd";
 import PageBreadcrumb from "@/components/PageBreadcrumb";
 import PageContentRail from "@/components/PageContentRail";
@@ -48,6 +49,12 @@ export default function OurWork() {
 
       <section className="py-14 sm:py-16 lg:py-20 bg-white">
         <PageContentRail>
+          <LatestWorkGallery />
+
+          <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-slate-400 pt-2 pb-4 font-label">
+            Full portfolio archive
+          </p>
+
           <PortfolioClientNav items={portfolioNavItems} />
 
           <div className="space-y-12 pt-8">

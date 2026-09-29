@@ -3,8 +3,6 @@ import type { Metadata } from "next";
 import DualAudienceCards from "@/components/DualAudienceCards";
 import ExpandableProse from "@/components/ExpandableProse";
 import HomeHero from "@/components/HomeHero";
-import PageWayfindingBand from "@/components/PageWayfindingBand";
-import { HOMEPAGE_SECTIONS } from "@/lib/navigation";
 import { HomepageTabLayout, HomepageTabSubsection } from "@/components/HomepageTabLayout";
 import StatBand from "@/components/StatBand";
 import ClientMarquee from "@/components/ClientMarquee";
@@ -181,11 +179,6 @@ export default function Home() {
   return (
     <>
       <JsonLd data={homePageJsonLd(HOME_ENTITY_SUMMARY)} />
-      <PageWayfindingBand
-        navItems={HOMEPAGE_SECTIONS.map((section) => ({ id: section.id, label: section.label }))}
-        navLabel="Homepage sections"
-        scrollHint="Scroll sideways for more sections"
-      />
       <HomeHero />
       <StatBand />
       <ClientMarquee />
@@ -194,7 +187,7 @@ export default function Home() {
       <div className="home-editorial">
         <section className="home-paths" aria-label="Explore PromoPower">
           <div className="page-container">
-            <div className="home-paths-grid">
+            <div className="home-paths-grid grid grid-cols-1 md:grid-cols-3 md:gap-x-8 lg:gap-x-10">
               {[
                 {
                   title: "Workforce Solutions",
@@ -212,10 +205,10 @@ export default function Home() {
                   href: "#contact",
                 },
               ].map((path) => (
-                <Link key={path.title} href={path.href} className="group flex justify-between items-center gap-4 py-4 border-b border-slate-200 hover:border-primary/40 transition-colors">
-                  <span>
-                    <strong className="block text-slate-900 font-semibold group-hover:text-primary transition-colors">{path.title}</strong>
-                    <small className="text-sm text-slate-500">{path.description}</small>
+                <Link key={path.title} href={path.href} className="home-path-link group min-w-0">
+                  <span className="min-w-0">
+                    <strong>{path.title}</strong>
+                    <small>{path.description}</small>
                   </span>
                 </Link>
               ))}

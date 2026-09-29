@@ -1,3 +1,4 @@
+import AwardsRecognitionSection from "@/components/AwardsRecognitionSection";
 import ContentList from "@/components/ContentList";
 import CTASection from "@/components/CTASection";
 import JsonLd from "@/components/JsonLd";
@@ -10,6 +11,7 @@ import { buildPageMetadata, webPageJsonLd } from "@/lib/seo";
 
 const whyNav = [
   { id: "section-reasons", label: "Why us" },
+  { id: "section-recognition", label: "Recognition" },
   { id: "section-partner", label: "Partnership" },
 ];
 
@@ -101,6 +103,8 @@ export default function WhyPromoPowerPage() {
           </p>
           <ContentList items={reasons} ariaLabel="Why organisations choose PromoPower" />
         </section>
+
+        <AwardsRecognitionSection />
 
         <section id="section-partner" className="page-section-anchor">
           <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 sm:p-10 lg:p-12 max-w-3xl">

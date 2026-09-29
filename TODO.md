@@ -57,7 +57,7 @@ Without `FORM_FORCE_DEMO`, submissions would **fail** (502) because send is atte
 ### 2. Leadership cards — names not confirmed
 
 - Four cards on the About Us page currently display **"Name to be confirmed"**.
-- **Action**: Provide real names, roles and optionally short bios. Update [components/AboutUsContent.tsx](components/AboutUsContent.tsx) — the `leadership` array at the top of the file.
+- **Action**: Provide real names, roles and approved bios (see [content/leadership-profile-template.md](content/leadership-profile-template.md)). Update [components/AboutUsContent.tsx](components/AboutUsContent.tsx) — the `leadership` array. **Khing Koh draft** is sourced from public LinkedIn — she should approve wording before treating as final.
 
 ---
 

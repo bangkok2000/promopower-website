@@ -1,6 +1,13 @@
 import ExpandableProse from "@/components/ExpandableProse";
 import HeroAccolades from "@/components/HeroAccolades";
 import HomeHeroActions from "@/components/HomeHeroActions";
+import HomeSectionNav from "@/components/HomeSectionNav";
+import Image from "next/image";
+
+const HOME_HERO_IMAGE = "/images/hero/home-hero-retail-team.jpg";
+
+const heroLeadMobile =
+  "Professional promoters, brand ambassadors and event teams in Singapore—licensed agency support since 2002.";
 
 const heroParagraphs = {
   lead:
@@ -20,44 +27,77 @@ export default function HomeHero() {
     <section
       id="top"
       aria-labelledby="home-hero-title"
-      className="magazine-hero relative bg-white pt-6 pb-10 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 border-b border-slate-200 scroll-mt-header"
+      className="magazine-hero relative bg-white scroll-mt-header"
     >
-      <div className="page-container">
-        <div className="flex flex-wrap items-center justify-between gap-y-2 border-b border-slate-200/90 pb-3 mb-5 sm:mb-8 text-[0.625rem] sm:text-[0.6875rem] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] text-slate-500 font-label">
-          <div className="flex flex-wrap items-center gap-x-2 gap-y-1 sm:gap-x-2.5">
-            <span className="inline-block w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
-            <span className="text-primary font-bold">Singapore</span>
-            <span className="text-slate-300 max-sm:hidden" aria-hidden="true">
-              /
-            </span>
-            <span className="max-sm:hidden">Established 2002</span>
-            <span className="text-slate-300 max-sm:hidden" aria-hidden="true">
-              /
-            </span>
-            <span className="max-sm:hidden">MOM EA License 20C0109</span>
-            <span className="sm:hidden text-slate-600 normal-case tracking-normal font-medium">
-              Since 2002 · EA 20C0109
-            </span>
-          </div>
-          <div className="text-slate-400 hidden sm:block tracking-[0.2em]">
-            WORKFORCE INTELLIGENCE &amp; DEPLOYMENT
-          </div>
+      <div className="home-hero-copy-panel page-container pb-0">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-slate-900/10 pb-3 sm:gap-x-2.5 text-[0.625rem] sm:text-[0.6875rem] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] text-slate-600 font-label">
+          <span className="inline-block w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
+          <span className="text-primary font-bold">Singapore</span>
+          <span className="text-slate-400 max-sm:hidden" aria-hidden="true">
+            /
+          </span>
+          <span className="max-sm:hidden">Established 2002</span>
+          <span className="text-slate-400 max-sm:hidden" aria-hidden="true">
+            /
+          </span>
+          <span className="max-sm:hidden">MOM EA License 20C0109</span>
+          <span className="sm:hidden text-slate-700 normal-case tracking-normal font-medium">
+            Since 2002 · EA 20C0109
+          </span>
         </div>
+      </div>
 
-        <div className="max-w-5xl mb-5 sm:mb-10 lg:mb-14">
-          <h1
-            id="home-hero-title"
-            className="home-hero-headline font-extrabold tracking-[-0.035em] text-slate-900 font-headline"
+      <div className="home-hero-cinema-strip">
+        <Image
+          src={HOME_HERO_IMAGE}
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="hero-photo object-cover home-hero-cinema-strip-photo"
+          aria-hidden="true"
+        />
+      </div>
+
+      <div className="home-hero-copy-panel page-container home-hero-copy-panel-after-strip">
+        <div className="home-hero-copy-grid">
+          <div className="home-hero-copy-main">
+            <h1
+              id="home-hero-title"
+              className="home-hero-headline font-extrabold tracking-[-0.035em] text-slate-900 font-headline mb-4 sm:mb-5"
+            >
+              Building Successful Brand Experiences Through Exceptional People
+            </h1>
+            <p className="home-hero-lead text-slate-800 mb-6 sm:mb-8 max-w-2xl sm:hidden">{heroLeadMobile}</p>
+            <p className="home-hero-lead hidden text-slate-800 mb-6 sm:mb-8 max-w-2xl sm:block">{heroParagraphs.lead}</p>
+            <HomeHeroActions />
+          </div>
+
+          <aside
+            className="home-hero-pullout max-lg:order-first max-lg:mb-1 lg:flex lg:justify-end lg:pt-1"
+            aria-labelledby="home-hero-pullout-label"
           >
-            Building Successful Brand Experiences Through Exceptional People
-          </h1>
+            <div className="flex flex-col items-start gap-3 bg-transparent shadow-none lg:max-w-[15rem] lg:items-end lg:gap-4 xl:max-w-[17rem]">
+              <span
+                className="block h-px w-12 shrink-0 bg-gradient-to-r from-primary to-primary/40 lg:w-16"
+                aria-hidden="true"
+              />
+              <p
+                id="home-hero-pullout-label"
+                className="m-0 flex flex-col gap-0.5 font-label text-[0.625rem] font-semibold uppercase leading-[1.55] tracking-[0.24em] text-slate-700 sm:text-[0.6875rem] sm:tracking-[0.26em] lg:items-end lg:text-right lg:text-[0.75rem] lg:leading-[1.5] lg:tracking-[0.28em] lg:text-slate-800 xl:text-[0.8125rem] xl:tracking-[0.3em]"
+              >
+                <span className="block">Workforce</span>
+                <span className="block">Intelligence</span>
+                <span className="block text-primary lg:mt-0.5">&amp; Deployment</span>
+              </p>
+            </div>
+          </aside>
         </div>
+      </div>
 
+      <div className="page-container pt-8 pb-10 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 border-b border-slate-200">
         <div className="home-hero-grid grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-12 xl:gap-16 items-start">
           <div className="home-hero-intro lg:col-span-5 flex flex-col gap-3 sm:gap-5">
-            <p className="home-hero-lead text-slate-700">
-              {heroParagraphs.lead}
-            </p>
             <ExpandableProse
               paragraphs={[heroParagraphs.campaignPhilosophy]}
               visibleCount={0}
@@ -69,10 +109,6 @@ export default function HomeHero() {
             </p>
           </div>
 
-          <div className="home-hero-actions-mobile lg:hidden">
-            <HomeHeroActions />
-          </div>
-
           <div className="home-hero-accolades lg:col-span-5">
             <p className="home-hero-accolades-label text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-slate-400 mb-3 font-label">
               Official Accreditations &amp; Recognition
@@ -82,15 +118,11 @@ export default function HomeHero() {
 
           <div className="home-hero-process lg:col-span-7">
             <div className="home-hero-process-panel">
-              <h2 className="home-hero-process-title font-label">
-                How a campaign is staffed
-              </h2>
+              <h2 className="home-hero-process-title font-label">How a campaign is staffed</h2>
               <p className="home-hero-process-copy">{heroParagraphs.fromBrief}</p>
 
               <div className="home-hero-process-live hidden lg:block">
-                <h3 className="home-hero-process-subtitle font-label">
-                  While the campaign is running
-                </h3>
+                <h3 className="home-hero-process-subtitle font-label">While the campaign is running</h3>
                 <p className="home-hero-process-copy">{heroParagraphs.whileLive}</p>
               </div>
 
@@ -100,13 +132,13 @@ export default function HomeHero() {
                 expandLabel="While the campaign is running"
                 className="home-hero-process-live-mobile lg:hidden"
               />
-
-              <div className="home-hero-actions-desktop hidden lg:block">
-                <HomeHeroActions />
-              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="home-hero-section-nav">
+        <HomeSectionNav />
       </div>
     </section>
   );
