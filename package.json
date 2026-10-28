@@ -8,6 +8,7 @@
     "build": "next build",
     "start": "npx serve out",
     "lint": "eslint",
+    "gallery:thumbs": "sh scripts/gallery-thumbs.sh",
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {

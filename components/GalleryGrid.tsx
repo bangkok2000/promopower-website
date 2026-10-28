@@ -6,9 +6,13 @@ import { useState, useEffect, useCallback, useRef } from "react";
 interface Props {
   photos: string[];
   label?: string;
+  eagerCount?: number;
 }
 
-export default function GalleryGrid({ photos, label = "campaign" }: Props) {
+/** Grid tiles use the small copies from `npm run gallery:thumbs`; the lightbox loads the original. */
+const thumbnailSrc = (src: string) => src.replace(/^\/gallery\//, "/gallery-thumbs/");
+
+export default function GalleryGrid({ photos, label = "campaign", eagerCount = 0 }: Props) {
   const [lightbox, setLightbox] = useState<number | null>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const openerRef = useRef<HTMLElement | null>(null);
@@ -54,11 +58,12 @@ export default function GalleryGrid({ photos, label = "campaign" }: Props) {
             className="group relative aspect-[4/3] overflow-hidden rounded-lg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-primary)]"
           >
             <Image
-              src={src}
+              src={thumbnailSrc(src)}
               alt={`PromoPower ${label} activation ${i + 1}`}
               fill
               sizes="(min-width: 1024px) 25vw, (min-width: 640px) 33vw, 50vw"
-              loading={i < 12 ? "eager" : "lazy"}
+              loading={i < eagerCount ? "eager" : "lazy"}
+              decoding="async"
               className="object-cover transition-transform duration-300 group-hover:scale-[1.05]"
             />
             {/* subtle expand hint on hover */}

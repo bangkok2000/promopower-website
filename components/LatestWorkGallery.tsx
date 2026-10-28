@@ -24,7 +24,7 @@ export default function LatestWorkGallery() {
         </p>
       </div>
 
-      <GalleryGrid photos={[...LATEST_WORK_PHOTOS]} label="Latest campaign photography" />
+      <GalleryGrid photos={[...LATEST_WORK_PHOTOS]} label="Latest campaign photography" eagerCount={4} />
     </section>
   );
 }
