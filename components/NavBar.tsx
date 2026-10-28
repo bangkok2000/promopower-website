@@ -302,7 +302,7 @@ export default function NavBar() {
                     <Link className={getMobileLinkClass(item.href)} href={item.href} onClick={closeMenu}>
                       {item.label}
                     </Link>
-                    <div className="flex w-full flex-col gap-2 border-l border-nav-border pl-4">
+                    <div className="flex w-full flex-col items-center gap-2.5">
                       {SERVICE_LINKS.map((service) => (
                         <Link
                           key={service.href}

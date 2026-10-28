@@ -1,11 +1,72 @@
 # PromoPower Website — Ownership Transfer Guide
 
-This document describes how to hand over the PromoPower website project from the **current developer account** to the **new owner** (PromoPower) when the design is complete and approved for production.
+Follow **Approved handover plan** below once the design is signed off. Parts 1–7 are the detailed checklists. Where they disagree with that plan, the plan wins.
 
-It covers two transfers:
+The live preview is on the developer’s personal Cloudflare account. Giving the agency the preview link does not give them that account. The agency’s current host is WordPress on Apache (`sgcloudhosting`). They cannot take this project over by uploading the repo or a zip into WordPress.
 
-1. **GitHub** — repository ownership from developer → new owner  
-2. **Cloudflare** — hosting, DNS, Worker, and form settings from developer → new owner  
+---
+
+## Approved handover plan
+
+Decided 28 October 2026. After approval, nothing for this site should remain on the developer’s personal Cloudflare account or require the developer’s login.
+
+### What stays where it is
+
+Measured on the live domain:
+
+| Record | Current value | Action |
+|--------|----------------|--------|
+| Website | WordPress on Apache, `103.7.8.5` | Replaced only when DNS for the website names is switched |
+| Nameservers | `ns811.sgcloudhosting.com`, `ns812.sgcloudhosting.com` | Leave with the agency. Do not move the whole zone onto the developer’s personal Cloudflare account |
+| MX | `mail.promopower.com.sg` | Do not change |
+| `mail` A record | `103.7.8.5` | Do not change |
+| DKIM | `default._domainkey` | Do not change |
+| SPF | `v=spf1 ip4:103.7.8.5 ip4:103.7.8.53 include:se.mschosting.com -all` | Replace with the merged record below. Do not use a MailChannels-only SPF |
+| Contact form today | WordPress Contact Form 7 posts to `/contact-us/` | Stops being the public form after cutover. Their server may keep sending mail for other uses |
+| Public inbox | `admin@promopower.com.sg` | Form recipient |
+
+The new site sends form mail with MailChannels, from `noreply@promopower.com.sg` to `admin@promopower.com.sg`. MailChannels is not in the current SPF record, and there is no `_mailchannels` TXT record, so those messages fail until the agency adds the two DNS records below. The domain-lock value must be the **new** Cloudflare account ID, not `b8913fb4c5f8fe17d60ce0f824cdd1aa`.
+
+### 1. New Cloudflare account for the agency
+
+Create an account that is not `mohmadnoorariffin@protonmail.com`. Use an email the agency will own. Deploy this repo there (`npm run deploy`) after setting `account_id` in `wrangler.toml` to that new account. Set `FORM_RECIPIENT_EMAIL` to `admin@promopower.com.sg`.
+
+Add the agency as a **Super Administrator**. When their deployment is serving `promopower.com.sg` and a test enquiry has arrived, remove the developer’s user from that account. Cloudflare will not delete the account. Removing the developer is what ends the developer’s access. Revoke any API token the developer created for that account.
+
+### 2. GitHub
+
+Transfer `https://github.com/bangkok2000/promopower-website` from `bangkok2000` to a GitHub user or organisation the agency controls. See Part 1. The code on `main` at commit `d6f1355` (28 October 2026) matches the preview. Later commits must be pushed before transfer if the design changes again.
+
+### 3. DNS the agency applies
+
+Leave MX, the `mail` A record, and DKIM as they are.
+
+Replace the SPF TXT on `@` with:
+
+```text
+v=spf1 ip4:103.7.8.5 ip4:103.7.8.53 include:se.mschosting.com include:relay.mailchannels.net ~all
+```
+
+Add a TXT record on `_mailchannels.promopower.com.sg`:
+
+```text
+v=mc1 cfid=<NEW_CLOUDFLARE_ACCOUNT_ID>
+```
+
+Point only the website names (`promopower.com.sg` and `www`) at the **new** account’s Worker. Do not point them at `promopower-website.mohmadnoorariffin.workers.dev`.
+
+### 4. Close the personal account copy
+
+After the new site answers on `promopower.com.sg` and mail delivery is confirmed:
+
+- Delete the `promopower-website` Worker on the personal account (`b8913fb4c5f8fe17d60ce0f824cdd1aa`). The `workers.dev` preview then stops.
+- Revoke the personal Cloudflare API token used to deploy.
+- Confirm the developer is no longer a member of the new account and no longer an admin on the GitHub repo.
+
+### What not to send the agency
+
+- The developer’s Cloudflare login or API token.
+- A zip of the `out/` folder or the repo as something to upload into WordPress. The forms call `/api/contact` and `/api/jobseekers` on the Worker. Those routes do not exist on their Apache host.
 
 ---
 
@@ -116,6 +177,10 @@ git remote set-url origin https://github.com/<NEW_OWNER>/promopower-website.git
 
 ## Part 2 — Cloudflare settings transfer
 
+The account to configure is the **new agency account** from the Approved handover plan, not the personal account `b8913fb4c5f8fe17d60ce0f824cdd1aa`. Do not replace the live SPF record with a MailChannels-only value. Merge it as shown in that plan. Do not move nameservers off `sgcloudhosting` unless the agency chooses to. Email stays on `mail.promopower.com.sg`.
+
+
+
 You will transfer **hosting configuration** from your Cloudflare account to the new owner’s Cloudflare account. The site is a **Cloudflare Worker** serving static files from `out/` plus form API routes.
 
 > **Important:** Cloudflare Workers cannot be “moved” between accounts with one click. The standard approach is: **document settings on the developer account → replicate on the owner account → deploy from the GitHub repo → attach domain → re-enter secrets.**
@@ -201,21 +266,7 @@ Remove `promopower.com.sg` from the **developer** Worker after cutover to avoid 
 
 Add on the **new owner’s** `promopower.com.sg` zone after the zone is active:
 
-**SPF (TXT on `@`):**
-
-```
-v=spf1 include:relay.mailchannels.net ~all
-```
-
-(Merge with existing SPF if one already exists — do not create duplicate `@` TXT records without merging.)
-
-**Domain lockdown (TXT on `_mailchannels.promopower.com.sg`):**
-
-```
-v=mc1 cfid=<NEW_OWNER_CLOUDFLARE_ACCOUNT_ID>
-```
-
-Replace `<NEW_OWNER_CLOUDFLARE_ACCOUNT_ID>` with the new account ID from Step 1.
+**SPF and domain lockdown:** use the records in **Approved handover plan**. Do not publish `v=spf1 include:relay.mailchannels.net ~all` on its own. That would replace the agency’s existing mail authorisation. The `cfid` is the new account’s ID, not `b8913fb4c5f8fe17d60ce0f824cdd1aa`.
 
 #### Redirects (`public/_redirects`)
 

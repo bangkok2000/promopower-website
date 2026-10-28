@@ -106,7 +106,7 @@ export default function AboutUsContent() {
         scrollHint="Scroll sideways for more sections"
       >
             <section id="section-experience" className="page-section-anchor">
-              <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-start">
+              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start [&>*]:min-w-0">
                 <div className="lg:col-span-7">
                   <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-5 font-label">
                     Our Foundation

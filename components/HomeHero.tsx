@@ -7,13 +7,13 @@ import Image from "next/image";
 const HOME_HERO_IMAGE = "/images/hero/home-hero-retail-team.jpg";
 
 const heroLeadMobile =
-  "Promoters, brand ambassadors and event teams for stores, roadshows and events in Singapore. Licensed agency since 2002.";
+  "We recruit and prepare the team, roster them across your outlets or event sites, and handle attendance and changes once the campaign is live.";
 
 const heroParagraphs = {
   lead:
     "For more than two decades, PromoPower has helped organisations connect with customers through professional promoters, brand ambassadors, event personnel and retail support teams.",
   campaignPhilosophy:
-    "Customers meet the person on the floor. We recruit them, walk them through the product, and put them on the roster.",
+    "To the customer, the person at the counter is the brand. How well that person is chosen and prepared shows in every conversation.",
   scope:
     "That covers one outlet or several locations across Singapore. After the first shift, the same team handles attendance and changes.",
   fromBrief:
@@ -42,7 +42,7 @@ export default function HomeHero() {
           </span>
           <span className="max-sm:hidden">MOM EA License 20C0109</span>
           <span className="sm:hidden text-slate-700 normal-case tracking-normal font-medium">
-            Since 2002 · EA 20C0109
+            MOM licensed · EA 20C0109
           </span>
         </div>
       </div>
