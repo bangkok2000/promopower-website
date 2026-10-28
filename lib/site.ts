@@ -4,7 +4,7 @@ export const HOME_ENTITY_SUMMARY =
 
 /** Visible homepage copy — omits facts already shown in the stat band above. */
 export const HOME_ENTITY_SUMMARY_VISIBLE =
-  "We provide end-to-end workforce solutions—recruitment, screening, preparation, deployment and ongoing campaign support—for brand ambassadors, event personnel, retail activations, roadshows and customer engagement programmes across Singapore (UEN 200208541K). We are a workforce staffing partner for customer-facing campaigns, not a creative or experiential agency.";
+  "We recruit the team, walk them through the product, and put them on the roster. Then we stay on attendance and changes. One outlet or several across Singapore (UEN 200208541K).";
 
 export const SITE = {
   name: "PromoPower Pte Ltd",
@@ -21,6 +21,10 @@ export const SITE = {
   foundingDate: "2002",
   locale: "en_SG",
   defaultDescription: HOME_ENTITY_SUMMARY,
+  /** Singapore mobile — WhatsApp click-to-chat (E.164 without +). */
+  whatsappE164: "6588250505",
+  whatsappDisplay: "8825 0505",
+  whatsappUrl: "https://wa.me/6588250505",
 } as const;
 
 export const SOCIAL = {
@@ -52,17 +56,13 @@ export const SERVICE_PAGES = [
     slug: "roadshows-consumer-engagement",
     title: "Roadshows & Consumer Engagement",
     description:
-      "Roadshow and consumer engagement staffing for islandwide promotional tours and on-ground brand experiences in Singapore.",
+      "Roadshow staffing for mall tours, public sites and sampling drives in Singapore.",
   },
   {
     slug: "campaign-support-coordination",
     title: "Campaign Support & Coordination",
     description:
-      "Campaign support and on-ground coordination for promotional rollouts, supervisors and deployment management in Singapore.",
+      "Rosters, attendance and one contact while a promotional campaign is running in Singapore.",
   },
 ] as const;
 
-/** Demo mode banner until live delivery is configured on the Worker (see TODO.md). */
-export const FORM_DEMO_MODE =
-  process.env.NEXT_PUBLIC_FORM_DEMO_MODE === "true" ||
-  process.env.NEXT_PUBLIC_FORMS_LIVE !== "true";

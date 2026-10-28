@@ -5,7 +5,8 @@ import TrustCard from "@/components/TrustCard";
 import { useState, useRef } from "react";
 import { submitJobseekerApplication } from "@/lib/forms";
 import type { FormSubmitResult } from "@/lib/forms";
-import { FORM_DEMO_MODE } from "@/lib/site";
+import { isValidEmail } from "@/lib/form-validation";
+import { SITE } from "@/lib/site";
 
 const processSteps = [
   {
@@ -21,19 +22,19 @@ const processSteps = [
   {
     step: "3",
     title: "Assignment Matching",
-    description: "If a campaign fits your profile and availability, recruitment contacts you with the assignment details before you are rostered.",
+    description: "If a campaign fits your days and experience, recruitment contacts you with the assignment details before you are offered the shift.",
   },
 ];
 
 const benefits = [
   {
     title: "What The Shifts Are",
-    description: "Promotions, retail activations, events and roadshows. You are briefed on the product and the site before the first shift.",
+    description: "Promotions, retail activations, events and roadshows. You receive product and site orientation before the first shift.",
     icon: "campaign",
   },
   {
     title: "Work Is By Assignment",
-    description: "There is no standing roster place. You are contacted when a campaign matches your availability and profile.",
+    description: "There is no guaranteed shift. We call when a campaign fits your days and experience.",
     icon: "schedule",
   },
   {
@@ -48,6 +49,7 @@ export default function JobseekersContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notEmailed, setNotEmailed] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   const validateStep1 = () => {
@@ -59,6 +61,11 @@ export default function JobseekersContent() {
 
     if (!fullName || !email || !phone) {
       setError("Full name, email, and contact number are required.");
+      return false;
+    }
+
+    if (!isValidEmail(email)) {
+      setError("Please provide a valid email address.");
       return false;
     }
 
@@ -93,6 +100,7 @@ export default function JobseekersContent() {
     const result: FormSubmitResult = await submitJobseekerApplication(formData);
     setIsSubmitting(false);
     if (result.success) {
+      setNotEmailed(Boolean(result.demo));
       setStep(4);
     } else {
       setError(result.error ?? "An error occurred. Please try again.");
@@ -147,12 +155,10 @@ export default function JobseekersContent() {
                 </p>
                 <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Submit Your Application</h2>
                 <p className="text-slate-600 text-sm mb-6">Name and contact first, then experience, then a file if you have one. Submitting this does not confirm a shift.</p>
-                {FORM_DEMO_MODE && (
-                  <p className="text-xs text-primary/80 mb-4">
-                    Demo mode: submissions are validated but not emailed until production delivery is configured.
-                  </p>
-                )}
-                <div className="flex gap-3 items-center">
+                <p className="sr-only" aria-live="polite">
+                  Step {Math.min(step, 3)} of 3
+                </p>
+                <div className="flex gap-3 items-center" aria-hidden="true">
                   <div className={`w-3 h-3 rounded-full ${step >= 1 ? "bg-primary shadow-[0_0_0_3px_rgba(0,87,168,0.15)]" : "bg-slate-300"} transition-all`} />
                   <div className={`w-10 h-[2px] ${step >= 2 ? "bg-primary" : "bg-slate-300"} transition-all`} />
                   <div className={`w-3 h-3 rounded-full ${step >= 2 ? "bg-primary shadow-[0_0_0_3px_rgba(0,87,168,0.15)]" : "bg-slate-300"} transition-all`} />
@@ -301,7 +307,7 @@ export default function JobseekersContent() {
               <div hidden={step !== 2} className={step === 2 ? "animate-in fade-in slide-in-from-right-4 duration-500" : undefined}>
                 <div className="space-y-3 mb-8">
                   <label htmlFor="js-portfolio" className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">
-                    Portfolio / Profile Link
+                    Instagram or photo link, if you have one
                   </label>
                   <input
                     id="js-portfolio"
@@ -319,7 +325,7 @@ export default function JobseekersContent() {
                     id="js-traits"
                     name="traits"
                     className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400"
-                    placeholder="e.g. Bilingual, highly energetic, experience with luxury brands..."
+                    placeholder="e.g. Bilingual, sampling or retail experience, can work weekends"
                     rows={4}
                   />
                 </div>
@@ -350,7 +356,7 @@ export default function JobseekersContent() {
                   >
                     <input id="js-compcard" name="compCard" type="file" accept=".pdf,.jpg,.jpeg,.png" className="sr-only" />
                     <span className="material-symbols-outlined text-5xl text-slate-400 mb-4 group-hover:text-primary transition-colors">cloud_upload</span>
-                    <p className="text-slate-700 font-semibold text-lg text-center">Click to browse or drag and drop</p>
+                    <p className="text-slate-700 font-semibold text-lg text-center">Choose a file</p>
                     <p className="text-slate-500 text-sm mt-2">Max file size: 5MB (PDF, JPG, PNG)</p>
                   </label>
                 </div>
@@ -360,7 +366,6 @@ export default function JobseekersContent() {
                     <div className="relative flex items-center justify-center mt-1">
                       <input
                         type="checkbox"
-                        aria-label="I agree to the PromoPower Privacy Policy"
                         className="appearance-none w-6 h-6 border-2 border-slate-300 rounded-md bg-white checked:bg-primary checked:border-primary peer transition-all cursor-pointer flex-shrink-0"
                         checked={isAgreed}
                         onChange={(e) => setIsAgreed(e.target.checked)}
@@ -390,7 +395,7 @@ export default function JobseekersContent() {
                     disabled={isSubmitting || !isAgreed}
                     className="glow-button inline-flex items-center gap-2 text-white font-semibold px-8 py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50 disabled:hover:scale-100 disabled:cursor-not-allowed"
                   >
-                    {isSubmitting ? "Submitting..." : "Complete Profile"}
+                    {isSubmitting ? "Submitting..." : "Submit application"}
                     <span aria-hidden="true" className="material-symbols-outlined">send</span>
                   </button>
                 </div>
@@ -406,11 +411,11 @@ export default function JobseekersContent() {
                   <p className="text-lg text-slate-600 max-w-sm mx-auto">
                     Thank you for applying. Our recruitment team will review your profile and contact you if there is a suitable opportunity.
                   </p>
-                  {FORM_DEMO_MODE && (
+                  {notEmailed ? (
                     <p className="text-sm text-slate-500 max-w-sm mx-auto mt-4">
-                      Demo mode: this submission was validated but not emailed.
+                      Email delivery is not switched on yet. Please also write to {SITE.email}.
                     </p>
-                  )}
+                  ) : null}
                 </div>
               )}
             </form>

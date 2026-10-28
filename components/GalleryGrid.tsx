@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 
 interface Props {
   photos: string[];
@@ -10,6 +10,8 @@ interface Props {
 
 export default function GalleryGrid({ photos, label = "campaign" }: Props) {
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
 
   const close = useCallback(() => setLightbox(null), []);
   const prev = useCallback(
@@ -23,6 +25,8 @@ export default function GalleryGrid({ photos, label = "campaign" }: Props) {
 
   useEffect(() => {
     if (lightbox === null) return;
+    openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    closeRef.current?.focus();
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
       if (e.key === "ArrowLeft") prev();
@@ -33,6 +37,7 @@ export default function GalleryGrid({ photos, label = "campaign" }: Props) {
     return () => {
       window.removeEventListener("keydown", handler);
       document.body.style.overflow = "";
+      openerRef.current?.focus();
     };
   }, [lightbox, close, prev, next]);
 
@@ -105,6 +110,7 @@ export default function GalleryGrid({ photos, label = "campaign" }: Props) {
           <button
             type="button"
             onClick={close}
+            ref={closeRef}
             aria-label="Close lightbox"
             className="gallery-lightbox-btn gallery-lightbox-close"
           >

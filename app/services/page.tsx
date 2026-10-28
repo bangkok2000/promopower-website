@@ -33,7 +33,7 @@ const services = [
       "People who explain a product, sample it, or stand for the brand at a launch, counter or event.",
     points: [
       "Screened for communication and for the presentation standard of that brand.",
-      "Briefed on product points and on what they may and may not say.",
+      "Prepared on product points and on what they may and may not say.",
       "Used for launches, sampling, demonstrations and in-store or event representation.",
     ],
     href: "/services/brand-ambassadors",
@@ -45,7 +45,7 @@ const services = [
       "Floor roles: registration, ushering, guest management and information counters.",
     points: [
       "Exhibitions, conferences, launches and corporate events.",
-      "Briefed on the run of show, their position, and questions they should refer on.",
+      "Prepared on the run of show, their position, and questions they should refer on.",
       "Rostered by shift, with a contact if cover is needed.",
     ],
     href: "/services/event-personnel",
@@ -56,7 +56,7 @@ const services = [
     summary:
       "In-store demonstrations, promotions and sampling, including more than one outlet.",
     points: [
-      "Store list, trading hours and sampling rules are part of the brief.",
+      "Store list, trading hours and sampling rules are confirmed up front.",
       "The same script is used across outlets unless a store needs a change.",
       "Attendance is checked against the roster, not left to each store.",
     ],
@@ -68,7 +68,7 @@ const services = [
     summary:
       "Public sites and mall tours, where conversations are short and footfall is uneven.",
     points: [
-      "Sampling, product introduction and lead capture when the brief includes it.",
+      "Sampling, product introduction and lead capture when the campaign includes it.",
       "Site rules, peak hours and what can be handed out are confirmed before the first day.",
       "Teams are rostered by site and shift, not as one undifferentiated group.",
     ],
@@ -90,8 +90,8 @@ const services = [
 ];
 
 const servicePillars = [
-  "Screening against the brief",
-  "Briefing before the first shift",
+  "Screening against the role and setting",
+  "Readiness before the first shift",
   "Roster by location and shift",
   "Attendance and cover while live",
 ];

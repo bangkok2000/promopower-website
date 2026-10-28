@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { AwardCertificate } from "@/lib/awards";
 
 type AwardsCertificateGalleryProps = {
@@ -10,6 +10,8 @@ type AwardsCertificateGalleryProps = {
 
 export default function AwardsCertificateGallery({ certificates }: AwardsCertificateGalleryProps) {
   const [lightbox, setLightbox] = useState<number | null>(null);
+  const closeRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
 
   const close = useCallback(() => setLightbox(null), []);
   const prev = useCallback(
@@ -23,6 +25,8 @@ export default function AwardsCertificateGallery({ certificates }: AwardsCertifi
 
   useEffect(() => {
     if (lightbox === null) return;
+    openerRef.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+    closeRef.current?.focus();
     const handler = (e: KeyboardEvent) => {
       if (e.key === "Escape") close();
       if (e.key === "ArrowLeft") prev();
@@ -33,6 +37,7 @@ export default function AwardsCertificateGallery({ certificates }: AwardsCertifi
     return () => {
       window.removeEventListener("keydown", handler);
       document.body.style.overflow = "";
+      openerRef.current?.focus();
     };
   }, [lightbox, close, prev, next]);
 
@@ -87,7 +92,7 @@ export default function AwardsCertificateGallery({ certificates }: AwardsCertifi
             </span>
           </div>
 
-          <button type="button" onClick={close} aria-label="Close lightbox" className="gallery-lightbox-btn gallery-lightbox-close">
+          <button ref={closeRef} type="button" onClick={close} aria-label="Close lightbox" className="gallery-lightbox-btn gallery-lightbox-close">
             <span className="material-symbols-outlined text-2xl" aria-hidden="true">
               close
             </span>

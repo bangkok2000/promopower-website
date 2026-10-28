@@ -31,12 +31,12 @@ const industryGroups = [
   },
   {
     name: "Luxury Retail",
-    description: "Selected for stores where the brief sets a higher bar for presentation, conduct and how customers are approached.",
+    description: "Selected for stores where the client sets a higher bar for presentation, conduct and how customers are approached.",
     icon: "diamond",
   },
   {
     name: "Consumer Electronics",
-    description: "Demonstrations and in-store explanation of features. The approved comparison points are part of the briefing.",
+    description: "Demonstrations and in-store explanation of features. The approved comparison points are covered before the shift.",
     icon: "memory",
   },
   {
@@ -46,12 +46,12 @@ const industryGroups = [
   },
   {
     name: "Food & Beverage",
-    description: "Tasting and in-store promotion. The briefing covers how the product is offered and any sampling limits.",
+    description: "Tasting and in-store promotion. Staff learn how the product is offered and any sampling limits before the shift.",
     icon: "restaurant",
   },
   {
     name: "Events & Exhibitions",
-    description: "Registration, visitor flow and front-of-house roles. Positions and the run of show are briefed before call time.",
+    description: "Registration, visitor flow and front-of-house roles. Positions and the run of show are confirmed before call time.",
     icon: "event",
   },
   {
@@ -66,12 +66,12 @@ const industryGroups = [
   },
   {
     name: "Healthcare & Wellness",
-    description: "Awareness and product explanation where claims stay inside the approved brief.",
+    description: "Awareness and product explanation where claims stay inside what the client has approved.",
     icon: "health_and_safety",
   },
   {
     name: "Lifestyle Brands",
-    description: "Apparel, home and personal-care work where the brief is about how the product is shown, worn or used.",
+    description: "Apparel, home and personal-care work focused on how the product is shown, worn or used.",
     icon: "checkroom",
   },
 ];
@@ -90,7 +90,7 @@ export default function IndustriesPage() {
       <PageHero
         badge="Industries"
         title="Industries We Support"
-        description="The setting changes the briefing. A luxury counter, a supermarket sampling stand and an exhibition desk do not use the same script, uniform standard or customer approach."
+        description="The setting changes the script. A luxury counter, a supermarket sampling stand and an exhibition desk do not use the same talking points, uniform standard or customer approach."
         compact
       />
 
@@ -118,20 +118,20 @@ export default function IndustriesPage() {
           <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-4 font-label">
             Our Approach
           </p>
-          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-6">Name The Setting In The Brief</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-6">Name The Setting In Your Enquiry</h2>
           <div className="space-y-4 text-slate-600 leading-relaxed max-w-2xl mx-auto">
             <p>
-              Tell us the banner or venue, what customers should be told, and any rules on sampling, claims or appearance. That is what the shortlist and the briefing are built from.
+              Tell us the banner or venue, what customers should be told, and any rules on sampling, claims or appearance. That feeds the shortlist and what teams are told before shifts.
             </p>
             <p className="text-sm text-slate-500 pt-2">
-              Client names and campaign details are not published here.
+              Brand names we have worked with are listed on the homepage. Campaign details are not published.
             </p>
           </div>
         </div>
       </section>
 
       <CTASection
-        heading="Send The Setting With The Brief"
+        heading="Send The Setting With Your Enquiry"
         body="Name the stores or venues, the dates, and what customers are allowed to be told."
         primaryLabel="Speak With Our Team"
         primaryHref="/contact-us"

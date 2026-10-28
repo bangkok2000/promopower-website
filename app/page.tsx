@@ -35,11 +35,24 @@ export const metadata: Metadata = {
   openGraph: {
     title: HOME_PAGE_TITLE,
     description: HOME_ENTITY_SUMMARY,
+    url: "https://promopower.com.sg/",
+    siteName: "PromoPower",
+    locale: "en_SG",
+    type: "website",
+    images: [
+      {
+        url: "https://promopower.com.sg/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "PromoPower — staffing for promotions, retail and events in Singapore",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: HOME_PAGE_TITLE,
     description: HOME_ENTITY_SUMMARY,
+    images: ["https://promopower.com.sg/opengraph-image"],
   },
 };
 
@@ -55,7 +68,7 @@ const trustIndicators = [
     icon: "verified_user",
   },
   {
-    title: "Screened For The Brief",
+    title: "Screened For The Campaign",
     description: "People are shortlisted on communication, presentation and whether they fit the store, event or roadshow.",
     icon: "groups",
   },
@@ -71,33 +84,33 @@ const trustIndicators = [
   },
   {
     title: "One Operations Contact",
-    description: "The same team handles the enquiry, the briefing and questions during the campaign.",
+    description: "The same team handles the enquiry, team readiness before shifts and questions during the campaign.",
     icon: "checklist",
   },
 ];
 
 const trustParagraphs = [
   "PromoPower Pte Ltd is a MOM licensed employment agency (EA License No. 20C0109), based in Singapore and operating since 2002.",
-  "Clients use us when they need end-to-end support from recruitment through deployment, with someone accountable for briefing, rostering and follow-up once shifts start—whether that is one activation or several locations across Singapore.",
+  "Clients use us when one team has to recruit the people, put them on the roster, and stay on attendance after the first shift. That can be one activation or several locations across Singapore.",
 ];
 
 const approachParagraphs = [
-  "A recommendation is based on the brief, not a general send-out.",
-  "We ask for the objective, dates, locations, headcount and the product points customers should hear. From that we shortlist people, run the briefing and issue the roster.",
-  "During the campaign, that operations contact handles attendance, replacements and questions from the field.",
+  "A recommendation is based on the campaign requirements, not a general send-out.",
+  "We ask for the objective, dates, locations, headcount and the messages customers should hear. From that we shortlist people, prepare them and issue the roster.",
+  "During the campaign, that same contact handles attendance, replacements and questions from the field.",
 ];
 
 const frameworkSteps = [
   {
     title: "Recruit",
     description:
-      "Shortlist against the brief: communication, relevant experience, and whether the person suits that store, event or roadshow.",
+      "Shortlist against the role and setting: communication, relevant experience, and whether the person suits that store, event or roadshow.",
     icon: "group_add",
   },
   {
     title: "Prepare",
     description:
-      "Brief the team on the product, what to say, what not to say, and how the brand expects them to present.",
+      "Walk the team through the product, approved talking points, and how the brand expects them to present.",
     icon: "school",
   },
   {
@@ -145,7 +158,7 @@ const serviceHighlights = [
   {
     title: "Roadshows & Consumer Engagement",
     summary:
-      "Mall tours, public sites and sampling drives, including lead capture when the brief requires it.",
+      "Mall tours, public sites and sampling drives, including lead capture when the campaign requires it.",
     href: "/services/roadshows-consumer-engagement",
     icon: "route",
   },
@@ -201,7 +214,7 @@ export default function Home() {
                 },
                 {
                   title: "Speak With Us",
-                  description: "Send dates, locations, headcount and the product points customers should hear.",
+                  description: "Share dates, sites, headcount and what customers need to be told.",
                   href: "#contact",
                 },
               ].map((path) => (
@@ -258,7 +271,7 @@ export default function Home() {
             <div className="page-container-prose mb-8 sm:mb-10">
               <h2 className="section-title">How Every Campaign Is Run</h2>
               <p className="page-intro">
-                The same five steps apply whether the job is one counter or several outlets. What changes is the brief, the locations and the headcount.
+                The same five steps apply whether the job is one counter or several outlets. What changes is the scope, the locations and the headcount.
               </p>
             </div>
 
@@ -287,7 +300,7 @@ export default function Home() {
             title="What We Staff"
             intro={
               <p className="page-intro">
-                Most campaigns use one frontline team plus coordination. Choose the brief that matches the work.
+                Most campaigns use one frontline team plus coordination. Choose the service line that matches the work.
               </p>
             }
             link={{ href: "/services", label: "Read the full Services page" }}
@@ -319,7 +332,7 @@ export default function Home() {
             title="Where The Teams Work"
             intro={
               <p className="page-intro">
-                The briefing changes with the setting. A luxury counter, a supermarket sampling stand and an exhibition desk do not use the same script.
+                The script changes with the setting. A luxury counter, a supermarket sampling stand and an exhibition desk do not use the same approach.
               </p>
             }
             link={{ href: "/industries", label: "Read the full Industries page" }}
@@ -338,7 +351,7 @@ export default function Home() {
         <section id="contact" className="home-editorial-section">
           <div className="page-container">
           <HomepageTabLayout
-            title="Send A Brief"
+            title="Start An Enquiry"
             intro={
               <ExpandableProse paragraphs={ctaParagraphs} visibleCount={1} expandLabel="Read full message" />
             }

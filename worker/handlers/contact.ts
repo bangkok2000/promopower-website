@@ -30,7 +30,7 @@ function formatContactEmail(data: Record<string, string>) {
     `Email: ${data.email}`,
     `Phone: ${data.phone || "—"}`,
     "",
-    "Campaign brief:",
+    "Campaign details:",
     data.campaignBrief || "—",
     "",
     `PDPA consent: ${data.pdpaConsent}`,
@@ -77,7 +77,7 @@ export async function handleContact(request: Request, env: FormEnv): Promise<Res
   }
 
   if (isDemoMode(env)) {
-    console.info("[DEMO] Contact enquiry received", { email: data.email, serviceType: data.serviceType });
+    console.info("[DEMO] Contact enquiry received");
     return json({ success: true, timestamp: new Date().toISOString(), demo: true });
   }
 

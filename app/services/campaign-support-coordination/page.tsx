@@ -6,14 +6,14 @@ import ServicePageWayfinding from "@/components/ServicePageWayfinding";
 const serviceNav = [
   { id: "section-overview", label: "Overview" },
   { id: "section-services", label: "Support services" },
-  { id: "section-reliability", label: "Reliability" },
-  { id: "section-execution", label: "Execution" },
+  { id: "section-reliability", label: "Who you deal with" },
+  { id: "section-execution", label: "What we need" },
 ];
 
 export const metadata: Metadata = {
   title: "Campaign Support & Coordination",
   description:
-    "Campaign support and on-ground coordination for promotional rollouts in Singapore \u2014 supervisors, deployment management and end-to-end operational oversight.",
+    "Rosters, attendance and one contact while a promotional campaign is running in Singapore.",
   keywords: [
     "campaign coordination Singapore",
     "campaign supervisors",
@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     siteName: "PromoPower",
     locale: "en_SG",
     type: "website",
+    images: [{ url: "https://promopower.com.sg/opengraph-image", width: 1200, height: 630, alt: "PromoPower" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -46,8 +47,8 @@ export default function CampaignSupportCoordinationPage() {
     "Attendance checked against the roster",
     "Replacements when someone cannot attend",
     "Client updates while the campaign is running",
-    "Briefing coordinated before people go on site",
-    "A field contact where the brief requires one",
+    "Team readiness coordinated before people go on site",
+    "A field contact where the campaign requires one",
   ];
 
   return (
@@ -98,7 +99,7 @@ export default function CampaignSupportCoordinationPage() {
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">Who You Deal With</h2>
             <p>
-              One operations contact for the roster and for changes. If a site needs someone physically present, that is agreed in the brief. It is not assumed.
+              One operations contact for the roster and for changes. If a site needs someone physically present, that is agreed up front. It is not assumed.
             </p>
           </div>
       </section>
@@ -107,7 +108,7 @@ export default function CampaignSupportCoordinationPage() {
           <div className="prose-block max-w-3xl">
             <h2 className="section-title">What We Need To Build The Roster</h2>
             <p>
-              Dates, locations, hours, headcount per site, and who on your side approves changes. If uniforms, call times or reporting lines are already set, send those with the brief.
+              Dates, locations, hours, headcount per site, and who on your side approves changes. If uniforms, call times or reporting lines are already set, send those with your enquiry.
             </p>
           </div>
       </section>

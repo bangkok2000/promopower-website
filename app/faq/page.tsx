@@ -38,7 +38,7 @@ const faqs = [
   {
     question: "How early should we engage your team before a campaign?",
     answer:
-      "There is no fixed number of weeks. Time is needed to screen people, brief them and issue a roster before the first shift. Headcount, number of locations, language needs and how specific the product script is all affect that. Send dates as soon as they are known, even if the store list is still moving.",
+      "There is no fixed number of weeks. Time is needed to screen people, prepare them and issue a roster before the first shift. Headcount, number of locations, language needs and how specific the product script is all affect that. Send dates as soon as they are known, even if the store list is still moving.",
   },
   {
     question: "Can PromoPower support multi-location campaigns?",
@@ -48,12 +48,12 @@ const faqs = [
   {
     question: "How are personnel selected?",
     answer:
-      "Against the brief: communication, presentation, and fit for that store, event or roadshow. Language is included when the brief requires it. Availability alone is not the basis of the shortlist.",
+      "On communication, presentation, and fit for that store, event or roadshow. Language is included when the campaign requires it. Availability alone is not the basis of the shortlist.",
   },
   {
-    question: "Do you provide campaign briefing and preparation support?",
+    question: "Do you provide campaign preparation support?",
     answer:
-      "Yes, before the first shift. The briefing uses your product points, what staff may and may not say, and any appearance or sampling rules you set. If you have an approved script or claims list, that is what the team uses.",
+      "Yes, before the first shift. We use your product points, what staff may and may not say, and any appearance or sampling rules you set. If you have an approved script or claims list, that is what the team uses.",
   },
   {
     question: "Is PromoPower a licensed employment agency?",
@@ -71,7 +71,7 @@ export default function FAQPage() {
           <PageHero
             badge="FAQ"
             title="Frequently Asked Questions"
-            description="What we staff, how early to write, how multi-site rosters work, how people are chosen, what a briefing covers, and the employment agency licence."
+            description="What we staff, how early to write, how multi-site rosters work, how people are chosen, what happens before the first shift, and the employment agency licence."
             compact
           />
         }
@@ -94,7 +94,7 @@ export default function FAQPage() {
 
       <CTASection
         heading="Need More Information?"
-        body="If your question is about a live brief, send the dates, locations and headcount with it."
+        body="If your question is about a live campaign, send the dates, locations and headcount with it."
         primaryLabel="Contact Us"
         primaryHref="/contact-us"
       />

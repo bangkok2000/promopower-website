@@ -83,7 +83,7 @@ export default function OurWork() {
 
       <CTASection
         heading="Planning Something Similar?"
-        body="Send the dates, locations and headcount. The portfolio shows the kind of sites we staff. It is not a client list for publication."
+        body="Send the dates, locations and headcount. The photos show the kind of sites we staff. Names on the photos are brands we have worked with. Campaign details are not published."
         primaryLabel="Contact Our Team"
         primaryHref="/contact-us"
       />

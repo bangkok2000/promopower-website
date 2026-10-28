@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { buildPageMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "Join Our Roster",
+  title: "Apply for promoter and event shifts",
   description:
     "Apply to join PromoPower for customer-facing campaign assignments, retail activations and event support opportunities in Singapore.",
   path: "/jobseekers",

@@ -28,9 +28,3 @@ export function syncScrollOffsetVars(options?: { includeSectionNav?: boolean }) 
   );
 }
 
-export function scrollToElement(id: string) {
-  syncScrollOffsetVars({ includeSectionNav: Boolean(document.getElementById("homepage-section-nav")) });
-  const target = document.getElementById(id);
-  if (!target) return;
-  target.scrollIntoView({ block: "start", behavior: "auto" });
-}

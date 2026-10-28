@@ -25,7 +25,7 @@ export default function ContactUsPage() {
       <PageWayfindingBand breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("Contact Us")} />} />
       <PageHero
         badge="Contact Us"
-        title="Send A Campaign Brief"
+        title="Send A Campaign Enquiry"
         description="Include the service, approximate headcount, start date, locations and what customers should be told. That is what the reply is based on."
         compact
       />

@@ -14,7 +14,7 @@ export const metadata: Metadata = buildPageMetadata({
   path: "/privacy",
 });
 
-const lastUpdated = "16 June 2026";
+const lastUpdated = "28 October 2026";
 
 export default function PrivacyPage() {
   return (
@@ -67,11 +67,9 @@ export default function PrivacyPage() {
               We collect personal data that you provide directly to us, including but not limited to:
             </p>
             <ul className="list-disc pl-6 space-y-2 text-slate-600">
-              <li>Identification information (full name, date of birth, gender, nationality, NRIC/FIN where applicable)</li>
-              <li>Contact information (email address, telephone number, mailing address)</li>
-              <li>Employment-related information for jobseekers (work experience, availability, qualifications, photographs submitted as part of an application)</li>
-              <li>Enquiry information for clients (organisation name, role, campaign requirements)</li>
-              <li>Any additional information you choose to provide in correspondence with us</li>
+              <li>Client enquiries: name, company, email, phone, service, headcount, dates, locations and campaign details</li>
+              <li>Jobseeker applications: name, email, phone, date of birth, age, gender, qualification, a portfolio or photo link, experience, and an optional PDF, JPG or PNG file</li>
+              <li>Anything else you send us by email or WhatsApp</li>
             </ul>
 
             <h2 id="privacy-section-3" className="page-section-anchor text-xl font-bold text-slate-900 mt-6">3. How we use personal data</h2>
@@ -80,7 +78,7 @@ export default function PrivacyPage() {
               <li>Responding to client enquiries and preparing staffing proposals</li>
               <li>Assessing jobseeker applications and matching candidates to suitable campaigns</li>
               <li>Administering employment, payroll and statutory obligations for engaged personnel</li>
-              <li>Coordinating campaign deployment, briefings and on-site support</li>
+              <li>Coordinating campaign deployment, team readiness and on-site support</li>
               <li>Communicating campaign-related operational matters</li>
               <li>Complying with legal, regulatory and licensing obligations, including those of the Ministry of Manpower</li>
               <li>Protecting the legitimate interests of PromoPower, our clients and our personnel</li>
@@ -93,6 +91,12 @@ export default function PrivacyPage() {
             </p>
             <ul className="list-disc pl-6 space-y-2 text-slate-600">
               <li>Clients engaging our staffing services, in connection with a specific campaign deployment</li>
+              <li>
+                Website and email providers that process what you submit: Cloudflare (this website is hosted on
+                Cloudflare Workers), MailChannels (form email), Google (the font files loaded from fonts.googleapis.com
+                and fonts.gstatic.com), and WhatsApp / Meta if you choose the WhatsApp button. The site does not set
+                analytics cookies.
+              </li>
               <li>Service providers supporting our operations (for example, payroll processors and insurers)</li>
               <li>Regulatory and government authorities where required by law</li>
               <li>Professional advisers where reasonably necessary</li>
@@ -138,9 +142,9 @@ export default function PrivacyPage() {
 
             <h2 id="privacy-section-9" className="page-section-anchor text-xl font-bold text-slate-900 mt-6">9. Cookies and website analytics</h2>
             <p className="text-slate-600 leading-relaxed">
-              This website may use a limited number of essential cookies to support core functionality. We do not
-              currently deploy advertising or behavioural-tracking cookies. If, in the future, we introduce analytics or
-              third-party tracking, this policy will be updated and consent obtained where required.
+              This website does not set analytics or advertising cookies. Pages load font files from Google. If you
+              use the WhatsApp button, that opens WhatsApp. If, in the future, we introduce analytics, this policy will
+              be updated.
             </p>
 
             <h2 id="privacy-section-10" className="page-section-anchor text-xl font-bold text-slate-900 mt-6">10. Children</h2>

@@ -62,6 +62,42 @@ export default function NavBar() {
   }, [closeMenu, isMenuOpen]);
 
   useEffect(() => {
+    const main = document.querySelector("main");
+    const footer = document.querySelector("footer");
+    if (!isMenuOpen) {
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+      return;
+    }
+
+    main?.setAttribute("inert", "");
+    footer?.setAttribute("inert", "");
+    const root = document.getElementById("mobile-navigation");
+    const focusable = root ? Array.from(root.querySelectorAll<HTMLElement>("a, button")) : [];
+    focusable[0]?.focus();
+
+    const trapTab = (event: KeyboardEvent) => {
+      if (event.key !== "Tab" || focusable.length === 0) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", trapTab);
+    return () => {
+      document.removeEventListener("keydown", trapTab);
+      main?.removeAttribute("inert");
+      footer?.removeAttribute("inert");
+    };
+  }, [isMenuOpen]);
+
+  useEffect(() => {
     document.body.style.overflow = isMenuOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
@@ -120,9 +156,9 @@ export default function NavBar() {
   return (
     <>
       <nav id="site-header" className="site-header fixed top-0 w-full z-50">
-        <div className="page-container py-3 sm:py-3.5">
-          <div className="grid items-center gap-4 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
-            <div className="flex items-center justify-between lg:contents">
+        <div className="page-container py-3 sm:py-3.5 min-w-0">
+          <div className="grid min-w-0 items-center gap-4 lg:grid-cols-12 lg:gap-x-10 xl:gap-x-14">
+            <div className="flex min-w-0 items-center justify-between gap-3 lg:contents">
               <Link href="/" onClick={handleLogoClick} className="relative h-10 w-44 sm:h-11 sm:w-52 md:h-12 md:w-60 shrink-0 lg:col-span-4 xl:col-span-3">
                 <Image
                   src="/logo-dark.png"
@@ -253,8 +289,8 @@ export default function NavBar() {
         aria-label="Navigation menu"
         aria-hidden={!isMenuOpen}
         {...(!isMenuOpen ? { inert: true } : {})}
-        className={`site-mobile-nav fixed inset-0 z-40 backdrop-blur-2xl transition-all duration-500 origin-top lg:hidden ${
-          isMenuOpen ? "visible opacity-100 scale-y-100" : "invisible pointer-events-none scale-y-0 opacity-0"
+        className={`site-mobile-nav fixed inset-0 z-40 max-w-full overflow-x-clip backdrop-blur-2xl transition-all duration-500 origin-top lg:hidden ${
+          isMenuOpen ? "visible opacity-100 scale-y-100" : "pointer-events-none hidden opacity-0"
         }`}
       >
         <div className="flex h-full flex-col pt-[var(--site-header-height)]">

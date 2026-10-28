@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import NavBar from "@/components/NavBar";
 import Footer from "@/components/Footer";
 import PageScrollControls from "@/components/PageScrollControls";
+import WhatsAppFloat from "@/components/WhatsAppFloat";
 import JsonLd from "@/components/JsonLd";
 import ScrollToTop from "@/components/ScrollToTop";
 import { getSiteGraphJsonLd } from "@/lib/seo";
@@ -61,11 +62,20 @@ export const metadata: Metadata = {
     siteName: SITE.shortName,
     locale: SITE.locale,
     type: "website",
+    images: [
+      {
+        url: "https://promopower.com.sg/opengraph-image",
+        width: 1200,
+        height: 630,
+        alt: "PromoPower — staffing for promotions, retail and events in Singapore",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE.shortName} | Professional Staffing Solutions Singapore`,
     description: SITE.defaultDescription,
+    images: ["https://promopower.com.sg/opengraph-image"],
   },
   other: {
     "geo.region": "SG",
@@ -94,11 +104,15 @@ export default function RootLayout({
         <link rel="author" href="/llms.txt" type="text/plain" title="LLMs content guidance" />
       </head>
       <body className="min-h-full flex flex-col selection:bg-primary selection:text-on-primary">
+        <a className="skip-link" href="#main-content">
+          Skip to content
+        </a>
         <JsonLd data={getSiteGraphJsonLd()} />
         <ScrollToTop />
         <NavBar />
-        <main className="flex-1 pt-[var(--site-header-height,5rem)]">{children}</main>
+        <main id="main-content" className="flex-1 min-w-0 max-w-full pt-[var(--site-header-height,5rem)]">{children}</main>
         <Footer />
+        <WhatsAppFloat />
         <PageScrollControls />
       </body>
     </html>

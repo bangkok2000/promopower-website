@@ -36,21 +36,21 @@ const reasons = [
     icon: "history",
   },
   {
-    title: "Shortlisted Against The Brief",
+    title: "Shortlisted For The Setting",
     description:
       "Communication, presentation and fit for the setting come before availability. A supermarket sampling stand and a luxury counter are not staffed the same way.",
     icon: "groups",
   },
   {
-    title: "Briefed Before The First Shift",
+    title: "Prepared Before The First Shift",
     description:
-      "Product points, what to say, what not to say, and any appearance rules the brand sets. The briefing happens before people are on site.",
+      "Product information, approved script, and any appearance rules the brand sets—all confirmed before people are on site.",
     icon: "school",
   },
   {
     title: "A Roster, Not A Name List",
     description:
-      "Locations, shifts and attendance are managed while the campaign is live, including cover when someone cannot attend.",
+      "Shifts and attendance are tracked across sites while work is live, with cover when someone cannot attend.",
     icon: "support_agent",
   },
   {
@@ -68,7 +68,7 @@ const reasons = [
   {
     title: "We Ask Before We Propose",
     description:
-      "Dates, sites, headcount and what customers need to hear come first. If the brief is incomplete, we ask rather than send a generic team.",
+      "Dates, sites, headcount and what customers need to hear come first. If the enquiry is incomplete, we ask rather than send a generic team.",
     icon: "handshake",
   },
 ];
@@ -88,7 +88,7 @@ export default function WhyPromoPowerPage() {
           <PageHero
             badge="Why PromoPower"
             title="Why Organisations Choose PromoPower"
-            description="A licensed agency since 2002, with briefing before the shift, a live roster, and a performance record for the people we field."
+            description="A licensed agency since 2002, with readiness before the shift, a live roster, and a performance record for the people we field."
             compact
           />
         }
@@ -99,7 +99,7 @@ export default function WhyPromoPowerPage() {
       >
         <section id="section-reasons" className="page-section-anchor">
           <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-8 font-label">
-            Our Differentiators
+            Why clients stay
           </p>
           <ContentList items={reasons} ariaLabel="Why organisations choose PromoPower" />
         </section>
@@ -114,7 +114,7 @@ export default function WhyPromoPowerPage() {
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-6">What To Send Us</h2>
             <div className="space-y-4 text-slate-600 leading-relaxed">
               <p>
-                Objective, dates, locations, headcount and the product points customers should hear. From that we say who we would field, how they will be briefed, and how the roster will be run.
+                Send the objective, dates, sites, headcount and talking points for customers. We reply with who we would field, how they would be readied, and how the roster would run.
               </p>
               <p className="text-sm text-slate-500 pt-2 border-t border-slate-200/80 mt-6">
                 PromoPower Pte Ltd is a MOM licensed employment agency. EA License No: 20C0109.
@@ -125,7 +125,7 @@ export default function WhyPromoPowerPage() {
       </PageSectionNavGroup>
 
       <CTASection
-        heading="Send The Brief"
+        heading="Start An Enquiry"
         body="Include dates, locations and headcount if you have them. We will reply with a proposed team and how the roster would be run."
         primaryLabel="Contact PromoPower"
         primaryHref="/contact-us"

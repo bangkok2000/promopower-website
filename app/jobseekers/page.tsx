@@ -17,7 +17,7 @@ export default function JobseekersPage() {
         hero={
           <PageHero
             badge="Jobseekers"
-            title="Join The PromoPower Talent Pool"
+            title="Apply for promoter and event shifts"
             description="Shifts for promotions, retail activations, events and roadshows in Singapore. Submit your details. Recruitment contacts you only if a campaign matches your profile and availability. An application is not a job offer."
             compact
           >

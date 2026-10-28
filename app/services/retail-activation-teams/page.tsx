@@ -6,7 +6,7 @@ import ServicePageWayfinding from "@/components/ServicePageWayfinding";
 const serviceNav = [
   { id: "section-overview", label: "Overview" },
   { id: "section-support", label: "Activation support" },
-  { id: "section-value", label: "Value" },
+  { id: "section-value", label: "By store type" },
 ];
 
 export const metadata: Metadata = {
@@ -29,6 +29,7 @@ export const metadata: Metadata = {
     siteName: "PromoPower",
     locale: "en_SG",
     type: "website",
+    images: [{ url: "https://promopower.com.sg/opengraph-image", width: 1200, height: 630, alt: "PromoPower" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -43,11 +44,8 @@ export default function RetailActivationTeamsPage() {
     "Product demonstrations",
     "Retail promotions",
     "Seasonal campaigns",
-    "In-store activations",
     "Product launches",
     "Sampling programmes",
-    "Customer engagement initiatives",
-    "Promotional support activities",
   ];
 
   return (
@@ -73,7 +71,7 @@ export default function RetailActivationTeamsPage() {
               Send the store list, trading hours, headcount per store and the product points staff should use. If sampling is involved, include what can be handed out and any store restrictions.
             </p>
             <p>
-              The same briefing is used across outlets unless you tell us a store needs a change. Attendance is checked against that roster.
+              The same customer messaging is used across outlets unless you tell us a store needs a change. Attendance is checked against that roster.
             </p>
           </div>
       </section>
@@ -82,7 +80,7 @@ export default function RetailActivationTeamsPage() {
           <div className="max-w-3xl">
             <h2 className="section-title">Activation Support</h2>
             <p className="page-intro mb-8">
-              In-store work we staff. Say which activities apply so the briefing is not a generic retail script.
+              In-store work we staff. Say which activities apply so the walk-through is not a generic retail script.
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2" aria-label="Activation support areas">
               {activationSupport.map((item) => (

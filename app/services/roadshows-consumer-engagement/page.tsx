@@ -6,13 +6,13 @@ import ServicePageWayfinding from "@/components/ServicePageWayfinding";
 const serviceNav = [
   { id: "section-overview", label: "Overview" },
   { id: "section-support", label: "Support areas" },
-  { id: "section-value", label: "Value" },
+  { id: "section-value", label: "Your enquiry" },
 ];
 
 export const metadata: Metadata = {
   title: "Roadshows & Consumer Engagement",
   description:
-    "Roadshow and consumer engagement staffing in Singapore for islandwide promotional tours, consumer festivals, sampling drives and on-ground brand experiences.",
+    "Roadshow staffing in Singapore for mall tours, public sites and sampling drives.",
   keywords: [
     "roadshow staffing Singapore",
     "consumer engagement",
@@ -24,11 +24,12 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Roadshows & Consumer Engagement | PromoPower",
     description:
-      "Roadshow and consumer engagement staffing for islandwide promotional tours and on-ground brand experiences in Singapore.",
+      "Roadshow and consumer engagement staffing for islandwide promotional tours and public-site staffing in Singapore.",
     url: "https://promopower.com.sg/services/roadshows-consumer-engagement",
     siteName: "PromoPower",
     locale: "en_SG",
     type: "website",
+    images: [{ url: "https://promopower.com.sg/opengraph-image", width: 1200, height: 630, alt: "PromoPower" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -43,7 +44,7 @@ export default function RoadshowsConsumerEngagementPage() {
     "Mall and public-site roadshows",
     "Sampling",
     "Product demonstration",
-    "Lead capture, when the brief requires it",
+    "Lead capture, when the campaign requires it",
     "Product introductions",
     "Touring stands across more than one location",
   ];
@@ -55,13 +56,13 @@ export default function RoadshowsConsumerEngagementPage() {
           <PageHero
             badge="Service"
             title="Roadshow Teams For Public Sites, Malls And Sampling Drives"
-            description="Shorter conversations, uneven footfall, and site rules that are not the same as a store. Teams are rostered by site and shift, and briefed on what they can hand out or record."
+            description="Shorter conversations, uneven footfall, and site rules that are not the same as a store. Teams are rostered by site and shift, with clear rules on what they can hand out or record."
             compact
           />
         }
         title="Roadshows & Consumer Engagement"
         path="/services/roadshows-consumer-engagement"
-        description="Roadshow and consumer engagement staffing in Singapore for islandwide promotional tours, consumer festivals, sampling drives and on-ground brand experiences."
+        description="Roadshow and consumer engagement staffing in Singapore for islandwide promotional tours, consumer festivals, sampling drives and public-site staffing."
         navItems={serviceNav}
       >
       <section id="section-overview" className="page-section-anchor">
@@ -71,7 +72,7 @@ export default function RoadshowsConsumerEngagementPage() {
               A roadshow is usually a temporary site: a mall atrium, a public event or a touring stand. Peak hours are uneven, interactions are short, and the venue often sets what can be set up, sampled or collected.
             </p>
             <p>
-              Confirm site rules, call times and whether lead capture is required before the briefing. If names or contact details are collected, say what staff may ask for and where that information goes.
+              Confirm site rules, call times and whether lead capture is required before the first shift. If names or contact details are collected, say what staff may ask for and where that information goes.
             </p>
           </div>
       </section>
@@ -80,7 +81,7 @@ export default function RoadshowsConsumerEngagementPage() {
           <div className="max-w-3xl">
             <h2 className="section-title">Support Areas</h2>
             <p className="page-intro mb-8">
-              Work we staff on the ground. Overlapping labels below are the same job unless your brief splits them.
+              Work we staff on the ground. Overlapping labels below are the same job unless your scope splits them.
             </p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2" aria-label="Roadshow support areas">
               {supportAreas.map((item) => (
@@ -94,7 +95,7 @@ export default function RoadshowsConsumerEngagementPage() {
 
       <section id="section-value" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">What To Include In The Brief</h2>
+            <h2 className="section-title">What To Include In Your Enquiry</h2>
             <p>
               Sites and dates, headcount per site, what is being sampled or demonstrated, and whether staff collect leads. If the tour moves, send the order of locations so travel and call times can be rostered.
             </p>

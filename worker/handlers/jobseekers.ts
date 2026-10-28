@@ -1,4 +1,11 @@
-import { ALLOWED_FILE_TYPES, isHoneypotTriggered, isValidEmail, MAX_FILE_SIZE, sanitize } from "../../lib/form-validation";
+import {
+  fileHasAllowedSignature,
+  isBelowMinimumAge,
+  isHoneypotTriggered,
+  isValidEmail,
+  sanitize,
+  validateFile,
+} from "../../lib/form-validation";
 import { fileToAttachment, sendMail } from "../mail";
 import { getMailConfig, isDemoMode, json, type FormEnv } from "../responses";
 
@@ -62,21 +69,24 @@ export async function handleJobseekers(request: Request, env: FormEnv): Promise<
     return json({ success: false, error: "Please accept the Data Protection Policy before submitting." }, 400);
   }
 
+  if (isBelowMinimumAge(data.age, data.dateOfBirth)) {
+    return json({ success: false, error: "Applicants must be 16 or older." }, 400);
+  }
+
   const fileEntry = formData.get("compCard");
   let attachment: Awaited<ReturnType<typeof fileToAttachment>> | undefined;
 
   if (fileEntry instanceof File && fileEntry.size > 0) {
-    if (fileEntry.size > MAX_FILE_SIZE) {
-      return json({ success: false, error: "File exceeds the 5MB size limit." }, 400);
-    }
-    if (!ALLOWED_FILE_TYPES.has(fileEntry.type)) {
+    const fileError = validateFile(fileEntry);
+    if (fileError) return json({ success: false, error: fileError }, 400);
+    if (!(await fileHasAllowedSignature(fileEntry))) {
       return json({ success: false, error: "Invalid file type. Please upload a PDF, JPG, or PNG file." }, 400);
     }
     attachment = await fileToAttachment(fileEntry);
   }
 
   if (isDemoMode(env)) {
-    console.info("[DEMO] Jobseeker application received", { email: data.email, hasAttachment: Boolean(attachment) });
+    console.info("[DEMO] Jobseeker application received");
     return json({ success: true, timestamp: new Date().toISOString(), demo: true });
   }
 

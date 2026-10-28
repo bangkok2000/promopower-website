@@ -55,6 +55,11 @@ export default function Footer() {
                   {SITE.email}
                 </a>
               </li>
+              <li>
+                <a href={`tel:+${SITE.whatsappE164}`} className="site-footer-link">
+                  +65 {SITE.whatsappDisplay}
+                </a>
+              </li>
               <li className="site-footer-meta">{SITE.address}</li>
             </ul>
           </div>
@@ -66,7 +71,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/promopowersg/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="site-footer-social-btn"
+                className="site-footer-social-btn site-footer-social-btn-linkedin"
                 aria-label="LinkedIn"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -77,7 +82,7 @@ export default function Footer() {
                 href="https://www.instagram.com/promopowersg/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="site-footer-social-btn"
+                className="site-footer-social-btn site-footer-social-btn-instagram"
                 aria-label="Instagram"
               >
                 <svg className="w-4 h-4 fill-current" viewBox="0 0 24 24" aria-hidden="true">
@@ -88,7 +93,7 @@ export default function Footer() {
                 href="https://www.facebook.com/PromoPower.com.sg"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="site-footer-social-btn"
+                className="site-footer-social-btn site-footer-social-btn-facebook"
                 aria-label="Facebook"
               >
                 <svg className="w-5 h-5 fill-current" viewBox="0 0 24 24" aria-hidden="true">

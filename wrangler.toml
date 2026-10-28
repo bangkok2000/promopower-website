@@ -12,6 +12,7 @@ not_found_handling = "404-page"
 [vars]
 FORM_FROM_NAME = "PromoPower Website"
 FORM_FROM_EMAIL = "noreply@promopower.com.sg"
+FORM_RECIPIENT_EMAIL = "admin@promopower.com.sg"
 
 # Secrets (set when PromoPower owns DNS / inbox access):
 #   wrangler secret put FORM_RECIPIENT_EMAIL

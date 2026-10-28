@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     siteName: "PromoPower",
     locale: "en_SG",
     type: "website",
+    images: [{ url: "https://promopower.com.sg/opengraph-image", width: 1200, height: 630, alt: "PromoPower" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -56,7 +57,7 @@ export default function EventPersonnelPage() {
           <PageHero
             badge="Service"
             title="Event Personnel For Registration, Ushering And Guest Flow"
-            description="Floor roles for exhibitions, conferences, launches and corporate events. The organiser keeps the event plan. PromoPower staffs the positions, briefs them on the run of show, and covers the roster."
+            description="Floor roles for exhibitions, conferences, launches and corporate events. The organiser keeps the event plan. PromoPower staffs the positions, prepares them on the run of show, and covers the roster."
             compact
           />
         }
@@ -67,12 +68,12 @@ export default function EventPersonnelPage() {
       >
       <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">What The Team Is Briefed On</h2>
+            <h2 className="section-title">What The Team Is Prepared On</h2>
             <p>
               Position, shift, who they report to on site, and which questions they answer versus refer. Registration staff need the badge and queue process. Ushers need the room flow. Information counters need the approved answers, not a general script.
             </p>
             <p>
-              Send the run of show and the position list before the briefing. If a call time or uniform is set by the venue or client, include that too.
+              Send the run of show and the position list before the first shift. If a call time or uniform is set by the venue or client, include that too.
             </p>
           </div>
       </section>

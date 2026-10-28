@@ -28,7 +28,7 @@ export default function ExpandableProse({
       ) : null}
 
       {hasMore ? (
-        <details className="prose-details group mt-5">
+        <details className={`prose-details group${visible.length > 0 ? " mt-5" : ""}`}>
           <summary className="prose-details-summary">{expandLabel}</summary>
           <div className="prose-block mt-5">
             {hidden.map((paragraph, index) => (

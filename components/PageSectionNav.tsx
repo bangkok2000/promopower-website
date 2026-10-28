@@ -213,16 +213,3 @@ export default function PageSectionNav({
     </nav>
   );
 }
-
-export function BackToTopLink() {
-  return (
-    <div className="pt-6 flex justify-end">
-      <button type="button" onClick={() => scrollToPageTop()} className="page-back-to-top">
-        Back to top
-        <span className="material-symbols-outlined text-base" aria-hidden="true">
-          arrow_upward
-        </span>
-      </button>
-    </div>
-  );
-}

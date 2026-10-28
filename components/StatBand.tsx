@@ -16,7 +16,7 @@ const STATS: StatItem[] = [
     labelShort: "Licensed · 20C0109",
   },
   { value: "9+", label: "Industries Served" },
-  { value: "5-Step", label: "Execution Framework" },
+  { value: "5-Step", label: "How a job is run" },
 ];
 
 export default function StatBand() {
@@ -42,7 +42,7 @@ export default function StatBand() {
       <div className="stat-band-summary">
         <div className="page-container stat-band-summary-layout">
           <h2 id="home-company-summary-heading" className="stat-band-summary-heading">
-            In brief
+            At a glance
           </h2>
           <div className="stat-band-summary-body">
             <p className="home-about-definition stat-band-summary-text">

@@ -6,7 +6,7 @@ import ServicePageWayfinding from "@/components/ServicePageWayfinding";
 const serviceNav = [
   { id: "section-overview", label: "Overview" },
   { id: "section-support", label: "Support areas" },
-  { id: "section-value", label: "Value" },
+  { id: "section-value", label: "What we need" },
 ];
 
 export const metadata: Metadata = {
@@ -30,6 +30,7 @@ export const metadata: Metadata = {
     siteName: "PromoPower",
     locale: "en_SG",
     type: "website",
+    images: [{ url: "https://promopower.com.sg/opengraph-image", width: 1200, height: 630, alt: "PromoPower" }],
   },
   twitter: {
     card: "summary_large_image",
@@ -48,9 +49,7 @@ export default function BrandAmbassadorsPage() {
     "Roadshows",
     "Exhibitions",
     "Corporate events",
-    "Consumer engagement campaigns",
     "Sampling programmes",
-    "Awareness initiatives",
   ];
 
   return (
@@ -60,7 +59,7 @@ export default function BrandAmbassadorsPage() {
           <PageHero
             badge="Service"
             title="Brand Ambassadors For Launches, Sampling And Counters"
-            description="They explain a product, sample it, or represent the brand at a launch, counter or event. They are briefed on what to say, what not to say, and how the brand expects them to present."
+            description="They explain a product, sample it, or represent the brand at a launch, counter or event. They follow the script, presentation rules and conduct standards the brand sets."
             compact
           />
         }
@@ -71,12 +70,12 @@ export default function BrandAmbassadorsPage() {
       >
       <section id="section-overview" className="page-section-anchor">
           <div className="prose-block max-w-3xl">
-            <h2 className="section-title">Who Is Fielded, And On What Basis</h2>
+            <h2 className="section-title">Who we send, and why</h2>
             <p>
-              Selection is against the brief: communication, presentation, and whether the person suits that counter, launch or event. A beauty sampling stand and a luxury counter are not staffed from the same shortlist.
+              Selection is against the role and setting: communication, presentation, and whether the person suits that counter, launch or event. A beauty sampling stand and a luxury counter are not staffed from the same shortlist.
             </p>
             <p>
-              Before the first shift, the team is briefed on the product points, the customer approach, and any restrictions the brand sets. If you have an approved script or claims list, that is what they use.
+              Before the first shift, the team is walked through product points, customer approach, and any restrictions the brand sets. If you have an approved script or claims list, that is what they use.
             </p>
           </div>
       </section>
@@ -84,7 +83,7 @@ export default function BrandAmbassadorsPage() {
       <section id="section-support" className="page-section-anchor">
           <div className="max-w-3xl">
             <h2 className="section-title">Typical Assignments</h2>
-            <p className="page-intro mb-8">The role covers these jobs. Tell us which ones apply so the briefing matches the site.</p>
+            <p className="page-intro mb-8">The role covers these jobs. Tell us which ones apply so the walk-through matches the site.</p>
             <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2" aria-label="Supported activities">
               {supportAreas.map((item) => (
                 <li key={item} className="text-slate-700 pl-4 border-l-2 border-slate-300 text-sm">
@@ -93,7 +92,7 @@ export default function BrandAmbassadorsPage() {
               ))}
             </ul>
             <p className="prose-block mt-8">
-              You provide the product points, any dos and don&apos;ts, and appearance rules if you have them. PromoPower screens, briefs, rosters and stays contactable once shifts start.
+              You provide the product points, any dos and don&apos;ts, and appearance rules if you have them. PromoPower screens, prepares, rosters and stays contactable once shifts start.
             </p>
           </div>
       </section>
@@ -105,14 +104,14 @@ export default function BrandAmbassadorsPage() {
               Dates, locations, headcount, and the product information customers should hear. If sampling or a demonstration is involved, include the handling rules and what staff are allowed to claim.
             </p>
             <p>
-              Without that, the briefing is guesswork. With it, the same points are used at every site on the roster.
+              Without that, the team is working blind. With it, the same points are used at every site on the roster.
             </p>
           </div>
       </section>
       </ServicePageWayfinding>
 
       <CTASection
-        heading="Send The Product Brief"
+        heading="Send Product And Site Details"
         body="Include dates, sites, headcount and the points customers should hear."
         primaryLabel="Speak With Our Team"
         primaryHref="/contact-us"

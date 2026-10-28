@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 export type LeadershipMember = {
   name: string;
@@ -17,21 +17,25 @@ type LeadershipSelectorProps = {
 
 export default function LeadershipSelector({ members }: LeadershipSelectorProps) {
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const selected = members[selectedIndex];
 
   if (!selected) return null;
 
-  const selectMember = (index: number) => {
+  const selectMember = (index: number, moveFocus = false) => {
     setSelectedIndex(index);
+    if (moveFocus) {
+      requestAnimationFrame(() => tabRefs.current[index]?.focus());
+    }
   };
 
   const handleKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
     if (event.key === "ArrowRight") {
       event.preventDefault();
-      selectMember((index + 1) % members.length);
+      selectMember((index + 1) % members.length, true);
     } else if (event.key === "ArrowLeft") {
       event.preventDefault();
-      selectMember((index - 1 + members.length) % members.length);
+      selectMember((index - 1 + members.length) % members.length, true);
     }
   };
 
@@ -44,12 +48,15 @@ export default function LeadershipSelector({ members }: LeadershipSelectorProps)
 
             return (
               <button
-                key={member.role}
+                key={member.name}
                 type="button"
                 role="tab"
+                ref={(node) => {
+                  tabRefs.current[index] = node;
+                }}
                 id={`leadership-tab-${index}`}
                 aria-selected={isSelected}
-                aria-controls={`leadership-panel-${index}`}
+                aria-controls="leadership-panel"
                 aria-label={`${member.name}, ${member.role}`}
                 className={`leadership-avatar-button ${isSelected ? "leadership-avatar-button-active" : ""}`}
                 onClick={() => selectMember(index)}
@@ -57,7 +64,7 @@ export default function LeadershipSelector({ members }: LeadershipSelectorProps)
               >
                 <span className="leadership-avatar" aria-hidden="true">
                   {member.photo ? (
-                    <Image src={member.photo} alt="" fill sizes="(min-width: 640px) 96px, 80px" className="object-cover object-top" />
+                    <Image src={member.photo} alt="" fill sizes="(min-width: 640px) 106px, 88px" className="object-cover object-top" />
                   ) : (
                     <span className="material-symbols-outlined">person</span>
                   )}
@@ -69,7 +76,7 @@ export default function LeadershipSelector({ members }: LeadershipSelectorProps)
 
         <div
           role="tabpanel"
-          id={`leadership-panel-${selectedIndex}`}
+          id="leadership-panel"
           aria-labelledby={`leadership-tab-${selectedIndex}`}
           className="leadership-detail"
         >

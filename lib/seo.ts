@@ -53,6 +53,14 @@ export function absoluteUrl(path: string) {
   return path.startsWith("http") ? path : `${SITE.url}${path.startsWith("/") ? path : `/${path}`}`;
 }
 
+/** Social preview image. Resolves on promopower.com.sg once this site replaces the current host. */
+export const SOCIAL_IMAGE = {
+  url: absoluteUrl("/opengraph-image"),
+  width: 1200,
+  height: 630,
+  alt: "PromoPower — staffing for promotions, retail and events in Singapore",
+} as const;
+
 export function buildPageMetadata({
   title,
   description,
@@ -87,11 +95,13 @@ export function buildPageMetadata({
       siteName: SITE.shortName,
       locale: SITE.locale,
       type: "website",
+      images: [SOCIAL_IMAGE],
     },
     twitter: {
       card: "summary_large_image",
       title: `${title} | ${SITE.shortName}`,
       description,
+      images: [SOCIAL_IMAGE.url],
     },
   };
 }

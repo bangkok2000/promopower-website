@@ -15,7 +15,7 @@ const aboutNav = [
 const values = [
   {
     title: "Professionalism",
-    body: "Appearance, conduct and what is said to customers follow the client's brief. That is part of the job.",
+    body: "Appearance, conduct and what is said to customers follow what the client has approved. That is part of the job.",
     icon: "workspace_premium",
   },
   {
@@ -30,7 +30,7 @@ const values = [
   },
   {
     title: "Continuous Improvement",
-    body: "Notes from the campaign, including PowerCoach records, are used when the same client or a similar brief comes back.",
+    body: "Notes from the campaign, including PowerCoach records, are used when the same client or a similar assignment comes back.",
     icon: "insights",
   },
 ];
@@ -44,35 +44,46 @@ const leadership = [
     linkedIn: "https://www.linkedin.com/in/khing-koh-ba9a6036/",
     bio: [
       "Khing Koh has been Director of PromoPower Pte Ltd since the agency was established in 2002. She leads general management, client relationships and the promotional staffing operations that support retail activations, roadshows, exhibitions and customer engagement programmes in Singapore.",
-      "Her work stays close to live delivery: how teams are recruited, briefed, rostered and supported on the ground, and how issues are handled when campaigns are running. She works with operations colleagues, brand ambassadors, promoters and business partners so deployments stay accountable from initial briefing through to completion.",
-      "She invests in ongoing learning connected to premium retail and brand presentation—including structured study in luxury brand principles—so briefing and frontline standards stay aligned with what clients expect in high-touch environments.",
+      "Her work stays close to live delivery: how teams are recruited, prepared, rostered and supported on the ground, and how issues are handled when campaigns are running. She works with operations colleagues, brand ambassadors, promoters and business partners so deployments stay accountable from initial planning through to completion.",
+      "She keeps studying how luxury counters expect staff to present, so the people we send match that standard.",
     ],
   },
   {
-    name: "Name to be confirmed",
-    role: "Operations Manager",
-    photo: null,
+    name: "Lim Yong Chiang",
+    role: "Head of Sales",
+    photo: "/team/lim-yong-chiang.jpg",
     bio: [
-      "This profile will be published once the appointment and wording are confirmed.",
-      "It will cover accountability for recruitment, screening, deployment planning and day-to-day coordination across multiple concurrent activations, and how this role works with clients and field teams.",
+      "Lim Yong Chiang is Head of Sales at PromoPower. He has been with the agency since his student years, when he worked concurrently as a brand ambassador—experience that gave him a direct view of frontline delivery and what clients expect on the ground.",
+      "He takes the enquiry, agrees the sites and headcount, and stays on it while the campaign is running.",
     ],
   },
   {
-    name: "Name to be confirmed",
-    role: "Client Services Manager",
-    photo: null,
+    name: "Dominic Tan",
+    role: "Project Manager",
+    photo: "/team/dominic-tan.jpg",
+    linkedIn: "https://www.linkedin.com/in/dominic-tan-9b0772221/",
     bio: [
-      "This profile will be published once the appointment and wording are confirmed.",
-      "It will cover campaign briefings, client engagement and communication throughout the campaign lifecycle, and what clients should expect from enquiry through to live delivery.",
+      "Dominic Tan is Project Manager at PromoPower. He built his career from brand ambassador work on promotions and events into full-time project delivery and operations.",
+      "He keeps day-to-day delivery on track through rostering, attendance checks and schedule updates across deployment locations, so prepared staff are on site when campaigns are live. He coordinates headcount, timings and operational changes with clients and internal colleagues when several activations run at once.",
     ],
   },
   {
-    name: "Name to be confirmed",
-    role: "Field Operations Lead",
-    photo: null,
+    name: "Maryann",
+    role: "Project Manager",
+    photo: "/team/maryann.jpg",
     bio: [
-      "This profile will be published once the appointment and wording are confirmed.",
-      "It will cover on-site supervision, schedule management and operational support for personnel across deployment locations, including how field issues are escalated and resolved.",
+      "Maryann is Project Manager at PromoPower. She joined as a brand ambassador while studying and moved into project management as her experience on the front line and with client expectations developed over the years.",
+      "She connects approved client requirements with the teams who deliver them: readiness before shifts, clear handoffs to coordinators and promoters, and steady communication while programmes are running. That applies to single counters and to multiple sites where the same standard must hold across locations.",
+    ],
+  },
+  {
+    name: "Alan Poh",
+    role: "Project Manager",
+    photo: "/team/alan-poh.jpg",
+    linkedIn: "https://www.linkedin.com/in/alan-p-62a232127/",
+    bio: [
+      "Alan Poh is Project Manager at PromoPower. He progressed from frontline brand ambassador roles into project and operational coordination, with a working knowledge of what promoters face on site.",
+      "He manages campaign logistics from initial planning through to completion—deployment planning, schedules and the operational detail clients rely on in retail, roadshow and event settings. He stays involved while work is live to address roster, attendance or site issues before they affect the programme.",
     ],
   },
 ];
@@ -85,7 +96,7 @@ export default function AboutUsContent() {
           <PageHero
             badge="About PromoPower"
             title="Staffing Promotions And Events In Singapore Since 2002"
-            description="PromoPower recruits, briefs and rosters people for retail promotions, roadshows, exhibitions and customer engagement programmes."
+            description="PromoPower recruits, prepares and rosters people for retail promotions, roadshows, exhibitions and customer engagement programmes."
             compact
           />
         }
@@ -103,10 +114,10 @@ export default function AboutUsContent() {
                   <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-6">What The Company Does</h2>
                   <div className="space-y-4 text-slate-600 leading-relaxed">
                     <p>
-                      PromoPower was set up in 2002 to supply people for promotions and events in Singapore. The work is still that: recruit for a brief, prepare the team, put them on a roster, and stay available while the campaign runs.
+                      PromoPower was set up in 2002 to supply people for promotions and events in Singapore. The work is still that: recruit for the campaign, prepare the team, put them on a roster, and stay available while the campaign runs.
                     </p>
                     <p>
-                      Clients deal with one operations team from the enquiry through the briefing and the days the campaign is live.
+                      Clients deal with one operations team from the enquiry through deployment and the days the campaign is live.
                     </p>
                   </div>
                 </div>
@@ -117,10 +128,10 @@ export default function AboutUsContent() {
                     </p>
                     <ul className="space-y-3 text-slate-600 text-sm">
                       <li className="pl-4 border-l-2 border-slate-300">
-                        One operations contact for the enquiry, the briefing and the live campaign.
+                        One operations contact for the enquiry, team preparation and the live campaign.
                       </li>
                       <li className="pl-4 border-l-2 border-slate-300">
-                        People matched to the brief, not a general send-out.
+                        People chosen for fit at that site or event, not a general send-out.
                       </li>
                       <li className="pl-4 border-l-2 border-slate-300">
                         Rosters by location and shift, with attendance followed up.
@@ -161,7 +172,7 @@ export default function AboutUsContent() {
                 </p>
                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 mb-4">Leadership</h2>
                 <p className="text-slate-600 leading-relaxed">
-                  The people accountable for client work, recruitment, rosters and what happens on site. Names still being confirmed are marked as such.
+                  The people accountable for client work, recruitment, rosters and what happens on site. Written profiles are added as each member confirms their wording.
                 </p>
               </div>
               <LeadershipSelector members={leadership} />

@@ -6,13 +6,14 @@ import PageEndLinks from "@/components/PageEndLinks";
 import { useState, useRef } from "react";
 import { submitContactInquiry } from "@/lib/forms";
 import type { FormSubmitResult } from "@/lib/forms";
-import { FORM_DEMO_MODE, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
 
 export default function ContactUsContent() {
   const [step, setStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [notEmailed, setNotEmailed] = useState(false);
   const formRef = useRef<HTMLFormElement>(null);
 
   const validateStep1 = () => {
@@ -58,10 +59,8 @@ export default function ContactUsContent() {
     const result: FormSubmitResult = await submitContactInquiry(formData);
     setIsSubmitting(false);
     if (result.success) {
+      setNotEmailed(Boolean(result.demo));
       setStep(4);
-      if (result.demo) {
-        setError(null);
-      }
     } else {
       setError(result.error ?? "An error occurred. Please try again.");
     }
@@ -85,6 +84,18 @@ export default function ContactUsContent() {
                   <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Email</p>
                   <a href={`mailto:${SITE.email}`} className="text-slate-700 hover:text-primary transition-colors font-medium">
                     {SITE.email}
+                  </a>
+                </div>
+              </div>
+
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-5 flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-blue-50 border border-primary/15 flex items-center justify-center flex-shrink-0">
+                  <span className="material-symbols-outlined text-primary text-lg">call</span>
+                </div>
+                <div className="min-w-0">
+                  <p className="text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">Phone / WhatsApp</p>
+                  <a href={`tel:+${SITE.whatsappE164}`} className="text-slate-700 hover:text-primary transition-colors font-medium">
+                    +65 {SITE.whatsappDisplay}
                   </a>
                 </div>
               </div>
@@ -119,16 +130,14 @@ export default function ContactUsContent() {
                   <p className="text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-primary mb-3 font-label">
                     Enquiry Form
                   </p>
-                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Campaign Brief</h2>
+                  <h2 className="text-2xl sm:text-3xl font-bold text-slate-900 mb-2">Campaign Enquiry</h2>
                   <p className="text-slate-600 text-sm mb-6 leading-relaxed">
                     Three steps: the service and headcount, the dates and locations, then your contact details. The reply is based on what you enter here.
                   </p>
-                  {FORM_DEMO_MODE && (
-                    <p className="text-xs text-primary/80 mb-4">
-                      Demo mode: submissions are validated but not emailed until production delivery is configured.
-                    </p>
-                  )}
-                  <div className="flex gap-3 items-center">
+                  <p className="sr-only" aria-live="polite">
+                    Step {Math.min(step, 3)} of 3
+                  </p>
+                  <div className="flex gap-3 items-center" aria-hidden="true">
                     <div className={`w-3 h-3 rounded-full ${step >= 1 ? "bg-primary shadow-[0_0_0_3px_rgba(0,87,168,0.15)]" : "bg-slate-300"} transition-all`}></div>
                     <div className={`w-10 h-[2px] ${step >= 2 ? "bg-primary" : "bg-slate-300"} transition-all`}></div>
                     <div className={`w-3 h-3 rounded-full ${step >= 2 ? "bg-primary shadow-[0_0_0_3px_rgba(0,87,168,0.15)]" : "bg-slate-300"} transition-all`}></div>
@@ -155,7 +164,7 @@ export default function ContactUsContent() {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
                     <div className="space-y-3">
                       <label htmlFor="contact-service" className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">
-                        Service requirement
+                        What do you need?
                       </label>
                       <div className="relative">
                         <select id="contact-service" name="serviceType" defaultValue="" required className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all appearance-none cursor-pointer pr-12">
@@ -165,7 +174,7 @@ export default function ContactUsContent() {
                           <option value="retail-activation">Retail Activation Teams</option>
                           <option value="roadshow">Roadshows & Consumer Engagement</option>
                           <option value="campaign-support">Campaign Support & Coordination</option>
-                          <option value="unsure">Not sure yet - need consultation</option>
+                          <option value="unsure">Not sure which service</option>
                         </select>
                         <span className="absolute right-6 top-4 material-symbols-outlined pointer-events-none text-slate-500">expand_more</span>
                       </div>
@@ -210,9 +219,9 @@ export default function ContactUsContent() {
                   </div>
                   <div className="space-y-3 mb-10">
                     <label htmlFor="contact-notes" className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">
-                      Campaign brief (optional)
+                      Campaign details (optional)
                     </label>
-                    <textarea id="contact-notes" name="campaignBrief" rows={4} className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400" placeholder="Share your campaign objective and staffing considerations."></textarea>
+                    <textarea id="contact-notes" name="campaignBrief" rows={4} className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400" placeholder="Stores or venues, what staff should say, and anything they must not say."></textarea>
                   </div>
                   <div className="pt-6 flex justify-between">
                     <button type="button" onClick={prevStep} className="text-slate-600 hover:text-primary font-semibold transition-colors inline-flex items-center gap-2">
@@ -228,24 +237,23 @@ export default function ContactUsContent() {
 
                 <div hidden={step !== 3} className={step === 3 ? "animate-in fade-in slide-in-from-right-4 duration-500" : undefined}>
                   <div className="space-y-6 mb-10">
-                    <label className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">Your details</label>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                      <div className="min-w-0">
-                        <label htmlFor="contact-fullname" className="sr-only">Full Name</label>
-                        <input id="contact-fullname" name="fullName" className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400" placeholder="Full Name" type="text" required />
+                      <div className="min-w-0 space-y-3">
+                        <label htmlFor="contact-fullname" className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">Full name</label>
+                        <input id="contact-fullname" name="fullName" className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" type="text" required />
                       </div>
-                      <div className="min-w-0">
-                        <label htmlFor="contact-company" className="sr-only">Company Name</label>
-                        <input id="contact-company" name="company" className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400" placeholder="Company Name" type="text" />
+                      <div className="min-w-0 space-y-3">
+                        <label htmlFor="contact-company" className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">Company</label>
+                        <input id="contact-company" name="company" className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" type="text" />
                       </div>
                     </div>
-                    <div className="min-w-0">
-                      <label htmlFor="contact-email" className="sr-only">Work Email</label>
-                      <input id="contact-email" name="email" className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400" placeholder="Work Email" type="email" required />
+                    <div className="min-w-0 space-y-3">
+                      <label htmlFor="contact-email" className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">Work email</label>
+                      <input id="contact-email" name="email" className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" type="email" required />
                     </div>
-                    <div className="min-w-0">
-                      <label htmlFor="contact-phone" className="sr-only">Phone</label>
-                      <input id="contact-phone" name="phone" className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400" placeholder="Contact Number" type="tel" />
+                    <div className="min-w-0 space-y-3">
+                      <label htmlFor="contact-phone" className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">Phone</label>
+                      <input id="contact-phone" name="phone" className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all" type="tel" />
                     </div>
                   </div>
 
@@ -254,7 +262,6 @@ export default function ContactUsContent() {
                       <div className="relative flex items-center justify-center mt-1">
                         <input
                           type="checkbox"
-                          aria-label="I agree to the PromoPower Data Protection Policy"
                           className="appearance-none w-6 h-6 border-2 border-slate-300 rounded-md bg-white checked:bg-primary checked:border-primary peer transition-all cursor-pointer flex-shrink-0"
                           checked={isAgreed}
                           onChange={(e) => setIsAgreed(e.target.checked)}
@@ -293,11 +300,11 @@ export default function ContactUsContent() {
                     <p className="text-lg text-slate-600 max-w-sm mx-auto">
                       Your enquiry has been received. Our team will review your request and get back to you shortly.
                     </p>
-                    {FORM_DEMO_MODE && (
+                    {notEmailed ? (
                       <p className="text-sm text-slate-500 max-w-sm mx-auto mt-4">
-                        Demo mode: this submission was validated but not emailed.
+                        Email delivery is not switched on yet. Please also write to {SITE.email}.
                       </p>
-                    )}
+                    ) : null}
                   </div>
                 )}
               </form>

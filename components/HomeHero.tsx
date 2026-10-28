@@ -7,17 +7,17 @@ import Image from "next/image";
 const HOME_HERO_IMAGE = "/images/hero/home-hero-retail-team.jpg";
 
 const heroLeadMobile =
-  "Professional promoters, brand ambassadors and event teams in Singapore—licensed agency support since 2002.";
+  "Promoters, brand ambassadors and event teams for stores, roadshows and events in Singapore. Licensed agency since 2002.";
 
 const heroParagraphs = {
   lead:
     "For more than two decades, PromoPower has helped organisations connect with customers through professional promoters, brand ambassadors, event personnel and retail support teams.",
   campaignPhilosophy:
-    "Behind every successful campaign is a team of people responsible for representing the brand, engaging customers and delivering positive customer experiences. Finding, preparing and managing those people requires more than simply filling positions. It requires experience, planning, operational discipline and a deep understanding of what it takes to execute successfully in real-world environments.",
+    "Customers meet the person on the floor. We recruit them, walk them through the product, and put them on the roster.",
   scope:
-    "PromoPower provides end-to-end workforce solutions that cover recruitment, screening, preparation, deployment and ongoing campaign support. Whether supporting a single activation or coordinating multiple locations across Singapore, our team helps organisations execute confidently while maintaining the standards their brands deserve.",
+    "That covers one outlet or several locations across Singapore. After the first shift, the same team handles attendance and changes.",
   fromBrief:
-    "Work starts from the brief: what customers need to hear, which locations are involved, and the standard of presentation the brand expects. People are screened for communication and fit, then briefed on the product and the campaign rules before they are rostered.",
+    "Work starts from what the client needs: what customers should hear, which locations are involved, and the standard of presentation the brand expects. People are screened for communication and fit, then walked through the product and campaign rules before they are rostered.",
   whileLive:
     "After the first shift, the operations team handles schedules, attendance and changes on the ground. That covers a single counter or several outlets running at the same time.",
 };
@@ -30,7 +30,7 @@ export default function HomeHero() {
       className="magazine-hero relative bg-white scroll-mt-header"
     >
       <div className="home-hero-copy-panel page-container pb-0">
-        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-slate-900/10 pb-3 sm:gap-x-2.5 text-[0.625rem] sm:text-[0.6875rem] font-bold uppercase tracking-[0.14em] sm:tracking-[0.16em] text-slate-600 font-label">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-b border-slate-900/10 pb-3 sm:gap-x-2.5 text-xs sm:text-[0.6875rem] font-bold uppercase tracking-[0.12em] sm:tracking-[0.16em] text-slate-600 font-label">
           <span className="inline-block w-2 h-2 rounded-full bg-primary" aria-hidden="true" />
           <span className="text-primary font-bold">Singapore</span>
           <span className="text-slate-400 max-sm:hidden" aria-hidden="true">
@@ -47,18 +47,6 @@ export default function HomeHero() {
         </div>
       </div>
 
-      <div className="home-hero-cinema-strip">
-        <Image
-          src={HOME_HERO_IMAGE}
-          alt=""
-          fill
-          priority
-          sizes="100vw"
-          className="hero-photo object-cover home-hero-cinema-strip-photo"
-          aria-hidden="true"
-        />
-      </div>
-
       <div className="home-hero-copy-panel page-container home-hero-copy-panel-after-strip">
         <div className="home-hero-copy-grid">
           <div className="home-hero-copy-main">
@@ -66,33 +54,26 @@ export default function HomeHero() {
               id="home-hero-title"
               className="home-hero-headline font-extrabold tracking-[-0.035em] text-slate-900 font-headline mb-4 sm:mb-5"
             >
-              Building Successful Brand Experiences Through Exceptional People
+              Promoters, ambassadors and event teams in Singapore since 2002
             </h1>
             <p className="home-hero-lead text-slate-800 mb-6 sm:mb-8 max-w-2xl sm:hidden">{heroLeadMobile}</p>
             <p className="home-hero-lead hidden text-slate-800 mb-6 sm:mb-8 max-w-2xl sm:block">{heroParagraphs.lead}</p>
             <HomeHeroActions />
           </div>
-
-          <aside
-            className="home-hero-pullout max-lg:order-first max-lg:mb-1 lg:flex lg:justify-end lg:pt-1"
-            aria-labelledby="home-hero-pullout-label"
-          >
-            <div className="flex flex-col items-start gap-3 bg-transparent shadow-none lg:max-w-[15rem] lg:items-end lg:gap-4 xl:max-w-[17rem]">
-              <span
-                className="block h-px w-12 shrink-0 bg-gradient-to-r from-primary to-primary/40 lg:w-16"
-                aria-hidden="true"
-              />
-              <p
-                id="home-hero-pullout-label"
-                className="m-0 flex flex-col gap-0.5 font-label text-[0.625rem] font-semibold uppercase leading-[1.55] tracking-[0.24em] text-slate-700 sm:text-[0.6875rem] sm:tracking-[0.26em] lg:items-end lg:text-right lg:text-[0.75rem] lg:leading-[1.5] lg:tracking-[0.28em] lg:text-slate-800 xl:text-[0.8125rem] xl:tracking-[0.3em]"
-              >
-                <span className="block">Workforce</span>
-                <span className="block">Intelligence</span>
-                <span className="block text-primary lg:mt-0.5">&amp; Deployment</span>
-              </p>
-            </div>
-          </aside>
         </div>
+      </div>
+
+      <div className="home-hero-cinema-strip">
+        <Image
+          src={HOME_HERO_IMAGE}
+          alt=""
+          width={1440}
+          height={631}
+          priority
+          sizes="100vw"
+          className="home-hero-cinema-strip-photo"
+          aria-hidden="true"
+        />
       </div>
 
       <div className="page-container pt-8 pb-10 sm:pt-10 sm:pb-16 lg:pt-12 lg:pb-20 border-b border-slate-200">
@@ -110,7 +91,7 @@ export default function HomeHero() {
           </div>
 
           <div className="home-hero-accolades lg:col-span-5">
-            <p className="home-hero-accolades-label text-[0.6875rem] font-bold uppercase tracking-[0.14em] text-slate-400 mb-3 font-label">
+            <p className="home-hero-accolades-label text-xs sm:text-[0.6875rem] font-bold uppercase tracking-[0.12em] sm:tracking-[0.14em] text-slate-500 mb-3 font-label">
               Official Accreditations &amp; Recognition
             </p>
             <HeroAccolades />

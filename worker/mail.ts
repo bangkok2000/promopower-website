@@ -43,16 +43,22 @@ export async function sendMail(options: SendMailOptions): Promise<{ ok: true } |
 }
 
 export async function fileToAttachment(file: File): Promise<MailAttachment> {
-  const buffer = await file.arrayBuffer();
-  const bytes = new Uint8Array(buffer);
-  let binary = "";
-  for (let i = 0; i < bytes.length; i += 1) {
-    binary += String.fromCharCode(bytes[i]!);
+  const bytes = new Uint8Array(await file.arrayBuffer());
+  const chunkSize = 24576;
+  let content = "";
+
+  for (let offset = 0; offset < bytes.length; offset += chunkSize) {
+    const slice = bytes.subarray(offset, Math.min(offset + chunkSize, bytes.length));
+    let binary = "";
+    for (let index = 0; index < slice.length; index += 1) {
+      binary += String.fromCharCode(slice[index]!);
+    }
+    content += btoa(binary);
   }
 
   return {
-    filename: file.name.slice(0, 120) || "upload",
+    filename: file.name.replace(/[^\w.\- ]+/g, "").slice(0, 120) || "upload",
     type: file.type,
-    content: btoa(binary),
+    content,
   };
 }

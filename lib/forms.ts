@@ -8,7 +8,15 @@ export interface FormSubmitResult {
 }
 
 async function parseApiResponse(response: Response): Promise<FormSubmitResult> {
-  const result = (await response.json()) as FormSubmitResult & { error?: string };
+  let result: FormSubmitResult & { error?: string };
+  try {
+    result = (await response.json()) as FormSubmitResult & { error?: string };
+  } catch {
+    return {
+      success: false,
+      error: "Unable to send your submission. Please try again or email us directly.",
+    };
+  }
 
   if (!response.ok || !result.success) {
     return {

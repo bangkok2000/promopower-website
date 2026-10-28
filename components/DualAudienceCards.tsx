@@ -16,7 +16,7 @@ export default function DualAudienceCards() {
 
       <article className="dual-audience-item">
         <span className="section-label">For Jobseekers</span>
-        <h3 className="text-xl font-bold text-slate-900 mb-3">Join Our Talent Pool</h3>
+        <h3 className="text-xl font-bold text-slate-900 mb-3">Apply for promoter and event shifts</h3>
         <p className="text-slate-600 leading-relaxed mb-6 flex-1">
           Apply for promotional, retail and event shifts. Recruitment contacts you only when a campaign matches your profile and availability. An application is not a job offer.
         </p>
