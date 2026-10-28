@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SITE } from "@/lib/site";
+import { SITE, SOCIAL } from "@/lib/site";
 
 const QUICK_LINKS = [
   { href: "/", label: "Home" },
@@ -68,7 +68,7 @@ export default function Footer() {
             <h2 className="site-footer-heading">Follow us</h2>
             <div className="site-footer-social">
               <a
-                href="https://www.linkedin.com/company/promopowersg/"
+                href={SOCIAL.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="site-footer-social-btn site-footer-social-btn-linkedin"
@@ -79,7 +79,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.instagram.com/promopowersg/"
+                href={SOCIAL.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="site-footer-social-btn site-footer-social-btn-instagram"
@@ -90,7 +90,7 @@ export default function Footer() {
                 </svg>
               </a>
               <a
-                href="https://www.facebook.com/PromoPower.com.sg"
+                href={SOCIAL.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="site-footer-social-btn site-footer-social-btn-facebook"

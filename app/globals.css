@@ -96,11 +96,6 @@
       overflow-x: hidden;
     }
 
-    body {
-      overflow-x: hidden;
-      touch-action: pan-y;
-    }
-
     main {
       overflow-x: clip;
       max-width: 100%;

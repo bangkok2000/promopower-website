@@ -28,7 +28,7 @@ export const SITE = {
 } as const;
 
 export const SOCIAL = {
-  linkedin: "https://www.linkedin.com/company/promopowersg/",
+  linkedin: "https://www.linkedin.com/company/promopower-pte-ltd/",
   instagram: "https://www.instagram.com/promopowersg/",
   facebook: "https://www.facebook.com/PromoPower.com.sg",
 } as const;

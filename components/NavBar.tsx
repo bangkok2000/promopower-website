@@ -39,7 +39,7 @@ export default function NavBar() {
 
   useEffect(() => {
     const syncHeaderHeight = () => {
-      syncScrollOffsetVars({ includeSectionNav: pathname === "/" });
+      syncScrollOffsetVars();
     };
 
     syncHeaderHeight();
@@ -147,7 +147,7 @@ export default function NavBar() {
       setServicesOpen(false);
       window.history.pushState(null, "", "/");
       window.dispatchEvent(new Event("homepage-reset"));
-      syncScrollOffsetVars({ includeSectionNav: true });
+      syncScrollOffsetVars();
       window.scrollTo({ top: 0, left: 0, behavior: "auto" });
     },
     [closeMenu, pathname]

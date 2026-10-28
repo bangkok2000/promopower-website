@@ -218,12 +218,12 @@ export default function Home() {
                   href: "#contact",
                 },
               ].map((path) => (
-                <Link key={path.title} href={path.href} className="home-path-link group min-w-0">
+                <a key={path.title} href={path.href} className="home-path-link group min-w-0">
                   <span className="min-w-0">
                     <strong>{path.title}</strong>
                     <small>{path.description}</small>
                   </span>
-                </Link>
+                </a>
               ))}
             </div>
           </div>
