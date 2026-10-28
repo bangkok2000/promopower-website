@@ -79,7 +79,7 @@ export default function FAQPage() {
         navItems={faqNav}
         navLabel="FAQ sections"
         scrollHint="Scroll sideways for more topics"
-        contentClassName="space-y-5 pt-8"
+        contentClassName="space-y-5"
       >
         {faqs.map((faq, index) => (
           <article key={faq.question} id={`faq-section-${index + 1}`} className="bg-white border border-slate-200 rounded-xl p-6 sm:p-8 page-section-anchor hover:border-primary/30 transition-colors">

@@ -32,7 +32,7 @@ export default function TermsPage() {
         navItems={TERMS_NAV}
         navLabel="Terms sections"
         scrollHint="Scroll sideways for more sections"
-        contentClassName="pt-8"
+        contentClassName=""
       >
           <div className="max-w-3xl">
           <div className="content-card mb-10" role="note" aria-label="Document status">

@@ -23,7 +23,7 @@ export default function PageSectionNavGroup({
   navLabel,
   scrollHint,
   breadcrumb,
-  contentClassName = "space-y-12 pt-8",
+  contentClassName = "space-y-12",
   showTop = false,
   showBottom = false,
   showEndLinks = true,

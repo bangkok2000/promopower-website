@@ -32,7 +32,7 @@ export default function PrivacyPage() {
         navItems={PRIVACY_NAV}
         navLabel="Privacy policy sections"
         scrollHint="Scroll sideways for more sections"
-        contentClassName="pt-8"
+        contentClassName=""
       >
           <div className="max-w-3xl">
           <div className="bg-blue-50 border border-primary/20 rounded-xl p-5 mb-10" role="note" aria-label="Document status">
