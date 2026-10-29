@@ -34,6 +34,7 @@ type Props = { onDirtyChange: (dirty: boolean) => void; onSessionExpired: () => 
 
 export default function AdminJobsEditor({ onDirtyChange, onSessionExpired }: Props) {
   const [jobs, setJobs] = useState<JobDraft[] | null>(null);
+  const [openIds, setOpenIds] = useState<Set<string>>(new Set());
   const [dirty, setDirty] = useState(false);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ tone: "success" | "error"; text: string } | null>(null);
@@ -48,6 +49,20 @@ export default function AdminJobsEditor({ onDirtyChange, onSessionExpired }: Pro
     setJobs(next);
     setDirty(true);
     setMessage(null);
+  };
+
+  const toggle = (id: string) =>
+    setOpenIds((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+
+  const addJob = () => {
+    const job = emptyJob();
+    update([...(jobs ?? []), job]);
+    setOpenIds((current) => new Set(current).add(job.id));
   };
 
   const edit = (id: string, changes: Partial<JobDraft>) =>
@@ -85,7 +100,7 @@ export default function AdminJobsEditor({ onDirtyChange, onSessionExpired }: Pro
           Jobs shown on the <a className="text-primary underline" href="/jobseekers" target="_blank" rel="noopener">Jobseekers page</a>.
           Untick &ldquo;Show on website&rdquo; to hide a job without deleting it.
         </p>
-        <AdminButton onClick={() => update([...jobs, emptyJob()])}>
+        <AdminButton onClick={addJob}>
           <span className="material-symbols-outlined text-lg" aria-hidden="true">add</span>
           Add a job
         </AdminButton>
@@ -99,14 +114,31 @@ export default function AdminJobsEditor({ onDirtyChange, onSessionExpired }: Pro
 
       {jobs.map((job, index) => {
         const field = (name: string) => `job-${job.id}-${name}`;
+        const isOpen = openIds.has(job.id);
         return (
-          <fieldset key={job.id} className="rounded-2xl border border-slate-200 bg-white p-5 sm:p-6 space-y-5">
+          <fieldset key={job.id} className="rounded-2xl border border-slate-200 bg-white p-4 sm:p-5 space-y-5">
             <legend className="sr-only">Job {index + 1}</legend>
             <div className="flex flex-wrap items-center justify-between gap-3">
-              <p className="font-bold text-slate-900">
-                Job {index + 1}
-                {!job.active && <span className="ml-2 text-xs font-semibold uppercase tracking-wider text-slate-500">Hidden</span>}
-              </p>
+              <button
+                type="button"
+                aria-expanded={isOpen}
+                aria-controls={field("body")}
+                onClick={() => toggle(job.id)}
+                className="flex min-w-0 flex-1 basis-64 items-center gap-3 text-left"
+              >
+                <span className="material-symbols-outlined shrink-0" aria-hidden="true">
+                  {isOpen ? "expand_less" : "expand_more"}
+                </span>
+                <span className="min-w-0">
+                  <span className="block font-bold text-slate-900 [overflow-wrap:anywhere]">
+                    {job.title || `Job ${index + 1} (no title yet)`}
+                  </span>
+                  <span className="text-sm text-slate-500">
+                    {job.category}
+                    {job.active ? " · Shown on website" : " · Hidden"}
+                  </span>
+                </span>
+              </button>
               <div className="flex flex-wrap gap-2">
                 <AdminButton onClick={() => move(index, -1)} disabled={index === 0} aria-label={`Move job ${index + 1} up`}>
                   <span className="material-symbols-outlined text-lg" aria-hidden="true">arrow_upward</span>
@@ -131,86 +163,90 @@ export default function AdminJobsEditor({ onDirtyChange, onSessionExpired }: Pro
               </div>
             </div>
 
-            <div>
-              <label htmlFor={field("title")} className={labelClass}>Job title</label>
-              <input
-                id={field("title")}
-                className={inputClass}
-                value={job.title}
-                onChange={(event) => edit(job.id, { title: event.target.value })}
-                placeholder="Brand Ambassador for FMCG brand"
-                required
-              />
-            </div>
+            {isOpen && (
+              <div id={field("body")} className="space-y-5 border-t border-slate-200 pt-5">
+                <div>
+                  <label htmlFor={field("title")} className={labelClass}>Job title</label>
+                  <input
+                    id={field("title")}
+                    className={inputClass}
+                    value={job.title}
+                    onChange={(event) => edit(job.id, { title: event.target.value })}
+                    placeholder="Brand Ambassador for FMCG brand"
+                    required
+                  />
+                </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-              <div>
-                <label htmlFor={field("category")} className={labelClass}>Filter tab</label>
-                <select
-                  id={field("category")}
-                  className={inputClass}
-                  value={job.category}
-                  onChange={(event) => edit(job.id, { category: event.target.value as JobCategory })}
-                >
-                  {JOB_CATEGORIES.map((category) => (
-                    <option key={category} value={category}>{category}</option>
-                  ))}
-                </select>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+                  <div>
+                    <label htmlFor={field("category")} className={labelClass}>Filter tab</label>
+                    <select
+                      id={field("category")}
+                      className={inputClass}
+                      value={job.category}
+                      onChange={(event) => edit(job.id, { category: event.target.value as JobCategory })}
+                    >
+                      {JOB_CATEGORIES.map((category) => (
+                        <option key={category} value={category}>{category}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <label htmlFor={field("type")} className={labelClass}>Job type (as shown)</label>
+                    <input
+                      id={field("type")}
+                      className={inputClass}
+                      value={job.typeLabel}
+                      onChange={(event) => edit(job.id, { typeLabel: event.target.value })}
+                      placeholder={job.category}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor={field("experience")} className={labelClass}>Years of experience</label>
+                    <input
+                      id={field("experience")}
+                      className={inputClass}
+                      value={job.experience}
+                      onChange={(event) => edit(job.id, { experience: event.target.value })}
+                      placeholder="1"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor={field("scope")} className={labelClass}>Main job scope</label>
+                  <p id={field("scope-hint")} className="px-1 mb-2 text-sm text-slate-500">One point per line.</p>
+                  <textarea
+                    id={field("scope")}
+                    aria-describedby={field("scope-hint")}
+                    className={`${inputClass} min-h-40`}
+                    value={job.scopeText}
+                    onChange={(event) => edit(job.id, { scopeText: event.target.value })}
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor={field("apply")} className={labelClass}>How to apply (optional)</label>
+                  <textarea
+                    id={field("apply")}
+                    className={`${inputClass} min-h-24`}
+                    value={job.applyNote}
+                    onChange={(event) => edit(job.id, { applyNote: event.target.value })}
+                    placeholder="Interested candidates do send in resume to …"
+                  />
+                </div>
+
+                <label className="flex items-center gap-3 text-slate-800 font-medium">
+                  <input
+                    type="checkbox"
+                    className="h-5 w-5 accent-[var(--color-primary)]"
+                    checked={job.active}
+                    onChange={(event) => edit(job.id, { active: event.target.checked })}
+                  />
+                  Show on website
+                </label>
               </div>
-              <div>
-                <label htmlFor={field("type")} className={labelClass}>Job type (as shown)</label>
-                <input
-                  id={field("type")}
-                  className={inputClass}
-                  value={job.typeLabel}
-                  onChange={(event) => edit(job.id, { typeLabel: event.target.value })}
-                  placeholder={job.category}
-                />
-              </div>
-              <div>
-                <label htmlFor={field("experience")} className={labelClass}>Years of experience</label>
-                <input
-                  id={field("experience")}
-                  className={inputClass}
-                  value={job.experience}
-                  onChange={(event) => edit(job.id, { experience: event.target.value })}
-                  placeholder="1"
-                />
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor={field("scope")} className={labelClass}>Main job scope</label>
-              <p id={field("scope-hint")} className="px-1 mb-2 text-sm text-slate-500">One point per line.</p>
-              <textarea
-                id={field("scope")}
-                aria-describedby={field("scope-hint")}
-                className={`${inputClass} min-h-40`}
-                value={job.scopeText}
-                onChange={(event) => edit(job.id, { scopeText: event.target.value })}
-              />
-            </div>
-
-            <div>
-              <label htmlFor={field("apply")} className={labelClass}>How to apply (optional)</label>
-              <textarea
-                id={field("apply")}
-                className={`${inputClass} min-h-24`}
-                value={job.applyNote}
-                onChange={(event) => edit(job.id, { applyNote: event.target.value })}
-                placeholder="Interested candidates do send in resume to …"
-              />
-            </div>
-
-            <label className="flex items-center gap-3 text-slate-800 font-medium">
-              <input
-                type="checkbox"
-                className="h-5 w-5 accent-[var(--color-primary)]"
-                checked={job.active}
-                onChange={(event) => edit(job.id, { active: event.target.checked })}
-              />
-              Show on website
-            </label>
+            )}
           </fieldset>
         );
       })}
