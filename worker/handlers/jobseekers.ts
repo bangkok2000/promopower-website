@@ -13,6 +13,7 @@ function formatJobseekerEmail(data: Record<string, string>, hasAttachment: boole
   return [
     "New jobseeker application from promopower.com.sg",
     "",
+    `Interested to be: ${data.position || "—"}`,
     `Name: ${data.fullName}`,
     `Email: ${data.email}`,
     `Phone: ${data.phone}`,
@@ -45,6 +46,7 @@ export async function handleJobseekers(request: Request, env: FormEnv): Promise<
   }
 
   const data = {
+    position: sanitize(formData.get("position")),
     fullName: sanitize(formData.get("fullName")),
     email: sanitize(formData.get("email")),
     phone: sanitize(formData.get("phone")),
@@ -96,7 +98,9 @@ export async function handleJobseekers(request: Request, env: FormEnv): Promise<
     fromEmail,
     fromName,
     replyTo: data.email,
-    subject: "PromoPower — Jobseeker application",
+    subject: data.position
+      ? `PromoPower — Jobseeker application: ${data.position}`
+      : "PromoPower — Jobseeker application",
     text: formatJobseekerEmail(data, Boolean(attachment)),
     attachments: attachment ? [attachment] : undefined,
   });

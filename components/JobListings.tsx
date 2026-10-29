@@ -97,7 +97,24 @@ function splitCSVCells(record: string): string[] {
   return cells;
 }
 
-const TYPE_ORDER = ["All", "Full Time", "Part Time", "Contract", "Temporary"];
+const TYPE_TABS = ["All", "Contract", "Full Time", "Part Time", "Temporary"];
+
+/** Fired by "Apply Now" so the application form can pre-fill the position. */
+export const JOB_APPLY_EVENT = "jobseeker-apply";
+
+/** A job counts under a tab when its type starts with that tab, e.g. "Full Time & Part Time…" → Full Time. */
+const matchesTab = (job: Job, tab: string) =>
+  tab === "All" || job.type.toLowerCase().startsWith(tab.toLowerCase());
+
+/** Scope lines: one per line or "*" marker in the sheet; falls back to sentences. */
+function scopeLines(scope: string): string[] {
+  const byMarker = scope.split(/\r?\n|\*/).map((s) => s.trim()).filter(Boolean);
+  if (byMarker.length > 1) return byMarker;
+  return scope
+    .split(/\.\s+/)
+    .map((s) => s.trim())
+    .filter(Boolean);
+}
 
 export default function JobListings() {
   const [jobs, setJobs] = useState<Job[] | null>(null);
@@ -129,11 +146,8 @@ export default function JobListings() {
     return (
       <section className="py-16 sm:py-20 px-6 sm:px-8 md:px-16 max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase block mb-4">
-            Career Opportunities
-          </span>
           <h2 className="text-3xl sm:text-4xl font-headline font-normal text-on-surface">
-            Current Job Openings
+            Jobseekers
           </h2>
         </div>
         <p className="text-center text-on-surface-variant/70">
@@ -143,33 +157,21 @@ export default function JobListings() {
     );
   }
 
-  // Build filter tabs — only show types that exist in data
-  const presentTypes = Array.from(new Set(jobs.map((j) => j.type).filter(Boolean)));
-  const tabs = ["All", ...TYPE_ORDER.slice(1).filter((t) => presentTypes.includes(t))];
-
-  // Also include any types not in our predefined order
-  presentTypes.forEach((t) => {
-    if (!TYPE_ORDER.includes(t) && !tabs.includes(t)) tabs.push(t);
-  });
-
-  const filtered = activeFilter === "All" ? jobs : jobs.filter((j) => j.type === activeFilter);
+  const filtered = jobs.filter((j) => matchesTab(j, activeFilter));
 
   return (
     <section className="py-16 sm:py-20 px-6 sm:px-8 md:px-16 max-w-7xl mx-auto">
       {/* Heading */}
       <div className="text-center mb-12">
-        <span className="text-primary font-headline font-normal tracking-widest text-sm uppercase block mb-4">
-          Career Opportunities
-        </span>
         <h2 className="text-3xl sm:text-4xl font-headline font-normal text-on-surface">
-          Current Job Openings
+          Jobseekers
         </h2>
       </div>
 
       {/* Filter tabs */}
       <div className="flex flex-wrap justify-center gap-2 mb-10">
-        {tabs.map((tab) => {
-          const count = tab === "All" ? jobs.length : jobs.filter((j) => j.type === tab).length;
+        {TYPE_TABS.map((tab) => {
+          const count = jobs.filter((j) => matchesTab(j, tab)).length;
           const isActive = activeFilter === tab;
           return (
             <button
@@ -192,24 +194,7 @@ export default function JobListings() {
       <div className="space-y-3">
         {filtered.map((job, i) => {
           const isOpen = openIndex === i;
-          // Parse scope sentences for bullet display
-          const bullets = job.scope
-            .split(/\.\s+/)
-            .map((s) => s.replace(/^\*/, "").trim())
-            .filter(Boolean);
-
-          // Parse apply emails — handles formats:
-          //   "Primary: a@b.com; CC: c@b.com d@b.com"
-          //   "a@b.com cc b@b.com"
-          //   "a@b.com"
-          const emailRaw = job.applyEmail.replace(/\n|\r/g, " ");
-          // Extract all email addresses from the raw string
-          const allEmails = (emailRaw.match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/g) ?? []);
-          const primaryEmail = allEmails[0] ?? "";
-          const ccEmails = allEmails.slice(1);
-
-          const mailtoCC = ccEmails.length > 0 ? `?cc=${ccEmails.join(",")}&subject=${encodeURIComponent(`Application: ${job.title}`)}` : `?subject=${encodeURIComponent(`Application: ${job.title}`)}`;
-          const mailtoHref = `mailto:${primaryEmail}${mailtoCC}`;
+          const bullets = scopeLines(job.scope);
 
           return (
             <div
@@ -264,16 +249,15 @@ export default function JobListings() {
                     </div>
                   )}
 
-                  {primaryEmail && (
-                    <div className="text-center pt-2">
-                      <a
-                        href={mailtoHref}
-                        className="glow-button inline-flex items-center gap-2 px-8 py-3 rounded-full text-on-primary font-headline font-normal text-base hover:scale-105 transition-transform"
-                      >
-                        Apply Now
-                      </a>
-                    </div>
-                  )}
+                  <div className="text-center pt-2">
+                    <a
+                      href="#section-apply"
+                      onClick={() => window.dispatchEvent(new CustomEvent(JOB_APPLY_EVENT, { detail: job.title }))}
+                      className="glow-button inline-flex items-center gap-2 px-8 py-3 rounded-full text-on-primary font-headline font-normal text-base hover:scale-105 transition-transform"
+                    >
+                      Apply Now
+                    </a>
+                  </div>
                 </div>
               )}
             </div>

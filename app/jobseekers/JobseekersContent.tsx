@@ -2,7 +2,8 @@
 
 import Link from "next/link";
 import TrustCard from "@/components/TrustCard";
-import { useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
+import { JOB_APPLY_EVENT } from "@/components/JobListings";
 import { submitJobseekerApplication } from "@/lib/forms";
 import type { FormSubmitResult } from "@/lib/forms";
 import { isValidEmail } from "@/lib/form-validation";
@@ -50,7 +51,18 @@ export default function JobseekersContent() {
   const [isAgreed, setIsAgreed] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notEmailed, setNotEmailed] = useState(false);
+  const [position, setPosition] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
+
+  useEffect(() => {
+    const onApply = (event: Event) => {
+      setPosition((event as CustomEvent<string>).detail);
+      setStep(1);
+      setError(null);
+    };
+    window.addEventListener(JOB_APPLY_EVENT, onApply);
+    return () => window.removeEventListener(JOB_APPLY_EVENT, onApply);
+  }, []);
 
   const validateStep1 = () => {
     if (!formRef.current) return false;
@@ -183,6 +195,20 @@ export default function JobseekersContent() {
 
               <div hidden={step !== 1} className={step === 1 ? "animate-in fade-in slide-in-from-right-4 duration-500" : undefined}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+                  <div className="space-y-3 md:col-span-2">
+                    <label htmlFor="js-position" className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">
+                      I am interested to be a / an
+                    </label>
+                    <input
+                      id="js-position"
+                      name="position"
+                      value={position}
+                      onChange={(event) => setPosition(event.target.value)}
+                      className="w-full bg-white border border-slate-300 rounded-xl px-6 py-4 text-slate-900 focus:ring-2 focus:ring-primary/50 focus:border-primary transition-all placeholder:text-slate-400"
+                      placeholder="Brand Ambassador, Promoter, Event Crew"
+                      type="text"
+                    />
+                  </div>
                   <div className="space-y-3">
                     <label htmlFor="js-fullname" className="block text-xs font-bold text-primary px-1 uppercase tracking-widest">
                       Full Name
