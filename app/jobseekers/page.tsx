@@ -1,3 +1,4 @@
+import JobListings from "@/components/JobListings";
 import PageHero from "@/components/PageHero";
 import PageBreadcrumb from "@/components/PageBreadcrumb";
 import PageSectionNavGroup from "@/components/PageSectionNavGroup";
@@ -29,6 +30,7 @@ export default function JobseekersPage() {
             </a>
           </PageHero>
         }
+        afterHero={<JobListings />}
         breadcrumb={<PageBreadcrumb items={simplePageBreadcrumb("Jobseekers")} />}
         navItems={jobseekerNav}
         navLabel="Jobseeker sections"

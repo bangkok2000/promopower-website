@@ -6,6 +6,7 @@ import type { ReactNode } from "react";
 
 type PageSectionNavGroupProps = {
   hero?: ReactNode;
+  afterHero?: ReactNode;
   navItems: SectionNavItem[];
   navLabel?: string;
   scrollHint?: string;
@@ -19,6 +20,7 @@ type PageSectionNavGroupProps = {
 
 export default function PageSectionNavGroup({
   hero,
+  afterHero,
   navItems,
   navLabel,
   scrollHint,
@@ -40,6 +42,7 @@ export default function PageSectionNavGroup({
         showBottom={showBottom}
       />
       {hero}
+      {afterHero}
       <section className="page-section">
         <PageContentRail>
           <div className={contentClassName}>{children}</div>
