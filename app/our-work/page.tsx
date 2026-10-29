@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { PORTFOLIO_GROUPS } from "@/lib/data";
-import { getPortfolioNavItems, portfolioClientSlug, portfolioSectionId } from "@/lib/portfolio";
 import CTASection from "@/components/CTASection";
-import GalleryGrid from "@/components/GalleryGrid";
 import LatestWorkGallery from "@/components/LatestWorkGallery";
 import JsonLd from "@/components/JsonLd";
 import PageBreadcrumb from "@/components/PageBreadcrumb";
@@ -11,7 +8,7 @@ import PageEndLinks from "@/components/PageEndLinks";
 import PageHero from "@/components/PageHero";
 import PageWayfindingBand from "@/components/PageWayfindingBand";
 import { simplePageBreadcrumb } from "@/lib/page-nav-config";
-import PortfolioClientNav from "@/components/PortfolioClientNav";
+import PortfolioArchive from "@/components/PortfolioArchive";
 import { buildPageMetadata, webPageJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildPageMetadata({
@@ -26,8 +23,6 @@ export const metadata: Metadata = buildPageMetadata({
     "brand activation portfolio",
   ],
 });
-
-const portfolioNavItems = getPortfolioNavItems();
 
 export default function OurWork() {
   return (
@@ -55,28 +50,7 @@ export default function OurWork() {
             Full portfolio archive
           </p>
 
-          <PortfolioClientNav items={portfolioNavItems} />
-
-          <div className="space-y-12 pt-8">
-            {PORTFOLIO_GROUPS.map((group) => {
-              const slug = portfolioClientSlug(group.client);
-
-              return (
-                <section
-                  key={group.client}
-                  id={portfolioSectionId(slug)}
-                  className="page-section-anchor space-y-5"
-                  aria-labelledby={`portfolio-heading-${slug}`}
-                >
-                  <h2 id={`portfolio-heading-${slug}`} className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 border-b border-slate-200 pb-4">
-                    {group.client}
-                  </h2>
-
-                  <GalleryGrid photos={group.photos} label={group.client} />
-                </section>
-              );
-            })}
-          </div>
+          <PortfolioArchive />
           <PageEndLinks />
         </PageContentRail>
       </section>

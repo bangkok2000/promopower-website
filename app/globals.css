@@ -3254,3 +3254,9 @@
     padding-block: 1.5rem;
   }
 }
+
+/* Admin portal: floating buttons would cover the "Save and publish" bar. */
+body:has(.admin-portal) .whatsapp-float,
+body:has(.admin-portal) .page-scroll-controls {
+  display: none;
+}

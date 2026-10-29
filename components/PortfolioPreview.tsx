@@ -1,14 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import { PORTFOLIO_GROUPS } from "@/lib/data";
 import { portfolioClientSlug, portfolioSectionId } from "@/lib/portfolio";
+import { usePublishedPortfolio } from "@/lib/use-site-content";
 
-const PREVIEW_CLIENTS = ["APB Singapore", "Bvlgari", "Chanel", "Dior", "Lancome"] as const;
+const PREVIEW_CLIENTS = ["APB Singapore", "Bvlgari", "Chanel", "Dior", "Lancome"];
+const PREVIEW_COUNT = PREVIEW_CLIENTS.length;
 
 export default function PortfolioPreview() {
-  const groups = PREVIEW_CLIENTS.map((client) => PORTFOLIO_GROUPS.find((group) => group.client === client)).filter(
-    (group): group is (typeof PORTFOLIO_GROUPS)[number] => Boolean(group?.photos[0]),
-  );
+  const withPhotos = usePublishedPortfolio().groups.filter((group) => group.photos.length > 0);
+  const preferred = withPhotos.filter((group) => PREVIEW_CLIENTS.includes(group.client));
+  const groups = [...preferred, ...withPhotos.filter((group) => !preferred.includes(group))].slice(0, PREVIEW_COUNT);
 
   if (groups.length === 0) return null;
 

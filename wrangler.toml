@@ -9,6 +9,12 @@ directory = "./out"
 binding = "ASSETS"
 not_found_handling = "404-page"
 
+# Admin portal storage (/admin): job listings, portfolio and uploaded photos.
+# On a new Cloudflare account: `npx wrangler kv namespace create SITE_CONTENT` and paste the new id here.
+[[kv_namespaces]]
+binding = "SITE_CONTENT"
+id = "2af2ac4d7f7b4fdda25fe4cede8ed94e"
+
 [vars]
 FORM_FROM_NAME = "PromoPower Website"
 FORM_FROM_EMAIL = "noreply@promopower.com.sg"
@@ -16,5 +22,6 @@ FORM_RECIPIENT_EMAIL = "admin@promopower.com.sg"
 
 # Secrets (set when PromoPower owns DNS / inbox access):
 #   wrangler secret put FORM_RECIPIENT_EMAIL
+#   wrangler secret put ADMIN_PASSWORD   # first sign-in to /admin; the team can change it in the portal
 # Optional:
 #   wrangler secret put FORM_FORCE_DEMO   # set to "true" to keep demo responses even with a recipient

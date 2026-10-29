@@ -2,15 +2,13 @@
 
 import Image from "next/image";
 import { useState, useEffect, useCallback, useRef } from "react";
+import { photoThumbnailSrc as thumbnailSrc } from "@/lib/site-content";
 
 interface Props {
   photos: string[];
   label?: string;
   eagerCount?: number;
 }
-
-/** Grid tiles use the small copies from `npm run gallery:thumbs`; the lightbox loads the original. */
-const thumbnailSrc = (src: string) => src.replace(/^\/gallery\//, "/gallery-thumbs/");
 
 export default function GalleryGrid({ photos, label = "campaign", eagerCount = 0 }: Props) {
   const [lightbox, setLightbox] = useState<number | null>(null);
@@ -51,7 +49,7 @@ export default function GalleryGrid({ photos, label = "campaign", eagerCount = 0
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
         {photos.map((src, i) => (
           <button
-            key={i}
+            key={src}
             type="button"
             onClick={() => setLightbox(i)}
             aria-label={`View ${label} photo ${i + 1}`}

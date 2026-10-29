@@ -1,7 +1,12 @@
+"use client";
+
 import GalleryGrid from "@/components/GalleryGrid";
-import { LATEST_WORK_PHOTOS } from "@/lib/latest-work";
+import { usePublishedPortfolio } from "@/lib/use-site-content";
 
 export default function LatestWorkGallery() {
+  const { latestWork } = usePublishedPortfolio();
+  if (latestWork.length === 0) return null;
+
   return (
     <section
       id="latest-work"
@@ -24,7 +29,7 @@ export default function LatestWorkGallery() {
         </p>
       </div>
 
-      <GalleryGrid photos={[...LATEST_WORK_PHOTOS]} label="Latest campaign photography" eagerCount={4} />
+      <GalleryGrid photos={latestWork} label="Latest campaign photography" eagerCount={4} />
     </section>
   );
 }
