@@ -10,7 +10,7 @@ Living list of items that require decisions or action outside of code. Update as
 
 Do this from [ownershiptransfer.md](ownershiptransfer.md), section **Approved handover plan**. Do not deploy the approved site onto the personal Cloudflare account, and do not tell the agency to upload the repo into WordPress.
 
-Forms post to `/api/contact` and `/api/jobseekers` on the Worker and send with MailChannels from `noreply@promopower.com.sg` to `admin@promopower.com.sg`. The live domain’s SPF does not allow MailChannels yet, so production send fails until the agency adds the merged SPF record and a `_mailchannels` TXT record that uses the **new** account ID.
+Forms post to `/api/contact` and `/api/jobseekers` on the Worker and are saved to the admin portal Inbox. Email is off until a MailChannels account, a `MAILCHANNELS_API_KEY` Worker secret and two DNS records exist. See **Admin portal** and step 3 in [ownershiptransfer.md](ownershiptransfer.md).
 
 ### 2. Leadership cards — names not confirmed
 

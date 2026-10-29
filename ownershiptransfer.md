@@ -25,7 +25,15 @@ Measured on the live domain:
 | Contact form today | WordPress Contact Form 7 posts to `/contact-us/` | Stops being the public form after cutover. Their server may keep sending mail for other uses |
 | Public inbox | `admin@promopower.com.sg` | Form recipient |
 
-The new site sends form mail with MailChannels, from `noreply@promopower.com.sg` to `admin@promopower.com.sg`. MailChannels is not in the current SPF record, and there is no `_mailchannels` TXT record, so those messages fail until the agency adds the two DNS records below. The domain-lock value must be the **new** Cloudflare account ID, not `b8913fb4c5f8fe17d60ce0f824cdd1aa`.
+Every Contact Us enquiry and Jobseekers application is saved to the admin portal Inbox (`/admin`). Email is switched off for now: the site sends no mail until a `MAILCHANNELS_API_KEY` secret is set, so staff check the Inbox.
+
+To switch email on later (from `noreply@promopower.com.sg` to `admin@promopower.com.sg`):
+
+1. PromoPower creates a MailChannels account at [dash.mailchannels.net](https://dash.mailchannels.net). MailChannels' old free Cloudflare Workers sending ended in June 2024, so an account is required.
+2. In that account, add `admin@promopower.com.sg` as a user and verify it. Without a payment method, MailChannels sends only to verified addresses.
+3. Create an API key with the **Sending Email** scope and set it on the Worker: `npx wrangler secret put MAILCHANNELS_API_KEY`.
+4. Apply the two DNS records in step 3 below, using the **MailChannels account ID** (shown at the bottom of the MailChannels dashboard).
+5. Send a test enquiry and confirm it arrives by email and in the Inbox.
 
 ### 1. New Cloudflare account for the agency
 
@@ -41,7 +49,7 @@ Transfer `https://github.com/bangkok2000/promopower-website` from `bangkok2000` 
 
 Leave MX, the `mail` A record, and DKIM as they are.
 
-Replace the SPF TXT on `@` with:
+Only needed when email is switched on (see above). Replace the SPF TXT on `@` with:
 
 ```text
 v=spf1 ip4:103.7.8.5 ip4:103.7.8.53 include:se.mschosting.com include:relay.mailchannels.net ~all
@@ -50,14 +58,14 @@ v=spf1 ip4:103.7.8.5 ip4:103.7.8.53 include:se.mschosting.com include:relay.mail
 Add a TXT record on `_mailchannels.promopower.com.sg`:
 
 ```text
-v=mc1 cfid=<NEW_CLOUDFLARE_ACCOUNT_ID>
+v=mc1 auth=<MAILCHANNELS_ACCOUNT_ID>
 ```
 
 Point only the website names (`promopower.com.sg` and `www`) at the **new** account’s Worker. Do not point them at `promopower-website.mohmadnoorariffin.workers.dev`.
 
 ### 4. Close the personal account copy
 
-After the new site answers on `promopower.com.sg` and mail delivery is confirmed:
+After the new site answers on `promopower.com.sg` and a test enquiry has reached the admin Inbox:
 
 - Delete the `promopower-website` Worker on the personal account (`b8913fb4c5f8fe17d60ce0f824cdd1aa`). The `workers.dev` preview then stops.
 - Revoke the personal Cloudflare API token used to deploy.
@@ -285,7 +293,7 @@ Remove `promopower.com.sg` from the **developer** Worker after cutover to avoid 
 
 Add on the **new owner’s** `promopower.com.sg` zone after the zone is active:
 
-**SPF and domain lockdown:** use the records in **Approved handover plan**. Do not publish `v=spf1 include:relay.mailchannels.net ~all` on its own. That would replace the agency’s existing mail authorisation. The `cfid` is the new account’s ID, not `b8913fb4c5f8fe17d60ce0f824cdd1aa`.
+**SPF and domain lockdown:** use the records in **Approved handover plan**. Do not publish `v=spf1 include:relay.mailchannels.net ~all` on its own. That would replace the agency’s existing mail authorisation. The `auth` value is PromoPower's MailChannels account ID.
 
 #### Redirects (`public/_redirects`)
 
@@ -468,7 +476,7 @@ For ongoing deploys without local `wrangler`:
 | Admin password | `/admin` → **Password** tab |
 | Other content / code changes | Edit repo → deploy |
 | Outstanding tasks | See `TODO.md` |
-| Mail not sending | Check MailChannels DNS (SPF + `_mailchannels` TXT) and `FORM_RECIPIENT_EMAIL` |
+| Mail not sending | Email is off until `MAILCHANNELS_API_KEY` is set. Then check the MailChannels DNS (SPF + `_mailchannels` TXT) and `FORM_RECIPIENT_EMAIL`. Submissions are in the admin Inbox either way |
 
 ---
 

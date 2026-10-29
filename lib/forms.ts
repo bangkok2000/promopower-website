@@ -4,7 +4,6 @@ export interface FormSubmitResult {
   success: boolean;
   timestamp?: string;
   error?: string;
-  demo?: boolean;
 }
 
 async function parseApiResponse(response: Response): Promise<FormSubmitResult> {
@@ -28,7 +27,6 @@ async function parseApiResponse(response: Response): Promise<FormSubmitResult> {
   return {
     success: true,
     timestamp: result.timestamp ?? new Date().toISOString(),
-    demo: result.demo,
   };
 }
 

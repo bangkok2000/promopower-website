@@ -12,6 +12,7 @@ export interface Env {
   FORM_FROM_EMAIL?: string;
   FORM_FROM_NAME?: string;
   FORM_FORCE_DEMO?: string;
+  MAILCHANNELS_API_KEY?: string;
 }
 
 const worker = {

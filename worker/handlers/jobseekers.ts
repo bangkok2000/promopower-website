@@ -9,7 +9,7 @@ import {
 } from "../../lib/form-validation";
 import { saveSubmission, type InboxEnv } from "../inbox";
 import { fileToAttachment, sendMail } from "../mail";
-import { getMailConfig, isDemoMode, json, type FormEnv } from "../responses";
+import { getMailConfig, isDemoMode, json, NOT_SAVED_ERROR, type FormEnv } from "../responses";
 
 function formatJobseekerEmail(data: Record<string, string>, hasAttachment: boolean) {
   return [
@@ -114,12 +114,13 @@ export async function handleJobseekers(request: Request, env: FormEnv & InboxEnv
   );
 
   if (isDemoMode(env)) {
-    console.info("[DEMO] Jobseeker application received");
-    return json({ success: true, timestamp: new Date().toISOString(), demo: true });
+    if (!saved) return json({ success: false, error: NOT_SAVED_ERROR }, 502);
+    return json({ success: true, timestamp: new Date().toISOString() });
   }
 
-  const { recipient, fromEmail, fromName } = getMailConfig(env);
+  const { recipient, fromEmail, fromName, apiKey } = getMailConfig(env);
   const result = await sendMail({
+    apiKey,
     to: recipient,
     fromEmail,
     fromName,

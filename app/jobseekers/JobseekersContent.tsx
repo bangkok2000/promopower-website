@@ -7,7 +7,6 @@ import { JOB_APPLY_EVENT } from "@/components/JobListings";
 import { submitJobseekerApplication } from "@/lib/forms";
 import type { FormSubmitResult } from "@/lib/forms";
 import { isValidEmail } from "@/lib/form-validation";
-import { SITE } from "@/lib/site";
 
 const processSteps = [
   {
@@ -50,7 +49,6 @@ export default function JobseekersContent() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isAgreed, setIsAgreed] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [notEmailed, setNotEmailed] = useState(false);
   const [position, setPosition] = useState("");
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -112,7 +110,6 @@ export default function JobseekersContent() {
     const result: FormSubmitResult = await submitJobseekerApplication(formData);
     setIsSubmitting(false);
     if (result.success) {
-      setNotEmailed(Boolean(result.demo));
       setStep(4);
     } else {
       setError(result.error ?? "An error occurred. Please try again.");
@@ -437,11 +434,6 @@ export default function JobseekersContent() {
                   <p className="text-lg text-slate-600 max-w-sm mx-auto">
                     Thank you for applying. Our recruitment team will review your profile and contact you if there is a suitable opportunity.
                   </p>
-                  {notEmailed ? (
-                    <p className="text-sm text-slate-500 max-w-sm mx-auto mt-4">
-                      Email delivery is not switched on yet. Please also write to {SITE.email}.
-                    </p>
-                  ) : null}
                 </div>
               )}
             </form>

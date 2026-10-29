@@ -5,6 +5,7 @@ type MailAttachment = {
 };
 
 type SendMailOptions = {
+  apiKey: string;
   to: string;
   fromEmail: string;
   fromName: string;
@@ -17,7 +18,7 @@ type SendMailOptions = {
 export async function sendMail(options: SendMailOptions): Promise<{ ok: true } | { ok: false; error: string }> {
   const response = await fetch("https://api.mailchannels.net/tx/v1/send", {
     method: "POST",
-    headers: { "content-type": "application/json" },
+    headers: { "content-type": "application/json", "x-api-key": options.apiKey },
     body: JSON.stringify({
       personalizations: [{ to: [{ email: options.to }] }],
       from: { email: options.fromEmail, name: options.fromName },
