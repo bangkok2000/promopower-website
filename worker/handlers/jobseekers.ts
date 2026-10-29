@@ -1,3 +1,4 @@
+import { formLabel } from "../../lib/form-labels";
 import {
   fileHasAllowedSignature,
   isBelowMinimumAge,
@@ -53,8 +54,8 @@ export async function handleJobseekers(request: Request, env: FormEnv & InboxEnv
     phone: sanitize(formData.get("phone")),
     dateOfBirth: sanitize(formData.get("dateOfBirth")),
     age: sanitize(formData.get("age")),
-    gender: sanitize(formData.get("gender")),
-    qualification: sanitize(formData.get("qualification")),
+    gender: formLabel("gender", sanitize(formData.get("gender"))),
+    qualification: formLabel("qualification", sanitize(formData.get("qualification"))),
     portfolio: sanitize(formData.get("portfolio")),
     traits: sanitize(formData.get("traits")),
     pdpaConsent: sanitize(formData.get("pdpaConsent")),
@@ -104,6 +105,7 @@ export async function handleJobseekers(request: Request, env: FormEnv & InboxEnv
       ["Qualification", data.qualification],
       ["Portfolio", data.portfolio],
       ["Experience / strengths", data.traits],
+      ["Data protection consent", "Given on the form"],
     ],
     { name: data.fullName, email: data.email, subject: data.position },
     upload && attachment

@@ -1,3 +1,4 @@
+import { formLabel } from "../../lib/form-labels";
 import { isHoneypotTriggered, isValidEmail, sanitize } from "../../lib/form-validation";
 import { saveSubmission, type InboxEnv } from "../inbox";
 import { sendMail } from "../mail";
@@ -53,8 +54,8 @@ export async function handleContact(request: Request, env: FormEnv & InboxEnv): 
   }
 
   const data = {
-    serviceType: sanitize(payload.serviceType),
-    headcount: sanitize(payload.headcount),
+    serviceType: formLabel("serviceType", sanitize(payload.serviceType)),
+    headcount: formLabel("headcount", sanitize(payload.headcount)),
     campaignDate: sanitize(payload.campaignDate),
     location: sanitize(payload.location),
     campaignBrief: sanitize(payload.campaignBrief),
@@ -90,6 +91,7 @@ export async function handleContact(request: Request, env: FormEnv & InboxEnv): 
       ["Email", data.email],
       ["Phone", data.phone],
       ["Campaign details", data.campaignBrief],
+      ["Data protection consent", "Given on the form"],
     ],
     { name: data.fullName, email: data.email, subject: [data.company, data.serviceType].filter(Boolean).join(" · ") },
   );
