@@ -2,11 +2,13 @@
 
 import { useCallback, useEffect, useState, type FormEvent } from "react";
 import { adminApi } from "@/lib/admin-api";
+import AdminInbox from "@/components/admin/AdminInbox";
 import AdminJobsEditor from "@/components/admin/AdminJobsEditor";
 import AdminPortfolioEditor from "@/components/admin/AdminPortfolioEditor";
 import { AdminButton, StatusMessage, inputClass, labelClass } from "@/components/admin/admin-ui";
 
 const TABS = [
+  { id: "inbox", label: "Inbox" },
   { id: "jobs", label: "Job listings" },
   { id: "portfolio", label: "Portfolio photos" },
   { id: "password", label: "Password" },
@@ -31,7 +33,7 @@ function SignIn({ notice, onSignedIn }: { notice: string | null; onSignedIn: () 
     <form onSubmit={submit} className="mx-auto max-w-md space-y-5 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
       <div>
         <h1 className="text-2xl font-bold text-slate-900">Website admin</h1>
-        <p className="mt-2 text-sm text-slate-600">Sign in to update job listings and portfolio photos.</p>
+        <p className="mt-2 text-sm text-slate-600">Sign in to read enquiries and applications, and to update job listings and portfolio photos.</p>
       </div>
       {notice && !error && <StatusMessage tone="error">{notice}</StatusMessage>}
       {error && <StatusMessage tone="error">{error}</StatusMessage>}
@@ -116,7 +118,8 @@ function ChangePassword({ onSessionExpired }: { onSessionExpired: () => void }) 
 export default function AdminPortal() {
   const [state, setState] = useState<"checking" | "signed-out" | "signed-in">("checking");
   const [notice, setNotice] = useState<string | null>(null);
-  const [tab, setTab] = useState<TabId>("jobs");
+  const [tab, setTab] = useState<TabId>("inbox");
+  const [unread, setUnread] = useState(0);
   const [dirtyJobs, setDirtyJobs] = useState(false);
   const [dirtyPortfolio, setDirtyPortfolio] = useState(false);
   const unsaved = dirtyJobs || dirtyPortfolio;
@@ -183,6 +186,12 @@ export default function AdminPortal() {
             }`}
           >
             {item.label}
+            {item.id === "inbox" && unread > 0 && (
+              <span className={`ml-2 rounded-full px-2 py-0.5 text-xs ${tab === item.id ? "bg-white text-primary" : "bg-primary text-white"}`}>
+                {unread}
+                <span className="sr-only"> unread</span>
+              </span>
+            )}
             {((item.id === "jobs" && dirtyJobs) || (item.id === "portfolio" && dirtyPortfolio)) && (
               <span className="ml-1" aria-label="(unsaved changes)">•</span>
             )}
@@ -198,6 +207,7 @@ export default function AdminPortal() {
           aria-labelledby={`admin-tab-${item.id}`}
           hidden={tab !== item.id}
         >
+          {item.id === "inbox" && <AdminInbox onUnreadChange={setUnread} onSessionExpired={sessionExpired} />}
           {item.id === "jobs" && <AdminJobsEditor onDirtyChange={setDirtyJobs} onSessionExpired={sessionExpired} />}
           {item.id === "portfolio" && (
             <AdminPortfolioEditor onDirtyChange={setDirtyPortfolio} onSessionExpired={sessionExpired} />

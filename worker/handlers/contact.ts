@@ -1,4 +1,5 @@
 import { isHoneypotTriggered, isValidEmail, sanitize } from "../../lib/form-validation";
+import { saveSubmission, type InboxEnv } from "../inbox";
 import { sendMail } from "../mail";
 import { getMailConfig, isDemoMode, json, type FormEnv } from "../responses";
 
@@ -38,7 +39,7 @@ function formatContactEmail(data: Record<string, string>) {
   ].join("\n");
 }
 
-export async function handleContact(request: Request, env: FormEnv): Promise<Response> {
+export async function handleContact(request: Request, env: FormEnv & InboxEnv): Promise<Response> {
   let payload: ContactPayload;
 
   try {
@@ -76,6 +77,23 @@ export async function handleContact(request: Request, env: FormEnv): Promise<Res
     return json({ success: false, error: "Please accept the Data Protection Policy before submitting." }, 400);
   }
 
+  const saved = await saveSubmission(
+    env,
+    "contact",
+    [
+      ["Service", data.serviceType],
+      ["Headcount", data.headcount],
+      ["Campaign start", data.campaignDate],
+      ["Location(s)", data.location],
+      ["Name", data.fullName],
+      ["Company", data.company],
+      ["Email", data.email],
+      ["Phone", data.phone],
+      ["Campaign details", data.campaignBrief],
+    ],
+    { name: data.fullName, email: data.email, subject: [data.company, data.serviceType].filter(Boolean).join(" · ") },
+  );
+
   if (isDemoMode(env)) {
     console.info("[DEMO] Contact enquiry received");
     return json({ success: true, timestamp: new Date().toISOString(), demo: true });
@@ -91,9 +109,10 @@ export async function handleContact(request: Request, env: FormEnv): Promise<Res
     text: formatContactEmail(data),
   });
 
-  if (!result.ok) {
+  if (!result.ok && !saved) {
     return json({ success: false, error: result.error }, 502);
   }
+  if (!result.ok) console.error("Contact email failed; enquiry kept in admin inbox");
 
   return json({ success: true, timestamp: new Date().toISOString() });
 }

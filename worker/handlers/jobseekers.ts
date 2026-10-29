@@ -6,6 +6,7 @@ import {
   sanitize,
   validateFile,
 } from "../../lib/form-validation";
+import { saveSubmission, type InboxEnv } from "../inbox";
 import { fileToAttachment, sendMail } from "../mail";
 import { getMailConfig, isDemoMode, json, type FormEnv } from "../responses";
 
@@ -32,7 +33,7 @@ function formatJobseekerEmail(data: Record<string, string>, hasAttachment: boole
   ].join("\n");
 }
 
-export async function handleJobseekers(request: Request, env: FormEnv): Promise<Response> {
+export async function handleJobseekers(request: Request, env: FormEnv & InboxEnv): Promise<Response> {
   let formData: FormData;
 
   try {
@@ -77,6 +78,7 @@ export async function handleJobseekers(request: Request, env: FormEnv): Promise<
 
   const fileEntry = formData.get("compCard");
   let attachment: Awaited<ReturnType<typeof fileToAttachment>> | undefined;
+  let upload: File | undefined;
 
   if (fileEntry instanceof File && fileEntry.size > 0) {
     const fileError = validateFile(fileEntry);
@@ -85,7 +87,29 @@ export async function handleJobseekers(request: Request, env: FormEnv): Promise<
       return json({ success: false, error: "Invalid file type. Please upload a PDF, JPG, or PNG file." }, 400);
     }
     attachment = await fileToAttachment(fileEntry);
+    upload = fileEntry;
   }
+
+  const saved = await saveSubmission(
+    env,
+    "jobseeker",
+    [
+      ["Interested to be", data.position],
+      ["Name", data.fullName],
+      ["Email", data.email],
+      ["Phone", data.phone],
+      ["Date of birth", data.dateOfBirth],
+      ["Age", data.age],
+      ["Gender", data.gender],
+      ["Qualification", data.qualification],
+      ["Portfolio", data.portfolio],
+      ["Experience / strengths", data.traits],
+    ],
+    { name: data.fullName, email: data.email, subject: data.position },
+    upload && attachment
+      ? { name: attachment.filename, type: upload.type, bytes: await upload.arrayBuffer() }
+      : undefined,
+  );
 
   if (isDemoMode(env)) {
     console.info("[DEMO] Jobseeker application received");
@@ -105,9 +129,10 @@ export async function handleJobseekers(request: Request, env: FormEnv): Promise<
     attachments: attachment ? [attachment] : undefined,
   });
 
-  if (!result.ok) {
+  if (!result.ok && !saved) {
     return json({ success: false, error: result.error }, 502);
   }
+  if (!result.ok) console.error("Jobseeker email failed; application kept in admin inbox");
 
   return json({ success: true, timestamp: new Date().toISOString() });
 }

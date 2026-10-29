@@ -1,6 +1,7 @@
 "use client";
 
 import type { Job, PortfolioContent, PublishedContent } from "@/lib/site-content";
+import type { InboxEntry, InboxSummary } from "@/worker/inbox";
 
 type ApiResult<T = unknown> = ({ success: true } & T) | { success: false; error: string; status: number };
 
@@ -33,6 +34,10 @@ export const adminApi = {
   saveJobs: (jobs: Job[]) => call<{ jobs: Job[] }>("/api/admin/jobs", jsonInit("PUT", jobs)),
   savePortfolio: (portfolio: PortfolioContent) =>
     call<{ portfolio: PortfolioContent }>("/api/admin/portfolio", jsonInit("PUT", portfolio)),
+  inbox: () => call<{ items: InboxSummary[] }>("/api/admin/inbox", { cache: "no-store" }),
+  openMessage: (token: string) => call<{ entry: InboxEntry }>(`/api/admin/inbox/${token}`, { cache: "no-store" }),
+  deleteMessage: (token: string) => call(`/api/admin/inbox/${token}`, { method: "DELETE" }),
+  attachmentUrl: (token: string) => `/api/admin/inbox/${token}/file`,
   published: async (): Promise<PublishedContent | null> => {
     const response = await fetch("/api/content", { cache: "no-store" }).catch(() => null);
     return response?.ok ? ((await response.json()) as PublishedContent) : null;

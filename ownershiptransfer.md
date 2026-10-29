@@ -247,7 +247,9 @@ Secrets **cannot be exported** from Cloudflare. The new owner must enter them fr
 
 #### Admin portal (`/admin`)
 
-Staff sign in at `https://promopower.com.sg/admin` to post, edit and hide job listings (Jobseekers page) and to manage portfolio photos and client names (Our Work page). Nothing outside Cloudflare is used: content and uploaded photos are kept in a Cloudflare KV namespace bound as `SITE_CONTENT`.
+Staff sign in at `https://promopower.com.sg/admin` to read every Contact Us enquiry and Jobseekers application (the **Inbox**, including attached CVs), to post, edit and hide job listings (Jobseekers page), and to manage portfolio photos and client names (Our Work page). Nothing outside Cloudflare is used: content, uploaded photos and inbox messages are kept in a Cloudflare KV namespace bound as `SITE_CONTENT`.
+
+- **Inbox:** each submission is saved before the notification email is sent, so it is kept even if email fails. Messages and their files delete themselves 12 months after arrival (privacy policy, section 7); staff can delete any message sooner. Inbox keys start `inbox:` and `inbox-file:`. Do not copy them to the new account unless the agency wants the old messages.
 
 - **Sign-in:** one shared password. The first one comes from the `ADMIN_PASSWORD` secret. Once staff change it under **Password** in the portal, the new one is stored (hashed) in KV and the secret is no longer used. Changing it signs everyone else out. Ten wrong attempts lock sign-in for 15 minutes.
 - **Until anything is published,** the site shows the built-in job (wording copied from the old site) and the original portfolio.
@@ -461,6 +463,7 @@ For ongoing deploys without local `wrangler`:
 | Local development | `npm run dev` → http://localhost:3000 |
 | Production deploy | `NEXT_PUBLIC_FORMS_LIVE=true npm run deploy` |
 | Update form recipient | `wrangler secret put FORM_RECIPIENT_EMAIL` |
+| Read enquiries and job applications | `https://promopower.com.sg/admin` → **Inbox** |
 | Job listings, portfolio photos and client names | `https://promopower.com.sg/admin` → edit → **Save and publish** (no deploy needed) |
 | Admin password | `/admin` → **Password** tab |
 | Other content / code changes | Edit repo → deploy |

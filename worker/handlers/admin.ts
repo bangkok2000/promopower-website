@@ -13,6 +13,7 @@ import {
   type AuthEnv,
 } from "../admin-auth";
 import { rejectOversized, rejectUntrustedOrigin } from "../guard";
+import { INBOX_TOKEN, deleteInboxEntry, inboxAttachmentResponse, listInbox, openInboxEntry } from "../inbox";
 import { json } from "../responses";
 
 const JOBS_KEY = "content:jobs";
@@ -165,6 +166,21 @@ export async function handleAdmin(request: Request, env: AuthEnv, pathname: stri
   const signedIn = await hasValidSession(request, env);
   if (action === "session" && method === "GET") return json({ success: true, signedIn });
   if (!signedIn) return json({ success: false, error: "Please sign in again." }, 401);
+
+  if (action === "inbox" && method === "GET") return json({ success: true, items: await listInbox(env) });
+  const inboxMatch = /^inbox\/([^/]+)(\/file)?$/.exec(action);
+  if (inboxMatch && INBOX_TOKEN.test(inboxMatch[1])) {
+    const token = inboxMatch[1];
+    if (inboxMatch[2] && method === "GET") return inboxAttachmentResponse(env, token);
+    if (!inboxMatch[2] && method === "GET") {
+      const entry = await openInboxEntry(env, token);
+      return entry ? json({ success: true, entry }) : json({ success: false, error: "This message was deleted." }, 404);
+    }
+    if (!inboxMatch[2] && method === "DELETE") {
+      await deleteInboxEntry(env, token);
+      return json({ success: true });
+    }
+  }
 
   if (action === "password" && method === "POST") return handleChangePassword(request, env);
   if (action === "media" && method === "POST") return handleUpload(request, env);

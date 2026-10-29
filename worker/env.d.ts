@@ -11,6 +11,7 @@ declare global {
       key: string,
       type: "stream",
     ): Promise<{ value: ReadableStream | null; metadata: M | null }>;
+    getWithMetadata<M>(key: string, type: "text"): Promise<{ value: string | null; metadata: M | null }>;
     put(
       key: string,
       value: string | ArrayBuffer | ReadableStream,
